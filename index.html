@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-to-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDEON | De la idea a la acción, en tiempo récord</title>
+  <meta name="description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ideon.com/" />
+  <meta property="og:title" content="IDEON | De la idea a la acción, en tiempo récord" />
+  <meta property="og:description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
+  <meta property="og:image" content="https://picsum.photos/1200/630" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://ideon.com/" />
+  <meta property="twitter:title" content="IDEON | De la idea a la acción, en tiempo récord" />
+  <meta property="twitter:description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
+  <meta property="twitter:image" content="https://picsum.photos/1200/630" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+<style>
+  @keyframes neon-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px theme('colors.purple.500'), 0 0 10px theme('colors.purple.500'), 0 0 20px #b900de, 0 0 30px #b900de;
+    }
+    50% {
+      box-shadow: 0 0 10px theme('colors.purple.400'), 0 0 20px theme('colors.purple.400'), 0 0 30px #b900de, 0 0 40px #b900de;
+    }
+  }
+  .animate-neon-glow {
+    animation: neon-glow 2.5s ease-in-out infinite;
+  }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<script>
+  // Prevents FOUC (Flash of Unstyled Content)
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+</script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
