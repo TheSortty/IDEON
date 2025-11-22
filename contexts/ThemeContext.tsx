@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -9,30 +9,25 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// This function runs once to determine the initial theme based on the class
-// already set on the <html> tag by the script in index.html.
-// This prevents a mismatch between the server/initial render and the client state.
-const getInitialTheme = (): Theme => {
-  if (typeof document !== 'undefined' && document.documentElement.classList.contains('dark')) {
-    return 'dark';
-  }
-  return 'light';
-};
-
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize state using the function, so it's correct from the start.
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedTheme = window.localStorage.getItem('theme') as Theme;
+      if (storedTheme) {
+        return storedTheme;
+      }
+      const userMedia = window.matchMedia('(prefers-color-scheme: dark)');
+      if (userMedia.matches) {
+        return 'dark';
+      }
+    }
+    return 'light';
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
-    // When theme state changes, update the class and localStorage.
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    
+    root.classList.remove(theme === 'light' ? 'dark' : 'light');
+    root.classList.add(theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 

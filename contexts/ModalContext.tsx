@@ -2,9 +2,9 @@ import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 interface ModalContextType {
   isModalOpen: boolean;
-  selectedPlan: string;
   openModal: (plan?: string) => void;
   closeModal: () => void;
+  selectedPlan: string | null;
   isTallyModalOpen: boolean;
   openTallyModal: () => void;
   closeTallyModal: () => void;
@@ -14,11 +14,15 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<string>('');
   const [isTallyModalOpen, setIsTallyModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   const openModal = (plan?: string) => {
-    setSelectedPlan(plan || 'No estoy seguro/a, necesito asesoramiento');
+    if (plan) {
+      setSelectedPlan(plan);
+    } else {
+      setSelectedPlan(null);
+    }
     setIsModalOpen(true);
   };
 
@@ -26,11 +30,24 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setIsModalOpen(false);
   };
 
-  const openTallyModal = () => setIsTallyModalOpen(true);
-  const closeTallyModal = () => setIsTallyModalOpen(false);
+  const openTallyModal = () => {
+    setIsTallyModalOpen(true);
+  };
+
+  const closeTallyModal = () => {
+    setIsTallyModalOpen(false);
+  };
 
   return (
-    <ModalContext.Provider value={{ isModalOpen, selectedPlan, openModal, closeModal, isTallyModalOpen, openTallyModal, closeTallyModal }}>
+    <ModalContext.Provider value={{
+      isModalOpen,
+      openModal,
+      closeModal,
+      selectedPlan,
+      isTallyModalOpen,
+      openTallyModal,
+      closeTallyModal,
+    }}>
       {children}
     </ModalContext.Provider>
   );

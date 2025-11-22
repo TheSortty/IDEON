@@ -29,15 +29,15 @@ const faqs = [
 ];
 
 const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => (
-    <details className="group border-b border-slate-200 dark:border-slate-700 py-4">
+    <details className="group border-b border-gray-200 dark:border-brand-surface py-4">
         <summary className="flex items-center justify-between cursor-pointer list-none">
-            <h3 className="text-lg font-medium text-slate-800 dark:text-slate-200 group-hover:text-[#b900de] transition-colors">{question}</h3>
-            <span className="text-[#b900de] transition-transform duration-300 transform group-open:-rotate-180">
+            <h3 className="text-lg font-medium text-gray-800 dark:text-brand-text-primary group-hover:text-brand-primary transition-colors">{question}</h3>
+            <span className="text-brand-primary transition-transform duration-300 transform group-open:-rotate-180">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
             </span>
         </summary>
         <div className="overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 group-open:max-h-96 group-open:opacity-100">
-            <p className="mt-4 text-slate-600 dark:text-slate-400">
+            <p className="mt-4 text-gray-600 dark:text-brand-text-secondary">
                 {answer}
             </p>
         </div>
@@ -49,7 +49,7 @@ const Faq: React.FC = () => {
     <section id="faq" className="py-20 sm:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Preguntas Frecuentes</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Preguntas Frecuentes</h2>
         </div>
         <div className="mt-12">
           {faqs.map((faq) => (

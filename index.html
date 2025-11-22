@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-to-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IDEON | De la idea a la acción, en tiempo récord</title>
-  <meta name="description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ideon.com/" />
-  <meta property="og:title" content="IDEON | De la idea a la acción, en tiempo récord" />
-  <meta property="og:description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
-  <meta property="og:image" content="https://picsum.photos/1200/630" />
+  <title>IDEON - Tu landing lista en tiempo récord</title>
+  <meta name="description" content="Lanzamos tu página web de alta calidad en tiempo récord. Efectiva, con dominio propio y sin complicaciones. Ideal para validar ideas y captar clientes." />
 
-  <!-- Twitter -->
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="IDEON - Tu landing lista en tiempo récord" />
+  <meta property="og:description" content="Lanzamos tu página web de alta calidad en tiempo récord. Efectiva, con dominio propio y sin complicaciones." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://your-live-url.com" />
+  <meta property="og:type" content="website" />
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://ideon.com/" />
-  <meta property="twitter:title" content="IDEON | De la idea a la acción, en tiempo récord" />
-  <meta property="twitter:description" content="En IDEON, lanzamos tu proyecto web con un proceso simple y directo. A eso le llamamos ideonar. Landing pages listas en tiempo récord." />
-  <meta property="twitter:image" content="https://picsum.photos/1200/630" />
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Custom Tailwind Config for animations and fonts
     tailwind.config = {
       darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'brand-background': '#0C022D',
+            'brand-surface': '#21115C',
+            'brand-primary': '#D400FF',
+            'brand-primary-hover': '#a100c2',
+            'brand-text-primary': '#F8F8F8',
+            'brand-text-secondary': '#A9A1D1',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'neon-glow': 'neon-glow 2.5s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            'neon-glow': {
+              'from': { 'box-shadow': '0 0 5px #D400FF, 0 0 10px #D400FF, 0 0 15px #D400FF' },
+              'to': { 'box-shadow': '0 0 10px #D400FF, 0 0 20px #D400FF, 0 0 30px #D400FF' },
+            }
+          }
+        }
+      }
     }
   </script>
-<style>
-  @keyframes neon-glow {
-    0%, 100% {
-      box-shadow: 0 0 5px theme('colors.purple.500'), 0 0 10px theme('colors.purple.500'), 0 0 20px #b900de, 0 0 30px #b900de;
+  
+  <script>
+    // Theme script to prevent FOUC
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-    50% {
-      box-shadow: 0 0 10px theme('colors.purple.400'), 0 0 20px theme('colors.purple.400'), 0 0 30px #b900de, 0 0 40px #b900de;
-    }
-  }
-  .animate-neon-glow {
-    animation: neon-glow 2.5s ease-in-out infinite;
-  }
-</style>
+  </script>
 <script type="importmap">
 {
   "imports": {
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "vite": "https://aistudiocdn.com/vite@^7.1.12",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
+    "url": "https://aistudiocdn.com/url@^0.11.4"
   }
 }
 </script>
-<script>
-  // Prevents FOUC (Flash of Unstyled Content)
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-</script>
 </head>
-<body>
+<body class="font-sans">
   <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@ const ThemeSwitcher: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#b900de] focus:ring-offset-2 focus:ring-offset-slate-50 dark:focus:ring-offset-[#03031f] transition-colors duration-300"
+      className="p-2 rounded-full text-gray-500 dark:text-brand-text-secondary hover:bg-gray-200 dark:hover:bg-brand-surface focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-[#f8f8f8] dark:focus:ring-offset-brand-background transition-colors duration-300"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (

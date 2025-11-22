@@ -2,18 +2,15 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { useModal } from '../contexts/ModalContext';
 import Button from './ui/Button';
 
-// Success Icon
-const CheckCircleIcon: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
+const SuccessIcon: React.FC = () => (
+    <svg className="w-16 h-16 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
 );
-
-// Error Icon
-const XCircleIcon: React.FC = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
+const ErrorIcon: React.FC = () => (
+    <svg className="w-16 h-16 text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
 );
 
 const ContactModal: React.FC = () => {
@@ -103,11 +100,11 @@ const ContactModal: React.FC = () => {
       case 'success':
         return (
           <div className="text-center">
-            <CheckCircleIcon />
-            <h2 id="modal-title" className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            <SuccessIcon />
+            <h2 id="modal-title" className="mt-4 text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">
               ¡Mensaje enviado!
             </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-gray-600 dark:text-brand-text-secondary">
               Gracias por contactarnos. Te responderemos a la brevedad.
             </p>
             <div className="mt-8">
@@ -120,11 +117,11 @@ const ContactModal: React.FC = () => {
       case 'error':
         return (
           <div className="text-center">
-            <XCircleIcon />
-             <h2 id="modal-title" className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            <ErrorIcon />
+             <h2 id="modal-title" className="mt-4 text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">
               Hubo un error
             </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-gray-600 dark:text-brand-text-secondary">
               {errorMessage}
             </p>
             <div className="mt-8 space-y-4">
@@ -142,16 +139,16 @@ const ContactModal: React.FC = () => {
           <>
             <button 
               onClick={closeModal}
-              className="absolute top-4 right-4 p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full text-gray-500 dark:text-brand-text-secondary hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
               aria-label="Cerrar modal"
             >
               <span className="text-2xl">✕</span>
             </button>
 
-            <h2 id="modal-title" className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            <h2 id="modal-title" className="text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">
               Estás a un paso de lanzar tu idea
             </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-gray-600 dark:text-brand-text-secondary">
               Completá tus datos y nos pondremos en contacto para empezar a <em>ideonar</em>.
             </p>
 
@@ -161,7 +158,7 @@ const ContactModal: React.FC = () => {
                 <input
                   type="text" name="name" id="name" value={formData.name} onChange={handleChange}
                   placeholder="Nombre y Apellido" required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-slate-300 dark:border-slate-600 bg-white/50 dark:bg-[#4510b0]/40 text-slate-900 dark:text-white shadow-sm focus:ring-[#b900de] focus:border-[#b900de] placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
@@ -169,14 +166,14 @@ const ContactModal: React.FC = () => {
                 <input
                   type="email" name="email" id="email" value={formData.email} onChange={handleChange}
                   placeholder="Email de Contacto" required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-slate-300 dark:border-slate-600 bg-white/50 dark:bg-[#4510b0]/40 text-slate-900 dark:text-white shadow-sm focus:ring-[#b900de] focus:border-[#b900de] placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
                 <label htmlFor="plan" className="sr-only">¿Qué plan te interesa?</label>
                 <select
                   name="plan" id="plan" value={formData.plan} onChange={handleChange} required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-slate-300 dark:border-slate-600 bg-white/50 dark:bg-[#4510b0]/40 text-slate-900 dark:text-white shadow-sm focus:ring-[#b900de] focus:border-[#b900de] disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary disabled:opacity-50"
                 >
                   <option>Plan Lite</option>
                   <option>Plan Fast</option>
@@ -189,7 +186,7 @@ const ContactModal: React.FC = () => {
                 <textarea
                   name="idea" id="idea" rows={4} value={formData.idea} onChange={handleChange} required disabled={submissionStatus === 'submitting'}
                   placeholder="Contanos sobre tu idea..."
-                  className="block w-full px-4 py-3 rounded-md border-slate-300 dark:border-slate-600 bg-white/50 dark:bg-[#4510b0]/40 text-slate-900 dark:text-white shadow-sm focus:ring-[#b900de] focus:border-[#b900de] placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 ></textarea>
               </div>
                <div>
@@ -197,7 +194,7 @@ const ContactModal: React.FC = () => {
                 <input
                   type="text" name="reference" id="reference" value={formData.reference} onChange={handleChange}
                   placeholder="¿Tenés alguna web de referencia? (Opcional)" disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-slate-300 dark:border-slate-600 bg-white/50 dark:bg-[#4510b0]/40 text-slate-900 dark:text-white shadow-sm focus:ring-[#b900de] focus:border-[#b900de] placeholder:text-slate-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
@@ -220,7 +217,7 @@ const ContactModal: React.FC = () => {
       onClick={closeModal}
     >
       <div 
-        className="bg-slate-50 dark:bg-[#03031f] rounded-2xl shadow-2xl p-8 w-full max-w-lg relative border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto"
+        className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl p-8 w-full max-w-lg relative border border-gray-200 dark:border-brand-primary/20 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
       >
         {renderContent()}
