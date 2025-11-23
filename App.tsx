@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 // Providers
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -16,12 +17,14 @@ import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import TallyModal from './components/TallyModal';
 import FloatingWhatsAppButton from './components/FloatingWhatsAppButton';
+import ParticleBackground from './components/ParticleBackground';
 
 function App() {
   return (
     <ThemeProvider>
       <ModalProvider>
-        <div className="bg-[#f8f8f8] dark:bg-brand-background text-[#111] dark:text-brand-text-primary antialiased">
+        <ParticleBackground />
+        <div className="bg-transparent text-[#111] dark:text-brand-text-primary antialiased relative z-10">
           <Header />
           <main>
             <Hero />

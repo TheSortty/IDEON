@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import Button from './ui/Button';
 import ThemeSwitcher from './ThemeSwitcher';
 
@@ -32,9 +33,17 @@ const Header: React.FC = () => {
                 {navLinks.map((link) => {
                   const targetId = link.toLowerCase();
                   return (
-                    <a key={link} href={`#${targetId}`} onClick={(e) => handleNavClick(e, targetId)} className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary font-medium transition-colors">
+                    <motion.a
+                      key={link}
+                      href={`#${targetId}`}
+                      onClick={(e) => handleNavClick(e, targetId)}
+                      className="text-gray-600 dark:text-brand-text-secondary font-medium transition-colors relative"
+                      whileHover={{ scale: 1.05, color: '#D400FF' }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       {link}
-                    </a>
+                      {/* Underline glow effect on hover could be added here if desired, but scale/color is good for now */}
+                    </motion.a>
                   );
                 })}
               </nav>
@@ -74,7 +83,7 @@ const Header: React.FC = () => {
               );
             })}
             <div className="pt-4">
-               <Button className="w-full" onClick={(e) => { handleNavClick(e, 'planes'); setIsMenuOpen(false); }}>Lanzar mi idea</Button>
+              <Button className="w-full" onClick={(e) => { handleNavClick(e, 'planes'); setIsMenuOpen(false); }}>Lanzar mi idea</Button>
             </div>
           </div>
         </div>

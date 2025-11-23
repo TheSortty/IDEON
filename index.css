@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f8f8f8] dark:bg-brand-background text-[#111] dark:text-brand-text-primary antialiased;
+    background-image: radial-gradient(circle at 50% 0%, #f0f0f0 0%, #f8f8f8 70%);
+    min-height: 100vh;
+    transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
+  }
+
+  .dark body {
+    background-image: radial-gradient(circle at 50% 0%, #21115C 0%, #0C022D 70%);
+  }
+
+  /* Global Theme Transition */
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/50 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/10 rounded-2xl shadow-lg dark:shadow-none;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-500;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200 dark:bg-[#0C022D];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-brand-primary rounded-full border-2 border-gray-200 dark:border-[#0C022D];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-brand-primary/80;
+  }
+}

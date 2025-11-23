@@ -20,46 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Custom Tailwind Config for animations and fonts
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            'brand-background': '#0C022D',
-            'brand-surface': '#21115C',
-            'brand-primary': '#D400FF',
-            'brand-primary-hover': '#a100c2',
-            'brand-text-primary': '#F8F8F8',
-            'brand-text-secondary': '#A9A1D1',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          animation: {
-            'neon-glow': 'neon-glow 2.5s ease-in-out infinite alternate',
-          },
-          keyframes: {
-            'neon-glow': {
-              'from': { 'box-shadow': '0 0 5px #D400FF, 0 0 10px #D400FF, 0 0 15px #D400FF' },
-              'to': { 'box-shadow': '0 0 10px #D400FF, 0 0 20px #D400FF, 0 0 30px #D400FF' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-  
-  <script>
-    // Theme script to prevent FOUC
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
+
 <script type="importmap">
 {
   "imports": {
@@ -73,6 +34,7 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="font-sans">
   <div id="root"></div>
