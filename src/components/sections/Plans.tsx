@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Button from './ui/Button';
-import { useModal } from '../contexts/ModalContext';
+import Button from '../ui/Button';
+import { useModal } from '../../contexts/ModalContext';
 
 // PLANS SECTION
 const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean; index: number }) => {

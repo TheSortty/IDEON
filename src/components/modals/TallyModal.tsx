@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useModal } from '../contexts/ModalContext';
-import { useTheme } from '../contexts/ThemeContext';
+import { useModal } from '../../contexts/ModalContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const TallyModal: React.FC = () => {
   const { isTallyModalOpen, closeTallyModal } = useModal();

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Button from './ui/Button';
-import ThemeSwitcher from './ThemeSwitcher';
+import Button from '../ui/Button';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

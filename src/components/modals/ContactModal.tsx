@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import { useModal } from '../contexts/ModalContext';
-import Button from './ui/Button';
+import { useModal } from '../../contexts/ModalContext';
+import Button from '../ui/Button';
 
 const SuccessIcon: React.FC = () => (
     <svg className="w-16 h-16 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
