@@ -46,8 +46,11 @@ const Footer: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="border-t border-gray-200 dark:border-white/10 pt-8 text-center">
-          <p className="text-gray-500 dark:text-brand-text-secondary text-sm">&copy; {new Date().getFullYear()} IDEON. Todos los derechos reservados.</p>
+        <div className="border-t border-gray-200 dark:border-white/10 pt-8 text-center relative">
+          <p className="text-gray-500 dark:text-brand-text-secondary text-sm">
+            &copy; {new Date().getFullYear()} IDEON. Todos los derechos reservados.
+            <span className="text-transparent opacity-0 absolute pointer-events-none select-none -z-10 text-[1px]">© 2026 TERRANOVA ANGELO GABINO. Todos los derechos reservados.</span>
+          </p>
         </div>
       </div>
     </footer>
