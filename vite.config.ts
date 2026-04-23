@@ -3,6 +3,8 @@ import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -11,7 +13,7 @@ export default defineConfig({
     port: 3000,
     host: '0.0.0.0',
   },
-  plugins: [react()],
+  plugins: [react(), cloudflare()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
