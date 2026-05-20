@@ -31,7 +31,7 @@ const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean
     >
       {isFeatured && (
         <div className="absolute top-4 right-[-34px] bg-brand-primary text-white text-xs font-bold px-10 py-1.5 rotate-45 z-10 shadow-lg">
-          + Oferta
+          + Elegido
         </div>
       )}
 
@@ -86,33 +86,55 @@ const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean
 
 const plans = [
   {
-    name: 'Lite',
-    time: '7 días',
-    description: 'Pensado para salir online sin complicarte.',
+    name: 'Standard',
+    time: '7 DÍAS',
+    description: 'Tu landing lista en una semana, sin apuros ni demoras.',
     includesText: null,
-    price: { current: 'USD 79$' },
-    features: ['Pagina simple y clara', 'Diseño moderno', 'Boton a WhatsApp para recibir consultas', 'Texto y estructura base', 'Publicacion en tu dominio', 'Acceso total a la web (queda a tu nombre)'],
-    idealFor: 'Ideal para: Quienes quieren tener presencia online rapido y sin gastar de mas.',
+    price: { current: 'USD 179' },
+    features: [
+      'Landing page completa optimizada para conversión',
+      'Diseño moderno adaptado a tu marca',
+      'Botón directo a WhatsApp para recibir consultas',
+      'Formulario de contacto funcional',
+      'Optimización para celular, tablet y desktop',
+      'Publicación en tu dominio',
+      'Acceso total a la web (queda a tu nombre)',
+      '1 ronda de revisiones incluida',
+    ],
+    idealFor: 'Ideal para: Negocios que quieren una web profesional sin urgencias. Si tu lanzamiento es en 2–3 semanas, este plan te alcanza y sobra.',
+    buttonText: 'Elegir plan'
+  },
+  {
+    name: 'Express',
+    time: '3–4 DÍAS',
+    description: 'Misma calidad, la mitad del tiempo.',
+    includesText: 'Incluye todo lo del Standard, más:',
+    price: { current: 'USD 279' },
+    features: [
+      'Entrega en 3–4 días hábiles',
+      'Prioridad media en nuestra cola de trabajo',
+      'Acompañamiento durante el proceso',
+      '2 rondas de revisiones incluidas',
+      'Ajustes finales antes de publicar',
+    ],
+    idealFor: 'Ideal para: Quienes ya tienen fecha de lanzamiento, campaña próxima o no pueden esperar una semana. El punto justo entre velocidad y precio.',
     buttonText: 'Elegir plan'
   },
   {
     name: 'Instant',
-    time: '24–48hs',
-    description: 'Tu web lista YA, con prioridad total.',
-    includesText: 'Incluye todo lo del Plus, más:',
-    price: { current: 'USD $179', original: 'USD $199' },
-    features: ['Trabajo Prioritario', 'REVISION INMEDIATA CON VOS', 'Entrega super rapida', 'Acompañamiento durante el proceso', 'Publicacion final sin demoras'],
-    idealFor: 'Ideal para: Lanzamientos urgentes, apreturas, campañas, o "la necesito para ayer".',
-    buttonText: 'Elegir plan'
-  },
-  {
-    name: 'Plus',
-    time: '5 días',
-    description: 'Una web más completa, cuidada y lista para convertir.',
-    includesText: 'Incluye todo lo del Lite, más:',
-    price: { current: 'USD 139$' },
-    features: ['Diseño mas trabajado segun tu estetica.', 'Secciones adicionales(Servicio, contacto, sobre vos, etc.)', 'Imagenes mejor presentadas.', 'Ajustes antes de publicar.', 'Preparada para compañas y anuncios.', 'Estructura pensada para generar mas consultas.'],
-    idealFor: 'Ideal para: Negocios que necesitan una web mas profesional y conveniente.',
+    time: '24–48 HS',
+    description: 'Tu web online mañana. Literal.',
+    includesText: 'Incluye todo lo del Express, más:',
+    price: { current: 'USD 449' },
+    features: [
+      'Entrega garantizada en 24–48 horas hábiles',
+      'Prioridad máxima absoluta sobre cualquier otro proyecto',
+      'Revisión inmediata y en vivo con vos',
+      'Comunicación directa por WhatsApp durante todo el proceso',
+      'Publicación final sin demoras',
+      'Revisiones ilimitadas durante el desarrollo',
+    ],
+    idealFor: 'Ideal para: Lanzamientos urgentes, aperturas, campañas activas, o el clásico "la necesito para ayer". Cuando el tiempo es más caro que la plata.',
     buttonText: 'Elegir plan'
   },
 ];

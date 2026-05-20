@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const faqs = [
   {
     question: '¿Incluye dominio y hosting?',
-    answer: 'Para que tengas propiedad total, el hosting se configura en tu propia cuenta y el dominio se registra a tu nombre. No están incluidos en los planes, pero si necesitás ayuda, lo hacemos juntos.',
+    answer: 'Sí, te regalamos el primer año de hosting para que arranques sin costos extra. El dominio se registra a tu nombre y queda 100% tuyo. A partir del segundo año, podés renovarlo por tu cuenta o ayudarte nosotros — vos elegís. Sin permanencia, sin sorpresas.',
   },
   {
     question: '¿Hacen mantenimiento mensual?',
