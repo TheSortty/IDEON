@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import { useModal } from '../../contexts/ModalContext';
+import { openWhatsApp } from '../../constants/contact';
 
 const Cta: React.FC = () => {
   const { openModal } = useModal();
@@ -44,20 +45,33 @@ const Cta: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
-            ¿Tenés una idea? <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-600 dark:to-white">La lanzamos hoy.</span>
+            ¿Tenés una idea? <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-purple-600 dark:to-white">La armamos con vos.</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary max-w-2xl mx-auto mb-10">
-            Compartí lo que necesitás y activamos tu web en tiempo récord.
+            Contanos qué necesitás y te decimos, sin vueltas, cómo lo resolvemos y qué te va a llevar.
           </p>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button onClick={() => openModal()} className="text-lg px-10 py-5 shadow-[0_0_30px_rgba(212,0,255,0.4)] hover:shadow-[0_0_50px_rgba(212,0,255,0.6)] transition-shadow duration-300">
-              Lanzar mi página
-            </Button>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                onClick={() => openWhatsApp('Hola Ideon, te cuento mi idea:')}
+                className="text-lg px-10 py-5 shadow-[0_0_30px_rgba(212,0,255,0.4)] hover:shadow-[0_0_50px_rgba(212,0,255,0.6)] transition-shadow duration-300"
+              >
+                Contame tu idea →
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button onClick={() => openModal()} variant="outline" className="text-lg px-10 py-5">
+                Prefiero dejar mis datos
+              </Button>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

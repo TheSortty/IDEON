@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
+import { openWhatsApp } from '../../constants/contact';
 
 // HERO SECTION
 const Hero: React.FC = () => {
 
-  const handleScrollToPlans = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleScrollToCases = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const targetElement = document.getElementById('planes');
+    const targetElement = document.getElementById('casos');
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
@@ -43,12 +44,15 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-6 text-center lg:text-left"
           >
+            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-brand-primary mb-5">
+              Diseño + desarrollo + estrategia, en un solo equipo
+            </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111] dark:text-brand-text-primary">
-              <span className="block">PÁGINAS WEB</span>
-              <span className="block text-gradient">PROFESIONALES EN 24HS</span>
+              <span className="block">Tu web, hecha por un equipo real —</span>
+              <span className="block text-gradient">no una plantilla ni un contrato eterno.</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary max-w-lg mx-auto lg:mx-0">
-              SIN GASTO MENSUAL. 100% TUYA DESDE EL PRIMER DÍA.
+            <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary max-w-xl mx-auto lg:mx-0">
+              Sitios y sistemas a medida, con diseño, código, dominio y SSL en un solo número. Sin letra chica, sin mensualidad obligatoria: vos sabés qué pagás, qué recibís y con quién hablás en cada paso.
             </p>
             <div className="mt-8 flex justify-center lg:justify-start">
               <motion.div
@@ -56,11 +60,24 @@ const Hero: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button className="w-full sm:w-auto shadow-[0_0_20px_rgba(212,0,255,0.5)] hover:shadow-[0_0_30px_rgba(212,0,255,0.7)] transition-shadow duration-200" onClick={handleScrollToPlans}>
-                  Quiero mi pagina
+                <Button
+                  className="w-full sm:w-auto shadow-[0_0_20px_rgba(212,0,255,0.5)] hover:shadow-[0_0_30px_rgba(212,0,255,0.7)] transition-shadow duration-200"
+                  onClick={() => openWhatsApp('Hola Ideon, quiero mi web. ¿Me pasan más información?')}
+                >
+                  Quiero mi web →
                 </Button>
               </motion.div>
             </div>
+            <p className="mt-5 text-sm text-gray-500 dark:text-brand-text-secondary">
+              Ya lo hicimos:{' '}
+              <a
+                href="#casos"
+                onClick={handleScrollToCases}
+                className="text-brand-primary font-semibold hover:underline underline-offset-4"
+              >
+                mirá siendohome.com y underclub.com.ar →
+              </a>
+            </p>
           </motion.div>
 
           <motion.div
@@ -85,7 +102,7 @@ const Hero: React.FC = () => {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-brand-text-primary">Online 24/7</span>
+                    <span className="text-sm font-medium text-brand-text-primary">Proyectos en producción</span>
                   </div>
                 </motion.div>
               </div>

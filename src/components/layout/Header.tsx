@@ -5,7 +5,14 @@ import ThemeSwitcher from '../ui/ThemeSwitcher';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = ['Planes', 'Proceso', 'FAQ', 'Contacto'];
+  const navLinks = [
+    { label: 'Equipo', id: 'equipo' },
+    { label: 'Casos', id: 'casos' },
+    { label: 'Planes', id: 'planes' },
+    { label: 'Proceso', id: 'proceso' },
+    { label: 'FAQ', id: 'faq' },
+    { label: 'Contacto', id: 'contacto' },
+  ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
@@ -29,25 +36,22 @@ const Header: React.FC = () => {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <nav className="flex items-baseline space-x-6">
-                {navLinks.map((link) => {
-                  const targetId = link.toLowerCase();
-                  return (
-                    <motion.a
-                      key={link}
-                      href={`#${targetId}`}
-                      onClick={(e) => handleNavClick(e, targetId)}
-                      className="text-gray-600 dark:text-brand-text-secondary font-medium transition-colors relative"
-                      whileHover={{ scale: 1.05, color: '#D400FF' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {link}
-                      {/* Underline glow effect on hover could be added here if desired, but scale/color is good for now */}
-                    </motion.a>
-                  );
-                })}
+              <nav className="flex items-baseline space-x-5">
+                {navLinks.map((link) => (
+                  <motion.a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    onClick={(e) => handleNavClick(e, link.id)}
+                    className="text-sm text-gray-600 dark:text-brand-text-secondary font-medium transition-colors relative"
+                    whileHover={{ scale: 1.05, color: '#D400FF' }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {link.label}
+                    {/* Underline glow effect on hover could be added here if desired, but scale/color is good for now */}
+                  </motion.a>
+                ))}
               </nav>
-              <Button onClick={(e) => handleNavClick(e, 'planes')}>Lanzar mi idea</Button>
+              <Button onClick={(e) => handleNavClick(e, 'planes')}>Quiero mi cotización</Button>
               <ThemeSwitcher />
             </div>
           </div>
@@ -74,16 +78,13 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-            {navLinks.map((link) => {
-              const targetId = link.toLowerCase();
-              return (
-                <a key={link} href={`#${targetId}`} onClick={(e) => handleNavClick(e, targetId)} className="text-gray-600 dark:text-brand-text-primary hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors">
-                  {link}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a key={link.id} href={`#${link.id}`} onClick={(e) => handleNavClick(e, link.id)} className="text-gray-600 dark:text-brand-text-primary hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors">
+                {link.label}
+              </a>
+            ))}
             <div className="pt-4">
-              <Button className="w-full" onClick={(e) => { handleNavClick(e, 'planes'); setIsMenuOpen(false); }}>Lanzar mi idea</Button>
+              <Button className="w-full" onClick={(e) => { handleNavClick(e, 'planes'); setIsMenuOpen(false); }}>Quiero mi cotización</Button>
             </div>
           </div>
         </div>

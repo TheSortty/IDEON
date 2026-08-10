@@ -6,27 +6,27 @@ const steps = [
   {
     number: '01',
     title: 'Inicio',
-    description: 'Se completa el formulario + 50% del valor del plan.',
+    description: 'Nos contás tu idea y arrancamos con una seña del 25% del valor cotizado.',
   },
   {
     number: '02',
     title: 'Reunión breve',
-    description: '20 minutos para ordenar ideas, definir estilo y dejar claro el alcance.',
+    description: '20 minutos para ordenar ideas, definir el estilo y dejar el alcance por escrito — así los dos sabemos exactamente qué se va a entregar.',
   },
   {
     number: '03',
     title: 'Diseño + armado',
-    description: 'Se crea la primera versión completa dentro del plazo del plan elegido.',
+    description: 'Armamos la primera versión completa dentro del plazo acordado para tu plan.',
   },
   {
     number: '04',
     title: 'Ajustes incluidos',
-    description: 'Ronda de correcciones para pulir textos, imágenes y detalles finales.',
+    description: 'Ronda de correcciones para pulir textos, imágenes y detalles finales antes de publicar.',
   },
   {
     number: '05',
-    title: 'Lanzamiento',
-    description: 'La web se publica en tu dominio, se abona el saldo restante y se entregan todos los accesos.',
+    title: 'Lanzamiento y acompañamiento',
+    description: 'Publicamos en tu dominio, se abona el saldo restante, te entregamos todos los accesos — y seguimos disponibles después. No te dejamos solo con la web recién publicada.',
   },
 ];
 
@@ -35,9 +35,9 @@ const Process: React.FC = () => {
     <section id="proceso" className="bg-transparent py-20 sm:py-24 relative z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Proceso simple y sin vueltas</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Cómo trabajamos</h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
-            Tu web lista en 5 pasos
+            Tu web lista en 5 pasos, con las reglas claras desde el principio.
           </p>
         </div>
         <div className="space-y-12">
@@ -68,7 +68,7 @@ const Process: React.FC = () => {
         </div>
         <div className="mt-12 text-center bg-brand-primary/10 border border-brand-primary/20 rounded-lg p-4 backdrop-blur-sm">
           <p className="text-sm text-brand-primary">
-            <span className="font-bold">Nota:</span> Si faltan textos o imágenes, usamos copy genérico preaprobado para no frenar el proyecto.
+            <span className="font-bold">Nota:</span> Si te faltan textos o imágenes, redactamos contenido de calidad que aprobás antes de publicar, para no frenar el proyecto.
           </p>
         </div>
       </div>

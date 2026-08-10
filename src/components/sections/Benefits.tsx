@@ -2,22 +2,28 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // SVG ICONS
-const IconVelocidad: React.FC = () => (
+const IconDiseno: React.FC = () => (
   <svg className="w-10 h-10 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
   </svg>
 );
 
-const IconAlcance: React.FC = () => (
+const IconEquipo: React.FC = () => (
   <svg className="w-10 h-10 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
   </svg>
 );
 
-const IconSinDependencias: React.FC = () => (
+const IconPortafolio: React.FC = () => (
   <svg className="w-10 h-10 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+);
+
+const IconReglas: React.FC = () => (
+  <svg className="w-10 h-10 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
   </svg>
 );
 
@@ -33,43 +39,37 @@ const IconDominio: React.FC = () => (
   </svg>
 );
 
-const IconSinLetraChica: React.FC = () => (
-  <svg className="w-10 h-10 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-  </svg>
-);
-
 // BENEFITS SECTION
 const benefits = [
   {
-    icon: <IconVelocidad />,
-    title: 'Velocidad',
-    description: 'Entregas rápidas: desde 24hs hasta 10 días, según tu proyecto.',
+    icon: <IconDiseno />,
+    title: 'Diseño incluido, no aparte',
+    description: 'Muchos estudios cotizan el diseño como un servicio extra, de USD 1.000 a 10.000. Acá va incluido en un solo número junto con el desarrollo, el dominio y el certificado SSL.',
   },
   {
-    icon: <IconSinDependencias />,
-    title: 'Sin dependencias',
-    description: 'Sitio propio, sin mantenimiento obligatorio ni costos mensuales.',
+    icon: <IconEquipo />,
+    title: 'Un equipo con nombre y apellido',
+    description: 'No hablás con un buzón de entrada. Sabés quién te diseña, quién te programa y quién responde tus mensajes — y por qué cada uno está capacitado para hacerlo.',
+  },
+  {
+    icon: <IconReglas />,
+    title: 'Reglas claras desde el día uno',
+    description: 'Antes de arrancar sabés exactamente qué incluye tu plan, cuántas rondas de cambios tenés y qué pasa si pedís algo que no estaba contemplado. Sin sorpresas a mitad de camino.',
+  },
+  {
+    icon: <IconPortafolio />,
+    title: 'Portafolio real, no simulado',
+    description: 'No te mostramos capturas de stock: te dejamos entrar y navegar sitios y sistemas que ya están funcionando en producción, con clientes reales usándolos hoy.',
   },
   {
     icon: <IconDominio />,
-    title: 'Dominio propio',
-    description: 'Todo queda a tu nombre. Tu web, tu dominio, tu marca',
-  },
-  {
-    icon: <IconAlcance />,
-    title: 'Alcance cerrado',
-    description: 'Trabajo claro desde el principio, sin sorpresas ni cargos ocultos.',
-  },
-  {
-    icon: <IconSinLetraChica />,
-    title: 'Sin letra chica',
-    description: 'Transparencia real. Lo que acordamos es lo que entregamos.',
+    title: 'Tu web, tu dominio, sin cadenas',
+    description: 'El dominio se registra a tu nombre y el código queda con vos. No hay mensualidad obligatoria para seguir teniendo tu propia web online.',
   },
   {
     icon: <IconAds />,
-    title: 'Optimizada para ads',
-    description: 'Pensada para convertir: todo redirige directo a tu WhatsApp.',
+    title: 'Pensada para convertir',
+    description: 'Carga rápida, mobile-first y con el camino más corto entre que alguien entra a tu web y te escribe: preparada para campañas de Google y Meta Ads desde el día uno.',
   },
 ];
 
@@ -104,7 +104,8 @@ const Benefits: React.FC = () => {
             Trabajamos distinto
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary leading-relaxed">
-            En el mercado, muchos desarrolladores generan dependencia con tecnicismos y cuotas mensuales. En IDEON nos enfocamos en vos: claridad, entrega completa e independencia real desde el primer día.</p>
+            En el mercado, la mayoría de las agencias cotiza el diseño aparte del desarrollo, o te hace firmar una mensualidad de la que después es difícil salir. En Ideon el diseño va incluido, la web queda 100% a tu nombre desde el día uno, y las reglas del proyecto se hablan claras antes de empezar — no después.
+          </p>
         </motion.div>
 
         <motion.div

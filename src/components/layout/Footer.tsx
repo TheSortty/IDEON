@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
               IDE<span className="text-brand-primary">ON</span>
             </h3>
             <p className="mt-4 text-gray-600 dark:text-brand-text-secondary leading-relaxed">
-              IDEON está conformado por desarrolladores y especialistas en Marketing, unidos para crear webs en tiempo récord, claras y eficientes.
+              Ideon está conformado por especialistas en desarrollo, atención al cliente y marketing digital, unidos para crear webs y sistemas a medida — claros, cuidados y sin dependencias.
             </p>
           </div>
           <div>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Nota legal</h4>
             <p className="text-sm text-gray-600 dark:text-brand-text-secondary leading-relaxed">
-              Precios válidos por 5 días hábiles. Modalidad de pago 50/50. Sin mantenimiento mensual incluido. No incluye hosting o adquisición de dominio.
+              Cotización vigente por 5 días hábiles desde que se envía. Modalidad de pago 25/75. Mantenimiento mensual opcional, no incluido por defecto. No incluye renovación de hosting ni de dominio a partir del segundo año.
             </p>
           </div>
         </div>

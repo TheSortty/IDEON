@@ -146,10 +146,10 @@ const ContactModal: React.FC = () => {
             </button>
 
             <h2 id="modal-title" className="text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">
-              Estás a un paso de lanzar tu idea
+              Contanos tu idea
             </h2>
             <p className="mt-2 text-gray-600 dark:text-brand-text-secondary">
-              Completá tus datos y nos pondremos en contacto para empezar a <em>ideonar</em>.
+              Dejanos tus datos y te respondemos con una cotización a medida de tu proyecto — sin compromiso.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -175,9 +175,9 @@ const ContactModal: React.FC = () => {
                   name="plan" id="plan" value={formData.plan} onChange={handleChange} required disabled={submissionStatus === 'submitting'}
                   className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-[#111] dark:text-brand-text-primary shadow-sm focus:ring-brand-primary focus:border-brand-primary disabled:opacity-50"
                 >
-                  <option>Plan Lite</option>
-                  <option>Plan Fast</option>
-                  <option>Plan Express</option>
+                  <option>Starter</option>
+                  <option>Pro</option>
+                  <option>Enterprise</option>
                   <option>No estoy seguro/a, necesito asesoramiento</option>
                 </select>
               </div>
@@ -199,7 +199,7 @@ const ContactModal: React.FC = () => {
               </div>
               <div>
                 <Button type="submit" className="w-full" disabled={submissionStatus === 'submitting'}>
-                  {submissionStatus === 'submitting' ? 'Enviando...' : 'Enviar y Lanzar mi Idea'}
+                  {submissionStatus === 'submitting' ? 'Enviando...' : 'Quiero mi cotización'}
                 </Button>
               </div>
             </form>
