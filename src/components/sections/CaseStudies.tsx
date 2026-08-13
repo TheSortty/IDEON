@@ -16,9 +16,9 @@ const cases = [
   },
   {
     name: 'Under Club',
-    subtitle: 'Plataforma para boliches y RRPP',
+    subtitle: 'Plataforma para clubes nocturnos y RRPP',
     industry: 'Entretenimiento / Nightlife',
-    description: 'Sistema a medida para boliches y relacionistas públicos (RRPP) que cobran comisión por entrada: gestión de ventas, seguimiento de comisiones y operación pensada para un rubro con reglas muy específicas que ninguna plantilla genérica resuelve.',
+    description: 'Sistema a medida para clubes nocturnos y relacionistas públicos (RRPP) que cobran comisión por entrada: gestión de ventas, seguimiento de comisiones y operación pensada para un rubro con reglas muy específicas que ninguna plantilla genérica resuelve.',
     domain: 'underclub.com.ar',
     url: 'https://underclub.com.ar',
     whatsappMessage: 'Hola Ideon, vi el proyecto de Under Club (underclub.com.ar) y quiero algo similar para mi negocio.',
@@ -27,12 +27,12 @@ const cases = [
 
 const CaseStudies: React.FC = () => {
   return (
-    <section id="casos" className="py-20 sm:py-24 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Casos de éxito</h2>
+    <section id="casos" className="py-12 sm:py-16 relative z-10">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Empresas que confían en nosotros</h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
-            Antes de contarte lo que podemos hacer, te mostramos lo que ya hicimos.
+            Proyectos en producción, con clientes reales usándolos hoy.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const CaseStudies: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-brand-primary font-semibold hover:underline underline-offset-4"
                 >
-                  Ver sitio: {project.domain} →
+                  {project.domain} →
                 </a>
                 <Button
                   variant="outline"

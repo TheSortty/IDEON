@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12">
           <div>
             <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white">

@@ -46,8 +46,8 @@ const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean
       <p className="mt-2 text-gray-600 dark:text-brand-text-secondary">{plan.description}</p>
 
       <div className="mt-6">
-        <span className="text-2xl font-bold tracking-tight text-[#111] dark:text-brand-text-primary">Cotización a medida</span>
-        <p className="mt-1 text-sm text-gray-500 dark:text-brand-text-secondary">Según el alcance real de tu proyecto.</p>
+        <span className="text-2xl font-bold tracking-tight text-[#111] dark:text-brand-text-primary">{plan.price}</span>
+        <p className="mt-1 text-sm text-gray-500 dark:text-brand-text-secondary">{plan.priceNote}</p>
       </div>
 
       <div className="mt-8 flex-grow">
@@ -83,6 +83,8 @@ const plans = [
   {
     name: 'Starter',
     tag: 'PRESENCIA',
+    price: 'Desde $200 USD',
+    priceNote: 'El valor final depende del alcance real de tu proyecto.',
     description: 'Para negocios que están arrancando y necesitan una presencia web profesional, clara y lista para recibir clientes.',
     includesText: null,
     features: [
@@ -100,6 +102,8 @@ const plans = [
   {
     name: 'Pro',
     tag: 'MÁS ALCANCE',
+    price: 'Desde $1.500 USD',
+    priceNote: 'El valor final depende del alcance real de tu proyecto.',
     description: 'Para proyectos con más de una sección o funcionalidad, que necesitan acompañamiento durante el desarrollo.',
     includesText: 'Incluye todo lo del plan Starter, más:',
     features: [
@@ -114,6 +118,8 @@ const plans = [
   {
     name: 'Enterprise',
     tag: 'A MEDIDA',
+    price: 'Cotización a medida',
+    priceNote: 'Según el alcance real de tu proyecto.',
     description: 'Para sistemas a medida, plataformas o proyectos con lógica propia de negocio, como los que ya construimos para Home y Under Club.',
     includesText: 'Incluye todo lo del plan Pro, más:',
     features: [
@@ -129,12 +135,12 @@ const plans = [
 
 const Plans: React.FC = () => {
   return (
-    <section id="planes" className="py-20 sm:py-24 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Planes</h2>
+    <section id="planes" className="py-12 sm:py-16 relative z-10">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Tipos de proyectos</h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
-            Nos adaptamos a tu presupuesto y a tu necesidad. Por eso no publicamos un precio fijo: te cotizamos a medida según el alcance real de tu proyecto, y vos decidís con toda la información en la mano.
+            Nos adaptamos a tu presupuesto y a tu necesidad. Cada proyecto se cotiza según su alcance real, y vos decidís con toda la información en la mano.
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

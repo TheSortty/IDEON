@@ -7,9 +7,8 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
     { label: 'Equipo', id: 'equipo' },
-    { label: 'Casos', id: 'casos' },
-    { label: 'Planes', id: 'planes' },
-    { label: 'Proceso', id: 'proceso' },
+    { label: 'Clientes', id: 'casos' },
+    { label: 'Proyectos', id: 'planes' },
     { label: 'FAQ', id: 'faq' },
     { label: 'Contacto', id: 'contacto' },
   ];
@@ -27,7 +26,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#f8f8f8]/80 dark:bg-brand-background/80 backdrop-blur-xl border-b border-gray-900/10 dark:border-white/10 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">

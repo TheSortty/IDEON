@@ -4,31 +4,31 @@ import { motion } from 'framer-motion';
 // WHY YOU NEED THIS — sección educativa
 const topics = [
   {
-    question: '¿Por qué tener tu propia página web?',
-    answer: 'Una red social te la puede suspender, cambiar el alcance o desaparecer de un día para el otro, y nunca es realmente tuya. Tu propia web es el único lugar online que te pertenece por completo: vos decidís qué mostrar, cómo se ve y quién la administra.',
+    question: 'Web vs Redes Sociales',
+    answer: 'Una red social puede cambiar el algoritmo, bajar tu alcance o cerrarte la cuenta de un día para el otro, y todo tu esfuerzo desaparece. Tu página web es tu único activo digital real: vos ponés las reglas, vos controlás la imagen y nadie te la puede quitar.',
   },
   {
-    question: '¿Por qué importa tener presencia online?',
-    answer: 'Hoy, antes de comprarte o contratarte, casi cualquier cliente te busca en Google o en redes. Si no aparecés, o aparecés mal, esa decisión ya se tomó sin vos — a favor de otro que sí tenía dónde mostrarse.',
+    question: 'Presencia Online',
+    answer: 'Hoy, la decisión de compra se toma buscando en Google antes de siquiera mandar un mensaje. Si alguien busca lo que ofrecés y no aparecés o tenés una presencia desactualizada, esa venta se la lleva automáticamente el competidor que sí se muestra mejor.',
   },
   {
-    question: '¿Qué es el SEO y por qué importa?',
-    answer: 'SEO es simplemente lo que hace que tu web aparezca cuando alguien busca lo que vos ofrecés, sin tener que pagar publicidad para eso. No es magia ni es inmediato, pero es la diferencia entre depender solo de la pauta paga o tener gente que te encuentra sola, todos los meses, gratis.',
+    question: 'SEO',
+    answer: 'El SEO (posicionamiento en buscadores) es lo que hace que te sigan encontrando de forma natural. Es la diferencia entre pagar pauta publicitaria todos los meses o tener un sistema que atrae clientes gratis las 24 horas.',
   },
   {
-    question: '¿Por qué una agencia y no una plataforma prefabricada (tipo Tiendanube o Wix)?',
-    answer: 'Una plantilla es más barata al arrancar, pero te deja con un sitio genérico, sin nadie detrás y con límites técnicos duros apenas tu negocio crece. Con Ideon pagás por un sitio propio, hecho a medida de tu negocio y con un equipo real que lo sostiene — no por una casilla más en un catálogo de miles de sitios iguales.',
+    question: 'Agencia vs plantillas',
+    answer: 'Usar plantillas (como Wix o Tiendanube) sirve para salir del paso, pero te encasillan. Te dejan con un sitio genérico y límites técnicos que frenan tu crecimiento. Con IDEON no alquilás una plantilla más del catálogo; tenés una web a medida y un equipo real respaldando tu negocio.',
   },
 ];
 
 const WhyYouNeedThis: React.FC = () => {
   return (
-    <section id="porque" className="bg-transparent py-20 sm:py-24 relative z-10">
+    <section id="porque" className="bg-transparent py-12 sm:py-16 relative z-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Por qué necesitás esto</h2>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Oportunidades de crecimiento</h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
-            Esta sección no vende directamente — te ayuda a entender por qué lo que vendemos importa, sin tecnicismos.
+            Entender las reglas del juego digital es el primer paso para dejar de regalar clientes a tu competencia.
           </p>
         </div>
 
