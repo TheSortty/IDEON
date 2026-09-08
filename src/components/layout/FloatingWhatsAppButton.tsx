@@ -22,7 +22,7 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
 const FloatingWhatsAppButton: React.FC = () => {
   return (
     <a
-      href="https://wa.me/5492616915325"
+      href="https://wa.me/5492617736266"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 p-4 bg-[#25D366] rounded-full shadow-lg hover:bg-[#128C7E] transition-colors duration-300 transform hover:scale-110"

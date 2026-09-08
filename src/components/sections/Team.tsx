@@ -54,9 +54,6 @@ const Team: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">
               Quiénes somos
             </h2>
-            <p className="mt-5 text-lg text-gray-600 dark:text-brand-text-secondary leading-relaxed">
-              Somos tres personas, cada una a cargo de una parte distinta de tu proyecto. Tu web pasa por gente especializada en cada etapa, no por una sola persona haciendo de todo un poco.
-            </p>
           </motion.div>
 
           <motion.div

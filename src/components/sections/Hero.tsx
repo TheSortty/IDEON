@@ -81,19 +81,7 @@ const Hero: React.FC = () => {
               className="relative mx-auto max-w-lg lg:max-w-none"
             >
               <div className="relative rounded-xl shadow-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
-                <img className="w-full opacity-90 hover:opacity-100 transition-opacity duration-200" src="https://seranking.com/es/blog/wp-content/uploads/sites/13/2020/04/750-X-400-2x.jpg" alt="Mockup de landing page en laptop y móvil" />
-
-                {/* Floating badge example */}
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-6 -right-6 bg-brand-surface border border-brand-primary/30 p-4 rounded-xl shadow-lg hidden sm:block"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-brand-text-primary">Proyectos en producción</span>
-                  </div>
-                </motion.div>
+                <img className="w-full opacity-90 hover:opacity-100 transition-opacity duration-200" src="/hero/hero-workflow.webp" alt="Proceso de diseño de un proyecto: wireframes en papel y notebook con diagrama de flujo" />
               </div>
             </motion.div>
           </motion.div>
