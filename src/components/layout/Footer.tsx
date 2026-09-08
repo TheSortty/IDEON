@@ -1,5 +1,5 @@
 import React from 'react';
-import { InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/SocialIcons';
+import { FacebookIcon, InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/SocialIcons';
 
 // FOOTER SECTION
 const Footer: React.FC = () => {
@@ -50,6 +50,15 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Seguinos</h4>
             <div className="flex items-center justify-center md:justify-start gap-4">
+              <a
+                href="https://www.facebook.com/profile.php?id=61586983154521"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook de IDEON"
+                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+              >
+                <FacebookIcon className="w-6 h-6" />
+              </a>
               <a
                 href="https://www.instagram.com/ideon_ar/"
                 target="_blank"
