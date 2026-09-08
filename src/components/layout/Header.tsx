@@ -1,22 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
+import { UsersIcon, BriefcaseIcon, LayersIcon, HelpCircleIcon, MailIcon } from '../ui/NavIcons';
+
+const navLinks = [
+  { label: 'Equipo', id: 'equipo', icon: UsersIcon },
+  { label: 'Clientes', id: 'casos', icon: BriefcaseIcon },
+  { label: 'Proyectos', id: 'planes', icon: LayersIcon },
+  { label: 'FAQ', id: 'faq', icon: HelpCircleIcon },
+  { label: 'Contacto', id: 'contacto', icon: MailIcon },
+];
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = [
-    { label: 'Equipo', id: 'equipo' },
-    { label: 'Clientes', id: 'casos' },
-    { label: 'Proyectos', id: 'planes' },
-    { label: 'FAQ', id: 'faq' },
-    { label: 'Contacto', id: 'contacto' },
-  ];
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  // Resalta en el nav la sección que está actualmente en pantalla mientras
+  // se scrollea, para que la píldora activa "siga" al usuario y no dependa
+  // sólo del click.
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
+      setActiveId(targetId);
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
     if (isMenuOpen) {
@@ -35,20 +64,42 @@ const Header: React.FC = () => {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <nav className="flex items-baseline space-x-5">
-                {navLinks.map((link) => (
-                  <motion.a
-                    key={link.id}
-                    href={`#${link.id}`}
-                    onClick={(e) => handleNavClick(e, link.id)}
-                    className="text-sm text-gray-600 dark:text-brand-text-secondary font-medium transition-colors relative"
-                    whileHover={{ scale: 1.05, color: '#D400FF' }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {link.label}
-                    {/* Underline glow effect on hover could be added here if desired, but scale/color is good for now */}
-                  </motion.a>
-                ))}
+              <nav className="nav-glass-pill flex items-center gap-1 p-1.5">
+                {navLinks.map((link) => {
+                  const isActive = activeId === link.id;
+                  return (
+                    <a
+                      key={link.id}
+                      href={`#${link.id}`}
+                      onClick={(e) => handleNavClick(e, link.id)}
+                      className="relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors"
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="nav-active-pill"
+                          className="absolute inset-0 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.1)] dark:bg-brand-primary/15 dark:shadow-[0_0_16px_rgba(212,0,255,0.35)]"
+                          transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
+                        />
+                      )}
+                      <link.icon
+                        className={`relative z-10 w-4 h-4 transition-colors ${
+                          isActive
+                            ? 'text-brand-primary'
+                            : 'text-gray-500 dark:text-brand-text-secondary'
+                        }`}
+                      />
+                      <span
+                        className={`relative z-10 transition-colors ${
+                          isActive
+                            ? 'text-[#111] dark:text-brand-text-primary'
+                            : 'text-gray-600 dark:text-brand-text-secondary'
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </a>
+                  );
+                })}
               </nav>
               <Button onClick={(e) => handleNavClick(e, 'planes')}>Quiero mi cotización</Button>
               <ThemeSwitcher />
@@ -77,11 +128,24 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-            {navLinks.map((link) => (
-              <a key={link.id} href={`#${link.id}`} onClick={(e) => handleNavClick(e, link.id)} className="text-gray-600 dark:text-brand-text-primary hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors">
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeId === link.id;
+              return (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`flex items-center justify-center gap-2 hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    isActive
+                      ? 'text-brand-primary'
+                      : 'text-gray-600 dark:text-brand-text-primary'
+                  }`}
+                >
+                  <link.icon className="w-4 h-4" />
+                  {link.label}
+                </a>
+              );
+            })}
             <div className="pt-4">
               <Button className="w-full" onClick={(e) => { handleNavClick(e, 'planes'); setIsMenuOpen(false); }}>Quiero mi cotización</Button>
             </div>
