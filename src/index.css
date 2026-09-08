@@ -33,6 +33,18 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-500;
   }
 
+  /* Píldora de vidrio del nav de escritorio (look "liquid glass"): fondo
+     traslúcido + blur fuerte + un filo de luz superior sutil, en vez del
+     borde plano de .glass-panel. */
+  .nav-glass-pill {
+    @apply bg-white/70 dark:bg-white/[0.06] backdrop-blur-xl border border-gray-900/15 dark:border-white/10 rounded-full;
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .dark .nav-glass-pill {
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
   /* Contenido legal (Términos, Política de Privacidad): estilos por defecto
      para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
      cada párrafo del texto. */
