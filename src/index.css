@@ -33,6 +33,49 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-500;
   }
 
+  /* Contenido legal (Términos, Política de Privacidad): estilos por defecto
+     para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
+     cada párrafo del texto. */
+  .legal-content h2 {
+    @apply text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary mt-12 mb-4 scroll-mt-28;
+  }
+
+  .legal-content h2:first-of-type {
+    @apply mt-0;
+  }
+
+  .legal-content h3 {
+    @apply text-lg sm:text-xl font-bold text-[#111] dark:text-brand-text-primary mt-8 mb-3;
+  }
+
+  .legal-content p {
+    @apply text-base text-gray-600 dark:text-brand-text-secondary leading-relaxed mb-4;
+  }
+
+  .legal-content ul {
+    @apply list-disc pl-6 space-y-2 text-gray-600 dark:text-brand-text-secondary mb-4;
+  }
+
+  .legal-content li {
+    @apply leading-relaxed;
+  }
+
+  .legal-content strong {
+    @apply text-[#111] dark:text-brand-text-primary font-semibold;
+  }
+
+  .legal-content a {
+    @apply text-brand-primary hover:text-brand-primary-hover underline underline-offset-2 transition-colors;
+  }
+
+  .legal-content blockquote {
+    @apply glass-panel p-6 my-6 not-italic;
+  }
+
+  .legal-content blockquote p:last-child {
+    @apply mb-0;
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 10px;

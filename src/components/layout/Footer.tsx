@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left mb-12">
           <div>
             <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white">
               IDE<span className="text-brand-primary">ON</span>
@@ -37,6 +37,13 @@ const Footer: React.FC = () => {
             <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Datos de contacto</h4>
             <ul className="space-y-3 text-gray-600 dark:text-brand-text-secondary">
               <li>Email: <a href="mailto:contacto@ideon.ar" className="text-brand-primary hover:text-gray-900 dark:hover:text-white transition-colors">contacto@ideon.ar</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Legal</h4>
+            <ul className="space-y-3 text-gray-600 dark:text-brand-text-secondary">
+              <li><a href="/terminos-y-condiciones/" className="hover:text-brand-primary transition-colors">Términos y condiciones</a></li>
+              <li><a href="/politica-de-privacidad/" className="hover:text-brand-primary transition-colors">Política de privacidad</a></li>
             </ul>
           </div>
           <div>
