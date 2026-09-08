@@ -19,8 +19,26 @@ import TallyModal from './components/modals/TallyModal';
 
 // Pages
 import HomePage from './pages/Home/HomePage';
+import TerminosPage from './pages/Legal/TerminosPage';
+import PoliticaPrivacidadPage from './pages/Legal/PoliticaPrivacidadPage';
+
+// Sitio sin librería de routing: alcanza con mirar el pathname una vez al
+// cargar. wrangler.jsonc ya sirve cualquier ruta como single-page-application,
+// así que /terminos-y-condiciones/ y /politica-de-privacidad/ llegan acá.
+function getPage(pathname: string): React.ReactNode {
+  switch (pathname.replace(/\/+$/, '')) {
+    case '/terminos-y-condiciones':
+      return <TerminosPage />;
+    case '/politica-de-privacidad':
+      return <PoliticaPrivacidadPage />;
+    default:
+      return <HomePage />;
+  }
+}
 
 function App() {
+  const page = getPage(window.location.pathname);
+
   return (
     <ThemeProvider>
       <ModalProvider>
@@ -28,7 +46,7 @@ function App() {
         <div className="bg-transparent text-[#111] dark:text-brand-text-primary antialiased relative z-10">
           <Header />
           <main>
-            <HomePage />
+            {page}
           </main>
           <Footer />
           <ContactModal />
