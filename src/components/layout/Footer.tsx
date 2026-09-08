@@ -1,4 +1,5 @@
 import React from 'react';
+import { InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/SocialIcons';
 
 // FOOTER SECTION
 const Footer: React.FC = () => {
@@ -47,10 +48,36 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Nota legal</h4>
-            <p className="text-sm text-gray-600 dark:text-brand-text-secondary leading-relaxed">
-              Cotización vigente por 5 días hábiles desde que se envía. Modalidad de pago 25/75. Mantenimiento mensual opcional, no incluido por defecto. No incluye renovación de hosting ni de dominio a partir del segundo año.
-            </p>
+            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Seguinos</h4>
+            <div className="flex items-center justify-center md:justify-start gap-4">
+              <a
+                href="https://www.instagram.com/ideon_ar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de IDEON"
+                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+              >
+                <InstagramIcon className="w-6 h-6" />
+              </a>
+              <a
+                href="https://wa.me/5492617736266"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp de IDEON"
+                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+              >
+                <WhatsAppIcon className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/ideonar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn de IDEON"
+                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+              >
+                <LinkedInIcon className="w-6 h-6" />
+              </a>
+            </div>
           </div>
         </div>
         <div className="border-t border-gray-200 dark:border-white/10 pt-8 text-center relative">
