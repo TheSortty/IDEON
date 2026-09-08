@@ -36,37 +36,68 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center lg:text-left"
-        >
-          <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-brand-primary mb-5">
-            Diseño + desarrollo + estrategia
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111] dark:text-brand-text-primary">
-            <span className="block">Impulsá tu negocio con tecnología a medida.</span>
-            <span className="block text-gradient mt-2">Tu idea, nuestro desarrollo.</span>
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary max-w-xl mx-auto lg:mx-0">
-            Creamos páginas web y sistemas pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Ideas claras y asesoramiento de calidad.
-          </p>
-          <div className="mt-8 flex justify-center lg:justify-start">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button
-                className="w-full sm:w-auto shadow-[0_0_20px_rgba(212,0,255,0.5)] hover:shadow-[0_0_30px_rgba(212,0,255,0.7)] transition-shadow duration-200"
-                onClick={handleScrollToCases}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-6 text-center lg:text-left"
+          >
+            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-brand-primary mb-5">
+              Diseño + desarrollo + estrategia
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111] dark:text-brand-text-primary">
+              <span className="block">Impulsá tu negocio con tecnología a medida.</span>
+              <span className="block text-gradient mt-2">Tu idea, nuestro desarrollo.</span>
+            </h1>
+            <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary max-w-xl mx-auto lg:mx-0">
+              Creamos páginas web y sistemas pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Ideas claras y asesoramiento de calidad.
+            </p>
+            <div className="mt-8 flex justify-center lg:justify-start">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                Consultar proyectos →
-              </Button>
+                <Button
+                  className="w-full sm:w-auto shadow-[0_0_20px_rgba(212,0,255,0.5)] hover:shadow-[0_0_30px_rgba(212,0,255,0.7)] transition-shadow duration-200"
+                  onClick={handleScrollToCases}
+                >
+                  Consultar proyectos →
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mt-12 lg:mt-0 lg:col-span-6"
+          >
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative mx-auto max-w-lg lg:max-w-none"
+            >
+              <div className="relative rounded-xl shadow-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
+                <img className="w-full opacity-90 hover:opacity-100 transition-opacity duration-200" src="/hero/hero-workflow.webp" alt="Proceso de diseño de un proyecto: wireframes en papel y notebook con diagrama de flujo" />
+
+                {/* Floating badge example */}
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-6 -right-6 bg-brand-surface border border-brand-primary/30 p-4 rounded-xl shadow-lg hidden sm:block"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-sm font-medium text-brand-text-primary">Proyectos en producción</span>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
