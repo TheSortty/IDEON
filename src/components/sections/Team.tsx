@@ -57,7 +57,9 @@ function getCardMotion(relativeIndex: number, cardWidth: number) {
 }
 
 const Team: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Angelo (índice 1) arranca como tarjeta activa; Celeste queda a la
+  // izquierda y Gonzalo a la derecha, navegables con los botones/dots/swipe.
+  const [activeIndex, setActiveIndex] = useState(1);
   const [cardWidth, setCardWidth] = useState(() =>
     getCardWidth(typeof window !== 'undefined' ? window.innerWidth : CARD_WIDTH_LG)
   );
