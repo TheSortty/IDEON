@@ -8,7 +8,7 @@ const Cta: React.FC = () => {
   const { openModal } = useModal();
 
   return (
-    <section id="contacto" className="py-20 sm:py-24 relative overflow-hidden bg-gray-50 dark:bg-brand-background transition-colors duration-300">
+    <section id="contacto" className="py-20 sm:py-24 relative overflow-hidden bg-gray-50 dark:bg-brand-background transition-colors duration-300 scroll-mt-24">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-brand-background dark:to-brand-surface -z-20"></div>
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 -z-10"></div>
