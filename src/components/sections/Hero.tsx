@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="inicio" className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+    <section id="inicio" className="relative py-12 sm:py-16 lg:py-20 overflow-hidden scroll-mt-24">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
         <motion.div

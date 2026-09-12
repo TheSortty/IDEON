@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
@@ -16,9 +16,17 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
 
+  // Mientras se scrollea de forma programática (click en un link del nav),
+  // el observer ignora los cambios: si no, el indicador "salta" por las
+  // secciones intermedias que el scroll suave atraviesa en el camino.
+  const suppressObserverRef = useRef(false);
+  const suppressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const debounceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Resalta en el nav la sección que está actualmente en pantalla mientras
   // se scrollea, para que la píldora activa "siga" al usuario y no dependa
-  // sólo del click.
+  // sólo del click. Se aplica un pequeño delay antes de confirmar el cambio
+  // para que no salte de forma errática mientras se está scrolleando.
   useEffect(() => {
     const sections = navLinks
       .map((link) => document.getElementById(link.id))
@@ -28,25 +36,39 @@ const Header: React.FC = () => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
+        if (suppressObserverRef.current) return;
+
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (!visible) return;
+
+        if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+        debounceTimeoutRef.current = setTimeout(() => {
+          setActiveId(visible.target.id);
+        }, 500);
       },
       { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    return () => {
+      if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+      observer.disconnect();
+    };
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
+      if (debounceTimeoutRef.current) clearTimeout(debounceTimeoutRef.current);
+      if (suppressTimeoutRef.current) clearTimeout(suppressTimeoutRef.current);
+      suppressObserverRef.current = true;
       setActiveId(targetId);
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Vuelve a escuchar al observer recién cuando el scroll suave termina.
+      suppressTimeoutRef.current = setTimeout(() => {
+        suppressObserverRef.current = false;
+      }, 1000);
     }
     if (isMenuOpen) {
       setIsMenuOpen(false);

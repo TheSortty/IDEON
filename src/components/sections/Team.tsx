@@ -40,7 +40,7 @@ const item = {
 
 const Team: React.FC = () => {
   return (
-    <section id="equipo" className="bg-transparent py-12 sm:py-16 relative z-10">
+    <section id="equipo" className="bg-transparent py-12 sm:py-16 relative z-10 scroll-mt-24">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
 
