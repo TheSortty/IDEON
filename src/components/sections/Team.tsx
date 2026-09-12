@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
+import { TrendingUpIcon, CompassIcon, CodeIcon } from '../ui/RoleIcons';
 
 // TEAM SECTION
 const team = [
   {
-    initials: 'CC',
+    Icon: TrendingUpIcon,
     name: 'Celeste Codaro',
     role: 'CMO',
     description: 'Lic. en Relaciones Internacionales y analista de datos. +3 años de experiencia en desarrollo y posicionamiento de negocios. Es quien planea y concreta la estrategia comercial para lograr la mejor exposición del negocio.',
   },
   {
-    initials: 'AT',
+    Icon: CompassIcon,
     name: 'Angelo Terranova',
     role: 'CEO',
     description: 'Lic. en Sistemas y experto en Customer Experience. +3 años de trayectoria en gestiones e implementación de proyectos. Es quien se toma el tiempo de entender qué necesita realmente tu negocio, para que el proyecto se arme alrededor de tus objetivos.',
   },
   {
-    initials: 'GB',
+    Icon: CodeIcon,
     name: 'Gonzalo Burgia',
     role: 'CTO',
     description: 'Técnico en programación y desarrollador de proyectos interdisciplinarios. Portfolio profesional desenvuelto en un amplio abanico de rubros. Es quien convierte cada proyecto en tecnología funcional.',
@@ -27,9 +28,9 @@ const team = [
 // las clases estáticas de Tailwind (lo que se ve) y estos mismos valores en
 // JS (lo que necesita el cálculo del desplazamiento del carrusel). Los
 // breakpoints replican los de Tailwind (sm: 640px, lg: 1024px).
-const CARD_WIDTH_MOBILE = 300;
-const CARD_WIDTH_SM = 440;
-const CARD_WIDTH_LG = 560;
+const CARD_WIDTH_MOBILE = 320;
+const CARD_WIDTH_SM = 500;
+const CARD_WIDTH_LG = 640;
 
 function getCardWidth(viewportWidth: number) {
   if (viewportWidth >= 1024) return CARD_WIDTH_LG;
@@ -84,7 +85,7 @@ const Team: React.FC = () => {
 
   return (
     <section id="equipo" className="bg-transparent py-12 sm:py-16 relative z-10 scroll-mt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +104,7 @@ const Team: React.FC = () => {
           className="mt-12 flex justify-center"
         >
           <motion.div
-            className="relative h-56 sm:h-60 w-full max-w-full overflow-hidden touch-pan-y"
+            className="relative h-[450px] sm:h-96 lg:h-80 w-full max-w-full overflow-hidden touch-pan-y"
             role="group"
             aria-roledescription="carrusel"
             aria-label="Integrantes del equipo"
@@ -119,6 +120,7 @@ const Team: React.FC = () => {
 
               const isActive = relativeIndex === 0;
               const { x, scale, filter, zIndex } = getCardMotion(relativeIndex, cardWidth);
+              const RoleIcon = member.Icon;
 
               return (
                 <motion.div
@@ -136,24 +138,24 @@ const Team: React.FC = () => {
                   }}
                   aria-label={isActive ? undefined : `Ir a ${member.name}`}
                   aria-hidden={isActive ? undefined : true}
-                  className={`glass-panel absolute left-1/2 top-0 w-[300px] sm:w-[440px] lg:w-[560px] h-full flex text-left overflow-hidden ${
+                  className={`glass-panel absolute left-1/2 top-0 w-80 sm:w-[500px] lg:w-[640px] h-full flex text-left overflow-hidden ${
                     isActive ? 'cursor-default' : 'cursor-pointer'
                   }`}
                 >
-                  <div className="flex items-center justify-center w-24 sm:w-32 lg:w-40 shrink-0 bg-brand-primary/10 dark:bg-brand-primary/15">
-                    <div className="flex items-center justify-center h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white dark:bg-brand-background/50 border border-brand-primary/20 text-lg font-extrabold text-brand-primary">
-                      {member.initials}
+                  <div className="flex items-center justify-center w-28 sm:w-36 lg:w-48 shrink-0 bg-brand-primary/10 dark:bg-brand-primary/15">
+                    <div className="flex items-center justify-center h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 rounded-full bg-white dark:bg-brand-background/50 border border-brand-primary/20">
+                      <RoleIcon className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-brand-primary" />
                     </div>
                   </div>
-                  <div className="p-4 sm:p-6 flex flex-col flex-1 min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#111] dark:text-brand-text-primary">{member.name}</h3>
-                    <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-primary">{member.role}</p>
-                    <p className="mt-2 text-xs sm:text-sm text-gray-600 dark:text-brand-text-secondary leading-relaxed line-clamp-2 sm:line-clamp-3">
+                  <div className="p-5 sm:p-7 flex flex-col flex-1 min-w-0 justify-center">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#111] dark:text-brand-text-primary">{member.name}</h3>
+                    <p className="text-sm sm:text-base font-bold uppercase tracking-wider text-brand-primary">{member.role}</p>
+                    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-brand-text-secondary leading-relaxed">
                       {member.description}
                     </p>
 
                     {isActive && (
-                      <div className="mt-auto pt-3 flex items-center justify-between">
+                      <div className="mt-5 pt-4 border-t border-gray-900/10 dark:border-white/10 flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           {team.map((dotMember, dotIndex) => (
                             <span
@@ -175,7 +177,7 @@ const Team: React.FC = () => {
                                 goTo(activeIndex - 1);
                               }}
                               aria-label="Integrante anterior"
-                              className="flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full border border-gray-900/15 dark:border-white/15 text-[#111] dark:text-brand-text-primary hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+                              className="flex items-center justify-center h-9 w-9 rounded-full border border-gray-900/15 dark:border-white/15 text-[#111] dark:text-brand-text-primary hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
                             >
                               ←
                             </button>
@@ -188,7 +190,7 @@ const Team: React.FC = () => {
                                 goTo(activeIndex + 1);
                               }}
                               aria-label="Siguiente integrante"
-                              className="flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-brand-primary text-white hover:bg-brand-primary-hover transition-colors"
+                              className="flex items-center justify-center h-9 w-9 rounded-full bg-brand-primary text-white hover:bg-brand-primary-hover transition-colors"
                             >
                               →
                             </button>
