@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEON · Design System — Referencia visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Tokens: copiados 1:1 de tailwind.config.cjs y src/index.css.
+   Esta página es de referencia, fuera del build de Vite — no usa Tailwind,
+   así que los valores están hardcodeados para que coincidan exacto. */
+:root{
+  --brand-background:#0C022D;
+  --brand-surface:#21115C;
+  --brand-primary:#D400FF;
+  --brand-primary-hover:#a100c2;
+  --brand-text-primary:#F8F8F8;
+  --brand-text-secondary:#A9A1D1;
+  --brand-gradient:linear-gradient(100deg,#7C3AED,#D400FF); /* propuesto, sección 2 del README */
+  --maxw:1080px; --pad:clamp(1.25rem,5vw,3.4rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--brand-background);color:var(--brand-text-primary);
+  font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+section{padding:clamp(2.5rem,6vw,4rem) var(--pad);border-top:1px solid rgba(255,255,255,.08)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:800;letter-spacing:-.01em;margin-bottom:.4rem}
+p.sub{color:var(--brand-text-secondary);max-width:60ch;margin-bottom:2rem}
+.kicker{display:block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand-primary);margin-bottom:.6rem}
+.status{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.15rem .55rem;border-radius:999px;margin-left:.5rem;vertical-align:middle}
+.status.ok{background:rgba(87,230,176,.15);color:#57E6B0;border:1px solid rgba(87,230,176,.35)}
+.status.proposed{background:rgba(212,0,255,.12);color:var(--brand-primary);border:1px solid rgba(212,0,255,.35)}
+
+/* ---- cover ---- */
+.cover{padding:clamp(3rem,8vw,5.5rem) var(--pad);position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;inset:auto -15% -60% auto;width:min(640px,100vw);aspect-ratio:1;
+  border-radius:50%;background:radial-gradient(circle,rgba(212,0,255,.18),transparent 62%)}
+.cover .wrap{position:relative;z-index:1}
+.cover p.sub{margin-bottom:0;margin-top:.9rem}
+
+/* ---- color swatches ---- */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.4rem}
+.swatch{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.swatch .fill{height:88px}
+.swatch .label{background:var(--brand-surface);padding:.75rem .9rem;font-size:.85rem}
+.swatch .label b{display:block;font-family:monospace;font-size:.78rem;color:var(--brand-text-secondary);margin-top:.15rem}
+
+/* ---- type scale ---- */
+.type-row{display:flex;align-items:baseline;gap:1.2rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.type-row .tag{font-size:.72rem;color:var(--brand-text-secondary);width:8ch;flex:none;font-family:monospace}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;padding:.85rem 1.7rem;border-radius:999px;font-weight:600;
+  font-size:.95rem;transition:all .3s ease;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--brand-primary);color:#fff}
+.btn.primary:hover{background:var(--brand-primary-hover)}
+.btn.outline{background:transparent;border-color:var(--brand-primary);color:var(--brand-primary)}
+.btn.secondary{background:var(--brand-surface);color:var(--brand-text-primary)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.2rem}
+
+/* ---- glass panel (tarjeta confirmada) ---- */
+.glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);
+  border-radius:1rem;padding:1.5rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.4rem}
+
+/* ---- kicker component propuesto ---- */
+.kicker-demo{padding:1.5rem;border:1px dashed rgba(212,0,255,.4);border-radius:1rem}
+
+/* ---- stat "figure" propuesto ---- */
+.figure-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-text-secondary);
+  font-weight:700;margin-bottom:.4rem}
+.figure{font-weight:800;line-height:.95;font-size:clamp(2.2rem,6vw,3.4rem);
+  background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---- checklist propuesto ---- */
+ul.checks,ul.crosses{list-style:none;display:grid;gap:.6rem;margin-top:.4rem}
+ul.checks li,ul.crosses li{padding-left:1.7rem;position:relative;color:var(--brand-text-secondary)}
+ul.checks li::before{content:"✔";position:absolute;left:0;top:0;color:var(--brand-primary);font-weight:700}
+ul.crosses li::before{content:"✕";position:absolute;left:0;top:0;color:var(--brand-text-secondary)}
+
+/* ---- timeline propuesto ---- */
+.timeline{margin-top:1rem}
+.tl-item{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding-bottom:1.3rem;position:relative}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--brand-primary);margin-top:.4rem;position:relative;z-index:1}
+.tl-item:not(:last-child)::before{content:"";position:absolute;left:5px;top:1rem;bottom:0;width:2px;background:rgba(255,255,255,.12)}
+.tl-item h4{font-size:.98rem;font-weight:700;margin-bottom:.2rem}
+.tl-item p{font-size:.88rem;color:var(--brand-text-secondary)}
+
+/* ---- glow (animate-neon-glow) demo ---- */
+.glow-demo{width:64px;height:64px;border-radius:999px;background:var(--brand-primary);
+  animation:glow 2.5s ease-in-out infinite alternate}
+@keyframes glow{
+  from{box-shadow:0 0 5px var(--brand-primary),0 0 10px var(--brand-primary),0 0 15px var(--brand-primary)}
+  to{box-shadow:0 0 10px var(--brand-primary),0 0 20px var(--brand-primary),0 0 30px var(--brand-primary)}
+}
+
+footer{padding:2rem var(--pad);text-align:center;font-size:.82rem;color:var(--brand-text-secondary)}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wrap">
+    <span class="kicker">Design System</span>
+    <h1>IDEON</h1>
+    <p class="sub">Referencia visual de los tokens y componentes documentados en
+      <code>README.md</code>. Fondo, color y tipografía son los reales del sitio —
+      esta página no usa Tailwind ni Archivo, para no adelantar ninguna decisión
+      pendiente (ver sección 10 del README).</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Color <span class="status ok">Confirmado</span></h2>
+    <p class="sub">Los seis tokens de <code>tailwind.config.cjs</code>. Nunca colores
+      de Tailwind por defecto ni hex sueltos fuera de esta lista.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="fill" style="background:#0C022D"></div><div class="label">brand-background<b>#0C022D</b></div></div>
+      <div class="swatch"><div class="fill" style="background:#21115C"></div><div class="label">brand-surface<b>#21115C</b></div></div>
+      <div class="swatch"><div class="fill" style="background:#D400FF"></div><div class="label">brand-primary<b>#D400FF</b></div></div>
+      <div class="swatch"><div class="fill" style="background:#a100c2"></div><div class="label">brand-primary-hover<b>#a100c2</b></div></div>
+      <div class="swatch"><div class="fill" style="background:#F8F8F8"></div><div class="label">brand-text-primary<b>#F8F8F8</b></div></div>
+      <div class="swatch"><div class="fill" style="background:#A9A1D1"></div><div class="label">brand-text-secondary<b>#A9A1D1</b></div></div>
+    </div>
+
+    <h2 style="margin-top:2.2rem">Gradiente de marca <span class="status proposed">Propuesto</span></h2>
+    <p class="sub">Violeta → magenta, extraído de <code>design-refs</code>. Reemplazaría
+      las mezclas actuales de <code>brand-primary</code> con azules/púrpuras genéricos.</p>
+    <div class="swatch" style="max-width:320px"><div class="fill" style="background:linear-gradient(100deg,#7C3AED,#D400FF)"></div>
+      <div class="label">brand-gradient<b>#7C3AED → #D400FF</b></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Tipografía <span class="status ok">Confirmado: Inter</span></h2>
+    <p class="sub">Única familia del sitio. Escala real en uso (sin nombres formales todavía — ver punto 5 de "qué falta").</p>
+    <div class="type-row"><span class="tag">text-6xl</span><span style="font-size:3.75rem;font-weight:800">Aa</span></div>
+    <div class="type-row"><span class="tag">text-4xl</span><span style="font-size:2.25rem;font-weight:800">Título de sección</span></div>
+    <div class="type-row"><span class="tag">text-2xl</span><span style="font-size:1.5rem;font-weight:800">Subtítulo</span></div>
+    <div class="type-row"><span class="tag">text-base</span><span style="font-size:1rem;font-weight:400;color:var(--brand-text-secondary)">Texto de cuerpo, en brand-text-secondary sobre fondo oscuro.</span></div>
+    <div class="type-row"><span class="tag">text-xs</span><span style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-text-secondary)">Etiqueta / caption</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Botones <span class="status ok">Confirmado</span></h2>
+    <p class="sub">Tres variantes, <code>src/components/ui/Button.tsx</code>. Siempre <code>rounded-full</code>.</p>
+    <div class="btn-row">
+      <button class="btn primary">Coordinemos una llamada</button>
+      <button class="btn outline">Ver casos de éxito</button>
+      <button class="btn secondary">Más información</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Tarjeta <code>.glass-panel</code> <span class="status ok">Confirmado</span></h2>
+    <p class="sub">Superficie elevada estándar del sitio: fondo translúcido, blur, borde sutil, <code>rounded-2xl</code>.</p>
+    <div class="grid2">
+      <div class="glass-panel">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">Portal de autoconsulta</h3>
+        <p style="color:var(--brand-text-secondary);font-size:.92rem">El cliente resuelve solo lo que hoy pregunta por WhatsApp, a cualquier hora.</p>
+      </div>
+      <div class="glass-panel">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">Menos tareas repetitivas</h3>
+        <p style="color:var(--brand-text-secondary);font-size:.92rem">El equipo deja de responder a mano la misma consulta todos los meses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kicker / eyebrow <span class="status proposed">Propuesto</span></h2>
+    <p class="sub">Etiqueta chica arriba de cada título de sección. Extraído de <code>design-refs</code>, formalizado acá como componente.</p>
+    <div class="kicker-demo">
+      <span class="kicker">Resultados</span>
+      <h3 style="font-size:1.3rem;font-weight:800">Menos gestión manual, más tiempo para el negocio</h3>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Cifra "figure" <span class="status proposed">Propuesto</span></h2>
+    <p class="sub">Números grandes en vez de íconos para comunicar un resultado — encaja con la regla de tarjetas tipográficas de alto contraste.</p>
+    <div class="grid2">
+      <div class="glass-panel">
+        <div class="figure-label">Menos gestión manual</div>
+        <div class="figure">65%</div>
+      </div>
+      <div class="glass-panel">
+        <div class="figure-label">Etapas del proyecto</div>
+        <div class="figure">3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Checklist ✔ / ✕ <span class="status proposed">Propuesto</span></h2>
+    <p class="sub">Marcas tipográficas simples, no íconos de librería — refuerzan el tono resolutivo.</p>
+    <div class="grid2">
+      <div>
+        <h4 style="margin-bottom:.4rem;font-weight:700">Incluido</h4>
+        <ul class="checks">
+          <li>Consulta de cuenta desde el celular</li>
+          <li>Aviso automático antes del vencimiento</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin-bottom:.4rem;font-weight:700">Fuera de alcance</h4>
+        <ul class="crosses">
+          <li>Migración del sistema actual</li>
+          <li>Gestión de redes sociales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Timeline <span class="status proposed">Propuesto</span></h2>
+    <p class="sub">Punto + línea, para explicar procesos o etapas sin ilustración.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div><h4>Relevamiento</h4><p>Reunión inicial y definición del plan de trabajo.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><h4>Desarrollo</h4><p>Trabajo asincrónico, con avance visible en un enlace privado.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><h4>Puesta en marcha</h4><p>Publicación y capacitación del equipo.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Movimiento <span class="status ok">Confirmado</span></h2>
+    <p class="sub"><code>animate-neon-glow</code> — pulso de resplandor magenta para énfasis puntual. Usar con moderación.</p>
+    <div style="margin-top:1rem"><div class="glow-demo"></div></div>
+  </div>
+</section>
+
+<footer>IDEON · Design System · Referencia visual generada a partir de <code>tailwind.config.cjs</code>, <code>src/index.css</code> y <code>docs/design-refs/</code></footer>
+
+</body>
+</html>
