@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es-AR"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEON · Propuesta — Cooperativa Corralcoop Ltda.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   IDEON — Propuesta Corralcoop · versión clara
+   Mismo contenido. Base clara y legible, con momentos a color.
+   ============================================================ */
+:root{
+  --ink:#FCFBFE; --ink-2:#F4EFFC; --panel:#FFFFFF; --panel-2:#F8F4FE;
+  --line:#E3D8F2; --line-soft:#EEE7F8;
+  --violet:#5B21B6; --violet-2:#7C3AED; --fuchsia:#A21CAF; --fuchsia-br:#E23BFF;
+  --mint:#0B7A55;
+  --text:#190E2C; --text-dim:#4C4262; --text-faint:#7A6F92;
+  --deep:#1B0B33;
+  --grad:linear-gradient(100deg,var(--violet-2),var(--fuchsia-br));
+  --maxw:1080px; --pad:clamp(1.25rem,5vw,3.4rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:var(--text);font-family:'Inter Tight',system-ui,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+h1,h2,h3,h4,.display{font-family:'Archivo',system-ui,sans-serif;line-height:1.06;letter-spacing:-.02em;color:var(--text)}
+.kicker{font-family:'Archivo',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--fuchsia);margin-bottom:.9rem;display:block}
+.kicker.mint{color:var(--mint)}
+h2.title{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:1.3rem}
+h3{font-size:1.3rem;font-weight:800;margin-bottom:.55rem}
+h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}
+p{max-width:68ch;color:var(--text-dim)}
+p strong,li strong{color:var(--text);font-weight:600}
+p+p{margin-top:.85rem}
+a{color:var(--violet)}
+.lead{font-size:1.12rem;color:var(--text-dim);max-width:62ch}
+
+section{padding:clamp(2.8rem,6vw,4.6rem) var(--pad);border-top:1px solid var(--line-soft)}
+section.alt{background:var(--ink-2)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.grid{display:grid;gap:1rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.g5{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.5rem;
+  box-shadow:0 1px 2px rgba(27,11,51,.04)}
+.card.soft{background:var(--panel-2);box-shadow:none}
+
+/* ---- PORTADA: a todo color ---- */
+.cover{min-height:262mm;display:flex;flex-direction:column;justify-content:center;
+  border-top:0;position:relative;overflow:hidden;background:var(--deep);
+  color:#fff;padding:clamp(2.5rem,7vw,5rem) var(--pad)}
+.cover::after{content:"";position:absolute;inset:auto -18% -42% auto;width:min(720px,105vw);
+  aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(226,59,255,.30),transparent 62%)}
+.cover .wrap{position:relative;z-index:1}
+.cover h1,.cover .client{color:#fff}
+.cover .lead{color:#CBB8E6}
+.logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:#fff}
+.logo span{color:var(--fuchsia-br)}
+.cover h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;text-transform:uppercase;font-style:italic;margin:2.2rem 0 .5rem}
+.cover .client{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:600;border-left:3px solid var(--fuchsia-br);
+  padding-left:.85rem;margin-bottom:1.8rem}
+.meta{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;margin-top:2.4rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.22)}
+.meta dt{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#A992C9;font-weight:700}
+.meta dd{font-size:1rem;font-weight:600;margin-top:.15rem;color:#fff}
+
+/* ---- números ---- */
+.figure{font-family:'Archivo',sans-serif;font-weight:900;line-height:.9;
+  font-size:clamp(2.4rem,6.5vw,4rem);color:var(--violet)}
+.figure small{font-size:.34em;font-weight:800;color:var(--text-faint);margin-left:.2em}
+.figure-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);font-weight:700;margin-bottom:.4rem}
+
+/* ---- listas ---- */
+ul.checks,ul.crosses{list-style:none;display:grid;gap:.55rem;margin-top:.85rem}
+ul.checks li,ul.crosses li{padding-left:1.65rem;position:relative;color:var(--text-dim)}
+ul.checks li::before{content:"✔";position:absolute;left:0;top:0;color:var(--violet);font-size:.9rem}
+ul.checks.mint li::before{color:var(--mint)}
+ul.crosses li::before{content:"✕";position:absolute;left:0;top:0;color:var(--text-faint)}
+
+/* ---- etapas ---- */
+.stage{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;border:1px solid var(--line);
+  border-radius:14px;background:var(--panel);padding:1.6rem;margin-bottom:.9rem;
+  box-shadow:0 1px 2px rgba(27,11,51,.04)}
+.stage-n{font-family:'Archivo',sans-serif;font-weight:900;font-size:2.3rem;line-height:1;color:var(--fuchsia);min-width:2.2ch}
+.stage-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin-bottom:.4rem}
+.stage-price{margin-left:auto;font-family:'Archivo',sans-serif;font-weight:900;font-size:1.55rem;color:var(--violet);white-space:nowrap}
+.stage-time{font-size:.85rem;color:var(--text-faint);font-weight:500}
+.stage-price s{display:block;font-size:.62em;font-weight:700;color:var(--text-faint);text-decoration:line-through;text-align:right;line-height:1.1}
+.stage-price{text-align:right}
+td.was{text-align:right;font-family:'Archivo',sans-serif;font-weight:600;color:var(--text-faint);text-decoration:line-through;white-space:nowrap}
+.founder-cond{display:grid;gap:.9rem;margin-top:1.1rem}
+.founder-cond li{list-style:none;padding-left:2.2rem;position:relative;color:#C9E8DA}
+.founder-cond li b{color:#fff;display:block;font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.15rem}
+.founder-cond li::before{content:counter(fc);counter-increment:fc;position:absolute;left:0;top:.05rem;
+  width:1.5rem;height:1.5rem;border-radius:50%;background:#57E6B0;color:#0B3B2C;
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:.82rem;display:grid;place-items:center}
+.founder-cond{counter-reset:fc}
+
+/* ---- diagrama ---- */
+.diagram{display:grid;gap:.5rem;justify-items:center;margin:1.8rem auto 0;max-width:620px}
+.box{width:100%;text-align:center;padding:.95rem 1.1rem;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.box b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:1rem;color:var(--text)}
+.box em{font-style:normal;font-size:.83rem;color:var(--text-faint)}
+.box.locked{border:2px solid var(--mint);background:#F0FAF6}
+.box.locked em{color:var(--mint);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.72rem}
+.box.core{border:2px solid var(--violet-2);background:#F6F1FE}
+.arrow{color:var(--text-faint);font-size:1.05rem;line-height:1}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;width:100%}
+
+/* ---- tablas ---- */
+table{width:100%;border-collapse:collapse;margin-top:1.1rem;font-size:.97rem}
+th,td{text-align:left;padding:.8rem .65rem;border-bottom:1px solid var(--line)}
+th{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);font-weight:700}
+td{color:var(--text-dim)}
+td.num{text-align:right;font-family:'Archivo',sans-serif;font-weight:700;color:var(--text);white-space:nowrap}
+tr.total td{border-top:2px solid var(--violet);border-bottom:0;padding-top:1rem;font-size:1.08rem;color:var(--text);font-weight:800}
+tr.total td.num{font-size:1.45rem;color:var(--violet)}
+
+/* ---- cronograma ---- */
+.timeline{display:grid;margin-top:1.3rem}
+.tl-item{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding-bottom:1.4rem;position:relative}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:var(--fuchsia);margin-top:.45rem;position:relative;z-index:1}
+.tl-item:not(:last-child)::before{content:"";position:absolute;left:5.5px;top:1.1rem;bottom:0;width:2px;background:var(--line)}
+
+/* ---- FRASE CLAVE: a todo color ---- */
+.statement{margin:2.2rem 0 .4rem;padding:2.2rem clamp(1.2rem,4vw,2.4rem);border-radius:16px;
+  background:linear-gradient(115deg,#3B1179,#7C1D93);color:#fff;border:0}
+.statement p{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.3rem,3.4vw,2rem);
+  line-height:1.2;letter-spacing:-.02em;color:#fff;max-width:24ch}
+.statement .after{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:1rem;line-height:1.55;
+  color:#DCC9F0;max-width:52ch;margin-top:.9rem;letter-spacing:0}
+
+/* ---- BONIFICACIÓN: a todo color ---- */
+.bonus{margin-top:1.8rem;border-radius:16px;overflow:hidden;border:0;background:#0B3B2C;color:#fff}
+.bonus-top{padding:1.5rem clamp(1.2rem,4vw,2rem) 0}
+.bonus-tag{display:inline-block;font-family:'Archivo',sans-serif;font-weight:800;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:#0B3B2C;background:#57E6B0;padding:.3rem .75rem;border-radius:999px;margin-bottom:.9rem}
+.bonus h3{color:#fff}
+.bonus p{color:#B9E4D3}
+.bonus p strong{color:#fff}
+.bonus .founder-cond li strong{color:#fff}
+.bonus .figure-label{color:#8FC7B2}
+.bonus-nums{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.4rem 2.4rem;padding:1.2rem clamp(1.2rem,4vw,2rem) 1.6rem}
+.bonus-was b{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.6rem;color:#8FC7B2;text-decoration:line-through}
+.bonus-now .figure,.bonus-now .figure small{color:#57E6B0}
+.bonus-note{padding:.95rem clamp(1.2rem,4vw,2rem);border-top:1px solid rgba(87,230,176,.3);font-size:.9rem;color:#B9E4D3}
+.bonus-note strong{color:#57E6B0 !important}
+
+/* ---- proceso ---- */
+.phase{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.1rem 0;border-bottom:1px solid var(--line-soft)}
+.phase:last-child{border-bottom:0}
+.phase-n{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.45rem;color:var(--fuchsia);min-width:2.4ch}
+.channel{display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start;padding:.7rem 0}
+.channel-ic{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+  font-size:1rem;background:#F3EBFD;border:1px solid var(--line)}
+
+/* ---- cierre ---- */
+.cta{text-align:center;background:var(--deep);color:#fff;border-top:0}
+.cta h2{font-size:clamp(1.7rem,4.6vw,2.8rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:.9rem;color:#fff}
+.cta .lead{color:#CBB8E6}
+.cta .note{color:#A992C9}
+.btn{display:inline-block;margin-top:1.6rem;padding:.95rem 2.2rem;border-radius:999px;background:var(--grad);
+  color:#fff;text-decoration:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:1.02rem}
+
+.note{font-size:.87rem;color:var(--text-faint);margin-top:1.2rem;max-width:70ch}
+footer{padding:2rem var(--pad);text-align:center;color:var(--text-faint);font-size:.84rem;border-top:1px solid var(--line-soft)}
+.scroll-x{overflow-x:auto}
+.download{display:none}
+
+/* ============================================================
+   IMPRESIÓN / PDF
+   ============================================================ */
+@media print{
+  @page{margin:0}
+  html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff;font-size:10.5pt;line-height:1.5}
+  section{padding:14mm 15mm 12mm;break-inside:avoid;page-break-inside:avoid;border-top:1px solid var(--line-soft)}
+  section.alt{background:var(--ink-2)}
+  .wrap{max-width:none}
+  .cover{min-height:297mm;padding:26mm 15mm;break-after:page}
+  .cover h1{font-size:33pt;margin:14mm 0 3mm}
+  .cover .client{font-size:13pt}
+  .logo{font-size:16pt}
+  h2.title{font-size:20pt;margin-bottom:4mm;page-break-after:avoid}
+  .kicker{font-size:8pt}
+  .lead{font-size:11pt}
+  .figure{font-size:27pt}
+  .statement{padding:9mm;break-inside:avoid}
+  .statement p{font-size:18pt}
+  .statement .after{font-size:10.5pt}
+  .card,.stage,.box,.phase{break-inside:avoid}
+  .bonus{break-inside:auto;page-break-inside:auto}
+  .bonus-nums,.bonus-note,.founder-cond li{break-inside:avoid}
+  section#inversion{break-inside:auto;page-break-inside:auto}
+  section#inversion .scroll-x{break-inside:avoid}
+  .card,.stage{padding:5.5mm}
+  .cta{padding:22mm 15mm}
+  footer{padding:8mm 15mm}
+  table{min-width:0}
+  .scroll-x{overflow:visible}
+  .page-break{page-break-before:always}
+  a[href^="http"]::after{content:none}
+}
+</style>
+</head><body>
+<section class="cover">
+  <div class="wrap">
+    <div class="logo">IDE<span>ON</span></div>
+    <h1>Propuesta de desarrollo</h1>
+    <div class="client">Cooperativa Corralcoop Ltda. — Corralitos, Guaymallén, Mendoza</div>
+    <dl class="meta">
+      <div><dt>Propuesta</dt><dd>N.º 2026-004</dd></div>
+      <div><dt>Fecha</dt><dd>Septiembre 2026</dd></div>
+      <div><dt>Validez</dt><dd>30 días</dd></div>
+      <div><dt>Preparada para</dt><dd>Consejo de Administración</dd></div>
+    </dl>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Resumen</span>
+    <h2 class="title">De qué se trata</h2>
+    
+    <p class="lead">Corralcoop atiende hoy a cerca de 8.000 usuarios a través de un único canal: WhatsApp. Dos personas responden entre 200 y 300 mensajes por día, y siete de cada diez son consultas de facturación que podrían resolverse solas.</p>
+    <div class="statement">
+      <p>Lo que falta es una forma de que el usuario llegue a su información sin escribirle a nadie.</p>
+      <p class="after">El sistema de facturación de la cooperativa funciona, está en regla y no hace falta cambiarlo. Eso es exactamente lo que proponemos construir: el puente que hoy no existe entre ese sistema y sus usuarios.</p>
+    </div>
+    <p>La propuesta se organiza en tres etapas independientes: <strong>presencia y consulta</strong>, <strong>pagos en línea</strong> y <strong>trámites y reclamos</strong>. Cada una queda funcionando por sí sola y se aprueba por separado.</p>
+
+  </div>
+</section>
+<section class=" page-break">
+  <div class="wrap">
+    <span class="kicker">Aporte de valor</span>
+    <h2 class="title">¿Qué gana la Cooperativa?</h2>
+    <p class="lead">Antes de hablar de qué vamos a hacer, esto es lo que cambia para CORRALCOOP LTDA cuando el proyecto esté andando:</p><div class="grid g2" style="margin-top:1.6rem"><div class="card"><h4>Se libera tiempo del equipo.</h4><p style="font-size:.93rem">Las consultas repetidas dejan de pasar por una persona. El socio resuelve sólo lo que hoy pregunta por WhatsApp, a cualquier hora y sin esperar.</p></div><div class="card"><h4>El socio se autogestiona.</h4><p style="font-size:.93rem">Consulta su factura, la descarga, ve su deuda y su consumo, y paga, sin depender del horario de atención ni de que alguien le conteste.</p></div><div class="card"><h4>La cooperativa aparece en internet.</h4><p style="font-size:.93rem">Hoy no hay sitio web ni ficha de Google. Después del proyecto, quien busque “CORRALCOOP” encuentra información oficial en lugar de nada.</p></div><div class="card"><h4>No se reemplaza nada.</h4><p style="font-size:.93rem">El sistema de facturación sigue igual. No hay migración, no hay que aprender un sistema nuevo, no hay riesgo de perder información.</p></div><div class="card"><h4>Un solo interlocutor.</h4><p style="font-size:.93rem">Diseño, desarrollo, publicación y soporte los hace el mismo equipo. No hay que coordinar entre tres proveedores ni explicar dos veces lo mismo.</p></div><div class="card"><h4>Nada de tecnicismos.</h4><p style="font-size:.93rem">Si algo no se entiende, traducimos en palabras sencillas para que la solución sea primero clara para el equipo de trabajo y también para el cliente.</p></div><div class="card"><h4>El dominio queda en la cooperativa.</h4><p style="font-size:.93rem">El dominio y las cuentas quedan a nombre de Corralcoop.</p></div><div class="card"><h4>Acompañamiento después de entregar.</h4><p style="font-size:.93rem">El soporte posterior está escrito en esta propuesta con tiempos concretos de disponibilidad y tiempos de respuesta.</p></div></div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Análisis situacional</span>
+    <h2 class="title">Dónde está CORRALCOOP hoy</h2>
+    <p class="lead">Esta propuesta nace de nuestras reuniones de Agosto y Septiembre, tanto con el equipo de administración como con el responsable del sistema de facturación:</p><div class="grid g2" style="margin-top:1.8rem"><div class="card"><h3>Lo que ya funciona y no vamos a tocar</h3><ul class="checks mint"><li>Sistema de facturación propio en operación, con más de 660.000 comprobantes emitidos.</li><li>Factura electrónica contra ARCA con código CESP, en regla.</li><li>Alta, baja y actualización de clientes, con búsqueda por nombre, conexión y documento.</li><li>Base de datos MySQL en servidor propio, con la información completa de cada conexión.</li><li>Registro de consumo por medidor, historial por usuario y cálculo de intereses por mora.</li><li>Zonas, rutas y cobradores ya definidos para cada inmueble.</li></ul></div><div class="card"><h3>Dónde se pierde tiempo hoy</h3><ul class="crosses"><li>Entre 200 y 300 mensajes por día para dos personas, y siete de cada diez son de facturación.</li><li>El socio no tiene forma de consultar su factura por su cuenta.</li><li>No se puede pagar por internet: la mayoría transfiere y manda el comprobante por WhatsApp.</li><li>Cada transferencia se verifica y se carga a mano, una por una.</li><li>Los reclamos se anotan a mano y se siguen en una planilla aparte del sistema.</li><li>Los avisos de corte se publican en estados de WhatsApp, que desaparecen a las 24 horas.</li><li>Los cambios de datos y las altas de servicio entran por mensaje y se cargan a mano.</li><li>No hay sitio web ni ficha de Google.</li></ul></div></div>
+  </div>
+</section>
+<section class=" page-break">
+  <div class="wrap">
+    <span class="kicker">Impacto</span>
+    <h2 class="title">Problemas que resolvemos</h2>
+    <div class="statement"><p>Hasta un 65% menos de tiempo en gestiones manuales repetitivas</p><p class="after">Es nuestra estimación para esta cooperativa, a partir del volumen de consultas informado y de la proporción que corresponde a facturación. Se mide sobre las tareas que hoy se repiten todos los meses: responder consultas de deuda, reenviar facturas, verificar transferencias y cargar reclamos. <em>Siempre que se concreten las 3 etapas.</em></p></div><div class="grid g2" style="margin-top:1.6rem"><div class="card"><h4>Gestión repetitiva manual.</h4><p style="font-size:.93rem">Le damos al socio una herramienta simple y accesible para que resuelva solo. El equipo deja de hacer todos los meses la misma tarea para 8.000 personas.</p></div><div class="card"><h4>Consultas repetidas.</h4><p style="font-size:.93rem">El socio consulta su factura y su deuda a cualquier hora, sin ocupar a nadie y sin esperar al horario de atención.</p></div><div class="card"><h4>Facturas que no llegan.</h4><p style="font-size:.93rem">La factura queda siempre disponible en el portal, aunque el correo rebote o el socio la borre.</p></div><div class="card"><h4>Comprobantes por WhatsApp.</h4><p style="font-size:.93rem">El pago en línea se acredita solo. Se termina la verificación manual de transferencias una por una.</p></div><div class="card"><h4>Alias falsificados.</h4><p style="font-size:.93rem">El socio paga dentro del sitio oficial de la cooperativa, no contra un alias que circula por ahí.</p></div><div class="card"><h4>Reclamos sin rastro.</h4><p style="font-size:.93rem">Cada reclamo recibe un número y un estado, y queda registrado sin que nadie lo copie a mano.</p></div><div class="card"><h4>Avisos que desaparecen.</h4><p style="font-size:.93rem">Los cortes se publican en la web por zona y quedan disponibles, en lugar de irse con el estado de WhatsApp.</p></div></div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <span class="kicker">Retorno</span>
+    <h2 class="title">El impacto en la cobranza</h2>
+    <p class="lead">El ahorro de tiempo es la parte visible. La que más pesa en el balance es otra: cobrar mejor y cortar menos.</p>
+
+    <div class="grid g2" style="margin-top:1.8rem">
+      <div class="card">
+        <div class="figure-label">Facturación mensual del padrón activo</div>
+        <!-- EDITAR: cuota promedio y cantidad de conexiones -->
+        <div class="figure" style="font-size:2.2rem">$[MONTO ESTIMADO]</div>
+        <p style="font-size:.93rem;margin-top:.7rem">Estimado sobre 6.000 conexiones activas a una cuota de referencia de $[MONTO], tomada de una factura de referencia. El número exacto lo tiene la cooperativa.</p>
+      </div>
+      <div class="card">
+        <div class="figure-label">Un punto de mejora en la cobranza</div>
+        <div class="figure" style="font-size:2.2rem">$[MONTO ESTIMADO]<small>/mes</small></div>
+        <p style="font-size:.93rem;margin-top:.7rem">Una cifra significativa al año. <strong>Un solo punto de mejora sostenido cubre el proyecto completo con holgura</strong>, sin contar una sola hora de trabajo ahorrada.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:1.4rem">Y no es una expectativa optimista: en el sector, la implementación de <strong>recordatorios automáticos de vencimiento reduce en más de un 50% los cortes de servicio por falta de pago</strong>. Menos cortes es menos gestión de cobranza, menos reconexiones y menos conflicto con el socio.</p>
+
+    <div class="card soft" style="margin-top:1.4rem">
+      <h4>Los tres mecanismos que mueven la cobranza</h4>
+      <ul class="checks mint">
+        <li><strong>Pagar deja de tener fricción.</strong> El socio paga desde el celular a cualquier hora, en vez de transferir y mandar el comprobante.</li>
+        <li><strong>Nadie se olvida.</strong> Recordatorio antes del vencimiento y aviso de deuda, automáticos, por el canal que ya usan.</li>
+        <li><strong>La deuda deja de ser una sorpresa.</strong> El socio la ve en el portal y en el chat, cuando quiere, sin tener que preguntar.</li>
+      </ul>
+    </div>
+    <p class="note">Los importes son estimaciones basadas en la información disponible. Con los datos reales de facturación y morosidad, la cooperativa puede calcular el retorno con precisión.</p>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">La solución</span>
+    <h2 class="title">Integramos, no reemplazamos</h2>
+    
+    <p class="lead">Construimos un puente que lee el sistema de facturación de la cooperativa y publica esa información donde el socio la necesita. El sistema actual no se modifica: se lee, nunca se escribe sobre él.</p>
+    <div class="diagram">
+      <div class="box locked"><b>Sistema de facturación de Corralcoop</b><em>No se toca</em></div>
+      <div class="arrow">↓ lectura</div>
+      <div class="box"><b>Conector de sincronía</b><em>Se instala en la red de la cooperativa</em></div>
+      <div class="arrow">↓</div>
+      <div class="box core"><b>Plataforma IDEON</b><em>Servidor seguro en la nube</em></div>
+      <div class="arrow">↓</div>
+      <div class="split">
+        <div class="box"><b>Web y portal</b><em>Para los socios</em></div>
+        <div class="box"><b>Bot de WhatsApp</b><em>Consulta la misma información</em></div>
+      </div>
+    </div>
+    <p class="note">Un solo puente alimenta las dos cosas. La conexión con el bot de WhatsApp queda incluida en la primera etapa, sin costo adicional ni abono mensual aparte.</p>
+
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Trabajo conjunto</span>
+    <h2 class="title">El sistema sigue siendo de ustedes</h2>
+    <p class="lead">El sistema de facturación de Corralcoop lo desarrolló y lo mantiene su responsable técnico. Sostiene más de 660.000 comprobantes y la facturación electrónica de la cooperativa. Nuestro trabajo no lo toca ni lo reemplaza: se apoya en él.</p>
+
+    <div class="grid g2" style="margin-top:1.6rem">
+      <div class="card">
+        <h4>Cómo trabajamos con el responsable del sistema</h4>
+        <ul class="checks">
+          <li>Él <strong>valida el modo de lectura</strong> del conector antes de que se instale.</li>
+          <li>Recibe la <strong>documentación técnica completa</strong> de la integración.</li>
+          <li>Cualquier cambio del lado del sistema de facturación <strong>pasa por él</strong>, no por nosotros.</li>
+          <li>Queda como <strong>contraparte técnica del proyecto</strong>, con sus horas de participación previstas y remuneradas por la cooperativa si así lo definen.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Por qué conviene separar las dos cosas</h4>
+        <p style="font-size:.95rem">El sistema de facturación es la pieza más crítica que tiene la cooperativa: si falla, no se factura. Un portal público, en cambio, exige disponibilidad todos los días y respuesta rápida ante cualquier incidente.</p>
+        <p style="font-size:.95rem;margin-top:.7rem">Son dos trabajos con ritmos distintos. Que cada uno tenga su responsable protege al sistema de facturación de las urgencias del portal, y al portal de tener que esperar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class=" page-break">
+  <div class="wrap">
+    <span class="kicker">Alcance</span>
+    <h2 class="title">Qué incluye el servicio</h2>
+    <p class="lead">Cada etapa es independiente y queda funcionando por sí sola. La cooperativa decide en cada punto si avanza a la siguiente.</p><div style="margin-top:1.8rem"><div class="stage"><div class="stage-n">1</div><div>
+      <div class="stage-head"><h3 style="margin:0">Presencia y consulta</h3></div>
+      <div class="stage-time">Plazo a definir</div>
+      <ul class="checks"><li><strong>Sitio institucional:</strong> quiénes son, zona de servicio, horarios de atención, contacto y avisos.</li><li><strong>Ficha de Google:</strong> reclamada y completada con dirección, horarios y teléfono.</li><li><strong>Conector de sincronía:</strong> instalado en la red de la cooperativa, lee el sistema de facturación en modo consulta.</li><li><strong>Ingreso al portal:</strong> el socio escribe su número de conexión y recibe un código de acceso por WhatsApp o correo. No tiene que recordar contraseñas.</li><li><strong>Consulta de cuenta:</strong> factura del período, importe, fecha de vencimiento, intereses si corresponde y estado de deuda.</li><li><strong>Descarga de la factura</strong> en PDF, disponible siempre.</li><li><strong>Historial</strong> de facturas y consumo de los últimos doce períodos.</li><li><strong>Avisos de corte por zona,</strong> publicados desde un panel simple, usando las zonas que ya están cargadas en el sistema.</li><li><strong>Conexión con el bot de WhatsApp,</strong> para que responda deuda y vencimiento dentro del chat.</li></ul></div></div><div class="stage"><div class="stage-n">2</div><div>
+      <div class="stage-head"><h3 style="margin:0">Pagos en línea</h3></div>
+      <div class="stage-time">Plazo a definir</div>
+      <ul class="checks"><li><strong>Pago desde el portal</strong> con los convenios de cobranza que la cooperativa ya tiene vigentes.</li><li><strong>Comprobante automático</strong> para el socio, sin necesidad de enviarlo por WhatsApp.</li><li><strong>Archivo diario de pagos acreditados,</strong> listo para importar o imputar en el sistema de facturación con el procedimiento que ya usan. El impacto puede demorar unas horas hábiles y el socio lo ve informado en pantalla.</li><li><strong>Panel de conciliación</strong> para administración, con pagos acreditados y pendientes. Se termina la persecución de comprobantes por WhatsApp y el cruce contra el extracto bancario uno por uno.</li><li><strong>Recordatorios automáticos</strong> de vencimiento y aviso de deuda por WhatsApp.</li><li><strong>Manejo seguro de la operación:</strong> la cooperativa nunca deja de tener el control del cobro y no se almacenan datos de tarjetas en nuestros servidores.</li></ul><p class="note">Es la etapa de mayor complejidad técnica: involucra dinero real, integración con terceros y conciliación contra el sistema de facturación. Incluye la integración de un medio de cobro; cada medio adicional se cotiza por separado.</p></div></div><div class="stage"><div class="stage-n">3</div><div>
+      <div class="stage-head"><h3 style="margin:0">Trámites y reclamos</h3></div>
+      <div class="stage-time">Plazo a definir</div>
+      <ul class="checks"><li><strong>Registro y perfil del socio,</strong> con verificación de identidad.</li><li><strong>Solicitud de cambio de datos</strong> (correo, teléfono), validada antes de aplicarse.</li><li><strong>Reclamos desde la web:</strong> el socio carga el reclamo en el portal y la conversación continúa en el WhatsApp que la cooperativa ya usa. No hay una bandeja nueva que mirar.</li><li><strong>Registro automático:</strong> el reclamo queda cargado en la planilla de seguimiento sin que nadie lo copie a mano.</li><li><strong>Solicitud de alta de servicio</strong> con la documentación que la cooperativa requiera.</li><li><strong>Panel único de aprobación</strong> para que administración autorice o rechace cada solicitud con un clic.</li></ul><p class="note">Ninguna modificación se aplica sola: todas pasan por la aprobación de la cooperativa.</p></div></div></div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Cronograma</span>
+    <h2 class="title">Cómo avanza</h2>
+    <p class="lead">Cada etapa avanza en fases, desde el relevamiento hasta la puesta en marcha.</p><div class="timeline" style="margin-top:1.8rem"><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 1 — Relevamiento técnico</h4><p style="font-size:.94rem">Acceso al sistema, revisión de la base de datos y definición del contenido del sitio.</p></div></div><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 2 — Sitio institucional publicado</h4><p style="font-size:.94rem">Primer entregable visible. La cooperativa ya tiene presencia en internet y en Google.</p></div></div><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 3 — Conector funcionando</h4><p style="font-size:.94rem">Los datos del sistema de facturación ya se leen y se publican de forma segura.</p></div></div><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 4 — Portal en marcha</h4><p style="font-size:.94rem">Los socios consultan su factura y su deuda. El bot de WhatsApp responde con datos reales. Fin de la etapa 1.</p></div></div><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 5 — Pagos en línea</h4><p style="font-size:.94rem">Etapa 2, sujeta a la disponibilidad de los convenios de cobranza.</p></div></div><div class="tl-item"><div class="tl-dot"></div><div><h4>Fase 6 — Trámites y reclamos</h4><p style="font-size:.94rem">Etapa 3, con el panel de aprobación para administración.</p></div></div></div>
+  </div>
+</section>
+<section class=" page-break">
+  <div class="wrap">
+    <span class="kicker">Cómo trabajamos</span>
+    <h2 class="title">El proceso, paso a paso</h2>
+    <div style="margin-top:1.6rem"><div class="phase"><div class="phase-n">1</div><div><h4>Relevamiento — 1 reunión de 60 minutos</h4><p style="font-size:.95rem">Con administración y con quien maneja el sistema de facturación. Salimos de ahí con los accesos, la estructura de los datos y los contenidos definidos. Es la única reunión larga del proceso.</p></div></div><div class="phase"><div class="phase-n">2</div><div><h4>Maqueta y plan — 1 reunión de 30 minutos</h4><p style="font-size:.95rem">Mostramos cómo va a quedar antes de construirlo, con el detalle de plazos. Recién después de esta reunión se abona el anticipo de la etapa.</p></div></div><div class="phase"><div class="phase-n">3</div><div><h4>Desarrollo — sin reuniones</h4><p style="font-size:.95rem">Trabajamos por nuestra cuenta. La cooperativa tiene un enlace privado donde ve el avance real, actualizado a diario.</p></div></div><div class="phase"><div class="phase-n">4</div><div><h4>Revisión — 1 reunión de 30 minutos</h4><p style="font-size:.95rem">Recorremos lo construido y anotamos los ajustes. Se incluyen dos rondas de cambios por etapa. Si no recibimos devolución en cinco días hábiles, avanzamos con lo presentado.</p></div></div><div class="phase"><div class="phase-n">5</div><div><h4>Puesta en marcha y capacitación — 1 reunión de 45 minutos</h4><p style="font-size:.95rem">Publicamos y entrenamos al equipo de administración en el uso del panel. Queda una guía escrita y la grabación de la sesión.</p></div></div></div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Comunicación</span>
+    <h2 class="title">Cómo nos encuentran</h2>
+    <div class="card" style="margin-top:1.4rem"><div class="channel"><div class="channel-ic">💬</div><div><h4>WhatsApp directo</h4><p style="font-size:.92rem">Para dudas rápidas y coordinación. Lunes a viernes de 9 a 18.</p></div></div><div class="channel"><div class="channel-ic">✉️</div><div><h4>Correo electrónico</h4><p style="font-size:.92rem">Para lo que necesite quedar por escrito: aprobaciones, entregas y documentación.</p></div></div><div class="channel"><div class="channel-ic">📹</div><div><h4>Videollamada</h4><p style="font-size:.92rem">Las reuniones del proceso, con minuta escrita en poco tiempo.</p></div></div><div class="channel"><div class="channel-ic">📋</div><div><h4>Formulario de pedidos</h4><p style="font-size:.92rem">Un formulario web, sin usuarios ni contraseñas. Cada pedido recibe un número de seguimiento, entra a un tablero donde queda priorizado, y la cooperativa recibe aviso por correo en cada cambio de estado.</p></div></div></div><h3 style="margin-top:2rem">Tiempos de respuesta comprometidos</h3><div class="scroll-x"><table><thead><tr><th>Situación</th><th>Respuesta</th><th>Resolución</th></tr></thead><tbody>
+<tr><td><strong>Crítica</strong><br><span style="font-size:.88rem">El portal no está disponible o el conector dejó de sincronizar.</span></td><td>[N] horas hábiles</td><td>[N] horas hábiles</td></tr>
+<tr><td><strong>Moderada</strong><br><span style="font-size:.88rem">Una función principal no responde correctamente.</span></td><td>[N] horas hábiles</td><td>[N] días hábiles</td></tr>
+<tr><td><strong>Baja</strong><br><span style="font-size:.88rem">Errores menores, consultas y ajustes de contenido.</span></td><td>[N] días hábiles</td><td>[N] días hábiles</td></tr>
+</tbody></table></div><p class="note">Disponibilidad comprometida del portal: [N]% mensual. Horario de soporte: lunes a viernes de 9 a 18.</p>
+  </div>
+</section>
+<section class="">
+  <div class="wrap">
+    <span class="kicker">Tecnología</span>
+    <h2 class="title">Con qué se construye y de quién es</h2>
+    <p class="lead">Desarrollo web con tecnologías estándar y de amplio uso, alojado en servidores con certificado de seguridad. El conector se instala en la red de la cooperativa y se comunica de forma cifrada. No se almacenan datos bancarios ni contraseñas del sistema de facturación.</p><div class="card" style="margin-top:1.6rem"><ul class="checks mint"><li>La cooperativa recibe una <strong>licencia de uso permanente</strong> de la plataforma, sin límite de socios ni de tiempo, incluida en el valor del proyecto.</li><li>El dominio, las cuentas de servicio y la totalidad de los datos se registran a nombre de Corralcoop desde el primer día.</li><li>Se entrega documentación técnica y funcional para que la cooperativa opere la plataforma y para que cualquier otro programador entienda cómo funciona e integre sus propios sistemas. El código fuente permanece bajo desarrollo de IDEON: es lo que permite que las mejoras que hacemos lleguen a la cooperativa sin costo de desarrollo. <strong>Si IDEON dejara de prestar el servicio, se entrega el código fuente y la documentación completa para que la cooperativa continúe por su cuenta.</strong></li></ul></div><p class="note">Los datos de los socios son y siguen siendo de la cooperativa. El tratamiento se realiza conforme a la Ley 25.326 de Protección de Datos Personales.</p>
+  </div>
+</section>
+<section class="alt page-break" id="inversion">
+  <div class="wrap">
+    <span class="kicker">Inversión</span>
+    <h2 class="title">Valor de inversión</h2>
+
+    <div class="statement">
+      <p>La decisión de esta reunión es la etapa 1.</p>
+      <p class="after">Para ponerla en marcha se abona un primer desembolso <strong style="color:#fff">al iniciar</strong>. Las etapas 2 y 3 se cotizan acá como referencia, pero se deciden más adelante y por separado: aprobar la etapa 1 no obliga a contratar las siguientes.</p>
+    </div>
+
+    <div class="scroll-x" style="margin-top:1.6rem">
+    <table>
+      <thead><tr><th>Etapa</th><th>Plazo</th><th style="text-align:right">Valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 · Presencia y consulta</strong><br><span style="font-size:.85rem;color:var(--violet)">La que se decide ahora</span></td><td>Plazo a definir</td><td class="num" style="font-size:1.3rem;color:var(--violet)">USD [monto]</td></tr>
+        <tr><td>2 · Pagos en línea <span style="font-size:.85rem;color:var(--text-faint)">(referencia)</span></td><td>Plazo a definir</td><td class="num">USD [monto]</td></tr>
+        <tr><td>3 · Trámites y reclamos <span style="font-size:.85rem;color:var(--text-faint)">(referencia)</span></td><td>Plazo a definir</td><td class="num">USD [monto]</td></tr>
+        <tr><td style="color:var(--text-faint)">Medio de cobro adicional <span style="font-size:.85rem">(opcional, por cada uno)</span></td><td style="color:var(--text-faint)">Plazo a definir</td><td class="num" style="color:var(--text-faint)">USD [monto]</td></tr>
+        <tr class="total"><td>Las tres etapas</td><td></td><td class="num">USD [monto]</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p class="note">Valores expresados en dólares estadounidenses, sin IVA. La conversión a pesos se realiza según la cotización del dólar libre publicada por Ámbito Financiero al cierre del día hábil anterior a cada pago. Se emite factura A.</p>
+  </div>
+</section>
+<section class="">
+  <div class="wrap">
+    <span class="kicker">Forma de pago</span>
+    <h2 class="title">Cómo se abona</h2>
+    
+    <p class="lead">Cada etapa se paga por separado y se confirma antes de comenzarla. La cooperativa nunca abona por adelantado una etapa que no aprobó, y nunca paga por algo que todavía no vio.</p>
+    <h3 style="margin-top:1.8rem">Etapa 1 · en tres pagos</h3>
+    <p style="font-size:.96rem">Es la etapa más larga, así que la dividimos para que el esfuerzo se reparta.</p>
+    <div class="grid g3" style="margin-top:1.1rem">
+      <div class="card"><div class="figure-label">Al iniciar</div><div class="figure">[XX]<small>%</small></div><p style="font-size:.92rem;margin-top:.6rem"><strong>USD [monto]</strong><br>Contra la maqueta y el plan de trabajo. Antes de pagar, ya vieron lo que van a recibir.</p></div>
+      <div class="card"><div class="figure-label">Primera entrega</div><div class="figure">[XX]<small>%</small></div><p style="font-size:.92rem;margin-top:.6rem"><strong>USD [monto]</strong><br>Con el sitio institucional publicado y la ficha de Google activa.</p></div>
+      <div class="card"><div class="figure-label">Entrega final</div><div class="figure">[XX]<small>%</small></div><p style="font-size:.92rem;margin-top:.6rem"><strong>USD [monto]</strong><br>Con el portal funcionando y aprobado por la cooperativa.</p></div>
+    </div>
+    <h3 style="margin-top:2rem">Etapas 2 y 3 · en dos pagos</h3>
+    <div class="grid g2" style="margin-top:1.1rem">
+      <div class="card"><div class="figure-label">Al iniciar cada etapa</div><div class="figure">[XX]<small>%</small></div><p style="font-size:.92rem;margin-top:.6rem">Contra la maqueta y el plan de trabajo de esa etapa.</p></div>
+      <div class="card"><div class="figure-label">Al entregar</div><div class="figure">[XX]<small>%</small></div><p style="font-size:.92rem;margin-top:.6rem">Contra la entrega funcionando y aprobada.</p></div>
+    </div>
+    <p class="note">El primer desembolso para poner el proyecto en marcha se define junto con el plan de trabajo.</p>
+    <h3 style="margin-top:2rem">Soporte y mantenimiento</h3>
+    <div class="grid g2" style="margin-top:1.1rem">
+      <div class="card"><div class="figure-label">Abono mensual</div><div class="figure">[monto]<small>USD</small></div><p style="font-size:.92rem;margin-top:.6rem">Comienza a facturarse después de un período inicial bonificado, con el valor congelado durante el primer año.</p></div>
+      <div class="card"><h4>Qué incluye</h4><ul class="checks"><li>Alojamiento del sitio y del portal.</li><li>Monitoreo del conector y aviso ante cualquier interrupción.</li><li>Copias de seguridad diarias.</li><li>Certificado de seguridad y renovación del dominio.</li><li>Corrección de errores sin cargo.</li><li>Cambios menores de contenido: hasta dos horas por mes.</li></ul></div>
+    </div>
+    <p class="note">Los desarrollos nuevos y los cambios de funcionalidad no están incluidos en el abono y se cotizan por separado.</p>
+
+  </div>
+</section>
+<section class="alt page-break">
+  <div class="wrap">
+    <span class="kicker">Transparencia</span>
+    <h2 class="title">Qué no incluye y salvedades</h2>
+    <p class="lead">Transparencia desde el día 1.</p><h3 style="margin-top:1.6rem">Qué no incluye</h3><div class="card soft"><ul class="crosses"><li>Modificaciones al sistema de facturación actual.</li><li>Cambios en el diseño o el contenido de la factura, incluido el agregado de códigos de pago.</li><li>Emisión de facturas o gestión de la facturación electrónica.</li><li>Cálculo de tarifas, intereses o planes de pago.</li><li>Gestión del padrón, altas y bajas de clientes, que siguen en el sistema actual.</li><li>Trámites de alta o modificación de convenios con entidades de cobro.</li><li>Costos de terceros: comisiones de cobranza, dominio y mensajería de WhatsApp.</li><li>Migración o reemplazo del sistema de facturación.</li><li>Una bandeja de mensajería propia: la atención por WhatsApp sigue en la plataforma que la cooperativa ya utiliza.</li><li>La imputación o registro de los pagos en el sistema de facturación y la conciliación contable, que permanecen a cargo de la cooperativa con su procedimiento actual.</li></ul></div><h3 style="margin-top:2rem">Salvedades previstas y cómo las resolvemos</h3><h4 style="margin-top:1rem">Si la base de datos tuviera una estructura distinta a la relevada.</h4><p style="font-size:.94rem">Lo detectamos al principio del proyecto, antes de facturar nada de desarrollo. Si cambia el alcance, lo informamos con el detalle del ajuste y la cooperativa decide si avanza.</p><h4 style="margin-top:1rem">Si los convenios de cobranza demoran.</h4><p style="font-size:.94rem">El alta de un medio de pago depende del banco o de la cobradora, no de nosotros. La etapa 2 arranca cuando estén las credenciales; mientras tanto, las etapas 1 y 3 avanzan igual.</p><h4 style="margin-top:1rem">Si las consultas técnicas se demoran.</h4><p style="font-size:.94rem">El responsable del sistema atiende tres mañanas por semana. Cada consulta sin respuesta corre el cronograma en la misma medida, y lo avisamos apenas pasa.</p><h4 style="margin-top:1rem">Si faltan datos de contacto de algunos socios.</h4><p style="font-size:.94rem">El acceso al portal se apoya en el correo y el teléfono de cada socio. Donde falten, el socio los completa la primera vez que ingresa, y administración los aprueba.</p><h4 style="margin-top:1rem">Si la cooperativa decide no continuar con las etapas siguientes.</h4><p style="font-size:.94rem">Cada etapa queda funcionando por sí sola. Si deciden no avanzar, lo entregado sigue operando con normalidad y la licencia de uso se mantiene: no queda nada a medio hacer ni se pierde lo invertido.</p>
+  </div>
+</section>
+<section class="">
+  <div class="wrap">
+    <span class="kicker">Condiciones para cumplir el plazo</span>
+    <h2 class="title">Qué necesitamos de la cooperativa</h2>
+    <div class="grid g2" style="margin-top:1.4rem"><div class="card"><h4>Accesos</h4><ul class="checks"><li>Un usuario de lectura sobre la base de datos del sistema de facturación.</li><li>Un punto de contacto técnico para entender la estructura de los datos.</li><li>Un equipo dentro de la red donde instalar el conector, encendido y con internet.</li></ul></div><div class="card"><h4>Definiciones y contenidos</h4><ul class="checks"><li>Textos, logo y colores institucionales de la cooperativa.</li><li>Requisitos documentales para el alta de servicio.</li><li>Credenciales de los convenios de cobranza, para la etapa 2.</li><li>Una persona designada para responder consultas y aprobar entregas.</li></ul></div></div>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <span class="kicker">Antecedentes</span>
+    <h2 class="title">Desarrollos exitosos recientes</h2>
+    <div class="grid g3" style="margin-top:1.6rem"><div class="card"><h4>Siendo Home</h4><p style="font-size:.93rem">Sitio web y campus con acceso de usuarios.</p></div><div class="card"><h4>Under Club</h4><p style="font-size:.93rem">Sistema de gestión a medida.</p></div><div class="card"><h4>SIGPA Solenoides</h4><p style="font-size:.93rem">Catálogo de más de 140 productos autogestionable, con acceso restringido por código.</p></div></div>
+  </div>
+</section>
+<section class=" page-break">
+  <div class="wrap">
+    <span class="kicker">Condiciones comerciales</span>
+    <h2 class="title">Letra clara</h2>
+    <div class="card" style="margin-top:1.4rem"><ul class="checks"><li>Esta propuesta tiene una validez limitada desde su emisión.</li><li>El valor de primera cooperativa está sujeto a la aceptación de las tres condiciones del programa. Si la cooperativa prefiere no aceptar alguna, el proyecto se cotiza a valor de lista.</li><li>La difusión del caso no incluye, en ningún soporte ni instancia, datos de la cooperativa, de sus socios, de su facturación ni de su operación. Cualquier material se comparte con la cooperativa antes de publicarse.</li><li>Los valores se expresan en dólares estadounidenses sin IVA y se facturan en pesos según la cotización del dólar libre publicada por Ámbito Financiero al cierre del día hábil anterior a cada pago.</li><li>Cada etapa se confirma por escrito antes de iniciarse. La aprobación de una etapa no obliga a contratar las siguientes.</li><li>Los pedidos que excedan el alcance descripto se cotizan por separado y no alteran el plazo de la etapa en curso.</li><li>Las demoras en la entrega de accesos, contenidos o definiciones por parte de la cooperativa extienden el plazo en la misma proporción.</li><li>IDEON mantiene confidencialidad sobre toda la información de la cooperativa y de sus socios, durante y después del proyecto.</li><li>La cooperativa puede solicitar la baja del servicio de mantenimiento con aviso previo. Como el alojamiento está incluido en el abono, la baja implica el cese del alojamiento: se entrega la totalidad de los datos en formato estándar dentro de un plazo breve y la migración a infraestructura propia se cotiza por separado.</li><li>El límite de responsabilidad de IDEON por cualquier concepto es el monto efectivamente abonado por la cooperativa. No se responde por el funcionamiento de servicios de terceros (banco, cobradora, ARCA, WhatsApp o proveedor de nube).</li><li>La falta de pago habilita a IDEON a suspender el servicio previa intimación por escrito.</li><li>Esta propuesta no es el contrato. Aceptada la etapa 1, se firma un acuerdo de servicios que recoge estas condiciones.</li></ul></div>
+  </div>
+</section>
+<section class="cta">
+  <div class="wrap">
+    <h2>El siguiente paso</h2>
+    <p class="lead" style="margin:0 auto">Una reunión de 30 minutos con el Consejo para revisar esta propuesta, responder consultas y definir si avanzamos con la etapa 1.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">Datos y conformidad</span>
+    <h2 class="title">Para firmar</h2>
+    <div class="grid g2" style="margin-top:1.4rem">
+      <div class="card">
+        <h4>IDEON</h4>
+        <!-- EDITAR: completar datos reales -->
+        <p style="font-size:.94rem;margin-top:.5rem">
+          Razón social: _______________________<br>
+          CUIT: _______________________<br>
+          Domicilio: _______________________, Mendoza<br>
+          Correo: _______________________<br>
+          Teléfono: _______________________
+        </p>
+        <p style="font-size:.94rem;margin-top:1.4rem">
+          Firma: ______________________________<br><br>
+          Aclaración: __________________________<br><br>
+          Fecha: ______________________________
+        </p>
+      </div>
+      <div class="card">
+        <h4>Cooperativa Corralcoop Ltda.</h4>
+        <p style="font-size:.94rem;margin-top:.5rem">
+          CUIT: [REDACTADO]<br>
+          Domicilio: [REDACTADO]
+        </p>
+        <p style="font-size:.94rem;margin-top:1.4rem">
+          Conformidad con la etapa 1:<br><br>
+          Firma: ______________________________<br><br>
+          Aclaración y cargo: ___________________<br><br>
+          Fecha: ______________________________
+        </p>
+      </div>
+    </div>
+    <p class="note">La firma de esta conformidad habilita el inicio de la etapa 1 y no obliga a contratar las etapas siguientes. Aceptada la etapa 1, se suscribe un acuerdo de servicios que recoge las condiciones de esta propuesta.</p>
+  </div>
+</section>
+
+<footer>IDEON · Mendoza, Argentina · Documento confidencial preparado para Cooperativa Corralcoop Ltda.</footer>
+
+</body></html>

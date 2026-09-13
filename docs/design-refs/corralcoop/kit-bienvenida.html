@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es-AR"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEON · Bienvenida — Cooperativa Corralcoop Ltda.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --panel:#FFFFFF; --panel-2:#F8F4FE;
+  --line:#E3D8F2;
+  --violet:#5B21B6; --violet-2:#7C3AED; --fuchsia:#A21CAF; --fuchsia-br:#E23BFF;
+  --mint:#0B7A55;
+  --text:#190E2C; --text-dim:#4C4262; --text-faint:#7A6F92;
+  --grad:linear-gradient(100deg,var(--violet-2),var(--fuchsia-br));
+  --maxw:1080px; --pad:clamp(1.25rem,5vw,3.4rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{
+  background-image:
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzQwIDM0MCI+CjxkZWZzPjxmaWx0ZXIgaWQ9ImJsdXIiIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuOSIvPjwvZmlsdGVyPjwvZGVmcz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTE3LjE0OTgyOTQ0OTk0ODcxLDY1LjI1NDc1MjE3NzM1MDU4KSByb3RhdGUoLTE1LjM5MjI5MzY3OTk2ODQ2KSBzY2FsZSgxLjM4NTg0MTAyNTczNTg2ODIpIiBvcGFjaXR5PSIwLjQ2IiBmaWx0ZXI9InVybCgjYmx1cikiPgogICAgICA8ZyBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgICA8ZyBzdHJva2U9IiM1QjIxQjYiIHN0cm9rZS13aWR0aD0iMS4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgPC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyOS43MDY2NzUwNzM3NzU2NywzNy4zOTk2Nzc0MzI0MTIwNCkgcm90YXRlKC0xNi42NTAxNTYyOTYwODg1NDMpIHNjYWxlKDEuMjU2NjkyMTU5ODcwNDc4MykiIG9wYWNpdHk9IjAuNDQiIGZpbHRlcj0idXJsKCNibHVyKSI+CiAgICAgIDxnIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICAgIDxnIHN0cm9rZT0iIzVCMjFCNiIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICA8L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAuOTU2NjI3MDcyMzg1NjgsNDcuMjEzOTA0MDAzMTU5NTEpIHJvdGF0ZSgxMS43NjY2NzY0ODgxOTMzNjkpIHNjYWxlKDEuMTgyMDY3MjcwMjI4MjYyNikiIG9wYWNpdHk9IjAuMzciIGZpbHRlcj0idXJsKCNibHVyKSI+CiAgICAgIDxnIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICAgIDxnIHN0cm9rZT0iIzVCMjFCNiIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICA8L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODYuOTcxNjg5MzgyMTA0MzYsMjA4LjIyOTk2NjcyMTY3NjgpIHJvdGF0ZSgyLjc3NTcwNjE1MDIyOTk1MDcpIHNjYWxlKDEuNjUyOTM4MDQ4MjExMzA1KSIgb3BhY2l0eT0iMC40MyIgZmlsdGVyPSJ1cmwoI2JsdXIpIj4KICAgICAgPGcgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMuMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjQiPgogICAgICAgIDxjaXJjbGUgY3g9IjAiIGN5PSItNCIgcj0iNiIvPgogICAgICAgIDxwYXRoIGQ9Ik0gLTIuNiAxLjUgUSAwIDMuNSAyLjYgMS41Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0yLjIiIHkxPSI0IiB4Mj0iMi4yIiB5Mj0iNCIvPgogICAgICAgIDxsaW5lIHgxPSItMS42IiB5MT0iNi40IiB4Mj0iMS42IiB5Mj0iNi40Ii8+CiAgICAgIDwvZz4KICAgICAgPGcgc3Ryb2tlPSIjNUIyMUI2IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjQiPgogICAgICAgIDxjaXJjbGUgY3g9IjAiIGN5PSItNCIgcj0iNiIvPgogICAgICAgIDxwYXRoIGQ9Ik0gLTIuNiAxLjUgUSAwIDMuNSAyLjYgMS41Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0yLjIiIHkxPSI0IiB4Mj0iMi4yIiB5Mj0iNCIvPgogICAgICAgIDxsaW5lIHgxPSItMS42IiB5MT0iNi40IiB4Mj0iMS42IiB5Mj0iNi40Ii8+CiAgICAgIDwvZz4KICAgIDwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMTIuODc2NTMxNjc3ODc2LDMzLjk3NDgwNDE4NTMyNjg4KSByb3RhdGUoLTcuNTc0MDY1NjkyMDU5NjU1KSBzY2FsZSgxLjU3MjYyMTYxMzE0MzgxMTUpIiBvcGFjaXR5PSIwLjM4IiBmaWx0ZXI9InVybCgjYmx1cikiPgogICAgICA8ZyBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgICA8ZyBzdHJva2U9IiM1QjIxQjYiIHN0cm9rZS13aWR0aD0iMS4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgPC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU1LjMzNzY3MTQyMzUxMDUxLDExMi41NDQ1NDcyMzA1ODAzKSByb3RhdGUoLTExLjQ5Mzg1MDMyMjczODI1KSBzY2FsZSgxLjUzNDUxMzcyMzIwODAyODEpIiBvcGFjaXR5PSIwLjQ3IiBmaWx0ZXI9InVybCgjYmx1cikiPgogICAgICA8ZyBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgICA8ZyBzdHJva2U9IiM1QjIxQjYiIHN0cm9rZS13aWR0aD0iMS4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgPC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxMS42NzQwNDA2Nzc4NTUyMywxMzEuNzE5MjYyODE3NzE5MzcpIHJvdGF0ZSgtMTUuNzM5NTk2OTAwOTYwMzY2KSBzY2FsZSgxLjI5Mjk3MDAxOTEzODYwMikiIG9wYWNpdHk9IjAuMzYiIGZpbHRlcj0idXJsKCNibHVyKSI+CiAgICAgIDxnIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICAgIDxnIHN0cm9rZT0iIzVCMjFCNiIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTQiIHI9IjYiLz4KICAgICAgICA8cGF0aCBkPSJNIC0yLjYgMS41IFEgMCAzLjUgMi42IDEuNSIvPgogICAgICAgIDxsaW5lIHgxPSItMi4yIiB5MT0iNCIgeDI9IjIuMiIgeTI9IjQiLz4KICAgICAgICA8bGluZSB4MT0iLTEuNiIgeTE9IjYuNCIgeDI9IjEuNiIgeTI9IjYuNCIvPgogICAgICA8L2c+CiAgICA8L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODEuNzg3NjEzODQ1Nzk3OTYsMjI0LjExOTk5MTk1NDUzNTc4KSByb3RhdGUoLTYuNjkwNzAxODY2NDM1NTA1KSBzY2FsZSgxLjE4NDgzMzA3NTEwMjQ2MjcpIiBvcGFjaXR5PSIwLjQ3IiBmaWx0ZXI9InVybCgjYmx1cikiPgogICAgICA8ZyBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgICA8ZyBzdHJva2U9IiM1QjIxQjYiIHN0cm9rZS13aWR0aD0iMS4zIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ii00IiByPSI2Ii8+CiAgICAgICAgPHBhdGggZD0iTSAtMi42IDEuNSBRIDAgMy41IDIuNiAxLjUiLz4KICAgICAgICA8bGluZSB4MT0iLTIuMiIgeTE9IjQiIHgyPSIyLjIiIHkyPSI0Ii8+CiAgICAgICAgPGxpbmUgeDE9Ii0xLjYiIHkxPSI2LjQiIHgyPSIxLjYiIHkyPSI2LjQiLz4KICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="),
+    linear-gradient(180deg,
+      #FFFFFF 0%,
+      #F3ECFB 22%,
+      #D9C2F0 42%,
+      #9D5FDD 55%,
+      #6B21A8 70%,
+      #3B0764 86%,
+      #170322 100%);
+  background-repeat:repeat,no-repeat;
+}
+body{color:var(--text);font-family:'Inter Tight',system-ui,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+h1,h2,h3,h4,.display{font-family:'Archivo',system-ui,sans-serif;line-height:1.06;letter-spacing:-.02em;color:var(--text)}
+.kicker{font-family:'Archivo',sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--fuchsia);margin-bottom:.9rem;display:block}
+.kicker.mint{color:var(--mint)}
+h2.title{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:900;text-transform:uppercase;font-style:italic;margin-bottom:1.3rem}
+h3{font-size:1.3rem;font-weight:800;margin-bottom:.55rem}
+h4{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}
+p{max-width:68ch;color:var(--text-dim)}
+p strong,li strong{color:var(--text);font-weight:600}
+p+p{margin-top:.85rem}
+a{color:var(--violet);text-decoration:none}
+.lead{font-size:1.12rem;color:var(--text-dim);max-width:62ch}
+.note{font-size:.9rem;color:var(--text-faint);margin-top:1.2rem}
+
+section{padding:clamp(2.8rem,6vw,4.6rem) var(--pad);border-top:1px solid rgba(124,58,237,.2)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+.grid{display:grid;gap:1rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.5rem;
+  box-shadow:0 4px 18px rgba(27,11,51,.10)}
+.card.soft{background:var(--panel-2);box-shadow:none}
+
+/* Sections whose background portion of the page gradient has gone dark:
+   flip the loose (non-card) text to light variants. */
+.on-dark .kicker{color:var(--fuchsia-br)}
+.on-dark h2.title{color:#fff}
+.on-dark .lead{color:#DCC9F2}
+.on-dark .note{color:#B79FD1}
+
+.cover{position:relative;overflow:hidden;padding:clamp(2.5rem,7vw,5rem) var(--pad) clamp(3rem,6vw,4rem)}
+.cover::after{content:"";position:absolute;inset:auto -18% -55% auto;width:min(720px,105vw);
+  aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.16),transparent 62%)}
+.cover .wrap{position:relative;z-index:1}
+.cover .lead{color:var(--text-dim)}
+.logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--violet)}
+.logo span{color:var(--fuchsia-br)}
+.cover h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;text-transform:uppercase;font-style:italic;margin:2.2rem 0 .5rem}
+.cover .client{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:600;border-left:3px solid var(--fuchsia-br);
+  padding-left:.85rem;margin-bottom:1.8rem;color:var(--text)}
+.meta{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;margin-top:2.4rem;padding-top:1.5rem;border-top:1px solid rgba(124,58,237,.22)}
+.meta dt{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);font-weight:700}
+.meta dd{font-size:1rem;font-weight:600;margin-top:.15rem;color:var(--text)}
+
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(226,59,255,.1);
+  border:1px solid rgba(226,59,255,.35);color:var(--fuchsia);border-radius:999px;padding:.4rem 1rem;
+  font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:1.6rem}
+
+.figure{font-family:'Archivo',sans-serif;font-weight:900;line-height:.9;
+  font-size:clamp(2rem,5.5vw,3.2rem);color:var(--violet)}
+.figure-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);font-weight:700;margin-bottom:.4rem}
+
+ul.checks{list-style:none;display:grid;gap:.55rem;margin-top:.85rem}
+ul.checks li{padding-left:1.65rem;position:relative;color:var(--text-dim)}
+ul.checks li::before{content:"✔";position:absolute;left:0;top:0;color:var(--violet);font-size:.9rem}
+
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;border:1px solid var(--line);
+  border-radius:14px;background:var(--panel);padding:1.6rem;margin-bottom:.9rem;box-shadow:0 4px 18px rgba(27,11,51,.10)}
+.step .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.6rem;color:var(--fuchsia);
+  width:2.4rem;height:2.4rem;display:flex;align-items:center;justify-content:center;
+  border-radius:10px;background:var(--panel-2)}
+.step.done{opacity:.6}
+.step.done h4{text-decoration:line-through;color:var(--text-dim)}
+.step.done .num{background:var(--panel-2);color:var(--text-faint)}
+.step.active{border-color:var(--fuchsia-br);background:var(--panel-2);
+  box-shadow:0 0 0 2px rgba(226,59,255,.18)}
+.step.active .num{background:var(--grad);color:#fff}
+.step-tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--grad);border-radius:999px;padding:.2rem .7rem;margin-left:.6rem;vertical-align:middle}
+
+.contact-card{display:flex;align-items:center;gap:1rem}
+.contact-card .icon{width:2.6rem;height:2.6rem;border-radius:10px;background:var(--panel-2);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.contact-card strong{display:block;font-size:1.02rem;color:var(--text)}
+.contact-card span{font-size:.85rem;color:var(--text-faint)}
+
+.cta{text-align:center;padding:clamp(3rem,7vw,5rem) var(--pad)}
+.cta h2{color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(1.7rem,4vw,2.4rem);
+  text-transform:uppercase;font-style:italic;margin-bottom:.8rem}
+.cta .lead{color:#DCC9F2}
+
+footer{padding:2rem var(--pad);text-align:center;font-size:.82rem;color:#B79FD1;border-top:1px solid rgba(255,255,255,.14)}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="wrap">
+    <div class="logo">IDE<span>ON</span></div>
+    <h1>Bienvenida</h1>
+    <p class="client">Cooperativa Corralcoop Ltda. — Corralitos, Guaymallén, Mendoza</p>
+    <p class="lead">Todo lo que necesitás saber sobre cómo arrancamos, qué sigue y cómo hablarnos durante el proyecto.</p>
+    <dl class="meta">
+      <div><dt>Propuesta</dt><dd>N.º 2026-004</dd></div>
+      <div><dt>Etapa en curso</dt><dd>Etapa 1 — Presencia y consulta</dd></div>
+      <div><dt>Estado</dt><dd>Etapa 1 abonada, proyecto en marcha</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">Gracias</span>
+    <h2 class="title">Gracias por confiar en nosotros</h2>
+    <p class="lead">Estamos honrados de poder trabajar junto a la Cooperativa Corralcoop. Agradecemos de corazón la confianza que depositaron en este equipo.</p>
+    <p>El proyecto está oficialmente en marcha. Vamos a trabajar para ayudarlos a alcanzar sus objetivos y para que la labor del día a día en la cooperativa sea cada vez más eficiente.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">En marcha</span>
+    <h2 class="title">Qué estamos construyendo</h2>
+    <p class="lead">Recordatorio rápido del alcance de la Etapa 1, la que ya está en marcha.</p>
+    <div class="grid g2" style="margin-top:1.4rem">
+      <div class="card">
+        <h4>Portal de autoconsulta</h4>
+        <p style="font-size:.94rem">Un espacio donde cada socio puede consultar su información y estado de cuenta sin depender de que alguien de la cooperativa lo atienda manualmente.</p>
+      </div>
+      <div class="card">
+        <h4>Conector de sincronía</h4>
+        <p style="font-size:.94rem">El puente técnico que mantiene al portal siempre alineado con el sistema de facturación actual de la cooperativa, sin duplicar cargas de trabajo.</p>
+      </div>
+    </div>
+    <div class="card soft" style="margin-top:1.1rem">
+      <h4>Pago de Etapa 1 recibido</h4>
+      <p style="font-size:.94rem;margin-top:.4rem">Ya recibimos el pago correspondiente a esta etapa. Eso nos permite trabajar al 100% desde el primer día, sin interrupciones, para brindarles el mejor servicio posible.</p>
+    </div>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <span class="kicker">Próximos pasos</span>
+    <h2 class="title">Qué sigue ahora</h2>
+    <div style="margin-top:1.4rem">
+      <div class="step done">
+        <div class="num">1</div>
+        <div><h4>Relevamiento</h4><p style="font-size:.94rem">Reunión con administración y con quien maneja el sistema de facturación. Salimos de ahí con los accesos, la estructura de los datos y los contenidos definidos.</p></div>
+      </div>
+      <div class="step done">
+        <div class="num">2</div>
+        <div><h4>Maqueta y plan</h4><p style="font-size:.94rem">Mostramos cómo iba a quedar el portal antes de construirlo, con el detalle de plazos.</p></div>
+      </div>
+      <div class="step active">
+        <div class="num">3</div>
+        <div><h4>Desarrollo<span class="step-tag">En curso</span></h4><p style="font-size:.94rem">Estamos trabajando por nuestra cuenta, de forma asincrónica. Les vamos a dar acceso a un enlace privado donde van a poder ver el avance real, actualizado a diario.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div><h4>Revisión</h4><p style="font-size:.94rem">Recorremos juntos lo construido y anotamos los ajustes. Se incluyen dos rondas de cambios por etapa.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div><h4>Puesta en marcha y capacitación</h4><p style="font-size:.94rem">Publicamos y entrenamos al equipo de administración en el uso del panel. Queda una guía escrita y la grabación de la sesión.</p></div>
+      </div>
+    </div>
+    <p class="note">Muy pronto van a recibir el enlace privado de seguimiento para ver el avance del desarrollo.</p>
+  </div>
+</section>
+
+<section class="on-dark">
+  <div class="wrap">
+    <span class="kicker">Canales de contacto</span>
+    <h2 class="title">Cómo hablarnos</h2>
+    <div class="grid g2" style="margin-top:1.4rem">
+      <div class="card contact-card">
+        <div class="icon">✉️</div>
+        <div><strong>contacto@ideon.ar</strong><span>Email del proyecto</span></div>
+      </div>
+      <div class="card contact-card">
+        <div class="icon">💬</div>
+        <div><strong>+54 9 XXX XXX-XXXX</strong><span>WhatsApp del proyecto</span></div>
+      </div>
+    </div>
+    <p class="note">Cualquier consulta durante el desarrollo de la Etapa 1 —dudas, cambios de fecha, o simplemente saber cómo va todo— puede canalizarse por cualquiera de los dos medios.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Bienvenidos a IDEON</h2>
+    <p class="lead" style="margin:0 auto">Gracias por confiar en nosotros.<br>Sigamos ideando juntos.</p>
+  </div>
+</section>
+
+<footer>IDEON · Mendoza, Argentina · Bienvenida preparada para Cooperativa Corralcoop Ltda.</footer>
+
+</body></html>
