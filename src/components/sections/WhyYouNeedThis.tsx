@@ -40,7 +40,7 @@ const WhyYouNeedThis: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-panel p-8"
+              className="surface-card p-8"
             >
               <h3 className="text-xl font-bold text-content mb-3">{topic.question}</h3>
               <p className="text-base text-content-muted">{topic.answer}</p>

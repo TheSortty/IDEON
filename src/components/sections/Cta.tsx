@@ -11,7 +11,7 @@ const Cta: React.FC = () => {
     <section id="contacto" className="py-20 sm:py-24 relative overflow-hidden bg-gray-50 dark:bg-brand-background transition-colors duration-300 scroll-mt-24">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-brand-background dark:to-brand-surface -z-20"></div>
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 -z-10"></div>
+      <div className="noise-overlay absolute inset-0 opacity-20 -z-10"></div>
 
       {/* Decorative Glows */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl -translate-y-1/2"></div>

@@ -132,7 +132,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-300 hover:text-[#111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent"
+              className="ml-2 inline-flex items-center justify-center p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-[#111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -157,7 +157,7 @@ const Header: React.FC = () => {
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className={`flex items-center justify-center gap-2 hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  className={`flex items-center justify-center gap-2 hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-full text-base font-medium transition-colors ${
                     isActive
                       ? 'text-accent'
                       : 'text-gray-600 dark:text-brand-text-primary'

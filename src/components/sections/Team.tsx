@@ -140,7 +140,7 @@ const Team: React.FC = () => {
                   }}
                   aria-label={isActive ? undefined : `Ir a ${member.name}`}
                   aria-hidden={isActive ? undefined : true}
-                  className={`glass-panel absolute left-1/2 top-0 w-80 sm:w-[500px] lg:w-[640px] h-full flex text-left overflow-hidden ${
+                  className={`surface-card absolute left-1/2 top-0 w-80 sm:w-[500px] lg:w-[640px] h-full flex text-left overflow-hidden ${
                     isActive ? 'cursor-default' : 'cursor-pointer'
                   }`}
                 >

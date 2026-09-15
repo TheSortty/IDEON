@@ -158,7 +158,7 @@ const ContactModal: React.FC = () => {
                 <input
                   type="text" name="name" id="name" value={formData.name} onChange={handleChange}
                   placeholder="Nombre y Apellido" required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
@@ -166,14 +166,14 @@ const ContactModal: React.FC = () => {
                 <input
                   type="email" name="email" id="email" value={formData.email} onChange={handleChange}
                   placeholder="Email de Contacto" required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
                 <label htmlFor="plan" className="sr-only">¿Qué plan te interesa?</label>
                 <select
                   name="plan" id="plan" value={formData.plan} onChange={handleChange} required disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent disabled:opacity-50"
                 >
                   <option>Starter</option>
                   <option>Pro</option>
@@ -186,7 +186,7 @@ const ContactModal: React.FC = () => {
                 <textarea
                   name="idea" id="idea" rows={4} value={formData.idea} onChange={handleChange} required disabled={submissionStatus === 'submitting'}
                   placeholder="Contanos sobre tu idea..."
-                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 ></textarea>
               </div>
                <div>
@@ -194,7 +194,7 @@ const ContactModal: React.FC = () => {
                 <input
                   type="text" name="reference" id="reference" value={formData.reference} onChange={handleChange}
                   placeholder="¿Tenés alguna web de referencia? (Opcional)" disabled={submissionStatus === 'submitting'}
-                  className="block w-full px-4 py-3 rounded-md border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
+                  className="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-brand-surface bg-gray-100/80 dark:bg-brand-background/80 text-content shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-500 disabled:opacity-50"
                 />
               </div>
               <div>
@@ -210,7 +210,7 @@ const ContactModal: React.FC = () => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ${isModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      className={`fixed inset-0 z-[100] bg-black/70 flex items-center justify-center p-4 transition-opacity duration-300 ${isModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"

@@ -39,7 +39,7 @@ const cases = [
 
 const CaseStudies: React.FC = () => {
   return (
-    <section id="casos" className="py-12 sm:py-16 relative z-10 scroll-mt-24">
+    <section id="casos" className="section-alt py-12 sm:py-16 relative z-10 scroll-mt-24">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-extrabold text-content">Empresas que confían en nosotros</h2>
@@ -56,7 +56,7 @@ const CaseStudies: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="glass-panel p-8 flex flex-col"
+              className="surface-card p-8 flex flex-col"
             >
               {project.images.length > 0 && (
                 <div className="mb-6">
@@ -64,7 +64,7 @@ const CaseStudies: React.FC = () => {
                 </div>
               )}
 
-              <span className="self-start text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-gray-200">
+              <span className="self-start text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-gray-200">
                 {project.industry}
               </span>
 

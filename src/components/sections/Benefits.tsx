@@ -92,7 +92,7 @@ const item = {
 
 const Benefits: React.FC = () => {
   return (
-    <section className="bg-transparent py-12 sm:py-16 relative z-10">
+    <section className="section-alt py-12 sm:py-16 relative z-10">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
@@ -118,7 +118,7 @@ const Benefits: React.FC = () => {
             <motion.div
               key={benefit.title}
               variants={item}
-              className="glass-panel px-5 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
+              className="surface-card px-5 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
             >
               <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-150 ease-out">
                 {benefit.icon}

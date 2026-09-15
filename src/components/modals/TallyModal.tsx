@@ -28,7 +28,7 @@ const TallyModal: React.FC = () => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ${isTallyModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      className={`fixed inset-0 z-[100] bg-black/70 flex items-center justify-center p-4 transition-opacity duration-300 ${isTallyModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       aria-labelledby="tally-modal-title"
       role="dialog"
       aria-modal="true"
