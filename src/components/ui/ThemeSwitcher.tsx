@@ -100,10 +100,16 @@ const ThemeSwitcher: React.FC = () => {
           header ni desalinear el resto de los items. Se ancla al centro
           horizontal de este contenedor (que es también el centro del SVG,
           simétrico respecto a x=12), para que arranque justo donde
-          arranca el foco. */}
+          arranca el foco.
+          El centrado horizontal NO puede ir por una clase de Tailwind
+          (-translate-x-1/2): framer-motion toma control total de
+          `transform` en cuanto anima `rotate`, y en cada frame pisa
+          cualquier transform que venga de una clase CSS. Por eso el `x`
+          va como valor de framer-motion (style.x), para que lo componga
+          junto con el rotate en vez de perderlo. */}
       <motion.div
-        className="absolute left-1/2 top-full -translate-x-1/2 flex flex-col items-center gap-1"
-        style={{ transformOrigin: 'top center' }}
+        className="absolute left-1/2 top-full flex flex-col items-center gap-1"
+        style={{ x: '-50%', transformOrigin: 'top center' }}
         animate={{ rotate: [-9, 9, -9] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
       >
@@ -121,6 +127,7 @@ const ThemeSwitcher: React.FC = () => {
           dragConstraints={{ top: 0, bottom: CORD_TRAVEL }}
           dragElastic={0.3}
           dragMomentum={false}
+          dragSnapToOrigin
           onDragEnd={handleCordDragEnd}
           onClick={(e) => e.stopPropagation()}
           whileHover={{ scale: 1.25 }}
