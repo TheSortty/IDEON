@@ -46,14 +46,14 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full text-left group focus:outline-none"
       >
-        <h3 className={`text-lg font-medium transition-colors duration-300 ${isOpen ? 'text-brand-primary' : 'text-gray-800 dark:text-brand-text-primary group-hover:text-brand-primary'}`}>
+        <h3 className={`text-lg font-medium transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-content group-hover:text-accent'}`}>
           {question}
         </h3>
         <span className="relative flex items-center justify-center w-8 h-8">
           <motion.span
             animate={{ rotate: isOpen ? 180 : 0, scale: isOpen ? 1.2 : 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className={`text-brand-primary`}
+            className={`text-accent`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -70,7 +70,7 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="overflow-hidden"
           >
-            <p className="mt-4 text-gray-600 dark:text-brand-text-secondary pb-2">
+            <p className="mt-4 text-content-muted pb-2">
               {answer}
             </p>
           </motion.div>
@@ -85,7 +85,7 @@ const Faq: React.FC = () => {
     <section id="faq" className="py-20 sm:py-24 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Preguntas Frecuentes</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">Preguntas Frecuentes</h2>
         </div>
         <div className="mt-12">
           {faqs.map((faq) => (

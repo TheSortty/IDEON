@@ -42,8 +42,8 @@ const CaseStudies: React.FC = () => {
     <section id="casos" className="py-12 sm:py-16 relative z-10 scroll-mt-24">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Empresas que confían en nosotros</h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">Empresas que confían en nosotros</h2>
+          <p className="mt-4 text-lg text-content-muted">
             Proyectos en producción, con clientes reales usándolos hoy.
           </p>
         </div>
@@ -68,11 +68,11 @@ const CaseStudies: React.FC = () => {
                 {project.industry}
               </span>
 
-              <h3 className="mt-5 text-2xl font-extrabold text-[#111] dark:text-brand-text-primary">
-                {project.name} <span className="text-gray-500 dark:text-brand-text-secondary font-bold">— {project.subtitle}</span>
+              <h3 className="mt-5 text-2xl font-extrabold text-content">
+                {project.name} <span className="text-content-muted font-bold">— {project.subtitle}</span>
               </h3>
 
-              <p className="mt-4 flex-grow text-gray-600 dark:text-brand-text-secondary">
+              <p className="mt-4 flex-grow text-content-muted">
                 {project.description}
               </p>
 
@@ -81,7 +81,7 @@ const CaseStudies: React.FC = () => {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-primary font-semibold hover:underline underline-offset-4"
+                  className="text-accent font-semibold hover:underline underline-offset-4"
                 >
                   {project.domain} →
                 </a>

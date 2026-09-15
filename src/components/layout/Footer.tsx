@@ -4,10 +4,10 @@ import { FacebookIcon, InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/S
 // FOOTER SECTION
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 dark:bg-brand-background border-t border-gray-200 dark:border-white/10 pt-16 pb-8 transition-colors duration-300 relative overflow-hidden">
+    <footer className="bg-gray-50 dark:bg-brand-background border-t border-line pt-16 pb-8 transition-colors duration-300 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
         {/* Animated Grid Pattern */}
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Floating Shapes */}
-        <svg className="absolute top-10 right-10 w-20 h-20 text-brand-primary/10 animate-spin-slow" viewBox="0 0 100 100" fill="currentColor">
+        <svg className="absolute top-10 right-10 w-20 h-20 text-accent/10 animate-spin-slow" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 0 L100 50 L50 100 L0 50 Z" />
         </svg>
         <svg className="absolute bottom-20 left-10 w-16 h-16 text-blue-500/10 animate-bounce-slow" viewBox="0 0 100 100" fill="currentColor">
@@ -27,35 +27,35 @@ const Footer: React.FC = () => {
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left mb-12">
           <div>
-            <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white">
-              IDE<span className="text-brand-primary">ON</span>
+            <h3 className="text-3xl font-extrabold text-content">
+              IDE<span className="text-accent">ON</span>
             </h3>
-            <p className="mt-4 text-gray-600 dark:text-brand-text-secondary leading-relaxed">
+            <p className="mt-4 text-content-muted leading-relaxed">
               Ideon está conformado por especialistas en desarrollo, atención al cliente y marketing digital, unidos para crear webs y sistemas a medida — claros, cuidados y sin dependencias.
             </p>
           </div>
           <div>
-            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Datos de contacto</h4>
-            <ul className="space-y-3 text-gray-600 dark:text-brand-text-secondary">
-              <li>Email: <a href="mailto:contacto@ideon.ar" className="text-brand-primary hover:text-gray-900 dark:hover:text-white transition-colors">contacto@ideon.ar</a></li>
+            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Datos de contacto</h4>
+            <ul className="space-y-3 text-content-muted">
+              <li>Email: <a href="mailto:contacto@ideon.ar" className="text-accent hover:text-gray-900 dark:hover:text-white transition-colors">contacto@ideon.ar</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Legal</h4>
-            <ul className="space-y-3 text-gray-600 dark:text-brand-text-secondary">
-              <li><a href="/terminos-y-condiciones/" className="hover:text-brand-primary transition-colors">Términos y condiciones</a></li>
-              <li><a href="/politica-de-privacidad/" className="hover:text-brand-primary transition-colors">Política de privacidad</a></li>
+            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Legal</h4>
+            <ul className="space-y-3 text-content-muted">
+              <li><a href="/terminos-y-condiciones/" className="hover:text-accent transition-colors">Términos y condiciones</a></li>
+              <li><a href="/politica-de-privacidad/" className="hover:text-accent transition-colors">Política de privacidad</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold uppercase tracking-wider text-gray-900 dark:text-white mb-4">Seguinos</h4>
+            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Seguinos</h4>
             <div className="flex items-center justify-center md:justify-start gap-4">
               <a
                 href="https://www.facebook.com/profile.php?id=61586983154521"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook de IDEON"
-                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+                className="text-content-muted hover:text-accent transition-colors"
               >
                 <FacebookIcon className="w-6 h-6" />
               </a>
@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram de IDEON"
-                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+                className="text-content-muted hover:text-accent transition-colors"
               >
                 <InstagramIcon className="w-6 h-6" />
               </a>
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp de IDEON"
-                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+                className="text-content-muted hover:text-accent transition-colors"
               >
                 <WhatsAppIcon className="w-6 h-6" />
               </a>
@@ -82,15 +82,15 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn de IDEON"
-                className="text-gray-600 dark:text-brand-text-secondary hover:text-brand-primary transition-colors"
+                className="text-content-muted hover:text-accent transition-colors"
               >
                 <LinkedInIcon className="w-6 h-6" />
               </a>
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-200 dark:border-white/10 pt-8 text-center relative">
-          <p className="text-gray-500 dark:text-brand-text-secondary text-sm">
+        <div className="border-t border-line pt-8 text-center relative">
+          <p className="text-content-muted text-sm">
             &copy; {new Date().getFullYear()} IDEON. Todos los derechos reservados.
             <span className="text-transparent opacity-0 absolute pointer-events-none select-none -z-10 text-[1px]">© 2026 TERRANOVA ANGELO GABINO. Todos los derechos reservados.</span>
           </p>

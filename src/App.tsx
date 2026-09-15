@@ -43,7 +43,7 @@ function App() {
     <ThemeProvider>
       <ModalProvider>
         <ParticleBackground />
-        <div className="bg-transparent text-[#111] dark:text-brand-text-primary antialiased relative z-10">
+        <div className="bg-transparent text-content antialiased relative z-10">
           <Header />
           <main>
             {page}

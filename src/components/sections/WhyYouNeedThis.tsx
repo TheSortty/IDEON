@@ -26,8 +26,8 @@ const WhyYouNeedThis: React.FC = () => {
     <section id="porque" className="bg-transparent py-12 sm:py-16 relative z-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">Oportunidades de crecimiento</h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-brand-text-secondary">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">Oportunidades de crecimiento</h2>
+          <p className="mt-4 text-lg text-content-muted">
             Entender las reglas del juego digital es el primer paso para dejar de regalar clientes a tu competencia.
           </p>
         </div>
@@ -42,8 +42,8 @@ const WhyYouNeedThis: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass-panel p-8"
             >
-              <h3 className="text-xl font-bold text-[#111] dark:text-brand-text-primary mb-3">{topic.question}</h3>
-              <p className="text-base text-gray-600 dark:text-brand-text-secondary">{topic.answer}</p>
+              <h3 className="text-xl font-bold text-content mb-3">{topic.question}</h3>
+              <p className="text-base text-content-muted">{topic.answer}</p>
             </motion.div>
           ))}
         </div>

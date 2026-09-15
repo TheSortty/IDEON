@@ -49,7 +49,7 @@ const ParticleBackground: React.FC = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             const isDark = theme === 'dark';
-            const particleColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, '; // brand-primary or gray
+            const particleColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, '; // accent or gray
             const lineColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, ';
 
             particles.forEach((particle, i) => {

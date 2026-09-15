@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             opacity: [0.3, 0.6, 0.3]
           }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -43,14 +43,14 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-6 text-center lg:text-left"
           >
-            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-brand-primary mb-5">
+            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-accent mb-5">
               Diseño + desarrollo + estrategia
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111] dark:text-brand-text-primary">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-content">
               <span className="block">Impulsá tu negocio con tecnología a medida.</span>
               <span className="block text-gradient mt-2">Tu idea, nuestro desarrollo.</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-brand-text-secondary max-w-xl mx-auto lg:mx-0">
+            <p className="mt-6 text-lg sm:text-xl text-content-muted max-w-xl mx-auto lg:mx-0">
               Creamos páginas web y sistemas pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Ideas claras y asesoramiento de calidad.
             </p>
             <div className="mt-8 flex justify-center lg:justify-start">

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // SVG ICONS
-const iconClass = "w-5 h-5 text-brand-primary";
+const iconClass = "w-5 h-5 text-accent";
 
 const IconDiseno: React.FC = () => (
   <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +102,7 @@ const Benefits: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">
             Trabajamos distinto
           </h2>
         </motion.div>
@@ -120,12 +120,12 @@ const Benefits: React.FC = () => {
               variants={item}
               className="glass-panel px-5 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
             >
-              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-brand-primary/20 group-hover:scale-110 transition-transform duration-150 ease-out">
+              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-150 ease-out">
                 {benefit.icon}
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#111] dark:text-brand-text-primary">{benefit.title}</h3>
-                <p className="mt-1 text-sm leading-snug text-gray-600 dark:text-brand-text-secondary">{benefit.description}</p>
+                <h3 className="text-base font-bold text-content">{benefit.title}</h3>
+                <p className="mt-1 text-sm leading-snug text-content-muted">{benefit.description}</p>
               </div>
             </motion.div>
           ))}

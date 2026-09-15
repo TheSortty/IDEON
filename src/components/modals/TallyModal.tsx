@@ -35,16 +35,16 @@ const TallyModal: React.FC = () => {
       onClick={closeTallyModal}
     >
       <div 
-        className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl w-full max-w-2xl h-[90vh] relative border border-gray-200 dark:border-brand-primary/20 flex flex-col"
+        className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl w-full max-w-2xl h-[90vh] relative border border-gray-200 dark:border-accent/20 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex-shrink-0 p-4 flex justify-between items-center border-b border-gray-200 dark:border-brand-primary/20">
-            <h2 id="tally-modal-title" className="text-xl font-bold text-[#111] dark:text-brand-text-primary">
+        <div className="flex-shrink-0 p-4 flex justify-between items-center border-b border-gray-200 dark:border-accent/20">
+            <h2 id="tally-modal-title" className="text-xl font-bold text-content">
                 Completá tu Brief
             </h2>
             <button 
               onClick={closeTallyModal}
-              className="p-2 rounded-full text-gray-500 dark:text-brand-text-secondary hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
+              className="p-2 rounded-full text-content-muted hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
               aria-label="Cerrar modal"
             >
               <span className="text-2xl">✕</span>

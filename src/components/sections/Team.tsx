@@ -93,7 +93,7 @@ const Team: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary"
+          className="text-3xl sm:text-4xl font-extrabold text-content"
         >
           Quiénes somos
         </motion.h2>
@@ -144,27 +144,27 @@ const Team: React.FC = () => {
                     isActive ? 'cursor-default' : 'cursor-pointer'
                   }`}
                 >
-                  <div className="flex items-center justify-center w-28 sm:w-36 lg:w-48 shrink-0 bg-brand-primary/10 dark:bg-brand-primary/15">
-                    <div className="flex items-center justify-center h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 rounded-full bg-white dark:bg-brand-background/50 border border-brand-primary/20">
-                      <RoleIcon className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-brand-primary" />
+                  <div className="flex items-center justify-center w-28 sm:w-36 lg:w-48 shrink-0 bg-accent/10 dark:bg-accent/15">
+                    <div className="flex items-center justify-center h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 rounded-full bg-white dark:bg-brand-background/50 border border-accent/20">
+                      <RoleIcon className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-accent" />
                     </div>
                   </div>
                   <div className="p-5 sm:p-7 flex flex-col flex-1 min-w-0 justify-center">
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#111] dark:text-brand-text-primary">{member.name}</h3>
-                    <p className="text-sm sm:text-base font-bold uppercase tracking-wider text-brand-primary">{member.role}</p>
-                    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-brand-text-secondary leading-relaxed">
+                    <h3 className="text-xl sm:text-2xl font-bold text-content">{member.name}</h3>
+                    <p className="text-sm sm:text-base font-bold uppercase tracking-wider text-accent">{member.role}</p>
+                    <p className="mt-3 text-sm sm:text-base text-content-muted leading-relaxed">
                       {member.description}
                     </p>
 
                     {isActive && (
-                      <div className="mt-5 pt-4 border-t border-gray-900/10 dark:border-white/10 flex items-center justify-between">
+                      <div className="mt-5 pt-4 border-t border-line flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           {team.map((dotMember, dotIndex) => (
                             <span
                               key={dotMember.name}
                               className={`h-2.5 rounded-full transition-all duration-500 ${
                                 dotIndex === activeIndex
-                                  ? 'w-7 bg-brand-primary'
+                                  ? 'w-7 bg-accent'
                                   : 'w-2.5 bg-gray-300 dark:bg-white/20'
                               }`}
                             />
@@ -179,7 +179,7 @@ const Team: React.FC = () => {
                                 goTo(activeIndex - 1);
                               }}
                               aria-label="Integrante anterior"
-                              className="flex items-center justify-center h-9 w-9 rounded-full border border-gray-900/15 dark:border-white/15 text-[#111] dark:text-brand-text-primary hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+                              className="flex items-center justify-center h-9 w-9 rounded-full border border-gray-900/15 dark:border-white/15 text-content hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
                             >
                               ←
                             </button>
@@ -192,7 +192,7 @@ const Team: React.FC = () => {
                                 goTo(activeIndex + 1);
                               }}
                               aria-label="Siguiente integrante"
-                              className="flex items-center justify-center h-9 w-9 rounded-full bg-brand-primary text-white hover:bg-brand-primary-hover transition-colors"
+                              className="flex items-center justify-center h-9 w-9 rounded-full bg-accent text-white hover:bg-accent-hover transition-colors"
                             >
                               →
                             </button>

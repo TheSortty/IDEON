@@ -3,24 +3,88 @@
 @tailwind utilities;
 
 @layer base {
+  /* ============================================================
+     CAPA 1 — LA PALETA
+     Los colores que existen, nombrados. Nada de esta capa se usa
+     directamente en un componente.
+     Se guardan como canales RGB sueltos para que Tailwind pueda
+     componerlos con su modificador de opacidad (bg-accent/20).
+     ============================================================ */
+  :root {
+    --magenta-500: 212 0 255;   /* #D400FF */
+    --magenta-600: 161 0 194;   /* #a100c2 */
+    --void-900: 12 2 45;        /* #0C022D */
+    --void-700: 33 17 92;       /* #21115C */
+    --blue-500: 59 130 246;     /* #3B82F6 — ya se usaba en el gradiente del hero */
+    --ivory: 248 248 248;       /* #F8F8F8 */
+    --lilac: 169 161 209;       /* #A9A1D1 */
+    --ink-900: 17 17 17;        /* #111 — texto del tema claro, tal como estaba */
+    --ink-500: 75 85 99;        /* #4B5563 — el gray-600 que ya usaba el tema claro */
+    --white: 255 255 255;
+
+    /* ---- CAPA 2 — LOS ROLES ----
+       Lo único que tocan los componentes. El tema es esta capa:
+       cambiarlo es redefinirla, no tocar la paleta de arriba.
+       Los valores de acá son los del tema CLARO, que es el default
+       cuando todavía no corrió el ThemeProvider. */
+    --bg: var(--ivory);
+    --bg-deep: 240 240 240;     /* el otro extremo del gradiente radial del body */
+    --surface: var(--white);
+    --text: var(--ink-900);
+    --text-muted: var(--ink-500);
+    --accent: var(--magenta-500);
+    --accent-hover: var(--magenta-600);
+    --accent-ink: var(--white);
+
+    --border: rgb(12 2 45 / 0.10);
+    --border-strong: rgb(12 2 45 / 0.18);
+    --focus: rgb(var(--accent));
+
+    /* ---- movimiento, también como token ---- */
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-fast: 0.15s;
+    --dur-medium: 0.3s;
+    --dur-long: 0.6s;
+    /* El fundido del cambio de tema. Se mantiene en 0.5s a propósito: es la
+       duración que ya tenía y con la que está calibrado el switcher de la
+       bombilla (el glow del foco dura 0.7s). Lo que cambió no es cuánto
+       dura, es cuántos elementos lo corren. */
+    --dur-theme: 0.5s;
+
+    /* alto real de la barra del nav (h-20), para los offsets de sticky */
+    --nav-h: 5rem;
+  }
+
+  /* El tema oscuro redefine SOLO la capa 2. */
+  :root.dark {
+    --bg: var(--void-900);
+    --bg-deep: var(--void-700);
+    --surface: var(--void-700);
+    --text: var(--ivory);
+    --text-muted: var(--lilac);
+
+    --border: rgb(255 255 255 / 0.10);
+    --border-strong: rgb(255 255 255 / 0.20);
+  }
+
   body {
-    @apply bg-[#f8f8f8] dark:bg-brand-background text-[#111] dark:text-brand-text-primary antialiased;
-    background-image: radial-gradient(circle at 50% 0%, #f0f0f0 0%, #f8f8f8 70%);
+    @apply bg-surface-base text-content antialiased;
+    background-image: radial-gradient(circle at 50% 0%, rgb(var(--bg-deep)) 0%, rgb(var(--bg)) 70%);
     min-height: 100vh;
-    transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
   }
 
-  .dark body {
-    background-image: radial-gradient(circle at 50% 0%, #21115C 0%, #0C022D 70%);
-  }
-
-  /* Global Theme Transition */
-  *,
-  *::before,
-  *::after {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
+  /* Cambio de tema: antes esto era una transición de 500ms aplicada a `*`,
+     `*::before` y `*::after` — cientos de nodos fundiéndose a la vez, que es
+     lo que hacía que el toggle se sintiera pesado. El fundido se conserva
+     igual de gradual, pero pasa a una sola capa: el fondo de la página y las
+     superficies que realmente cambian de color. El foco de la bombilla no
+     depende de esto — se anima solo, desde ThemeSwitcher.tsx. */
+  body,
+  .themed-surface {
+    transition: background-color var(--dur-theme) var(--ease-out),
+                border-color var(--dur-theme) var(--ease-out),
+                color var(--dur-theme) var(--ease-out);
   }
 }
 
@@ -30,14 +94,14 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-blue-500;
   }
 
   /* Píldora de vidrio del nav de escritorio (look "liquid glass"): fondo
      traslúcido + blur fuerte + un filo de luz superior sutil, en vez del
      borde plano de .glass-panel. */
   .nav-glass-pill {
-    @apply bg-white/70 dark:bg-white/[0.06] backdrop-blur-xl border border-gray-900/15 dark:border-white/10 rounded-full;
+    @apply bg-white/70 dark:bg-white/[0.06] backdrop-blur-xl border border-line rounded-full;
     box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
   }
 
@@ -49,7 +113,7 @@
      para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
      cada párrafo del texto. */
   .legal-content h2 {
-    @apply text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary mt-12 mb-4 scroll-mt-28;
+    @apply text-2xl sm:text-3xl font-extrabold text-content mt-12 mb-4 scroll-mt-28;
   }
 
   .legal-content h2:first-of-type {
@@ -57,15 +121,15 @@
   }
 
   .legal-content h3 {
-    @apply text-lg sm:text-xl font-bold text-[#111] dark:text-brand-text-primary mt-8 mb-3;
+    @apply text-lg sm:text-xl font-bold text-content mt-8 mb-3;
   }
 
   .legal-content p {
-    @apply text-base text-gray-600 dark:text-brand-text-secondary leading-relaxed mb-4;
+    @apply text-base text-content-muted leading-relaxed mb-4;
   }
 
   .legal-content ul {
-    @apply list-disc pl-6 space-y-2 text-gray-600 dark:text-brand-text-secondary mb-4;
+    @apply list-disc pl-6 space-y-2 text-content-muted mb-4;
   }
 
   .legal-content li {
@@ -73,11 +137,11 @@
   }
 
   .legal-content strong {
-    @apply text-[#111] dark:text-brand-text-primary font-semibold;
+    @apply text-content font-semibold;
   }
 
   .legal-content a {
-    @apply text-brand-primary hover:text-brand-primary-hover underline underline-offset-2 transition-colors;
+    @apply text-accent hover:text-accent-hover underline underline-offset-2 transition-colors;
   }
 
   .legal-content blockquote {
@@ -94,14 +158,14 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-200 dark:bg-[#0C022D];
+    @apply bg-gray-200 dark:bg-brand-background;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 dark:bg-brand-primary rounded-full border-2 border-gray-200 dark:border-[#0C022D];
+    @apply bg-gray-400 dark:bg-accent rounded-full border-2 border-gray-200 dark:border-brand-background;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500 dark:bg-brand-primary/80;
+    @apply bg-gray-500 dark:bg-accent/80;
   }
 }

@@ -76,12 +76,12 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#f8f8f8]/80 dark:bg-brand-background/80 backdrop-blur-xl border-b border-gray-900/10 dark:border-white/10 shadow-lg">
+    <header className="sticky top-0 z-50 bg-[#f8f8f8]/80 dark:bg-brand-background/80 backdrop-blur-xl border-b border-line shadow-lg">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="text-3xl font-extrabold text-[#111] dark:text-brand-text-primary">
-              IDE<span className="text-brand-primary">ON</span>
+            <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="text-3xl font-extrabold text-content">
+              IDE<span className="text-accent">ON</span>
             </a>
           </div>
           <div className="hidden md:block">
@@ -99,22 +99,22 @@ const Header: React.FC = () => {
                       {isActive && (
                         <motion.span
                           layoutId="nav-active-pill"
-                          className="absolute inset-0 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.1)] dark:bg-brand-primary/15 dark:shadow-[0_0_16px_rgba(212,0,255,0.35)]"
+                          className="absolute inset-0 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.1)] dark:bg-accent/15 dark:shadow-[0_0_16px_rgba(212,0,255,0.35)]"
                           transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
                         />
                       )}
                       <link.icon
                         className={`relative z-10 w-4 h-4 transition-colors ${
                           isActive
-                            ? 'text-brand-primary'
-                            : 'text-gray-500 dark:text-brand-text-secondary'
+                            ? 'text-accent'
+                            : 'text-content-muted'
                         }`}
                       />
                       <span
                         className={`relative z-10 transition-colors ${
                           isActive
-                            ? 'text-[#111] dark:text-brand-text-primary'
-                            : 'text-gray-600 dark:text-brand-text-secondary'
+                            ? 'text-content'
+                            : 'text-content-muted'
                         }`}
                       >
                         {link.label}
@@ -132,7 +132,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               type="button"
-              className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-300 hover:text-[#111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+              className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-300 hover:text-[#111] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -159,7 +159,7 @@ const Header: React.FC = () => {
                   onClick={(e) => handleNavClick(e, link.id)}
                   className={`flex items-center justify-center gap-2 hover:text-[#111] dark:hover:text-white hover:bg-gray-200 dark:hover:bg-brand-surface block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActive
-                      ? 'text-brand-primary'
+                      ? 'text-accent'
                       : 'text-gray-600 dark:text-brand-text-primary'
                   }`}
                 >
