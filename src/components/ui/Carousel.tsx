@@ -57,7 +57,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(-1)}
               aria-label="Imagen anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-accent"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow />
             </button>
@@ -65,7 +65,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(1)}
               aria-label="Imagen siguiente"
-              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-accent"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow flipped />
             </button>
@@ -89,7 +89,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
                 onClick={() => goTo(i)}
                 aria-label={`Ver imagen ${i + 1}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-[width,background-color] duration-medium ease-out-token focus:outline-none focus:ring-2 focus:ring-accent ${
+                className={`h-2 rounded-full transition-[width,background-color] duration-medium ease-out-token focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   i === index ? 'w-6 bg-accent' : 'w-2 bg-gray-300 dark:bg-white/25 hover:bg-accent/60'
                 }`}
               />
