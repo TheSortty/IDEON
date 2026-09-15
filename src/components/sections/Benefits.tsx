@@ -102,7 +102,7 @@ const Benefits: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">
+          <h2 className="font-extrabold text-content">
             Trabajamos distinto
           </h2>
         </motion.div>

@@ -138,7 +138,7 @@ const Plans: React.FC = () => {
     <section id="planes" className="py-12 sm:py-16 relative z-10 scroll-mt-24">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">Tipos de proyectos</h2>
+          <h2 className="font-extrabold text-content">Tipos de proyectos</h2>
           <p className="mt-4 text-lg text-content-muted">
             Nos adaptamos a tu presupuesto y a tu necesidad. Cada proyecto se cotiza según su alcance real, y vos decidís con toda la información en la mano.
           </p>

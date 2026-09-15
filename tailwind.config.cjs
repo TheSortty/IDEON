@@ -46,6 +46,19 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
             },
+            // Los roles tipográficos, apuntando a las custom properties de
+            // src/index.css. Los h1/h2/h3 ya los toman por la regla base; esto
+            // es para cuando hace falta el mismo tamaño en algo que no es un
+            // heading real.
+            fontSize: {
+                'h1': ['var(--h1-size)', { lineHeight: 'var(--h1-line)', letterSpacing: 'var(--h1-track)' }],
+                'h2': ['var(--h2-size)', { lineHeight: 'var(--h2-line)', letterSpacing: 'var(--h2-track)' }],
+                'h3': ['var(--h3-size)', { letterSpacing: 'var(--h3-track)' }],
+                'body': ['var(--body-size)'],
+            },
+            spacing: {
+                'section': 'var(--space-section)',
+            },
             animation: {
                 'neon-glow': 'neon-glow 2.5s ease-in-out infinite alternate',
                 'float': 'float 6s ease-in-out infinite',

@@ -44,7 +44,7 @@ const Cta: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-content mb-6">
+          <h2 className="font-extrabold text-content mb-6">
             ¿Tenés una idea? <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-600 dark:to-white">La armamos con vos.</span>
           </h2>
           <p className="mt-4 text-lg text-content-muted max-w-2xl mx-auto mb-10">

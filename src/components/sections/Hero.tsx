@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-accent mb-5">
               Diseño + desarrollo + estrategia
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-content">
+            <h1 className="font-extrabold text-content">
               <span className="block">Impulsá tu negocio con tecnología a medida.</span>
               <span className="block text-gradient mt-2">Tu idea, nuestro desarrollo.</span>
             </h1>

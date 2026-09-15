@@ -18,7 +18,7 @@ const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ title, metaDescriptio
           ← Volver al inicio
         </a>
 
-        <h1 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-content">
+        <h1 className="mt-6 font-extrabold text-content">
           {title}
         </h1>
         <p className="mt-3 text-sm text-content-muted">

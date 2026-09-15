@@ -26,7 +26,7 @@ const WhyYouNeedThis: React.FC = () => {
     <section id="porque" className="bg-transparent py-12 sm:py-16 relative z-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-content">Oportunidades de crecimiento</h2>
+          <h2 className="font-extrabold text-content">Oportunidades de crecimiento</h2>
           <p className="mt-4 text-lg text-content-muted">
             Entender las reglas del juego digital es el primer paso para dejar de regalar clientes a tu competencia.
           </p>

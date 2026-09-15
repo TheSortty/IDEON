@@ -52,6 +52,27 @@
        dura, es cuántos elementos lo corren. */
     --dur-theme: 0.5s;
 
+    /* ---- tipografía fluida ----
+       Misma Inter, mismos pesos. Lo único que cambia es cómo escalan tamaño,
+       interlínea y tracking: en vez de saltar en cada breakpoint, interpolan.
+       El tracking se CIERRA a medida que crece el viewport — eso es lo que
+       hace que un h1 grande se lea compacto en vez de aireado. */
+    --h1-size: clamp(2.25rem, 1.40rem + 3.8vw, 3.75rem);
+    --h1-line: clamp(2.50rem, 1.80rem + 3.2vw, 3.90rem);
+    --h1-track: clamp(-0.045em, -0.02em - 0.08vw, -0.02em);
+
+    --h2-size: clamp(1.75rem, 1.30rem + 2.0vw, 2.50rem);
+    --h2-line: clamp(2.10rem, 1.70rem + 1.8vw, 2.90rem);
+    --h2-track: -0.025em;
+
+    --h3-size: clamp(1.20rem, 1.05rem + 0.7vw, 1.50rem);
+    --h3-track: -0.015em;
+
+    --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+
+    /* Ritmo vertical: un solo token reemplaza los 48/64/80/96 sueltos. */
+    --space-section: clamp(4rem, 2rem + 6vw, 9rem);
+
     /* alto real de la barra del nav (h-20), para los offsets de sticky */
     --nav-h: 5rem;
   }
@@ -66,6 +87,37 @@
 
     --border: rgb(255 255 255 / 0.10);
     --border-strong: rgb(255 255 255 / 0.20);
+  }
+
+  h1 {
+    font-size: var(--h1-size);
+    line-height: var(--h1-line);
+    letter-spacing: var(--h1-track);
+  }
+
+  h2 {
+    font-size: var(--h2-size);
+    line-height: var(--h2-line);
+    letter-spacing: var(--h2-track);
+  }
+
+  h3 {
+    font-size: var(--h3-size);
+    letter-spacing: var(--h3-track);
+  }
+
+  /* Líneas parejas en los titulares y sin palabras huérfanas al final de
+     los párrafos. Los componentes que necesitan un tamaño propio (títulos
+     de card, de modal, nombres de plan) siguen pisando el font-size con su
+     clase de Tailwind: esto define el rol, no cada caso. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   body {
@@ -113,7 +165,7 @@
      para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
      cada párrafo del texto. */
   .legal-content h2 {
-    @apply text-2xl sm:text-3xl font-extrabold text-content mt-12 mb-4 scroll-mt-28;
+    @apply font-extrabold text-content mt-12 mb-4 scroll-mt-28;
   }
 
   .legal-content h2:first-of-type {
@@ -121,7 +173,7 @@
   }
 
   .legal-content h3 {
-    @apply text-lg sm:text-xl font-bold text-content mt-8 mb-3;
+    @apply font-bold text-content mt-8 mb-3;
   }
 
   .legal-content p {
