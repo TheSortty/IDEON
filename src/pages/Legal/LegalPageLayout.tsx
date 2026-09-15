@@ -12,22 +12,24 @@ const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ title, metaDescriptio
   useDocumentMeta(`${title} – IDEON`, metaDescription);
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="/" className="text-sm font-medium text-accent hover:text-accent-hover transition-colors">
-          ← Volver al inicio
-        </a>
+    <section>
+      <div className="container-site">
+        <div className="max-w-3xl mx-auto">
+          <a href="/" className="text-sm font-medium text-accent hover:text-accent-hover transition-colors">
+            ← Volver al inicio
+          </a>
 
-        <h1 className="mt-6 font-extrabold text-content">
-          {title}
-        </h1>
-        <p className="mt-3 text-sm text-content-muted">
-          Última actualización: {lastUpdated}
-        </p>
+          <h1 className="mt-6 font-extrabold text-content">
+            {title}
+          </h1>
+          <p className="mt-3 text-sm text-content-muted">
+            Última actualización: {lastUpdated}
+          </p>
 
-        <article className="legal-content mt-10">
-          {children}
-        </article>
+          <article className="legal-content mt-8">
+            {children}
+          </article>
+        </div>
       </div>
     </section>
   );

@@ -92,15 +92,15 @@ const item = {
 
 const Benefits: React.FC = () => {
   return (
-    <section className="section-alt py-12 sm:py-16 relative z-10">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-alt relative z-10">
+      <div className="container-site">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
           <h2 className="font-extrabold text-content">
             Trabajamos distinto
@@ -118,7 +118,7 @@ const Benefits: React.FC = () => {
             <motion.div
               key={benefit.title}
               variants={item}
-              className="surface-card px-5 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
+              className="surface-card px-6 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
             >
               <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-150 ease-out">
                 {benefit.icon}

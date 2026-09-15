@@ -23,8 +23,8 @@ const topics = [
 
 const WhyYouNeedThis: React.FC = () => {
   return (
-    <section id="porque" className="bg-transparent py-12 sm:py-16 relative z-10">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="porque" className="bg-transparent relative z-10">
+      <div className="container-site">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-extrabold text-content">Oportunidades de crecimiento</h2>
           <p className="mt-4 text-lg text-content-muted">
@@ -32,7 +32,7 @@ const WhyYouNeedThis: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {topics.map((topic, index) => (
             <motion.div
               key={topic.question}

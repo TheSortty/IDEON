@@ -77,7 +77,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#f8f8f8]/80 dark:bg-brand-background/80 backdrop-blur-xl border-b border-line shadow-lg">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-site">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <a href="#inicio" onClick={(e) => handleNavClick(e, 'inicio')} className="text-3xl font-extrabold text-content">
@@ -85,8 +85,8 @@ const Header: React.FC = () => {
             </a>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-4">
-              <nav className="nav-glass-pill flex items-center gap-1 p-1.5">
+            <div className="ml-8 flex items-center space-x-4">
+              <nav className="nav-glass-pill flex items-center gap-1 p-2">
                 {navLinks.map((link) => {
                   const isActive = activeId === link.id;
                   return (
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
                       key={link.id}
                       href={`#${link.id}`}
                       onClick={(e) => handleNavClick(e, link.id)}
-                      className="relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors"
+                      className="relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors"
                     >
                       {isActive && (
                         <motion.span

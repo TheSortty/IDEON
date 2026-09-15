@@ -31,7 +31,7 @@ const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean
       className={`surface-card p-8 flex flex-col relative overflow-hidden transition-all duration-200 ${isFeatured ? 'border-accent shadow-[0_0_40px_rgba(212,0,255,0.3)] ring-2 ring-accent/50 scale-105 z-10' : 'border-white/10 hover:border-white/30'}`}
     >
       {isFeatured && (
-        <div className="absolute top-4 right-[-34px] bg-accent text-white text-xs font-bold px-10 py-1.5 rotate-45 z-10 shadow-lg">
+        <div className="absolute top-4 right-[-34px] bg-accent text-white text-xs font-bold px-8 py-2 rotate-45 z-10 shadow-lg">
           + Elegido
         </div>
       )}
@@ -135,8 +135,8 @@ const plans = [
 
 const Plans: React.FC = () => {
   return (
-    <section id="planes" className="section-alt py-12 sm:py-16 relative z-10 scroll-mt-24">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="planes" className="section-alt relative z-10 scroll-mt-24">
+      <div className="container-site">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-extrabold text-content">Tipos de proyectos</h2>
           <p className="mt-4 text-lg text-content-muted">

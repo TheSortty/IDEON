@@ -82,12 +82,12 @@ const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, ans
 
 const Faq: React.FC = () => {
   return (
-    <section id="faq" className="py-20 sm:py-24 scroll-mt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+    <section id="faq" className="scroll-mt-24">
+      <div className="container-site">
+        <div className="text-center max-w-4xl mx-auto">
           <h2 className="font-extrabold text-content">Preguntas Frecuentes</h2>
         </div>
-        <div className="mt-12">
+        <div className="mt-12 max-w-4xl mx-auto">
           {faqs.map((faq) => (
             <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
           ))}

@@ -73,6 +73,19 @@
     /* Ritmo vertical: un solo token reemplaza los 48/64/80/96 sueltos. */
     --space-section: clamp(4rem, 2rem + 6vw, 9rem);
 
+    /* ---- contenedor y grilla ----
+       90rem = 1440px, que es el ancho que el sitio ya usaba (repetido a mano
+       en seis lugares). El gutter deja de saltar en cada breakpoint. */
+    --container: 90rem;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+
+    /* Escala de espaciado cerrada. Coincide con los pasos de Tailwind que ya
+       se usan (1 2 3 4 6 8 12 16 24 32), así que en el JSX se escriben como
+       clases y acá quedan disponibles para el CSS a mano. Ningún padding ni
+       gap del sitio debería salirse de estos valores. */
+    --s-1: 4px;  --s-2: 8px;   --s-3: 12px; --s-4: 16px;  --s-5: 24px;
+    --s-6: 32px; --s-7: 48px;  --s-8: 64px; --s-9: 96px;  --s-10: 128px;
+
     /* alto real de la barra del nav (h-20), para los offsets de sticky */
     --nav-h: 5rem;
   }
@@ -120,6 +133,12 @@
     text-wrap: pretty;
   }
 
+  /* Un solo ritmo vertical para todas las secciones, en vez de py-12 sm:py-16
+     en unas y py-20 sm:py-24 en otras. */
+  section {
+    padding-block: var(--space-section);
+  }
+
   body {
     @apply bg-surface-base text-content antialiased;
     background-image: radial-gradient(circle at 50% -15%, rgb(var(--bg-deep)) 0%, rgb(var(--bg)) 45%);
@@ -145,6 +164,15 @@
      cuando todo flota, nada flota, y el glassmorphism uniforme es la firma
      visual reconocible de template. Ahora la separación la hacen el borde de
      1px y el cambio de color de fondo, no la transparencia. */
+  /* El contenedor del sistema. Se aplica una sola vez por sección y todo
+     hereda de ahí, en vez de repetir max-w + px-4 sm:px-6 lg:px-8 en cada una. */
+  .container-site {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
   .surface-card {
     @apply bg-surface-raised border border-line rounded-2xl;
   }
@@ -182,7 +210,7 @@
      para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
      cada párrafo del texto. */
   .legal-content h2 {
-    @apply font-extrabold text-content mt-12 mb-4 scroll-mt-28;
+    @apply font-extrabold text-content mt-12 mb-4 scroll-mt-24;
   }
 
   .legal-content h2:first-of-type {

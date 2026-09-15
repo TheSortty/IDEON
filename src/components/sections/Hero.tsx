@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="inicio" className="relative py-12 sm:py-16 lg:py-20 overflow-hidden scroll-mt-24">
+    <section id="inicio" className="relative overflow-hidden scroll-mt-24">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
         <motion.div
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-site">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-6 text-center lg:text-left"
           >
-            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-accent mb-5">
+            <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-accent mb-6">
               Diseño + desarrollo + estrategia
             </p>
             <h1 className="font-extrabold text-content">

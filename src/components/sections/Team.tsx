@@ -86,8 +86,8 @@ const Team: React.FC = () => {
   };
 
   return (
-    <section id="equipo" className="bg-transparent py-12 sm:py-16 relative z-10 scroll-mt-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="equipo" className="bg-transparent relative z-10 scroll-mt-24">
+      <div className="container-site text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ const Team: React.FC = () => {
                       <RoleIcon className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-accent" />
                     </div>
                   </div>
-                  <div className="p-5 sm:p-7 flex flex-col flex-1 min-w-0 justify-center">
+                  <div className="p-6 sm:p-8 flex flex-col flex-1 min-w-0 justify-center">
                     <h3 className="text-xl sm:text-2xl font-bold text-content">{member.name}</h3>
                     <p className="text-sm sm:text-base font-bold uppercase tracking-wider text-accent">{member.role}</p>
                     <p className="mt-3 text-sm sm:text-base text-content-muted leading-relaxed">
@@ -157,8 +157,8 @@ const Team: React.FC = () => {
                     </p>
 
                     {isActive && (
-                      <div className="mt-5 pt-4 border-t border-line flex items-center justify-between">
-                        <div className="flex items-center gap-1.5">
+                      <div className="mt-6 pt-4 border-t border-line flex items-center justify-between">
+                        <div className="flex items-center gap-2">
                           {team.map((dotMember, dotIndex) => (
                             <span
                               key={dotMember.name}
