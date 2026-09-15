@@ -132,7 +132,7 @@ const ThemeSwitcher: React.FC = () => {
           onClick={(e) => e.stopPropagation()}
           whileHover={{ scale: 1.25 }}
           whileDrag={{ scale: 1.5 }}
-          className="w-2 h-2 rounded-full cursor-grab active:cursor-grabbing ring-2 ring-current ring-offset-1 ring-offset-transparent transition-colors duration-500"
+          className="w-2 h-2 rounded-full cursor-grab active:cursor-grabbing transition-colors duration-500"
           style={{ backgroundColor: color }}
         />
       </motion.div>
