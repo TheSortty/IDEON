@@ -80,9 +80,24 @@ const Hero: React.FC = () => {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative mx-auto max-w-lg lg:max-w-none"
             >
-              <div className="relative rounded-xl shadow-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
-                <img className="w-full opacity-90 hover:opacity-100 transition-opacity duration-200" src="/hero/hero-workflow.webp" alt="Proceso de diseño de un proyecto: wireframes en papel y notebook con diagrama de flujo" />
-              </div>
+              {/* Producto real, no foto de stock: los dos encuadres son capturas
+                  del campus de coaching que también se ve en #casos, montadas en
+                  marcos de navegador. El PNG tiene fondo transparente, así que se
+                  apoya sobre el fondo de la página y no necesita ni panel de
+                  vidrio ni borde propio.
+                  Dos encuadres reales vía <picture>, no la misma imagen escalada:
+                  en mobile va una sola ventana y un recorte más bajo. */}
+              <picture>
+                <source media="(max-width: 768px)" srcSet="/hero/hero-mobile.webp" type="image/webp" />
+                <img
+                  className="w-full h-auto"
+                  src="/hero/hero-desktop.webp"
+                  alt="Campus virtual desarrollado por IDEON para una institución de coaching: la vista del programa del alumno, con progreso y módulos, y el panel de administración desde el que se gestionan cursos y coaches."
+                  fetchPriority="high"
+                  width={1520}
+                  height={802}
+                />
+              </picture>
             </motion.div>
           </motion.div>
         </div>

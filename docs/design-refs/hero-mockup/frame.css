@@ -1,0 +1,60 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: transparent; }
+body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+
+.stage { position: relative; }
+
+/* Marco de navegador. La barra de chrome va en violeta profundo de marca
+   para que el mockup se lea como pieza de IDEON y no como un screenshot
+   suelto, y funcione tanto sobre el fondo claro como sobre el oscuro. */
+.win {
+  position: absolute;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a0b45;
+  border: 1px solid rgba(12, 2, 45, 0.28);
+  box-shadow:
+    0 2px 6px rgba(12, 2, 45, 0.18),
+    0 24px 48px -12px rgba(12, 2, 45, 0.45),
+    0 48px 90px -24px rgba(12, 2, 45, 0.35);
+}
+
+.bar {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: linear-gradient(180deg, #24114f 0%, #1a0b45 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.win.sm .bar { height: 26px; padding: 0 9px; gap: 6px; }
+
+.dot { width: 9px; height: 9px; border-radius: 999px; flex: 0 0 auto; }
+.win.sm .dot { width: 7px; height: 7px; }
+.d1 { background: #ff5f57; }
+.d2 { background: #febc2e; }
+.d3 { background: #28c840; }
+
+.url {
+  margin-left: 10px;
+  flex: 1;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+  color: rgba(248, 248, 248, 0.62);
+  max-width: 320px;
+}
+.win.sm .url { height: 15px; font-size: 9px; padding: 0 8px; max-width: 200px; }
+.lock { width: 7px; height: 7px; border: 1.4px solid rgba(248,248,248,0.45); border-radius: 2px; border-bottom-width: 4px; }
+.win.sm .lock { width: 6px; height: 6px; border-bottom-width: 3px; }
+
+.shot { display: block; width: 100%; }
+.viewport { overflow: hidden; background: #fff; }
