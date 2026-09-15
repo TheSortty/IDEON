@@ -84,7 +84,7 @@ const Header: React.FC = () => {
               IDE<span className="text-accent">ON</span>
             </a>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-8 flex items-center space-x-4">
               <nav className="nav-glass-pill flex items-center gap-1 p-2">
                 {navLinks.map((link) => {
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
               <ThemeSwitcher />
             </div>
           </div>
-          <div className="-mr-2 flex items-center md:hidden">
+          <div className="-mr-2 flex items-center lg:hidden">
             <ThemeSwitcher />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -148,7 +148,7 @@ const Header: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden" id="mobile-menu">
+        <div className="lg:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
             {navLinks.map((link) => {
               const isActive = activeId === link.id;
