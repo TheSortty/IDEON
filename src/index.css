@@ -93,8 +93,13 @@
 
     --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
 
-    /* Ritmo vertical: un solo token reemplaza los 48/64/80/96 sueltos. */
-    --space-section: clamp(4rem, 2rem + 6vw, 9rem);
+    /* Ritmo vertical: un solo token reemplaza los 48/64/80/96 sueltos.
+       El valor del brief (clamp(4rem, 2rem + 6vw, 9rem)) estaba calibrado
+       contra 64/80/96, que es lo que se midió en producción; el código usaba
+       48/64, así que ese clamp estiraba la home un 13% a 1440px. Este rango
+       unifica el ritmo sin alargar la página: la home tiene que cerrar una
+       cotización en menos de tres scrolls. */
+    --space-section: clamp(3.5rem, 1.5rem + 5vw, 7rem);
 
     /* ---- contenedor y grilla ----
        90rem = 1440px, que es el ancho que el sitio ya usaba (repetido a mano
