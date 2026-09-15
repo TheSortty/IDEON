@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import { TrendingUpIcon, CompassIcon, CodeIcon } from '../ui/RoleIcons';
+import { revealViewport } from '../ui/motion';
 
 // TEAM SECTION
 const team = [
@@ -91,7 +92,7 @@ const Team: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={revealViewport}
           transition={{ duration: 0.6 }}
           className="font-extrabold text-content"
         >
@@ -101,7 +102,7 @@ const Team: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={revealViewport}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-12 flex justify-center"
         >
@@ -162,7 +163,7 @@ const Team: React.FC = () => {
                           {team.map((dotMember, dotIndex) => (
                             <span
                               key={dotMember.name}
-                              className={`h-2.5 rounded-full transition-all duration-500 ${
+                              className={`h-2.5 rounded-full transition-[width,background-color] duration-medium ease-out-token ${
                                 dotIndex === activeIndex
                                   ? 'w-7 bg-accent'
                                   : 'w-2.5 bg-gray-300 dark:bg-white/20'

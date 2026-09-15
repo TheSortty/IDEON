@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { revealContainer, revealItem, revealViewport, revealTransition } from '../ui/motion';
 
 // WHY YOU NEED THIS — sección educativa
 const topics = [
@@ -25,27 +26,41 @@ const WhyYouNeedThis: React.FC = () => {
   return (
     <section id="porque" className="bg-transparent relative z-10">
       <div className="container-site">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="font-extrabold text-content">Oportunidades de crecimiento</h2>
-          <p className="mt-4 text-lg text-content-muted">
-            Entender las reglas del juego digital es el primer paso para dejar de regalar clientes a tu competencia.
-          </p>
-        </div>
+        {/* Única sección pinneada del sitio: en desktop el título y el contexto
+            quedan fijos a la izquierda mientras las tarjetas pasan a la derecha.
+            position: sticky nativo, sin librería. */}
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={revealViewport}
+            transition={revealTransition}
+            className="pinned-intro text-center lg:text-left mb-12 lg:mb-0 lg:col-span-4"
+          >
+            <h2 className="font-extrabold text-content">Oportunidades de crecimiento</h2>
+            <p className="mt-4 text-lg text-content-muted">
+              Entender las reglas del juego digital es el primer paso para dejar de regalar clientes a tu competencia.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {topics.map((topic, index) => (
-            <motion.div
-              key={topic.question}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="surface-card p-8"
-            >
-              <h3 className="text-xl font-bold text-content mb-3">{topic.question}</h3>
-              <p className="text-base text-content-muted">{topic.answer}</p>
-            </motion.div>
-          ))}
+          <motion.div
+            variants={revealContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 lg:col-span-8"
+          >
+            {topics.map((topic) => (
+              <motion.div
+                key={topic.question}
+                variants={revealItem}
+                className="surface-card p-8 hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
+              >
+                <h3 className="text-xl font-bold text-content mb-3">{topic.question}</h3>
+                <p className="text-base text-content-muted">{topic.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { revealContainer, revealItem, revealViewport, revealTransition } from '../ui/motion';
 
 // SVG ICONS
 const iconClass = "w-5 h-5 text-accent";
@@ -75,31 +76,16 @@ const benefits = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.07
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
 const Benefits: React.FC = () => {
   return (
     <section className="section-alt relative z-10">
       <div className="container-site">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={revealViewport}
+          transition={revealTransition}
           className="text-center mb-8"
         >
           <h2 className="font-extrabold text-content">
@@ -108,19 +94,19 @@ const Benefits: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={container}
+          variants={revealContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={revealViewport}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {benefits.map((benefit) => (
             <motion.div
               key={benefit.title}
-              variants={item}
-              className="surface-card px-6 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
+              variants={revealItem}
+              className="surface-card px-6 py-4 flex items-start gap-4 group hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
             >
-              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-150 ease-out">
+              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-fast ease-out-token">
                 {benefit.icon}
               </div>
               <div>

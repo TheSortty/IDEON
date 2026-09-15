@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import Carousel, { CarouselImage } from '../ui/Carousel';
+import { revealContainer, revealItem, revealViewport } from '../ui/motion';
 import { openWhatsApp } from '../../constants/contact';
 
 // CASE STUDIES SECTION
@@ -48,15 +49,18 @@ const CaseStudies: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {cases.map((project, index) => (
+        <motion.div
+          variants={revealContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={revealViewport}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+        >
+          {cases.map((project) => (
             <motion.div
               key={project.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="surface-card p-8 flex flex-col"
+              variants={revealItem}
+              className="surface-card p-8 flex flex-col hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
             >
               {project.images.length > 0 && (
                 <div className="mb-6">
@@ -95,7 +99,7 @@ const CaseStudies: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

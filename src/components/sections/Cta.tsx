@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { revealViewport } from '../ui/motion';
 import Button from '../ui/Button';
 import { useModal } from '../../contexts/ModalContext';
 import { openWhatsApp } from '../../constants/contact';
@@ -41,7 +42,7 @@ const Cta: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={revealViewport}
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-extrabold text-content mb-6">

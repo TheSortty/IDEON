@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import { useModal } from '../../contexts/ModalContext';
 import { openWhatsApp } from '../../constants/contact';
+import { revealContainer, revealItem, revealViewport } from '../ui/motion';
 
 // PLANS SECTION
-const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean; index: number }) => {
+const PlanCard = ({ plan, isFeatured }: { plan: any; isFeatured?: boolean }) => {
   const { openModal } = useModal();
 
   const handleChoosePlan = () => {
@@ -24,11 +25,9 @@ const PlanCard = ({ plan, isFeatured, index }: { plan: any; isFeatured?: boolean
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } }}
-      viewport={{ once: true }}
-      whileHover={{ y: -10, transition: { duration: 0.1, ease: "easeOut" } }}
-      className={`surface-card p-8 flex flex-col relative overflow-hidden transition-all duration-200 ${isFeatured ? 'border-accent shadow-[0_0_40px_rgba(212,0,255,0.3)] ring-2 ring-accent/50 scale-105 z-10' : 'border-white/10 hover:border-white/30'}`}
+      variants={revealItem}
+      whileHover={{ y: -10, transition: { duration: 0.15, ease: 'easeOut' } }}
+      className={`surface-card p-8 flex flex-col relative overflow-hidden transition-[border-color,box-shadow] duration-medium ease-out-token ${isFeatured ? 'border-accent shadow-[0_0_40px_rgba(212,0,255,0.3)] ring-2 ring-accent/50 lg:scale-105 z-10' : 'hover:border-line-strong'}`}
     >
       {isFeatured && (
         <div className="absolute top-4 right-[-34px] bg-accent text-white text-xs font-bold px-8 py-2 rotate-45 z-10 shadow-lg">
@@ -143,11 +142,17 @@ const Plans: React.FC = () => {
             Nos adaptamos a tu presupuesto y a tu necesidad. Cada proyecto se cotiza según su alcance real, y vos decidís con toda la información en la mano.
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <PlanCard plan={plans[0]} index={0} />
-          <PlanCard plan={plans[1]} isFeatured index={1} />
-          <PlanCard plan={plans[2]} index={2} />
-        </div>
+        <motion.div
+          variants={revealContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={revealViewport}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+        >
+          <PlanCard plan={plans[0]} />
+          <PlanCard plan={plans[1]} isFeatured />
+          <PlanCard plan={plans[2]} />
+        </motion.div>
 
         <div className="mt-16 text-center max-w-3xl mx-auto">
           <p className="text-lg text-content-muted">

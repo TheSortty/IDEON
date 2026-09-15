@@ -89,7 +89,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
                 onClick={() => goTo(i)}
                 aria-label={`Ver imagen ${i + 1}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent ${
+                className={`h-2 rounded-full transition-[width,background-color] duration-medium ease-out-token focus:outline-none focus:ring-2 focus:ring-accent ${
                   i === index ? 'w-6 bg-accent' : 'w-2 bg-gray-300 dark:bg-white/25 hover:bg-accent/60'
                 }`}
               />
