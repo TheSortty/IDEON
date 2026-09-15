@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="frame.css">
+<style>
+  body { width: 1440px; height: 760px; }
+  .stage { width: 1440px; height: 760px; }
+  /* Ventana principal: el campus tal como lo ve el alumno. */
+  .main { left: 210px; top: 12px; width: 1180px; }
+  .main .viewport { height: 600px; }
+  .main .shot { width: 1180px; }
+  /* Ventana secundaria: el panel de administración del mismo sistema.
+     Segundo encuadre real, no la misma captura escalada. */
+  .side { left: 20px; top: 360px; width: 640px; }
+  .side .viewport { height: 330px; }
+  .side .shot { width: 760px; }
+</style></head><body>
+<div class="stage">
+  <div class="win main">
+    <div class="bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+      <span class="url"><span class="lock"></span>siendohome.com/campus</span></div>
+    <div class="viewport"><img class="shot" src="home-04-campus-programa.webp"></div>
+  </div>
+  <div class="win sm side">
+    <div class="bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+      <span class="url"><span class="lock"></span>siendohome.com/admin</span></div>
+    <div class="viewport"><img class="shot" src="home-06-campus-admin.webp"></div>
+  </div>
+</div></body></html>

@@ -28,23 +28,23 @@ const TallyModal: React.FC = () => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ${isTallyModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      className={`fixed inset-0 z-[100] bg-black/70 flex items-center justify-center p-4 transition-opacity duration-300 ${isTallyModalOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       aria-labelledby="tally-modal-title"
       role="dialog"
       aria-modal="true"
       onClick={closeTallyModal}
     >
       <div 
-        className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl w-full max-w-2xl h-[90vh] relative border border-gray-200 dark:border-brand-primary/20 flex flex-col"
+        className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl w-full max-w-2xl h-[90vh] relative border border-gray-200 dark:border-accent/20 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex-shrink-0 p-4 flex justify-between items-center border-b border-gray-200 dark:border-brand-primary/20">
-            <h2 id="tally-modal-title" className="text-xl font-bold text-[#111] dark:text-brand-text-primary">
+        <div className="flex-shrink-0 p-4 flex justify-between items-center border-b border-gray-200 dark:border-accent/20">
+            <h2 id="tally-modal-title" className="text-xl font-bold text-content">
                 Completá tu Brief
             </h2>
             <button 
               onClick={closeTallyModal}
-              className="p-2 rounded-full text-gray-500 dark:text-brand-text-secondary hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
+              className="p-2 rounded-full text-content-muted hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
               aria-label="Cerrar modal"
             >
               <span className="text-2xl">✕</span>

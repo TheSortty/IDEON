@@ -15,6 +15,10 @@ const ParticleBackground: React.FC = () => {
     const mouseRef = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
+        // Con "reducir movimiento" activado no se dibuja nada: una regla CSS no
+        // puede frenar un requestAnimationFrame, hay que preguntarlo acá.
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -32,7 +36,9 @@ const ParticleBackground: React.FC = () => {
 
         const initParticles = () => {
             particles = [];
-            const particleCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 15000), 100); // Adjust density
+            // Menos densidad que antes (1 cada 15.000 px² y hasta 100): el
+            // canvas es ambiente, no tiene que competir con el contenido.
+            const particleCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 26000), 60);
 
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
@@ -49,8 +55,10 @@ const ParticleBackground: React.FC = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             const isDark = theme === 'dark';
-            const particleColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, '; // brand-primary or gray
+            const particleColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, '; // accent or gray
             const lineColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, ';
+            const particleAlpha = isDark ? 0.3 : 0.22;
+            const lineAlpha = isDark ? 0.09 : 0.07;
 
             particles.forEach((particle, i) => {
                 // Update position
@@ -80,7 +88,7 @@ const ParticleBackground: React.FC = () => {
                 // Draw particle
                 ctx.beginPath();
                 ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fillStyle = `${particleColor}${0.5})`;
+                ctx.fillStyle = `${particleColor}${particleAlpha})`;
                 ctx.fill();
 
                 // Connect particles
@@ -92,7 +100,7 @@ const ParticleBackground: React.FC = () => {
 
                     if (distance < 150) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `${lineColor}${0.15 * (1 - distance / 150)})`;
+                        ctx.strokeStyle = `${lineColor}${lineAlpha * (1 - distance / 150)})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(p2.x, p2.y);

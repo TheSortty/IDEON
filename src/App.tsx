@@ -1,4 +1,5 @@
 import React from 'react';
+import { MotionConfig } from 'framer-motion';
 import './index.css';
 
 // Providers
@@ -40,10 +41,16 @@ function App() {
   const page = getPage(window.location.pathname);
 
   return (
+    // reducedMotion="user" respeta la preferencia del sistema en TODAS las
+    // animaciones de framer-motion. Hace falta además de la regla CSS de
+    // @media: framer-motion anima en JS y una regla de CSS no lo frena.
+    // Framer sigue animando la opacidad, así que nada queda en opacity: 0, y
+    // los transforms se aplican de una en vez de interpolarse.
+    <MotionConfig reducedMotion="user">
     <ThemeProvider>
       <ModalProvider>
         <ParticleBackground />
-        <div className="bg-transparent text-[#111] dark:text-brand-text-primary antialiased relative z-10">
+        <div className="bg-transparent text-content antialiased relative z-10">
           <Header />
           <main>
             {page}
@@ -55,6 +62,7 @@ function App() {
         </div>
       </ModalProvider>
     </ThemeProvider>
+    </MotionConfig>
   );
 }
 

@@ -33,7 +33,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
 
   return (
     <div>
-      <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-brand-background/60">
+      <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-line bg-gray-100 dark:bg-brand-background/60">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={index}
@@ -57,7 +57,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(-1)}
               aria-label="Imagen anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/45 text-white backdrop-blur-sm hover:bg-brand-primary transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-brand-primary"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow />
             </button>
@@ -65,11 +65,11 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(1)}
               aria-label="Imagen siguiente"
-              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/45 text-white backdrop-blur-sm hover:bg-brand-primary transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-brand-primary"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow flipped />
             </button>
-            <span className="absolute bottom-3 right-3 text-xs font-semibold px-2 py-1 rounded-md bg-black/45 text-white backdrop-blur-sm">
+            <span className="absolute bottom-3 right-3 text-xs font-semibold px-2 py-1 rounded-full bg-black/60 text-white">
               {index + 1}/{images.length}
             </span>
           </>
@@ -77,7 +77,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
       </div>
 
       <div className="mt-3 flex items-center gap-4">
-        <p className="flex-grow text-sm text-gray-500 dark:text-brand-text-secondary">
+        <p className="flex-grow text-sm text-content-muted">
           {images[index].alt}
         </p>
         {images.length > 1 && (
@@ -89,8 +89,8 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
                 onClick={() => goTo(i)}
                 aria-label={`Ver imagen ${i + 1}`}
                 aria-current={i === index}
-                className={`h-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary ${
-                  i === index ? 'w-6 bg-brand-primary' : 'w-2 bg-gray-300 dark:bg-white/25 hover:bg-brand-primary/60'
+                className={`h-2 rounded-full transition-[width,background-color] duration-medium ease-out-token focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  i === index ? 'w-6 bg-accent' : 'w-2 bg-gray-300 dark:bg-white/25 hover:bg-accent/60'
                 }`}
               />
             ))}

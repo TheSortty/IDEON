@@ -2,42 +2,247 @@
 @tailwind components;
 @tailwind utilities;
 
+/* La misma Inter que venía de Google Fonts (v20, variable 400-900), ahora
+   servida desde public/fonts/. No cambia nada visual: saca el request
+   bloqueante a un tercero, elimina el FOUT y mejora el LCP.
+   Se conservan los unicode-range de Google para que latin-ext solo se baje si
+   la página realmente usa alguno de esos caracteres — en castellano, nunca. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @layer base {
+  /* ============================================================
+     CAPA 1 — LA PALETA
+     Los colores que existen, nombrados. Nada de esta capa se usa
+     directamente en un componente.
+     Se guardan como canales RGB sueltos para que Tailwind pueda
+     componerlos con su modificador de opacidad (bg-accent/20).
+     ============================================================ */
+  :root {
+    --magenta-500: 212 0 255;   /* #D400FF */
+    --magenta-600: 161 0 194;   /* #a100c2 */
+    --void-900: 12 2 45;        /* #0C022D */
+    --void-700: 33 17 92;       /* #21115C */
+    --blue-500: 59 130 246;     /* #3B82F6 — ya se usaba en el gradiente del hero */
+    --ivory: 248 248 248;       /* #F8F8F8 */
+    --lilac: 169 161 209;       /* #A9A1D1 */
+    --ink-900: 17 17 17;        /* #111 — texto del tema claro, tal como estaba */
+    --ink-500: 75 85 99;        /* #4B5563 — el gray-600 que ya usaba el tema claro */
+    --white: 255 255 255;
+
+    /* ---- CAPA 2 — LOS ROLES ----
+       Lo único que tocan los componentes. El tema es esta capa:
+       cambiarlo es redefinirla, no tocar la paleta de arriba.
+       Los valores de acá son los del tema CLARO, que es el default
+       cuando todavía no corrió el ThemeProvider. */
+    --bg: var(--ivory);
+    --bg-deep: 240 240 240;     /* el otro extremo del gradiente radial del body */
+    --surface: var(--white);
+    --text: var(--ink-900);
+    --text-muted: var(--ink-500);
+    --accent: var(--magenta-500);
+    --accent-hover: var(--magenta-600);
+    --accent-ink: var(--white);
+
+    --border: rgb(12 2 45 / 0.10);
+    --border-strong: rgb(12 2 45 / 0.18);
+    --focus: rgb(var(--accent));
+
+    /* ---- movimiento, también como token ---- */
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-fast: 0.15s;
+    --dur-medium: 0.3s;
+    --dur-long: 0.6s;
+    /* El fundido del cambio de tema. Se mantiene en 0.5s a propósito: es la
+       duración que ya tenía y con la que está calibrado el switcher de la
+       bombilla (el glow del foco dura 0.7s). Lo que cambió no es cuánto
+       dura, es cuántos elementos lo corren. */
+    --dur-theme: 0.5s;
+
+    /* ---- tipografía fluida ----
+       Misma Inter, mismos pesos. Lo único que cambia es cómo escalan tamaño,
+       interlínea y tracking: en vez de saltar en cada breakpoint, interpolan.
+       El tracking se CIERRA a medida que crece el viewport — eso es lo que
+       hace que un h1 grande se lea compacto en vez de aireado. */
+    --h1-size: clamp(2.25rem, 1.40rem + 3.8vw, 3.75rem);
+    --h1-line: clamp(2.50rem, 1.80rem + 3.2vw, 3.90rem);
+    --h1-track: clamp(-0.045em, -0.02em - 0.08vw, -0.02em);
+
+    --h2-size: clamp(1.75rem, 1.30rem + 2.0vw, 2.50rem);
+    --h2-line: clamp(2.10rem, 1.70rem + 1.8vw, 2.90rem);
+    --h2-track: -0.025em;
+
+    --h3-size: clamp(1.20rem, 1.05rem + 0.7vw, 1.50rem);
+    --h3-track: -0.015em;
+
+    --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+
+    /* Ritmo vertical: un solo token reemplaza los 48/64/80/96 sueltos.
+       El valor del brief (clamp(4rem, 2rem + 6vw, 9rem)) estaba calibrado
+       contra 64/80/96, que es lo que se midió en producción; el código usaba
+       48/64, así que ese clamp estiraba la home un 13% a 1440px. Este rango
+       unifica el ritmo sin alargar la página: la home tiene que cerrar una
+       cotización en menos de tres scrolls. */
+    --space-section: clamp(3.5rem, 1.5rem + 5vw, 7rem);
+
+    /* ---- contenedor y grilla ----
+       90rem = 1440px, que es el ancho que el sitio ya usaba (repetido a mano
+       en seis lugares). El gutter deja de saltar en cada breakpoint. */
+    --container: 90rem;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+
+    /* Escala de espaciado cerrada. Coincide con los pasos de Tailwind que ya
+       se usan (1 2 3 4 6 8 12 16 24 32), así que en el JSX se escriben como
+       clases y acá quedan disponibles para el CSS a mano. Ningún padding ni
+       gap del sitio debería salirse de estos valores. */
+    --s-1: 4px;  --s-2: 8px;   --s-3: 12px; --s-4: 16px;  --s-5: 24px;
+    --s-6: 32px; --s-7: 48px;  --s-8: 64px; --s-9: 96px;  --s-10: 128px;
+
+    /* alto real de la barra del nav (h-20), para los offsets de sticky */
+    --nav-h: 5rem;
+  }
+
+  /* El tema oscuro redefine SOLO la capa 2. */
+  :root.dark {
+    --bg: var(--void-900);
+    --bg-deep: var(--void-700);
+    --surface: var(--void-700);
+    --text: var(--ivory);
+    --text-muted: var(--lilac);
+
+    --border: rgb(255 255 255 / 0.10);
+    --border-strong: rgb(255 255 255 / 0.20);
+  }
+
+  h1 {
+    font-size: var(--h1-size);
+    line-height: var(--h1-line);
+    letter-spacing: var(--h1-track);
+  }
+
+  h2 {
+    font-size: var(--h2-size);
+    line-height: var(--h2-line);
+    letter-spacing: var(--h2-track);
+  }
+
+  h3 {
+    font-size: var(--h3-size);
+    letter-spacing: var(--h3-track);
+  }
+
+  /* Líneas parejas en los titulares y sin palabras huérfanas al final de
+     los párrafos. Los componentes que necesitan un tamaño propio (títulos
+     de card, de modal, nombres de plan) siguen pisando el font-size con su
+     clase de Tailwind: esto define el rol, no cada caso. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Un solo ritmo vertical para todas las secciones, en vez de py-12 sm:py-16
+     en unas y py-20 sm:py-24 en otras. */
+  section {
+    padding-block: var(--space-section);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
   body {
-    @apply bg-[#f8f8f8] dark:bg-brand-background text-[#111] dark:text-brand-text-primary antialiased;
-    background-image: radial-gradient(circle at 50% 0%, #f0f0f0 0%, #f8f8f8 70%);
+    @apply bg-surface-base text-content antialiased;
+    background-image: radial-gradient(circle at 50% -15%, rgb(var(--bg-deep)) 0%, rgb(var(--bg)) 45%);
     min-height: 100vh;
-    transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
   }
 
-  .dark body {
-    background-image: radial-gradient(circle at 50% 0%, #21115C 0%, #0C022D 70%);
-  }
-
-  /* Global Theme Transition */
-  *,
-  *::before,
-  *::after {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
+  /* Cambio de tema: antes esto era una transición de 500ms aplicada a `*`,
+     `*::before` y `*::after` — cientos de nodos fundiéndose a la vez, que es
+     lo que hacía que el toggle se sintiera pesado. El fundido se conserva
+     igual de gradual, pero pasa a una sola capa: el fondo de la página y las
+     superficies que realmente cambian de color. El foco de la bombilla no
+     depende de esto — se anima solo, desde ThemeSwitcher.tsx. */
+  body,
+  .themed-surface {
+    transition: background-color var(--dur-theme) var(--ease-out),
+                border-color var(--dur-theme) var(--ease-out),
+                color var(--dur-theme) var(--ease-out);
   }
 }
 
 @layer utilities {
-  .glass-panel {
-    @apply bg-white/50 dark:bg-white/5 backdrop-blur-lg border border-gray-200 dark:border-white/10 rounded-2xl shadow-lg dark:shadow-none;
+  /* Card. Antes era una placa de vidrio (fondo translúcido + blur + sombra):
+     cuando todo flota, nada flota, y el glassmorphism uniforme es la firma
+     visual reconocible de template. Ahora la separación la hacen el borde de
+     1px y el cambio de color de fondo, no la transparencia. */
+  /* El contenedor del sistema. Se aplica una sola vez por sección y todo
+     hereda de ahí, en vez de repetir max-w + px-4 sm:px-6 lg:px-8 en cada una. */
+  .container-site {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* La intro de #porque queda fija mientras las tarjetas pasan al costado.
+     Solo en desktop: en mobile la columna es una sola y no hay nada al lado
+     contra lo cual quedarse quieto. */
+  @media (min-width: 1024px) {
+    .pinned-intro {
+      position: sticky;
+      top: calc(var(--nav-h) + var(--s-6));
+      align-self: start;
+    }
+  }
+
+  .surface-card {
+    @apply bg-surface-raised border border-line rounded-2xl;
+  }
+
+  /* Corte entre secciones consecutivas por cambio de fondo, sin agregar
+     bordes. Va semitransparente a propósito: el canvas de partículas está
+     detrás de todo y un fondo sólido lo taparía en media página. */
+  .section-alt {
+    background-color: rgb(var(--surface) / 0.35);
+  }
+
+  /* Textura de ruido. Antes se descargaba de grainy-gradients.vercel.app —
+     un tercero en la ruta crítica de una sección. Va inline como data URI. */
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-blue-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-blue-500;
   }
 
   /* Píldora de vidrio del nav de escritorio (look "liquid glass"): fondo
      traslúcido + blur fuerte + un filo de luz superior sutil, en vez del
-     borde plano de .glass-panel. */
+     borde plano de .surface-card. */
   .nav-glass-pill {
-    @apply bg-white/70 dark:bg-white/[0.06] backdrop-blur-xl border border-gray-900/15 dark:border-white/10 rounded-full;
+    @apply bg-white/70 dark:bg-white/[0.06] border border-line rounded-full;
     box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
   }
 
@@ -49,7 +254,7 @@
      para el markup semántico (h2/h3/p/ul/a/strong) sin repetir clases en
      cada párrafo del texto. */
   .legal-content h2 {
-    @apply text-2xl sm:text-3xl font-extrabold text-[#111] dark:text-brand-text-primary mt-12 mb-4 scroll-mt-28;
+    @apply font-extrabold text-content mt-12 mb-4 scroll-mt-24;
   }
 
   .legal-content h2:first-of-type {
@@ -57,15 +262,15 @@
   }
 
   .legal-content h3 {
-    @apply text-lg sm:text-xl font-bold text-[#111] dark:text-brand-text-primary mt-8 mb-3;
+    @apply font-bold text-content mt-8 mb-3;
   }
 
   .legal-content p {
-    @apply text-base text-gray-600 dark:text-brand-text-secondary leading-relaxed mb-4;
+    @apply text-base text-content-muted leading-relaxed mb-4;
   }
 
   .legal-content ul {
-    @apply list-disc pl-6 space-y-2 text-gray-600 dark:text-brand-text-secondary mb-4;
+    @apply list-disc pl-6 space-y-2 text-content-muted mb-4;
   }
 
   .legal-content li {
@@ -73,15 +278,15 @@
   }
 
   .legal-content strong {
-    @apply text-[#111] dark:text-brand-text-primary font-semibold;
+    @apply text-content font-semibold;
   }
 
   .legal-content a {
-    @apply text-brand-primary hover:text-brand-primary-hover underline underline-offset-2 transition-colors;
+    @apply text-accent hover:text-accent-hover underline underline-offset-2 transition-colors;
   }
 
   .legal-content blockquote {
-    @apply glass-panel p-6 my-6 not-italic;
+    @apply surface-card p-6 my-6 not-italic;
   }
 
   .legal-content blockquote p:last-child {
@@ -94,14 +299,29 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-200 dark:bg-[#0C022D];
+    @apply bg-gray-200 dark:bg-brand-background;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 dark:bg-brand-primary rounded-full border-2 border-gray-200 dark:border-[#0C022D];
+    @apply bg-gray-400 dark:bg-accent rounded-full border-2 border-gray-200 dark:border-brand-background;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500 dark:bg-brand-primary/80;
+    @apply bg-gray-500 dark:bg-accent/80;
+  }
+}
+
+/* "Reducir movimiento" del sistema: nada se anima y todo el contenido queda
+   legible. Las animaciones de framer-motion no las frena esta regla (corren en
+   JS): de eso se ocupan MotionConfig reducedMotion="user" en App.tsx y el
+   chequeo explícito en ParticleBackground. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

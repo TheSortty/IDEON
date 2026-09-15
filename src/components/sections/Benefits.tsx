@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { revealContainer, revealItem, revealViewport, revealTransition } from '../ui/motion';
 
 // SVG ICONS
-const iconClass = "w-5 h-5 text-brand-primary";
+const iconClass = "w-5 h-5 text-accent";
 
 const IconDiseno: React.FC = () => (
   <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,57 +76,42 @@ const benefits = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.07
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
 const Benefits: React.FC = () => {
   return (
-    <section className="bg-transparent py-12 sm:py-16 relative z-10">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-alt relative z-10">
+      <div className="container-site">
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          viewport={revealViewport}
+          transition={revealTransition}
+          className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111] dark:text-brand-text-primary">
+          <h2 className="font-extrabold text-content">
             Trabajamos distinto
           </h2>
         </motion.div>
 
         <motion.div
-          variants={container}
+          variants={revealContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={revealViewport}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {benefits.map((benefit) => (
             <motion.div
               key={benefit.title}
-              variants={item}
-              className="glass-panel px-5 py-4 flex items-start gap-4 group hover:-translate-y-1 transition-transform duration-150 ease-out"
+              variants={revealItem}
+              className="surface-card px-6 py-4 flex items-start gap-4 group hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
             >
-              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-brand-primary/20 group-hover:scale-110 transition-transform duration-150 ease-out">
+              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-fast ease-out-token">
                 {benefit.icon}
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#111] dark:text-brand-text-primary">{benefit.title}</h3>
-                <p className="mt-1 text-sm leading-snug text-gray-600 dark:text-brand-text-secondary">{benefit.description}</p>
+                <h3 className="text-base font-bold text-content">{benefit.title}</h3>
+                <p className="mt-1 text-sm leading-snug text-content-muted">{benefit.description}</p>
               </div>
             </motion.div>
           ))}
