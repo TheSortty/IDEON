@@ -12,6 +12,10 @@ const OFF_COLOR = '#A9A1D1'; // brand-text-secondary
 const CORD_TRAVEL = 16;
 const CORD_TOGGLE_THRESHOLD = 9;
 
+// Largo del cordón: a propósito más alto que la barra del nav, para que
+// cuelgue por fuera de esta y se note apenas se carga la página.
+const CORD_LENGTH = 44;
+
 // Pull switch: la bombilla se enciende (vidrio con relleno + glow + parpadeo)
 // en modo claro y se apaga en modo oscuro. El cordón se balancea solo para
 // que se note que es interactivo, y además se puede tirar de él para
@@ -37,7 +41,7 @@ const ThemeSwitcher: React.FC = () => {
         }
       }}
       aria-label={isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
-      className="relative flex flex-col items-center px-2 pt-1 pb-3 rounded-full cursor-pointer hover:bg-gray-200/60 dark:hover:bg-brand-surface focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-[#f8f8f8] dark:focus:ring-offset-brand-background transition-colors duration-300"
+      className="relative flex items-center justify-center h-10 w-10 rounded-full cursor-pointer hover:bg-gray-200/60 dark:hover:bg-brand-surface focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 focus:ring-offset-[#f8f8f8] dark:focus:ring-offset-brand-background transition-colors duration-300"
     >
       <motion.svg
         width="28"
@@ -75,8 +79,11 @@ const ThemeSwitcher: React.FC = () => {
         <path d="M10 22h4" />
       </motion.svg>
 
+      {/* Fuera del flujo a propósito: así el cordón puede colgar por debajo
+          del borde inferior de la barra del nav sin agrandar el header ni
+          desalinear el resto de los items. */}
       <motion.div
-        className="relative"
+        className="absolute left-1/2 top-full -translate-x-1/2"
         style={{ transformOrigin: 'top center' }}
         animate={{ rotate: [-9, 9, -9] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
@@ -85,7 +92,8 @@ const ThemeSwitcher: React.FC = () => {
           aria-hidden="true"
           animate={{ backgroundColor: color }}
           transition={{ duration: 0.4 }}
-          className="w-px h-3.5 mx-auto opacity-60"
+          className="w-px mx-auto opacity-60"
+          style={{ height: CORD_LENGTH }}
         />
         <motion.div
           aria-hidden="true"
