@@ -1,6 +1,6 @@
 import React from 'react';
 
-type Variant = 'primary' | 'outline' | 'secondary';
+type Variant = 'primary' | 'outline' | 'secondary' | 'gradient';
 
 interface BaseProps {
   variant?: Variant;
@@ -24,7 +24,11 @@ const baseStyles = 'px-6 py-3 font-semibold rounded-full transition-[background-
 const variantStyles: Record<Variant, string> = {
   primary: 'bg-accent text-white hover:bg-accent-hover focus-visible:ring-accent border border-transparent',
   outline: 'bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-white focus-visible:ring-accent',
-  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-brand-surface dark:text-brand-text-primary dark:hover:bg-opacity-80 focus-visible:ring-gray-300 dark:focus-visible:ring-brand-surface border border-transparent'
+  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-brand-surface dark:text-brand-text-primary dark:hover:bg-opacity-80 focus-visible:ring-gray-300 dark:focus-visible:ring-brand-surface border border-transparent',
+  // El degradado corre solo, sin depender del hover. La regla global de
+  // prefers-reduced-motion en index.css lo deja quieto: el relleno sigue
+  // estando, lo unico que se pierde es el movimiento.
+  gradient: 'bg-accent-gradient animate-gradient-pan text-accent-ink border border-transparent shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/40 focus-visible:ring-accent'
 };
 
 const Button: React.FC<ButtonProps> = ({ children, className = '', variant = 'primary', ...props }) => {

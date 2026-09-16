@@ -91,11 +91,11 @@ const CaseStudies: React.FC = () => {
                   Visitar proyecto →
                 </Button>
                 <Button
-                  variant="outline"
+                  variant="gradient"
                   className="sm:ml-auto"
                   onClick={() => openWhatsApp(project.whatsappMessage)}
                 >
-                  Quiero algo similar →
+                  Quiero algo similar
                 </Button>
               </div>
             </motion.div>

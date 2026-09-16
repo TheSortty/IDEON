@@ -63,6 +63,10 @@ module.exports = {
                 'neon-glow': 'neon-glow 2.5s ease-in-out infinite alternate',
                 'float': 'float 6s ease-in-out infinite',
                 'float-delayed': 'float 6s ease-in-out 3s infinite',
+                // Paneo continuo del degradado del CTA. Va y vuelve sobre el
+                // mismo recorrido (0% -> 100% -> 0%) para que el loop no tenga
+                // salto: un paneo en una sola direccion cortaria al reiniciar.
+                'gradient-pan': 'gradient-pan 6s ease-in-out infinite',
             },
             keyframes: {
                 'neon-glow': {
@@ -72,6 +76,10 @@ module.exports = {
                 'float': {
                     '0%, 100%': { transform: 'translateY(0)' },
                     '50%': { transform: 'translateY(-20px)' },
+                },
+                'gradient-pan': {
+                    '0%, 100%': { 'background-position': '0% 50%' },
+                    '50%': { 'background-position': '100% 50%' },
                 }
             }
         },
