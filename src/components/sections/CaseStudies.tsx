@@ -81,20 +81,21 @@ const CaseStudies: React.FC = () => {
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
-                <a
+                <Button
+                  variant="outline"
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent font-semibold hover:underline underline-offset-4"
+                  aria-label={`Visitar el proyecto de ${project.name} en ${project.domain}`}
                 >
-                  {project.domain} →
-                </a>
+                  Visitar proyecto →
+                </Button>
                 <Button
-                  variant="outline"
+                  variant="gradient"
                   className="sm:ml-auto"
                   onClick={() => openWhatsApp(project.whatsappMessage)}
                 >
-                  Quiero algo similar →
+                  Quiero algo similar
                 </Button>
               </div>
             </motion.div>
