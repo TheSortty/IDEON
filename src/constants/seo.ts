@@ -6,6 +6,8 @@
 // JSON-LD se escriben por separado, tarde o temprano se desincronizan y el
 // vínculo entre el dominio y las redes deja de consolidarse.
 
+import { WHATSAPP_NUMBER } from './contact';
+
 export const SITE_URL = 'https://ideon.ar';
 
 /** URL absoluta a partir de una ruta interna ('/', '/terminos-y-condiciones/'). */
@@ -47,7 +49,7 @@ export const SOCIAL_PROFILES: readonly SocialProfile[] = [
   {
     id: 'whatsapp',
     label: 'WhatsApp',
-    url: 'https://wa.me/5492617736266',
+    url: `https://wa.me/${WHATSAPP_NUMBER}`,
     isSameAs: false,
   },
   {

@@ -31,8 +31,11 @@
   <meta property="twitter:description" content="Creamos páginas web y sistemas pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Tu idea, nuestro desarrollo." />
   <meta property="twitter:image" content="https://ideon.ar/og-image.png" />
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://api.web3forms.com" />
+  <!-- Web3Forms recibe el formulario de contacto, pero recien cuando alguien lo
+       envia. Un preconnect abria una conexion en la carga inicial que la
+       mayoria de las visitas nunca usa (PageSpeed lo marcaba como conexion
+       desperdiciada); dns-prefetch adelanta solo el DNS, que sale casi gratis. -->
+  <link rel="dns-prefetch" href="https://api.web3forms.com" />
 
   <!-- Inter, self-hosted: el @font-face vive en src/index.css -->
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -71,6 +74,7 @@
         "slogan": "Impulsá tu negocio con tecnología a medida",
         "description": "Estudio de desarrollo de páginas web y sistemas a medida. Creamos webs y software pensados para ganar posicionamiento, ahorrar tiempo y aumentar la eficiencia operativa. Diseño, dominio y SSL incluidos.",
         "email": "contacto@ideon.ar",
+        "telephone": "+5492617736266",
         "foundingDate": "2025",
         "knowsLanguage": "es-AR",
         "address": {
@@ -101,6 +105,7 @@
           "@type": "ContactPoint",
           "contactType": "sales",
           "email": "contacto@ideon.ar",
+          "telephone": "+5492617736266",
           "areaServed": "AR",
           "availableLanguage": ["Spanish"]
         },

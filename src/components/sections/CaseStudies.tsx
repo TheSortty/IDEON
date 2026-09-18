@@ -7,12 +7,42 @@ import { openWhatsApp } from '../../constants/contact';
 
 // CASE STUDIES SECTION
 const homeImages: CarouselImage[] = [
-  { src: '/casos/home/home-01-coaching.webp', alt: 'Sitio público: sección de Coaching Individual, con agenda de primera sesión.' },
-  { src: '/casos/home/home-02-certificacion.webp', alt: 'Certificación en Coaching, con los avales institucionales a la vista.' },
-  { src: '/casos/home/home-03-coaches.webp', alt: 'Carrusel del equipo de coaches, con enlace directo a cada perfil.' },
-  { src: '/casos/home/home-04-campus-programa.webp', alt: 'Campus: vista del programa con módulos, talleres y progreso del alumno.' },
-  { src: '/casos/home/home-05-campus-clase.webp', alt: 'Campus: clase con video y temario completo del módulo al costado.' },
-  { src: '/casos/home/home-06-campus-admin.webp', alt: 'Panel de administración: gestión de cursos, módulos y equipo de coaches.' },
+  {
+    src: '/casos/home/home-01-coaching.webp',
+    srcSmall: '/casos/home/home-01-coaching-700.webp',
+    width: 1400,
+    alt: 'Sitio público: sección de Coaching Individual, con agenda de primera sesión.',
+  },
+  {
+    src: '/casos/home/home-02-certificacion.webp',
+    srcSmall: '/casos/home/home-02-certificacion-700.webp',
+    width: 1400,
+    alt: 'Certificación en Coaching, con los avales institucionales a la vista.',
+  },
+  {
+    src: '/casos/home/home-03-coaches.webp',
+    srcSmall: '/casos/home/home-03-coaches-700.webp',
+    width: 1166,
+    alt: 'Carrusel del equipo de coaches, con enlace directo a cada perfil.',
+  },
+  {
+    src: '/casos/home/home-04-campus-programa.webp',
+    srcSmall: '/casos/home/home-04-campus-programa-700.webp',
+    width: 1400,
+    alt: 'Campus: vista del programa con módulos, talleres y progreso del alumno.',
+  },
+  {
+    src: '/casos/home/home-05-campus-clase.webp',
+    srcSmall: '/casos/home/home-05-campus-clase-700.webp',
+    width: 1400,
+    alt: 'Campus: clase con video y temario completo del módulo al costado.',
+  },
+  {
+    src: '/casos/home/home-06-campus-admin.webp',
+    srcSmall: '/casos/home/home-06-campus-admin-700.webp',
+    width: 1324,
+    alt: 'Panel de administración: gestión de cursos, módulos y equipo de coaches.',
+  },
 ];
 
 const cases = [

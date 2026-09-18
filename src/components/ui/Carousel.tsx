@@ -4,7 +4,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 export type CarouselImage = {
   src: string;
   alt: string;
+  /** Variante angosta para pantallas chicas. */
+  srcSmall?: string;
+  /** Ancho intrinseco de `src`, para el descriptor del srcSet. */
+  width?: number;
 };
+
+// El carrusel ocupa el ancho de su tarjeta: en mobile, el viewport menos el
+// gutter del container (20px x2) y el padding de la tarjeta (32px x2); en lg,
+// donde la grilla pasa a dos columnas, unos 592px. Sin esto el navegador
+// asume 100vw y se baja la imagen grande igual.
+const SIZES = '(min-width: 1024px) 592px, calc(100vw - 104px)';
 
 const variants = {
   enter: (direction: number) => ({ x: direction > 0 ? '100%' : '-100%', opacity: 0 }),
@@ -38,6 +48,12 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
           <motion.img
             key={index}
             src={images[index].src}
+            srcSet={
+              images[index].srcSmall !== undefined && images[index].width !== undefined
+                ? `${images[index].srcSmall} 700w, ${images[index].src} ${images[index].width}w`
+                : undefined
+            }
+            sizes={images[index].srcSmall !== undefined ? SIZES : undefined}
             alt={images[index].alt}
             custom={direction}
             variants={variants}
