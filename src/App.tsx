@@ -22,16 +22,20 @@ import TallyModal from './components/modals/TallyModal';
 import HomePage from './pages/Home/HomePage';
 import TerminosPage from './pages/Legal/TerminosPage';
 import PoliticaPrivacidadPage from './pages/Legal/PoliticaPrivacidadPage';
+import ContactoExitosoPage from './pages/ContactoExitoso/ContactoExitosoPage';
 
 // Sitio sin librería de routing: alcanza con mirar el pathname una vez al
 // cargar. wrangler.jsonc ya sirve cualquier ruta como single-page-application,
-// así que /terminos-y-condiciones/ y /politica-de-privacidad/ llegan acá.
+// así que /terminos-y-condiciones/, /politica-de-privacidad/ y
+// /contacto-exitoso/ llegan acá.
 function getPage(pathname: string): React.ReactNode {
   switch (pathname.replace(/\/+$/, '')) {
     case '/terminos-y-condiciones':
       return <TerminosPage />;
     case '/politica-de-privacidad':
       return <PoliticaPrivacidadPage />;
+    case '/contacto-exitoso':
+      return <ContactoExitosoPage />;
     default:
       return <HomePage />;
   }

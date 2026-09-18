@@ -82,6 +82,13 @@ const ContactModal: React.FC = () => {
       const json = await res.json();
 
       if (json.success) {
+        // El popup de éxito se queda igual que siempre: lo que cambia es la URL
+        // debajo, con pushState (sin recargar) en vez de un window.location.href.
+        // /contacto-exitoso es la página que Google Ads / Meta / GA usan como
+        // conversión -- necesitan que la URL cambie de verdad para engancharse
+        // (por ejemplo con un trigger de "History Change" en GTM), pero no hace
+        // falta perder el modal para lograrlo.
+        window.history.pushState({}, '', '/contacto-exitoso');
         setSubmissionStatus('success');
       } else {
         setSubmissionStatus('error');
@@ -92,7 +99,18 @@ const ContactModal: React.FC = () => {
       setErrorMessage('Hubo un problema de conexión. Por favor, revisá tu internet e intentalo de nuevo.');
     }
   };
-  
+
+  // Si el cierre pasa por /contacto-exitoso, vuelve la URL a la home. Así el
+  // usuario no se queda "parado" en esa ruta mientras sigue navegando la SPA
+  // (y si recarga la página después de cerrar, no aterriza en la página de
+  // agradecimiento sin haber completado nada).
+  const handleClose = () => {
+    if (window.location.pathname === '/contacto-exitoso') {
+      window.history.pushState({}, '', '/');
+    }
+    closeModal();
+  };
+
   if (!isModalOpen) return null;
 
   const renderContent = () => {
@@ -108,7 +126,7 @@ const ContactModal: React.FC = () => {
               Gracias por contactarnos. Te responderemos a la brevedad.
             </p>
             <div className="mt-8">
-              <Button onClick={closeModal} className="w-full">
+              <Button onClick={handleClose} className="w-full">
                 Cerrar
               </Button>
             </div>
@@ -128,7 +146,7 @@ const ContactModal: React.FC = () => {
               <Button onClick={() => setSubmissionStatus('idle')} className="w-full">
                 Volver a intentar
               </Button>
-              <Button onClick={closeModal} variant="secondary" className="w-full">
+              <Button onClick={handleClose} variant="secondary" className="w-full">
                 Cerrar
               </Button>
             </div>
@@ -138,7 +156,7 @@ const ContactModal: React.FC = () => {
         return (
           <>
             <button 
-              onClick={closeModal}
+              onClick={handleClose}
               className="absolute top-4 right-4 p-2 rounded-full text-content-muted hover:bg-gray-200 dark:hover:bg-brand-surface/80 transition-colors"
               aria-label="Cerrar modal"
             >
@@ -214,7 +232,7 @@ const ContactModal: React.FC = () => {
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
-      onClick={closeModal}
+      onClick={handleClose}
     >
       <div 
         className="bg-[#f8f8f8] dark:bg-brand-surface rounded-2xl shadow-2xl p-8 w-full max-w-lg relative border border-gray-200 dark:border-accent/20 max-h-[90vh] overflow-y-auto"
