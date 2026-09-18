@@ -1,10 +1,13 @@
 // Identidad del sitio para SEO: URLs canónicas, perfiles sociales y los datos
 // que alimentan el marcado Schema (JSON-LD).
 //
-// Una sola fuente de verdad a propósito: Google cruza el `sameAs` del Schema
-// contra los links que realmente aparecen en la página. Si el footer y el
-// JSON-LD se escriben por separado, tarde o temprano se desincronizan y el
-// vínculo entre el dominio y las redes deja de consolidarse.
+// Google cruza el `sameAs` del JSON-LD contra los links que realmente
+// aparecen en la página, así que los dos tienen que decir lo mismo. El
+// `sameAs` vive en el <script type="application/ld+json"> de index.html, que
+// es HTML estático y no puede importar de acá: SI SE AGREGA O SE CAMBIA UNA
+// RED, HAY QUE TOCAR LOS DOS LUGARES. Acá viven los links que renderiza el
+// footer; index.html suma además la ficha de Google Business Profile, que no
+// se muestra en el footer.
 
 import { WHATSAPP_NUMBER } from './contact';
 
@@ -26,11 +29,6 @@ export interface SocialProfile {
   /** Se usa para el aria-label del link: "Instagram de IDEON". */
   label: string;
   url: string;
-  /**
-   * Si entra en el `sameAs` del Schema. WhatsApp queda afuera: es un canal de
-   * contacto, no un perfil oficial que identifique a la entidad.
-   */
-  isSameAs: boolean;
 }
 
 export const SOCIAL_PROFILES: readonly SocialProfile[] = [
@@ -38,29 +36,20 @@ export const SOCIAL_PROFILES: readonly SocialProfile[] = [
     id: 'facebook',
     label: 'Facebook',
     url: 'https://www.facebook.com/profile.php?id=61586983154521',
-    isSameAs: true,
   },
   {
     id: 'instagram',
     label: 'Instagram',
     url: 'https://www.instagram.com/ideon_ar/',
-    isSameAs: true,
   },
   {
     id: 'whatsapp',
     label: 'WhatsApp',
     url: `https://wa.me/${WHATSAPP_NUMBER}`,
-    isSameAs: false,
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
     url: 'https://www.linkedin.com/company/ideonar/',
-    isSameAs: true,
   },
 ];
-
-/** Perfiles oficiales que declaramos como `sameAs` en el JSON-LD. */
-export const SAME_AS_URLS: readonly string[] = SOCIAL_PROFILES.filter(
-  (profile) => profile.isSameAs,
-).map((profile) => profile.url);

@@ -24,9 +24,9 @@ const homeJsonLd = {
   '@type': ['WebPage', 'FAQPage'],
   '@id': `${SITE_URL}/#webpage`,
   url: `${SITE_URL}/`,
-  name: 'IDEON - Impulsá tu negocio con tecnología a medida',
+  name: 'IDEON | Desarrollo web y software a medida.',
   description:
-    'Creamos páginas web y sistemas a medida pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Diseño, dominio y SSL incluidos.',
+    'Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios.',
   inLanguage: 'es-AR',
   isPartOf: { '@id': WEBSITE_ID },
   about: { '@id': ORGANIZATION_ID },
