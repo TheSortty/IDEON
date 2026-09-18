@@ -73,7 +73,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(-1)}
               aria-label="Imagen anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent-solid transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow />
             </button>
@@ -81,7 +81,7 @@ const Carousel: React.FC<{ images: CarouselImage[] }> = ({ images }) => {
               type="button"
               onClick={() => paginate(1)}
               aria-label="Imagen siguiente"
-              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/60 text-white hover:bg-accent-solid transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <Arrow flipped />
             </button>

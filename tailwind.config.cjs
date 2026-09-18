@@ -27,6 +27,10 @@ module.exports = {
                 'content-muted': 'rgb(var(--text-muted) / <alpha-value>)',
                 'accent': 'rgb(var(--accent) / <alpha-value>)',
                 'accent-hover': 'rgb(var(--accent-hover) / <alpha-value>)',
+                // Para superficies rellenas que llevan texto encima. Ver la
+                // nota sobre contraste en src/index.css.
+                'accent-solid': 'rgb(var(--accent-solid) / <alpha-value>)',
+                'accent-solid-hover': 'rgb(var(--accent-solid-hover) / <alpha-value>)',
                 'accent-ink': 'rgb(var(--accent-ink) / <alpha-value>)',
             },
             borderColor: {

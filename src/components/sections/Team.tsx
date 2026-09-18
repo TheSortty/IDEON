@@ -193,7 +193,7 @@ const Team: React.FC = () => {
                                 goTo(activeIndex + 1);
                               }}
                               aria-label="Siguiente integrante"
-                              className="flex items-center justify-center h-9 w-9 rounded-full bg-accent text-white hover:bg-accent-hover transition-colors"
+                              className="flex items-center justify-center h-9 w-9 rounded-full bg-accent-solid text-white hover:bg-accent-solid-hover transition-colors"
                             >
                               →
                             </button>

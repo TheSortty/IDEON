@@ -56,7 +56,7 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService"],
         "@id": "https://ideon.ar/#organization",
         "name": "IDEON",
         "alternateName": ["Ideon", "IDEON Argentina"],
@@ -72,6 +72,7 @@
         },
         "image": { "@id": "https://ideon.ar/#logo" },
         "slogan": "Impulsá tu negocio con tecnología a medida",
+        "priceRange": "$$",
         "description": "Estudio de desarrollo de páginas web y sistemas a medida. Creamos webs y software pensados para ganar posicionamiento, ahorrar tiempo y aumentar la eficiencia operativa. Diseño, dominio y SSL incluidos.",
         "email": "contacto@ideon.ar",
         "telephone": "+5492617736266",
@@ -83,6 +84,7 @@
           "addressRegion": "Mendoza",
           "addressCountry": "AR"
         },
+        "isicV4": "6201",
         "areaServed": [
           { "@type": "Country", "name": "Argentina" },
           { "@type": "AdministrativeArea", "name": "Mendoza" }

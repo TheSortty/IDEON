@@ -30,14 +30,14 @@ const PlanCard = ({ plan, isFeatured }: { plan: any; isFeatured?: boolean }) => 
       className={`surface-card p-8 flex flex-col relative overflow-hidden transition-[border-color,box-shadow] duration-medium ease-out-token ${isFeatured ? 'border-accent shadow-[0_0_40px_rgba(212,0,255,0.3)] ring-2 ring-accent/50 lg:scale-105 z-10' : 'hover:border-line-strong'}`}
     >
       {isFeatured && (
-        <div className="absolute top-4 right-[-34px] bg-accent text-white text-xs font-bold px-8 py-2 rotate-45 z-10 shadow-lg">
+        <div className="absolute top-4 right-[-34px] bg-accent-solid text-white text-xs font-bold px-8 py-2 rotate-45 z-10 shadow-lg">
           + Elegido
         </div>
       )}
 
       <div className="flex items-center justify-start mb-2 gap-3">
         <h3 className="text-4xl font-extrabold text-content">{plan.name}</h3>
-        <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full ${isFeatured ? 'bg-accent text-white' : 'bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-gray-200'}`}>
+        <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full ${isFeatured ? 'bg-accent-solid text-white' : 'bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-gray-200'}`}>
           {plan.tag}
         </span>
       </div>
