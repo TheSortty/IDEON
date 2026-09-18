@@ -26,6 +26,13 @@
   <meta property="og:title" content="IDEON | Desarrollo web y software a medida." />
   <meta property="og:description" content="Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios." />
   <meta property="og:image" content="https://ideon.ar/og-image.png" />
+  <!-- Declarar las medidas evita que WhatsApp y Facebook tengan que bajar la
+       imagen para saber si entra como tarjeta grande: sin esto, la primera
+       vez que se comparte el link suele salir la miniatura chica. -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="IDEON — desarrollo web y software a medida" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="IDEON" />
 
@@ -35,6 +42,7 @@
   <meta property="twitter:title" content="IDEON | Desarrollo web y software a medida." />
   <meta property="twitter:description" content="Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios." />
   <meta property="twitter:image" content="https://ideon.ar/og-image.png" />
+  <meta property="twitter:image:alt" content="IDEON — desarrollo web y software a medida" />
 
   <!-- Web3Forms recibe el formulario de contacto, pero recien cuando alguien lo
        envia. Un preconnect abria una conexion en la carga inicial que la
@@ -69,8 +77,8 @@
         "logo": {
           "@type": "ImageObject",
           "@id": "https://ideon.ar/#logo",
-          "url": "https://ideon.ar/logo.svg",
-          "contentUrl": "https://ideon.ar/logo.svg",
+          "url": "https://ideon.ar/logo.png",
+          "contentUrl": "https://ideon.ar/logo.png",
           "width": 512,
           "height": 512,
           "caption": "IDEON"
