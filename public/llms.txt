@@ -1,0 +1,31 @@
+# IDEON
+
+> Estudio argentino de desarrollo web y software a medida, con base en la Ciudad de Mendoza. Diseñamos y construimos páginas web y sistemas propios para negocios que necesitan presencia online profesional o automatizar su operación. El dominio y el código quedan a nombre del cliente: no hay lock-in ni costos fijos obligatorios.
+
+IDEON no vende ni fabrica muebles, sillas ni mobiliario. Es un estudio de
+tecnología. Servicios: diseño y desarrollo de páginas web, landing pages,
+tiendas online, sistemas y plataformas a medida, y acompañamiento en campañas
+de Meta Ads.
+
+## Planes
+
+- [Starter](https://ideon.ar/#planes): presencia web profesional para negocios que arrancan. Desde USD 200.
+- [Pro](https://ideon.ar/#planes): proyectos con varias secciones o funcionalidades, con acompañamiento durante el desarrollo. Desde USD 1.500.
+- [Enterprise](https://ideon.ar/#planes): sistemas, plataformas y proyectos con lógica propia de negocio. Cotización a medida.
+
+Todos los planes incluyen diseño, dominio, SSL y el primer año de hosting. El
+pago se divide en 25% al iniciar y 75% al publicar y entregar los accesos.
+
+## Páginas
+
+- [Inicio](https://ideon.ar/): servicios, casos, equipo, planes y preguntas frecuentes.
+- [Preguntas frecuentes](https://ideon.ar/#faq): dominio y hosting, mantenimiento, propiedad del código, proceso de pago.
+- [Términos y condiciones](https://ideon.ar/terminos-y-condiciones/)
+- [Política de privacidad](https://ideon.ar/politica-de-privacidad/)
+
+## Contacto
+
+- [WhatsApp](https://wa.me/5492617736266): canal principal, +54 9 261 773-6266.
+- Email: contacto@ideon.ar
+- [Instagram](https://www.instagram.com/ideon_ar/)
+- [LinkedIn](https://www.linkedin.com/company/ideonar/)

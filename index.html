@@ -26,6 +26,13 @@
   <meta property="og:title" content="IDEON | Desarrollo web y software a medida." />
   <meta property="og:description" content="Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios." />
   <meta property="og:image" content="https://ideon.ar/og-image.png" />
+  <!-- Declarar las medidas evita que WhatsApp y Facebook tengan que bajar la
+       imagen para saber si entra como tarjeta grande: sin esto, la primera
+       vez que se comparte el link suele salir la miniatura chica. -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="IDEON — desarrollo web y software a medida" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="IDEON" />
 
@@ -35,40 +42,173 @@
   <meta property="twitter:title" content="IDEON | Desarrollo web y software a medida." />
   <meta property="twitter:description" content="Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios." />
   <meta property="twitter:image" content="https://ideon.ar/og-image.png" />
+  <meta property="twitter:image:alt" content="IDEON — desarrollo web y software a medida" />
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://api.web3forms.com" />
+  <!-- Web3Forms recibe el formulario de contacto, pero recien cuando alguien lo
+       envia. Un preconnect abria una conexion en la carga inicial que la
+       mayoria de las visitas nunca usa (PageSpeed lo marcaba como conexion
+       desperdiciada); dns-prefetch adelanta solo el DNS, que sale casi gratis. -->
+  <link rel="dns-prefetch" href="https://api.web3forms.com" />
 
   <!-- Inter, self-hosted: el @font-face vive en src/index.css -->
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- JSON-LD Structured Data -->
+  <!--
+    Grafo de entidades del sitio. Es estático porque describe a IDEON y al
+    dominio, no a una página en particular: vale igual en la home que en los
+    legales. El marcado que sí depende de la ruta (FAQPage, WebPage de cada
+    legal) se inyecta desde React con el hook useJsonLd.
+
+    `sameAs` es lo que ata este dominio a las redes oficiales: si se agrega o
+    se cambia una red, actualizar TAMBIEN src/constants/seo.ts, que es de
+    donde el footer saca los links.
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "IDEON",
-    "url": "https://ideon.ar",
-    "description": "Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios.",
-    "email": "contacto@ideon.ar",
-    "sameAs": [],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "email": "contacto@ideon.ar",
-      "availableLanguage": ["Spanish"]
-    },
-    "makesOffer": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "USD",
-      "lowPrice": "200",
-      "offerCount": "3",
-      "description": "Diseño y desarrollo de páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio."
-    },
-    "employee": [
-      { "@type": "Person", "name": "Celeste Codaro", "jobTitle": "CMO" },
-      { "@type": "Person", "name": "Angelo", "jobTitle": "CEO" },
-      { "@type": "Person", "name": "Gonzalo", "jobTitle": "CTO" }
+    "@graph": [
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://ideon.ar/#organization",
+        "name": "IDEON",
+        "alternateName": ["Ideon", "IDEON Argentina"],
+        "url": "https://ideon.ar/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://ideon.ar/#logo",
+          "url": "https://ideon.ar/logo.png",
+          "contentUrl": "https://ideon.ar/logo.png",
+          "width": 512,
+          "height": 512,
+          "caption": "IDEON"
+        },
+        "image": { "@id": "https://ideon.ar/#logo" },
+        "slogan": "Impulsá tu negocio con tecnología a medida",
+        "priceRange": "$$",
+        "description": "Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios.",
+        "email": "contacto@ideon.ar",
+        "telephone": "+5492617736266",
+        "foundingDate": "2025",
+        "knowsLanguage": "es-AR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad de Mendoza",
+          "addressRegion": "Mendoza",
+          "addressCountry": "AR"
+        },
+        "isicV4": "6201",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "22:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "00:00",
+            "closes": "00:00"
+          }
+        ],
+        "areaServed": [
+          { "@type": "Country", "name": "Argentina" },
+          { "@type": "AdministrativeArea", "name": "Mendoza" }
+        ],
+        "knowsAbout": [
+          "Desarrollo web a medida",
+          "Desarrollo de software a medida",
+          "Diseño de páginas web",
+          "Landing pages",
+          "Tiendas online",
+          "CRM a medida",
+          "Posicionamiento web (SEO)",
+          "Meta Ads"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61586983154521",
+          "https://www.instagram.com/ideon_ar/",
+          "https://www.linkedin.com/company/ideonar/",
+          "https://www.google.com/search?kgmid=/g/11zyt4cbfm"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "contacto@ideon.ar",
+          "telephone": "+5492617736266",
+          "areaServed": "AR",
+          "availableLanguage": ["Spanish"]
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Angelo Terranova",
+          "jobTitle": "CEO"
+        },
+        "employee": [
+          { "@type": "Person", "name": "Angelo Terranova", "jobTitle": "CEO" },
+          { "@type": "Person", "name": "Gonzalo Burgia", "jobTitle": "CTO" },
+          { "@type": "Person", "name": "Celeste Codaro", "jobTitle": "CMO" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Planes de desarrollo web y software a medida",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Starter",
+              "description": "Para negocios que están arrancando y necesitan una presencia web profesional, clara y lista para recibir clientes.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "minPrice": "200"
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Diseño y desarrollo de página web",
+                "serviceType": "Desarrollo web",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Pro",
+              "description": "Para proyectos con más de una sección o funcionalidad, que necesitan acompañamiento durante el desarrollo.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "minPrice": "1500"
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Desarrollo web multipágina con funcionalidades",
+                "serviceType": "Desarrollo web",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Enterprise",
+              "description": "Para sistemas a medida, plataformas o proyectos con lógica propia de negocio.",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Desarrollo de sistemas y plataformas a medida",
+                "serviceType": "Desarrollo de software a medida",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ideon.ar/#website",
+        "url": "https://ideon.ar/",
+        "name": "IDEON",
+        "description": "Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios.",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://ideon.ar/#organization" }
+      }
     ]
   }
   </script>

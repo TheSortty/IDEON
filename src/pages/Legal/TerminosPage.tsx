@@ -7,6 +7,8 @@ const TerminosPage: React.FC = () => {
       title="Términos y Condiciones de Servicio"
       metaDescription="Condiciones que regulan la contratación de servicios de desarrollo web y de software de IDEON."
       lastUpdated="7 de septiembre de 2026"
+      path="/terminos-y-condiciones/"
+      lastUpdatedIso="2026-09-07"
     >
       <p>
         Las condiciones que regulan la contratación de servicios de diseño, desarrollo web y desarrollo de software a
