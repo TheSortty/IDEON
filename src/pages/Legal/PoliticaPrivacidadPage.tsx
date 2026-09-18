@@ -7,6 +7,8 @@ const PoliticaPrivacidadPage: React.FC = () => {
       title="Política de Privacidad y de Cookies"
       metaDescription="Cómo IDEON trata, protege y conserva los datos personales de quienes contactan o contratan sus servicios."
       lastUpdated="7 de septiembre de 2026"
+      path="/politica-de-privacidad/"
+      lastUpdatedIso="2026-09-07"
     >
       <p>
         Cómo IDEON trata, protege y conserva los datos personales de quienes lo contactan o contratan sus servicios.

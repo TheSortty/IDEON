@@ -38,32 +38,141 @@
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- JSON-LD Structured Data -->
+  <!--
+    Grafo de entidades del sitio. Es estático porque describe a IDEON y al
+    dominio, no a una página en particular: vale igual en la home que en los
+    legales. El marcado que sí depende de la ruta (FAQPage, WebPage de cada
+    legal) se inyecta desde React con el hook useJsonLd.
+
+    `sameAs` es lo que ata este dominio a las redes oficiales: si se agrega o
+    se cambia una red, actualizar TAMBIEN src/constants/seo.ts, que es de
+    donde el footer saca los links.
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "IDEON",
-    "url": "https://ideon.ar",
-    "description": "Creamos páginas web y sistemas a medida pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Diseño, dominio y SSL incluidos.",
-    "email": "contacto@ideon.ar",
-    "sameAs": [],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "sales",
-      "email": "contacto@ideon.ar",
-      "availableLanguage": ["Spanish"]
-    },
-    "makesOffer": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "USD",
-      "lowPrice": "200",
-      "offerCount": "3",
-      "description": "Desarrollo de páginas web y sistemas a medida. Diseño, dominio y SSL incluidos."
-    },
-    "employee": [
-      { "@type": "Person", "name": "Celeste Codaro", "jobTitle": "CMO" },
-      { "@type": "Person", "name": "Angelo", "jobTitle": "CEO" },
-      { "@type": "Person", "name": "Gonzalo", "jobTitle": "CTO" }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ideon.ar/#organization",
+        "name": "IDEON",
+        "alternateName": ["Ideon", "IDEON Argentina"],
+        "url": "https://ideon.ar/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://ideon.ar/#logo",
+          "url": "https://ideon.ar/logo.svg",
+          "contentUrl": "https://ideon.ar/logo.svg",
+          "width": 512,
+          "height": 512,
+          "caption": "IDEON"
+        },
+        "image": { "@id": "https://ideon.ar/#logo" },
+        "slogan": "Impulsá tu negocio con tecnología a medida",
+        "description": "Estudio de desarrollo de páginas web y sistemas a medida. Creamos webs y software pensados para ganar posicionamiento, ahorrar tiempo y aumentar la eficiencia operativa. Diseño, dominio y SSL incluidos.",
+        "email": "contacto@ideon.ar",
+        "foundingDate": "2025",
+        "knowsLanguage": "es-AR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ciudad de Mendoza",
+          "addressRegion": "Mendoza",
+          "addressCountry": "AR"
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "Argentina" },
+          { "@type": "AdministrativeArea", "name": "Mendoza" }
+        ],
+        "knowsAbout": [
+          "Desarrollo web a medida",
+          "Desarrollo de software a medida",
+          "Diseño de páginas web",
+          "Landing pages",
+          "Tiendas online",
+          "Posicionamiento web (SEO)",
+          "Meta Ads"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61586983154521",
+          "https://www.instagram.com/ideon_ar/",
+          "https://www.linkedin.com/company/ideonar/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "contacto@ideon.ar",
+          "areaServed": "AR",
+          "availableLanguage": ["Spanish"]
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Angelo Terranova",
+          "jobTitle": "CEO"
+        },
+        "employee": [
+          { "@type": "Person", "name": "Angelo Terranova", "jobTitle": "CEO" },
+          { "@type": "Person", "name": "Gonzalo Burgia", "jobTitle": "CTO" },
+          { "@type": "Person", "name": "Celeste Codaro", "jobTitle": "CMO" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Planes de desarrollo web y software a medida",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Starter",
+              "description": "Para negocios que están arrancando y necesitan una presencia web profesional, clara y lista para recibir clientes.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "minPrice": "200"
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Diseño y desarrollo de página web",
+                "serviceType": "Desarrollo web",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Pro",
+              "description": "Para proyectos con más de una sección o funcionalidad, que necesitan acompañamiento durante el desarrollo.",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "minPrice": "1500"
+              },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Desarrollo web multipágina con funcionalidades",
+                "serviceType": "Desarrollo web",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Enterprise",
+              "description": "Para sistemas a medida, plataformas o proyectos con lógica propia de negocio.",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Desarrollo de sistemas y plataformas a medida",
+                "serviceType": "Desarrollo de software a medida",
+                "provider": { "@id": "https://ideon.ar/#organization" }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ideon.ar/#website",
+        "url": "https://ideon.ar/",
+        "name": "IDEON",
+        "description": "Creamos páginas web y sistemas a medida pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa.",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://ideon.ar/#organization" }
+      }
     ]
   }
   </script>

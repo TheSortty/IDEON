@@ -1,5 +1,15 @@
 import React from 'react';
 import { FacebookIcon, InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/SocialIcons';
+import { SOCIAL_PROFILES, type SocialId } from '../../constants/seo';
+
+// Las URLs de las redes viven en constants/seo.ts porque el JSON-LD las
+// publica como `sameAs`. Acá solo se resuelve qué ícono le toca a cada una.
+const SOCIAL_ICONS: Record<SocialId, React.FC<{ className?: string }>> = {
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  whatsapp: WhatsAppIcon,
+  linkedin: LinkedInIcon,
+};
 
 // FOOTER SECTION
 const Footer: React.FC = () => {
@@ -50,42 +60,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold uppercase tracking-wider text-content mb-4">Seguinos</h4>
             <div className="flex items-center justify-center md:justify-start gap-4">
-              <a
-                href="https://www.facebook.com/profile.php?id=61586983154521"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook de IDEON"
-                className="text-content-muted hover:text-accent transition-colors"
-              >
-                <FacebookIcon className="w-6 h-6" />
-              </a>
-              <a
-                href="https://www.instagram.com/ideon_ar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram de IDEON"
-                className="text-content-muted hover:text-accent transition-colors"
-              >
-                <InstagramIcon className="w-6 h-6" />
-              </a>
-              <a
-                href="https://wa.me/5492617736266"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp de IDEON"
-                className="text-content-muted hover:text-accent transition-colors"
-              >
-                <WhatsAppIcon className="w-6 h-6" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/ideonar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn de IDEON"
-                className="text-content-muted hover:text-accent transition-colors"
-              >
-                <LinkedInIcon className="w-6 h-6" />
-              </a>
+              {SOCIAL_PROFILES.map(({ id, label, url }) => {
+                const Icon = SOCIAL_ICONS[id];
+                return (
+                  <a
+                    key={id}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} de IDEON`}
+                    className="text-content-muted hover:text-accent transition-colors"
+                  >
+                    <Icon className="w-6 h-6" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

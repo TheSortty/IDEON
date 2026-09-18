@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Logotipo de IDEON en cuadrado, para el `logo` del Schema Organization
+  (lo que Google puede mostrar en el Knowledge Panel) y para cualquier lugar
+  que pida una marca cuadrada.
+
+  Reproduce el wordmark que ya usan el Header y el Footer: "IDE" en el texto
+  principal y "ON" en el magenta de marca, sobre el fondo violeta oscuro.
+  Los colores son los tokens de tailwind.config.cjs, escritos en hexa porque
+  un SVG estático no pasa por Tailwind.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="IDEON">
+  <title>IDEON</title>
+  <rect width="512" height="512" rx="96" fill="#0C022D"/>
+  <text
+    x="256" y="256"
+    text-anchor="middle" dominant-baseline="central"
+    font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="104" font-weight="800" letter-spacing="2"
+  ><tspan fill="#F8F8F8">IDE</tspan><tspan fill="#D400FF">ON</tspan></text>
+</svg>

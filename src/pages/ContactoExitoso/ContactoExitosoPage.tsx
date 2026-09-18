@@ -14,9 +14,13 @@ const SuccessIcon: React.FC = () => (
 // modal), sirve como página de conversión para pixeles/tags de Google Ads,
 // Meta, etc. que se disparan por pageview en una ruta específica.
 const ContactoExitosoPage: React.FC = () => {
+  // noindex: es una página de gracias, no tiene nada que buscar nadie desde
+  // Google y aparecer en los resultados solo ensucia. `follow` para que igual
+  // siga los links de vuelta al sitio. Tampoco está en el sitemap.
   useDocumentMeta(
     'Mensaje enviado – IDEON',
-    'Recibimos tu consulta. El equipo de IDEON te va a responder a la brevedad con una cotización a medida.'
+    'Recibimos tu consulta. El equipo de IDEON te va a responder a la brevedad con una cotización a medida.',
+    { canonicalPath: '/contacto-exitoso/', robots: 'noindex, follow' }
   );
 
   return (
