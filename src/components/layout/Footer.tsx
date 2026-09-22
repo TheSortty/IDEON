@@ -40,8 +40,15 @@ const Footer: React.FC = () => {
             <h3 className="text-3xl font-extrabold text-content">
               IDE<span className="text-accent">ON</span>
             </h3>
+            {/* data-nosnippet: Google venia armando el snippet de la home con
+                ESTE parrafo en lugar de usar el <meta name="description">.
+                El atributo le prohibe usar el texto que envuelve para el
+                snippet. Google lo soporta en <span>, <div> y <section>, no en
+                <p>, de ahi el span. */}
             <p className="mt-4 text-content-muted leading-relaxed">
-              Ideon está conformado por especialistas en desarrollo, atención al cliente y marketing digital, unidos para crear webs y sistemas a medida — claros, cuidados y sin dependencias.
+              <span data-nosnippet>
+                Ideon está conformado por especialistas en desarrollo, atención al cliente y marketing digital, unidos para crear webs y sistemas a medida — claros, cuidados y sin dependencias.
+              </span>
             </p>
           </div>
           <div>
