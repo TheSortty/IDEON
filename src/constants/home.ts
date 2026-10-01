@@ -3,13 +3,14 @@
 
 export const HERO = {
   eyebrow: 'Diseño + desarrollo + estrategia',
-  // El H1 dice qué hacemos, para quién y dónde: es lo primero que lee la
-  // visita y lo que más pesa para Google. Las dos líneas se renderizan por
-  // separado para que la segunda lleve el degradado.
-  titleLine1: 'Páginas web, tiendas online y sistemas a medida,',
-  titleLine2: 'desde Mendoza.',
+  // El H1 es el slogan de marca (el mismo del Schema en index.html). Como no
+  // dice qué hacemos, el subtítulo nombra los servicios con las palabras que
+  // la gente busca. Las dos líneas del H1 se renderizan por separado para que
+  // la segunda lleve el degradado.
+  titleLine1: 'Impulsá tu negocio con tecnología a medida.',
+  titleLine2: 'Tu idea, nuestro desarrollo.',
   subtitle:
-    'Para negocios de todo el país, desde USD 200 con diseño, dominio y SSL incluidos. El código y el dominio quedan a tu nombre: sin permanencia ni costos fijos obligatorios.',
+    'Somos un estudio argentino que diseña y desarrolla páginas web, tiendas online y sistemas para negocios de todo el país. Y todo lo que creamos queda a tu nombre.',
   primaryCta: 'Pedí tu cotización por WhatsApp',
   secondaryCta: 'Ver proyectos',
 } as const;
