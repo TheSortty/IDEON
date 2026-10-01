@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { revealContainer, revealItem, revealViewport, revealTransition } from '../ui/motion';
+import { BENEFITS, type BenefitIcon } from '../../constants/home';
 
 // SVG ICONS
 const iconClass = "w-5 h-5 text-accent";
@@ -11,70 +12,46 @@ const IconDiseno: React.FC = () => (
   </svg>
 );
 
-const IconAsesoramiento: React.FC = () => (
-  <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-  </svg>
-);
-
 const IconProyecto: React.FC = () => (
   <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
   </svg>
 );
 
-const IconCasos: React.FC = () => (
-  <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-  </svg>
-);
-
-const IconEntrega: React.FC = () => (
+const IconPropiedad: React.FC = () => (
   <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
   </svg>
 );
 
-const IconCrecer: React.FC = () => (
+const IconPauta: React.FC = () => (
   <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
   </svg>
 );
 
-// BENEFITS SECTION
-const benefits = [
-  {
-    icon: <IconDiseno />,
-    title: 'Diseño incluido',
-    description: 'Si tenés un branding lo seguimos, pero si no, lo creamos.',
-  },
-  {
-    icon: <IconAsesoramiento />,
-    title: 'Asesoramiento',
-    description: 'Sesiones de acompañamiento y de feedbacks.',
-  },
-  {
-    icon: <IconProyecto />,
-    title: 'Proyecto claro',
-    description: 'Plan detallado con fechas, valores y condiciones.',
-  },
-  {
-    icon: <IconCasos />,
-    title: 'Casos de éxito',
-    description: 'Desarrollos reales a la vista, que generan valor y crecimiento.',
-  },
-  {
-    icon: <IconEntrega />,
-    title: 'Entrega total',
-    description: 'Toda entrega es tuya. Y seguimos acompañándote.',
-  },
-  {
-    icon: <IconCrecer />,
-    title: 'Ideamos para crecer',
-    description: 'En visitas, en clientes, en productividad y en tecnología.',
-  },
-];
+const IconLibertad: React.FC = () => (
+  <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>
+);
+
+const IconPago: React.FC = () => (
+  <svg className={iconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+  </svg>
+);
+
+// El copy de cada tarjeta vive en src/constants/home.ts; acá solo se elige
+// el ícono que le corresponde.
+const ICONS: Record<BenefitIcon, React.FC> = {
+  diseno: IconDiseno,
+  propiedad: IconPropiedad,
+  libertad: IconLibertad,
+  proyecto: IconProyecto,
+  pago: IconPago,
+  pauta: IconPauta,
+};
 
 const Benefits: React.FC = () => {
   return (
@@ -100,21 +77,24 @@ const Benefits: React.FC = () => {
           viewport={revealViewport}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {benefits.map((benefit) => (
-            <motion.div
-              key={benefit.title}
-              variants={revealItem}
-              className="surface-card px-6 py-4 flex items-start gap-4 group hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
-            >
-              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-fast ease-out-token">
-                {benefit.icon}
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-content">{benefit.title}</h3>
-                <p className="mt-1 text-sm leading-snug text-content-muted">{benefit.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          {BENEFITS.map((benefit) => {
+            const Icon = ICONS[benefit.icon];
+            return (
+              <motion.div
+                key={benefit.title}
+                variants={revealItem}
+                className="surface-card px-6 py-4 flex items-start gap-4 group hover:border-line-strong hover:-translate-y-1 transition-[transform,border-color] duration-medium ease-out-token"
+              >
+                <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 dark:bg-brand-background/50 border border-accent/20 group-hover:scale-110 transition-transform duration-fast ease-out-token">
+                  <Icon />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-content">{benefit.title}</h3>
+                  <p className="mt-1 text-sm leading-snug text-content-muted">{benefit.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -10,6 +10,14 @@ export const CONTACT_EMAIL = 'contacto@ideon.ar';
 export const whatsappUrl = (message: string): string =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
+// Mensajes precargados de los CTA generales. Cada uno dice desde dónde
+// escribe la persona, así la consulta llega con contexto y se sabe qué botón
+// la generó.
+export const WHATSAPP_MESSAGES = {
+  hero: 'Hola IDEON, vengo de la web y quiero cotizar un proyecto:',
+  floating: 'Hola IDEON, vengo de la web y tengo una consulta:',
+} as const;
+
 export const openWhatsApp = (message: string): void => {
   window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
 };
