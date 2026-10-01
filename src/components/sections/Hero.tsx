@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
+import { HERO } from '../../constants/home';
+import { openWhatsApp, WHATSAPP_MESSAGES } from '../../constants/contact';
 
 // HERO SECTION
 const Hero: React.FC = () => {
@@ -44,16 +46,18 @@ const Hero: React.FC = () => {
             className="lg:col-span-6 text-center lg:text-left"
           >
             <p className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-accent mb-6">
-              Diseño + desarrollo + estrategia
+              {HERO.eyebrow}
             </p>
             <h1 className="font-extrabold text-content">
-              <span className="block">Impulsá tu negocio con tecnología a medida.</span>
-              <span className="block text-gradient mt-2">Tu idea, nuestro desarrollo.</span>
+              <span className="block">{HERO.titleLine1}</span>
+              <span className="block text-gradient mt-2">{HERO.titleLine2}</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-content-muted max-w-xl mx-auto lg:mx-0">
-              Creamos páginas web y sistemas pensados para ganar posicionamiento, ahorrar tiempo y aumentar eficiencia operativa. Ideas claras y asesoramiento de calidad.
+              {HERO.subtitle}
             </p>
-            <div className="mt-8 flex justify-center lg:justify-start">
+            {/* El CTA principal lleva directo a WhatsApp, que es donde se
+                concreta el contacto; ver los casos queda como secundario. */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -61,11 +65,18 @@ const Hero: React.FC = () => {
               >
                 <Button
                   className="w-full sm:w-auto shadow-[0_0_20px_rgba(212,0,255,0.5)] hover:shadow-[0_0_30px_rgba(212,0,255,0.7)] transition-shadow duration-200"
-                  onClick={handleScrollToCases}
+                  onClick={() => openWhatsApp(WHATSAPP_MESSAGES.hero)}
                 >
-                  Consultar proyectos →
+                  {HERO.primaryCta} →
                 </Button>
               </motion.div>
+              <Button
+                variant="outline"
+                className="w-full sm:w-auto"
+                onClick={handleScrollToCases}
+              >
+                {HERO.secondaryCta}
+              </Button>
             </div>
           </motion.div>
 

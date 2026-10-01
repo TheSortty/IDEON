@@ -9,19 +9,10 @@ import { revealContainer, revealItem, revealViewport } from '../ui/motion';
 const PlanCard = ({ plan, isFeatured }: { plan: any; isFeatured?: boolean }) => {
   const { openModal } = useModal();
 
-  const handleChoosePlan = () => {
-    const targetElement = document.getElementById('contacto');
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-      // Wait for the scroll animation to be noticeable before opening the modal
-      setTimeout(() => {
-        openModal(plan.name);
-      }, 700);
-    } else {
-      // Fallback if the element isn't found for some reason
-      openModal(plan.name);
-    }
-  };
+  // El formulario abre en el acto, con el plan ya elegido. Antes se
+  // scrolleaba hasta #contacto y se esperaban 700 ms: la demora se sentía
+  // como un botón que no respondía.
+  const handleChoosePlan = () => openModal(plan.name);
 
   return (
     <motion.div
