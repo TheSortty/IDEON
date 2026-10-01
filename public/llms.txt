@@ -14,7 +14,9 @@ de Meta Ads.
 - [Enterprise](https://ideon.ar/#planes): sistemas, plataformas y proyectos con lógica propia de negocio. Cotización a medida.
 
 Todos los planes incluyen diseño, dominio, SSL y el primer año de hosting. El
-pago se divide en 25% al iniciar y 75% al publicar y entregar los accesos.
+esquema de pagos se arma según el alcance y los tiempos de cada proyecto: lo
+habitual es un anticipo para arrancar y el resto al publicar y entregar los
+accesos.
 
 ## Páginas
 

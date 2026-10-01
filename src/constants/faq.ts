@@ -40,6 +40,6 @@ export const FAQS: readonly Faq[] = [
   },
   {
     question: '¿Cómo es el proceso de pago?',
-    answer: 'El pago se divide en dos partes: 25% para iniciar el proyecto y 75% al publicar la web y entregar todos los accesos.',
+    answer: 'Depende del proyecto. Lo habitual es un anticipo para arrancar y el resto al publicar y entregar los accesos, pero armamos el esquema según el alcance y los tiempos de cada proyecto.',
   },
 ];
