@@ -48,8 +48,8 @@ export const BENEFITS: readonly Benefit[] = [
   },
   {
     icon: 'pago',
-    title: 'Pagás en dos partes',
-    description: '25% para arrancar y 75% recién cuando la web está publicada y tenés todos los accesos.',
+    title: 'Plan de pagos a medida',
+    description: 'Armamos el esquema de pagos según el alcance y los tiempos de tu proyecto.',
   },
   {
     icon: 'pauta',
