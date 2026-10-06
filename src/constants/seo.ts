@@ -35,7 +35,7 @@ export const SOCIAL_PROFILES: readonly SocialProfile[] = [
   {
     id: 'facebook',
     label: 'Facebook',
-    url: 'https://www.facebook.com/profile.php?id=61586983154521',
+    url: 'https://www.facebook.com/profile.php?id=61590141735393',
   },
   {
     id: 'instagram',
