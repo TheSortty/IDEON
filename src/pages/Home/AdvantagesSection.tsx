@@ -42,8 +42,8 @@ const ICONS: Record<AdvantageIcon, React.ReactNode> = {
   ),
 };
 
-// Recursos C + D (decisión 4): luz que sigue al cursor, borde con degradado,
-// textura de fondo alternada y número grande en contorno.
+// Recursos C + D (decisión 4): luz que sigue al cursor, borde con degradado y
+// textura de fondo alternada. Sin números de fondo (pedido del 08/11).
 const TEXTURES = ['dots', 'grid'] as const;
 
 const AdvantagesSection: React.FC = () => {
@@ -67,7 +67,6 @@ const AdvantagesSection: React.FC = () => {
               <SpotlightCard
                 key={item.title}
                 texture={TEXTURES[i % 2]}
-                number={String(i + 1).padStart(2, '0')}
                 className="p-7"
               >
                 <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[14px] border border-accent/35 bg-accent/15 text-accent">

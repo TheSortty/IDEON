@@ -48,8 +48,11 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
       `/preguntas/` (F). Mientras Nosotros, Preguntas y Contacto no existan, sus
       links no se muestran; Cotizar lleva a WhatsApp; los casos llevan al sitio
       real del cliente. `llms.txt`: volver a sumar Preguntas frecuentes en F.
-- [ ] **D — Servicios** (`/servicios`, `/servicios/paginas-web`,
-      `/servicios/tiendas-online`, `/servicios/sistemas-a-medida`).
+- [x] **D — Servicios** (`/servicios`, `/servicios/paginas-web`,
+      `/servicios/tiendas-online`, `/servicios/sistemas-a-medida`). "Cotizar"
+      abre el formulario de Web3Forms (modal) hasta que exista `/cotizar/` (F).
+      Recurso B: mini ilustraciones animadas en las tarjetas de servicios y
+      tarjetas de "qué incluye" que se encienden de a una.
 - [ ] **E — Casos** (`/casos`, `/casos/home`, `/casos/under-club`,
       `/casos/corralcoop`).
 - [ ] **F — Nosotros, Preguntas, Contacto, Cotizar.** Sitemap final.

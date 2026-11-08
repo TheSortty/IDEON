@@ -48,8 +48,8 @@ export const PROCESS = {
 export type AdvantageIcon = 'propiedad' | 'cotizacion' | 'permanencia' | 'pauta';
 
 export const ADVANTAGES = {
-  // "Nos caracteriza la [transparencia] y la [claridad]."
-  title: ['Nos caracteriza la ', 'transparencia', ' y la ', 'claridad', '.'],
+  // "Nos caracteriza la [claridad] y [transparencia]."
+  title: ['Nos caracteriza la ', 'claridad', ' y ', 'transparencia', '.'],
   items: [
     {
       icon: 'propiedad',

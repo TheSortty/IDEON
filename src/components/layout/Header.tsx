@@ -2,7 +2,7 @@ import React, { useEffect, useId, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import AppLink from '../ui/AppLink';
 import { AnimatePresence, motion } from 'framer-motion';
-import Button from '../ui/Button';
+import QuoteButton from '../page/QuoteButton';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import { BagIcon, ChevronDownIcon, CloseIcon, MenuIcon, MonitorIcon, StackIcon } from '../ui/NavIcons';
 import { EASE_EMPHASIS } from '../ui/motion';
@@ -185,9 +185,9 @@ const MobileMenu: React.FC<{ open: boolean; id: string; onNavigate: () => void }
               </React.Fragment>
             );
           })}
-          <Button to={resolveNav(COTIZAR) ?? '/'} onClick={onNavigate} className="mt-2 w-full">
+          <QuoteButton onClick={onNavigate} className="mt-2 w-full">
             {COTIZAR.label}
-          </Button>
+          </QuoteButton>
         </motion.nav>
       )}
     </AnimatePresence>
@@ -245,9 +245,9 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <Button to={resolveNav(COTIZAR) ?? '/'} size="sm" className="hidden sm:inline-flex">
+          <QuoteButton size="sm" className="hidden sm:inline-flex">
             {COTIZAR.label}
-          </Button>
+          </QuoteButton>
           <ThemeSwitcher />
           <button
             type="button"
