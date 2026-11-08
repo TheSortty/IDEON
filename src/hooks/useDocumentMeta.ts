@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { absoluteUrl } from '../constants/seo';
+import { HeadContext } from '../seo/HeadContext';
 
 interface DocumentMetaOptions {
   /** Ruta canónica de la página ('/terminos-y-condiciones/'). */
@@ -28,9 +29,9 @@ function setMetaContent(selector: string, value: string): () => void {
  * Es un sitio sin SSR, así que esta es la forma más simple de tener
  * título/description por página sin sumar dependencias.
  *
- * Ojo: `index.html` sale del server con el canonical de la home, y esto lo
- * corrige recién al renderizar. Google ejecuta JS y lo toma, pero la solución
- * de fondo es servir HTML propio por ruta (la migración a MPA pendiente).
+ * En el build, el pre-render (scripts/prerender.mjs) recoge estos mismos
+ * valores por `HeadContext` y los escribe en el HTML estático de la ruta: el
+ * efecto de abajo solo hace falta para la navegación interna sin recarga.
  */
 export function useDocumentMeta(
   title: string,
@@ -38,6 +39,15 @@ export function useDocumentMeta(
   options: DocumentMetaOptions = {},
 ): void {
   const { canonicalPath, robots } = options;
+
+  // Pre-render: los efectos no corren en el servidor, así que se anota acá.
+  const head = useContext(HeadContext);
+  if (head !== null) {
+    head.title = title;
+    head.description = description;
+    if (canonicalPath !== undefined) head.canonicalPath = canonicalPath;
+    if (robots !== undefined) head.robots = robots;
+  }
 
   useEffect(() => {
     const previousTitle = document.title;
