@@ -101,9 +101,19 @@ const NosotrosPage: React.FC = () => {
               <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] gap-10">
                 <h2 className="text-[clamp(1.625rem,3vw,2.375rem)] font-extrabold text-content">{NOSOTROS.historyTitle}</h2>
                 <div className="flex flex-col gap-4">
-                  {NOSOTROS.history.map((paragraph) => (
-                    <p key={paragraph} className="text-[17px] leading-[1.7] text-content-muted">
-                      {paragraph}
+                  {NOSOTROS.history.map((paragraph, i) => (
+                    <p key={i} className="text-[17px] leading-[1.7] text-content-muted">
+                      {paragraph.map((part) =>
+                        'highlight' in part && part.highlight ? (
+                          // pr: la cursiva se inclina y el recorte del degradado
+                          // (background-clip: text) cortaría la última letra.
+                          <em key={part.text} className="text-gradient-pan animate-gradient-pan pr-[0.12em] font-bold italic">
+                            {part.text}
+                          </em>
+                        ) : (
+                          <React.Fragment key={part.text}>{part.text}</React.Fragment>
+                        ),
+                      )}
                     </p>
                   ))}
                 </div>
