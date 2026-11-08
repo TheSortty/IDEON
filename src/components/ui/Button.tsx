@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import AppLink from './AppLink';
 import { cn } from '../../lib/cn';
 
 // `secondary` y `gradient` son los nombres viejos: siguen funcionando para las
@@ -15,7 +15,8 @@ interface BaseProps {
 }
 
 // Tres formas de renderizar con los mismos estilos:
-//  - `to`:   link interno del sitio → <Link> de React Router (navega sin recargar).
+//  - `to`:   destino de navegación → <Link> de React Router si es del sitio
+//            (navega sin recargar), <a> en pestaña nueva si es externo.
 //  - `href`: link externo, mailto:, wa.me o ancla → <a>.
 //  - nada:   acción → <button>.
 type ButtonAsButton = BaseProps &
@@ -63,15 +64,22 @@ const variants: Record<Variant, string> = {
 variants.secondary = variants.ghost;
 variants.gradient = variants.primary;
 
+/**
+ * Las clases de un botón, para cuando el "botón" es parte de algo clickeable
+ * más grande (una tarjeta-link entera) y no puede ser un <a> o <button> propio.
+ */
+export const buttonClasses = (variant: Variant = 'primary', size: Size = 'md', className?: string): string =>
+  cn(base, sizes[size], variants[variant], className);
+
 const Button: React.FC<ButtonProps> = ({ children, className, variant = 'primary', size = 'md', ...props }) => {
-  const classes = cn(base, sizes[size], variants[variant], className);
+  const classes = buttonClasses(variant as Variant, size as Size, className);
 
   if (typeof props.to === 'string') {
     const { to, ...linkProps } = props as ButtonAsLink;
     return (
-      <Link to={to} className={classes} {...linkProps}>
+      <AppLink to={to} className={classes} {...linkProps}>
         {children}
-      </Link>
+      </AppLink>
     );
   }
 

@@ -82,6 +82,12 @@ module.exports = {
                 'orb': 'orb 18s ease-in-out infinite',
                 'orb-reverse': 'orb 24s ease-in-out infinite reverse',
                 'ping-soft': 'ping-soft 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite',
+                'dot-pulse': 'dot-pulse 1.8s ease-in-out infinite',
+                'halo-breathe': 'halo-breathe 3s ease-in-out infinite',
+                // Entrada del primer pantallazo (hero). Es CSS y no framer-motion
+                // a propósito: arranca con el HTML pre-renderizado, sin esperar
+                // al JS, así el título no queda invisible y el LCP no se demora.
+                'rise': 'rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both',
             },
             keyframes: {
                 'neon-glow': {
@@ -103,7 +109,20 @@ module.exports = {
                 'ping-soft': {
                     '0%': { transform: 'scale(1)', opacity: '0.8' },
                     '80%, 100%': { transform: 'scale(1.6)', opacity: '0' },
-                }
+                },
+                'dot-pulse': {
+                    '0%, 100%': { opacity: '0.25', transform: 'scale(1)' },
+                    '50%': { opacity: '1', transform: 'scale(1.4)' },
+                },
+                'halo-breathe': {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '50%': { transform: 'scale(1.12)' },
+                },
+                'rise': {
+                    'from': { opacity: '0', transform: 'translateY(28px)', filter: 'blur(8px)' },
+                    'to': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
+                },
+
             }
         },
     },

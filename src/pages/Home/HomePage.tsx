@@ -2,62 +2,61 @@ import React from 'react';
 
 // SEO
 import { useJsonLd } from '../../hooks/useJsonLd';
-import { FAQS } from '../../constants/faq';
+import { HOME_META } from '../../constants/home';
 import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, absoluteUrl } from '../../constants/seo';
 
-// Sections
-import Hero from '../../components/sections/Hero';
-import Benefits from '../../components/sections/Benefits';
-import Team from '../../components/sections/Team';
-import CaseStudies from '../../components/sections/CaseStudies';
-import WhyYouNeedThis from '../../components/sections/WhyYouNeedThis';
-import Plans from '../../components/sections/Plans';
-import Faq from '../../components/sections/Faq';
-import Cta from '../../components/sections/Cta';
+// Secciones
+import HomeHero from './HomeHero';
+import WordsDivider from './WordsDivider';
+import ProcessSection from './ProcessSection';
+import AdvantagesSection from './AdvantagesSection';
+import ServicesPromo from './ServicesPromo';
+import FeaturedCases from './FeaturedCases';
+import FinalCta from './FinalCta';
 
-// La home es una WebPage que además contiene el FAQ, así que se marca con los
-// dos tipos y las preguntas van en `mainEntity`. Se inyecta desde acá y no
-// desde index.html para que este marcado no aparezca en los legales, que no
-// tienen preguntas frecuentes.
+// WebPage de la home. Ya no es FAQPage: el Inicio nuevo no tiene preguntas
+// frecuentes y Google pide que el marcado describa lo que está en la página.
+// El FAQPage vuelve en /preguntas/ (etapa F).
 const homeJsonLd = {
   '@context': 'https://schema.org',
-  '@type': ['WebPage', 'FAQPage'],
+  '@type': 'WebPage',
   '@id': `${SITE_URL}/#webpage`,
   url: `${SITE_URL}/`,
-  name: 'IDEON | Desarrollo web y software a medida.',
-  description:
-    'Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios.',
+  name: HOME_META.title,
+  description: HOME_META.description,
   inLanguage: 'es-AR',
   isPartOf: { '@id': WEBSITE_ID },
   about: { '@id': ORGANIZATION_ID },
   primaryImageOfPage: {
     '@type': 'ImageObject',
-    url: absoluteUrl('/hero/hero-desktop.webp'),
+    url: absoluteUrl('/og-image.png'),
   },
-  mainEntity: FAQS.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
 };
 
 const HomePage: React.FC = () => {
   useJsonLd(homeJsonLd, 'ld-home');
 
   return (
-    <>
-      <Hero />
-      <Benefits />
-      <Team />
-      <CaseStudies />
-      <WhyYouNeedThis />
-      <Plans />
-      <Faq />
-      <Cta />
-    </>
+    // overflow-x-clip: los orbes se salen por los costados a propósito, pero
+    // no tienen que generar scroll horizontal. `clip` (no `hidden`) no rompe
+    // el sticky de la columna de ventajas.
+    <div className="relative isolate overflow-x-clip">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-[120px] -z-10 h-[600px] w-[600px] animate-orb rounded-full bg-accent opacity-[0.17] blur-[90px]"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[220px] top-[1600px] -z-10 h-[560px] w-[560px] animate-orb-reverse rounded-full bg-accent-2 opacity-[0.13] blur-[90px]"
+      />
+      <HomeHero />
+      <WordsDivider />
+      <ProcessSection />
+      <AdvantagesSection />
+      <ServicesPromo />
+      <FeaturedCases />
+      <FinalCta />
+    </div>
   );
 };
 
