@@ -54,3 +54,50 @@ export const MailIcon: React.FC<IconProps> = ({ className }) => (
     <polyline points="22 6 12 13 2 6" />
   </svg>
 );
+
+// ---- Rediseño (etapa B): menú de Servicios, menú mobile y volver arriba ----
+
+export const StackIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} className={className} aria-hidden="true">
+    <path d="M12 2 2 7l10 5 10-5-10-5z" />
+    <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
+  </svg>
+);
+
+export const MonitorIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} className={className} aria-hidden="true">
+    <rect x="2" y="3" width="20" height="14" rx="2" />
+    <path d="M8 21h8M12 17v4" />
+  </svg>
+);
+
+export const BagIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} className={className} aria-hidden="true">
+    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+    <path d="M3 6h18M16 10a4 4 0 0 1-8 0" />
+  </svg>
+);
+
+export const ChevronDownIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} strokeWidth={2.5} className={className} aria-hidden="true">
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);
+
+export const MenuIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} className={className} aria-hidden="true">
+    <path d="M3 6h18M3 12h18M3 18h18" />
+  </svg>
+);
+
+export const CloseIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} className={className} aria-hidden="true">
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);
+
+export const ArrowUpIcon: React.FC<IconProps> = ({ className }) => (
+  <svg {...iconProps} strokeWidth={2.5} className={className} aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7" />
+  </svg>
+);

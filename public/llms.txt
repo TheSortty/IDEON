@@ -9,8 +9,8 @@ de Meta Ads.
 
 ## Planes
 
-- [Starter](https://ideon.ar/#planes): presencia web profesional para negocios que arrancan. Desde USD 200.
-- [Pro](https://ideon.ar/#planes): proyectos con varias secciones o funcionalidades, con acompañamiento durante el desarrollo. Desde USD 1.500.
+- [Starter](https://ideon.ar/#planes): presencia web profesional para negocios que arrancan.
+- [Pro](https://ideon.ar/#planes): proyectos con varias secciones o funcionalidades, con acompañamiento durante el desarrollo.
 - [Enterprise](https://ideon.ar/#planes): sistemas, plataformas y proyectos con lógica propia de negocio. Cotización a medida.
 
 Todos los planes incluyen diseño, dominio, SSL y el primer año de hosting. El

@@ -11,6 +11,7 @@ import { ModalProvider } from './contexts/ModalContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import FloatingWhatsAppButton from './components/layout/FloatingWhatsAppButton';
+import ScrollChrome from './components/layout/ScrollChrome';
 
 // UI
 import ParticleBackground from './components/ui/ParticleBackground';
@@ -75,6 +76,7 @@ function App() {
           <Footer />
           <ContactModal />
           <TallyModal />
+          <ScrollChrome />
           <FloatingWhatsAppButton />
         </div>
       </ModalProvider>

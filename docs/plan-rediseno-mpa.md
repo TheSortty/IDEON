@@ -12,15 +12,15 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
 | 1 | Arquitectura | **MPA con HTML pre-generado por ruta** en el build. Aprobado tocar `vite.config.ts`, `wrangler.jsonc` y scripts de build para esto. Cierra la "decisión pendiente" SPA/MPA de `CLAUDE.md`. |
 | 2 | Routing | **React Router** (dependencia nueva aprobada). |
 | 3 | Tema | Se mantiene **claro + oscuro**. El claro se arma con la paleta del sistema de diseño llevada a claro. |
-| 4 | Colores fuera de paleta | **Abierto.** No usar colores sueltos. Buscar otro recurso visual para dar variedad en listas, grillas, ventajas y funciones. Se presentan opciones. |
-| 5 | Reseñas | Rediseñarlas más cerca del lenguaje visual de IDEON (sin imitar la tarjeta de Google). |
-| 6 | Animaciones | framer-motion para entradas e interacciones; loops decorativos infinitos como utilidades CSS de Tailwind (igual que `animate-float`). |
+| 4 | Variedad visual | Solo colores del sistema de diseño (el azul es su `accent-secondary`). Grillas de **servicios y funciones**: mini ilustraciones de interfaz animadas (recurso B). Grillas de **ventajas**: luz que sigue al cursor + borde con degradado (C) y texturas / números en contorno (D). La luz que sigue al cursor se conserva en todas las tarjetas. |
+| 5 | Reseñas | Diseño propio de IDEON (vidrio, comillas magenta, estrellas magenta, sello Google monocromo). **La sección se saca** hasta conectar las reseñas reales (ver 12). |
+| 6 | Animaciones | framer-motion para entradas e interacciones; loops decorativos infinitos como utilidades CSS de Tailwind (corren sin JS, rinden mejor en celular). Lo visible al cargar no espera al JS (LCP). |
 | 7 | Formulario de `/contacto` | Conectado a **Web3Forms** (misma config que `ContactModal`) y redirige a `/contacto-exitoso/`. |
 | 8 | Nosotros · historia | Texto final abajo. |
 | 9 | Caso Corralcoop | Sacar "alta de servicio online". Reemplazar por el portal como puente directo a la atención personalizada por WhatsApp. Pagos: se mantiene (casi terminado). |
-| 10 | Precios en el Schema | **Abierto.** Pendiente de recomendación. |
+| 10 | Precios | **Sacados** del JSON-LD y de `llms.txt` (08/11). |
 | 11 | Casos | Home, Under Club y Corralcoop enlazan a su caso, y cada caso muestra la URL del sitio real. AM Suministros y Borea: "Próximamente". |
-| 12 | Reseñas reales de Google | **Abierto.** Conectar las reseñas reales del perfil de Google (paso a paso aparte). |
+| 12 | Reseñas reales de Google | **PENDIENTE**: `docs/pendiente-resenas-google.md`. |
 | 13 | Erratas del diseño | Se corrigen ("podés", "desarrollo", etc.). |
 | 14 | Entrega | **Por etapas**, una por PR, con capturas a 375 / 768 / 1440. |
 
@@ -42,7 +42,7 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
 - [x] **A — Base MPA.** React Router + pre-render de cada ruta a HTML estático,
       meta/canonical/JSON-LD por ruta en el HTML servido, 404 real. Sin cambio
       visual: las páginas actuales siguen igual.
-- [ ] **B — Sistema visual.** Tokens nuevos (claro y oscuro), Header con menú de
+- [x] **B — Sistema visual.** Tokens nuevos (claro y oscuro), Header con menú de
       Servicios, Footer, fondo de partículas, utilidades de animación.
 - [ ] **C — Inicio.**
 - [ ] **D — Servicios** (`/servicios`, `/servicios/paginas-web`,
@@ -59,6 +59,14 @@ FAQPage por ruta · un solo H1 por página · alt en imágenes · Inter self-hos
 imágenes `.webp` con tamaños · sitemap actualizado · `/contacto-exitoso/`
 noindex · URLs actuales (`/`, legales, `/contacto-exitoso/`) sin cambios.
 
-## Después del rediseño
+## Publicación por etapas sin links rotos
 
-Medición con Pixel + GA4: ver `docs/pendiente-medicion-pixel-ga4.md`.
+Cada destino del menú (`src/constants/navigation.ts`) tiene su ruta nueva y una
+alternativa en la home actual (`/#planes`, `/#casos`…). Mientras la página nueva
+no esté en `src/routes.tsx`, el link usa la alternativa. Cada etapa se puede
+publicar sola.
+
+## Pendientes fuera del rediseño
+
+- Medición con Pixel + GA4: `docs/pendiente-medicion-pixel-ga4.md`.
+- Reseñas reales de Google: `docs/pendiente-resenas-google.md`.

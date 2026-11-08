@@ -7,132 +7,142 @@ interface Particle {
     vx: number;
     vy: number;
     size: number;
+    alpha: number;
 }
 
+/** Distancia (px) a la que dos partículas se unen con una línea. */
+const LINK_DISTANCE = 140;
+/** Radio (px) en el que las partículas tiran una línea hacia el cursor. */
+const MOUSE_DISTANCE = 180;
+
+/**
+ * Fondo de partículas conectadas, con líneas hacia el cursor (como en el
+ * diseño de Celeste). El color sale de las custom properties --particle y
+ * --particle-alpha de index.css, así que sigue al tema sin colores sueltos.
+ *
+ * Rendimiento: se dibuja a la densidad de píxeles real (máx. 2x), la cantidad
+ * de partículas escala con el área de la pantalla, y el loop se frena cuando
+ * la pestaña no está visible. Con "reducir movimiento" no se dibuja.
+ */
 const ParticleBackground: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { theme } = useTheme();
-    const mouseRef = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
-        // Con "reducir movimiento" activado no se dibuja nada: una regla CSS no
-        // puede frenar un requestAnimationFrame, hay que preguntarlo acá.
+        // Una regla CSS no puede frenar un requestAnimationFrame: hay que preguntarlo acá.
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         const canvas = canvasRef.current;
-        if (!canvas) return;
+        const ctx = canvas?.getContext('2d');
+        if (!canvas || !ctx) return;
 
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        const styles = getComputedStyle(document.documentElement);
+        const rgb = styles.getPropertyValue('--particle').trim().split(/\s+/).join(', ');
+        const baseAlpha = parseFloat(styles.getPropertyValue('--particle-alpha')) || 0.4;
 
-        let animationFrameId: number;
+        let width = 0;
+        let height = 0;
         let particles: Particle[] = [];
+        let frame = 0;
+        const mouse = { x: -9999, y: -9999 };
 
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
+        const setup = () => {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const count = Math.max(24, Math.min(80, Math.round((width * height) / 18000)));
+            particles = Array.from({ length: count }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                size: 0.8 + Math.random() * 1.6,
+                alpha: baseAlpha * (0.5 + Math.random() * 0.5),
+            }));
         };
 
-        const initParticles = () => {
-            particles = [];
-            // Menos densidad que antes (1 cada 15.000 px² y hasta 100): el
-            // canvas es ambiente, no tiene que competir con el contenido.
-            const particleCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 26000), 60);
+        const draw = () => {
+            ctx.clearRect(0, 0, width, height);
+            ctx.lineWidth = 0.8;
 
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    size: Math.random() * 2 + 1,
-                });
-            }
-        };
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                // Salen por un borde y entran por el opuesto: el campo no se vacía.
+                if (p.x < -10) p.x = width + 10;
+                else if (p.x > width + 10) p.x = -10;
+                if (p.y < -10) p.y = height + 10;
+                else if (p.y > height + 10) p.y = -10;
 
-        const drawParticles = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const isDark = theme === 'dark';
-            const particleColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, '; // accent or gray
-            const lineColor = isDark ? 'rgba(212, 0, 255, ' : 'rgba(100, 100, 100, ';
-            const particleAlpha = isDark ? 0.3 : 0.22;
-            const lineAlpha = isDark ? 0.09 : 0.07;
-
-            particles.forEach((particle, i) => {
-                // Update position
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-
-                // Bounce off edges
-                if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-                if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-                // Mouse interaction (Magnetism/Repulsion mix)
-                const dx = mouseRef.current.x - particle.x;
-                const dy = mouseRef.current.y - particle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const maxDistance = 200;
-
-                if (distance < maxDistance) {
-                    const forceDirectionX = dx / distance;
-                    const forceDirectionY = dy / distance;
-                    const force = (maxDistance - distance) / maxDistance;
-
-                    // Gentle attraction
-                    particle.vx += forceDirectionX * force * 0.05;
-                    particle.vy += forceDirectionY * force * 0.05;
-                }
-
-                // Draw particle
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fillStyle = `${particleColor}${particleAlpha})`;
-                ctx.fill();
-
-                // Connect particles
                 for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = particle.x - p2.x;
-                    const dy = particle.y - p2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
+                    const q = particles[j];
+                    const d = Math.hypot(p.x - q.x, p.y - q.y);
+                    if (d < LINK_DISTANCE) {
+                        ctx.strokeStyle = `rgba(${rgb}, ${(0.28 * baseAlpha * (1 - d / LINK_DISTANCE)).toFixed(3)})`;
                         ctx.beginPath();
-                        ctx.strokeStyle = `${lineColor}${lineAlpha * (1 - distance / 150)})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particle.x, particle.y);
-                        ctx.lineTo(p2.x, p2.y);
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(q.x, q.y);
                         ctx.stroke();
                     }
                 }
-            });
 
-            animationFrameId = requestAnimationFrame(drawParticles);
+                const md = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                if (md < MOUSE_DISTANCE) {
+                    ctx.strokeStyle = `rgba(${rgb}, ${(0.5 * baseAlpha * (1 - md / MOUSE_DISTANCE)).toFixed(3)})`;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+
+                ctx.fillStyle = `rgba(${rgb}, ${p.alpha.toFixed(2)})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            frame = requestAnimationFrame(draw);
         };
 
-        const handleMouseMove = (e: MouseEvent) => {
-            mouseRef.current = { x: e.clientX, y: e.clientY };
+        const start = () => {
+            if (!frame) frame = requestAnimationFrame(draw);
+        };
+        const stop = () => {
+            cancelAnimationFrame(frame);
+            frame = 0;
         };
 
-        window.addEventListener('resize', resizeCanvas);
-        window.addEventListener('mousemove', handleMouseMove);
+        const onMove = (e: PointerEvent) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        };
+        const onVisibility = () => (document.hidden ? stop() : start());
 
-        resizeCanvas();
-        drawParticles();
+        window.addEventListener('resize', setup);
+        window.addEventListener('pointermove', onMove, { passive: true });
+        document.addEventListener('visibilitychange', onVisibility);
+
+        setup();
+        start();
 
         return () => {
-            window.removeEventListener('resize', resizeCanvas);
-            window.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(animationFrameId);
+            stop();
+            window.removeEventListener('resize', setup);
+            window.removeEventListener('pointermove', onMove);
+            document.removeEventListener('visibilitychange', onVisibility);
         };
     }, [theme]);
 
     return (
         <canvas
             ref={canvasRef}
-            className="fixed top-0 left-0 w-full h-full pointer-events-none -z-20"
+            aria-hidden="true"
+            className="pointer-events-none fixed inset-0 -z-20 h-full w-full"
         />
     );
 };

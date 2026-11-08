@@ -26,5 +26,14 @@ export const SITE_ROUTES: readonly SiteRoute[] = [
   { path: '/contacto-exitoso/', element: <ContactoExitosoPage /> },
 ];
 
+const LIVE_PATHS = new Set(SITE_ROUTES.map((route) => route.path));
+
+/** ¿La ruta ya está publicada? La navegación lo usa para no linkear a un 404. */
+export const isLivePath = (path: string): boolean => LIVE_PATHS.has(path);
+
+/** Destino real de un link de navegación: la ruta si existe, si no su alternativa. */
+export const resolveNav = (target: { path: string; fallback: string }): string =>
+  isLivePath(target.path) ? target.path : target.fallback;
+
 /** Path con el que el pre-render genera dist/404.html. */
 export const NOT_FOUND_PATH = '/404/';
