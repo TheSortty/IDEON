@@ -13,8 +13,8 @@ const TEXT_CLASS: Record<AsciiMode, string> = {
 
 const HALO_CLASS: Record<AsciiMode, string> = {
   off: 'opacity-0',
-  warm: 'opacity-[0.35] bg-accent-2',
-  on: 'opacity-[0.35] bg-accent-2',
+  warm: 'opacity-[0.35] bg-[rgb(var(--lamp-halo))]',
+  on: 'opacity-[0.35] bg-[rgb(var(--lamp-halo))]',
   morph: 'opacity-[0.35] bg-accent',
   code: 'opacity-[0.35] bg-accent',
 };
