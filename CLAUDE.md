@@ -133,8 +133,9 @@ definidos en `src/index.css`): `surface-base`, `surface-raised`, `content`,
 `content-muted`, `accent`, `accent-solid`, `accent-text` (acento para texto: pasa
 AA en los dos temas), `accent-2` (el azul `#3B82F6`/`#2563EB`, que es el
 `accent-secondary` del IDEON Design System: solo para el degradado de marca
-magenta → azul y acentos secundarios) y `whatsapp` (verde de la marca WhatsApp,
-solo para su botón).
+magenta → azul y acentos secundarios), `whatsapp` (verde de la marca WhatsApp,
+solo para su botón) y `--lamp-*` (amarillos de la lamparita ASCII del hero: son
+de la ilustración, no se usan en la interfaz).
 
 Primitivas del rediseño: `Button` (variantes `primary`, `outline`, `ghost`,
 `light`; `to` para links internos), `SpotlightCard` (vidrio + luz que sigue al

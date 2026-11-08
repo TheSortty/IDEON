@@ -1,17 +1,19 @@
 // Navegación del sitio: header, menú de Servicios, menú mobile y footer.
 //
 // Cada destino tiene su ruta definitiva (`path`) y una alternativa
-// (`fallback`) que apunta a la sección equivalente de la home actual. El
-// rediseño se publica por etapas: mientras una página nueva no exista en
-// src/routes.tsx, el link usa la alternativa en vez de llevar a un 404. Cuando
-// la página se suma a routes.tsx, el link pasa solo a la ruta nueva.
+// (`fallback`) para mientras esa página no exista: una sección del Inicio, un
+// link externo (WhatsApp) o `null`, que oculta el link. El rediseño se publica
+// por etapas y así ninguna etapa deja links a un 404. Cuando la página se suma
+// a src/routes.tsx, el link pasa solo a la ruta nueva.
 
 export type NavId = 'inicio' | 'servicios' | 'casos' | 'nosotros' | 'preguntas' | 'contacto';
 
+import { WHATSAPP_MESSAGES, whatsappUrl } from './contact';
+
 export interface NavTarget {
   path: string;
-  /** Destino mientras `path` no esté publicada. */
-  fallback: string;
+  /** Destino mientras `path` no esté publicada; `null` oculta el link. */
+  fallback: string | null;
 }
 
 export interface NavItem extends NavTarget {
@@ -29,11 +31,11 @@ export interface ServiceNavItem extends NavTarget {
 
 export const NAV_ITEMS: readonly NavItem[] = [
   { id: 'inicio', label: 'Inicio', path: '/', fallback: '/' },
-  { id: 'servicios', label: 'Servicios', path: '/servicios/', fallback: '/#planes' },
+  { id: 'servicios', label: 'Servicios', path: '/servicios/', fallback: '/#servicios' },
   { id: 'casos', label: 'Casos', path: '/casos/', fallback: '/#casos' },
-  { id: 'nosotros', label: 'Nosotros', path: '/nosotros/', fallback: '/#equipo' },
-  { id: 'preguntas', label: 'Preguntas', path: '/preguntas/', fallback: '/#faq' },
-  { id: 'contacto', label: 'Contacto', path: '/contacto/', fallback: '/#contacto' },
+  { id: 'nosotros', label: 'Nosotros', path: '/nosotros/', fallback: null },
+  { id: 'preguntas', label: 'Preguntas', path: '/preguntas/', fallback: null },
+  { id: 'contacto', label: 'Contacto', path: '/contacto/', fallback: null },
 ];
 
 export const SERVICE_NAV: readonly ServiceNavItem[] = [
@@ -42,21 +44,21 @@ export const SERVICE_NAV: readonly ServiceNavItem[] = [
     description: 'CRM/ERP, sistemas de turnos, oficina virtual, campus virtual y otros',
     icon: 'sistemas',
     path: '/servicios/sistemas-a-medida/',
-    fallback: '/#planes',
+    fallback: '/#servicios',
   },
   {
     label: 'Páginas web',
     description: 'Landings e institucionales, con medición y SEO',
     icon: 'web',
     path: '/servicios/paginas-web/',
-    fallback: '/#planes',
+    fallback: '/#servicios',
   },
   {
     label: 'Tiendas online',
     description: 'Vendé 24/7 sin comisiones de plataforma',
     icon: 'tienda',
     path: '/servicios/tiendas-online/',
-    fallback: '/#planes',
+    fallback: '/#servicios',
   },
 ];
 
@@ -69,7 +71,7 @@ export const SERVICES_MENU_COPY = {
 export const COTIZAR: NavTarget & { label: string } = {
   label: 'Cotizar proyecto',
   path: '/cotizar/',
-  fallback: '/#planes',
+  fallback: whatsappUrl(WHATSAPP_MESSAGES.hero),
 };
 
 export const FOOTER_COPY = {
@@ -89,7 +91,7 @@ export const FOOTER_COPY = {
 
 export const FOOTER_STUDIO: readonly (NavTarget & { label: string })[] = [
   { label: 'Casos', path: '/casos/', fallback: '/#casos' },
-  { label: 'Nosotros', path: '/nosotros/', fallback: '/#equipo' },
-  { label: 'Preguntas frecuentes', path: '/preguntas/', fallback: '/#faq' },
+  { label: 'Nosotros', path: '/nosotros/', fallback: null },
+  { label: 'Preguntas frecuentes', path: '/preguntas/', fallback: null },
   COTIZAR,
 ];

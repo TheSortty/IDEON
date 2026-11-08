@@ -54,6 +54,12 @@
     --lilac-ink: 75 68 112;     /* #4B4470 texto secundario claro (8,9:1) */
     --white: 255 255 255;
     --whatsapp: 37 211 102;     /* #25D366 — color de la marca WhatsApp: el botón tiene que reconocerse */
+    /* Lamparita ASCII del hero (ilustración, ver .ascii-* más abajo). */
+    --lamp-yellow: 255 213 74;   /* #FFD54A luz encendida */
+    --lamp-amber: 255 184 74;    /* #FFB84A filamento tibio */
+    --lamp-halo: 255 196 0;      /* #FFC400 resplandor */
+    --lamp-lilac: 110 100 163;   /* #6E64A3 vidrio apagado */
+    --lamp-pink: 243 166 255;    /* #F3A6FF fundido hacia el código */
 
     /* ---- CAPA 2 — LOS ROLES ----
        Lo único que tocan los componentes. El tema es esta capa:
@@ -98,6 +104,16 @@
     /* Partículas del fondo: canales RGB, el canvas les suma la opacidad. */
     --particle: 161 0 194;
     --particle-alpha: 0.35;
+    /* Franja del hero y bandas de sección. */
+    --hero-band: rgb(255 255 255 / 0.55);
+    /* Lamparita: en claro, el amarillo puro no se ve sobre blanco; se usa un
+       ámbar más profundo con el mismo resplandor. */
+    --lamp-off: var(--lamp-lilac);
+    --lamp-warm: 230 140 0;
+    --lamp-on: 240 170 0;
+    --lamp-glow: var(--lamp-halo);
+    --lamp-morph: 200 60 230;
+    --band: rgb(33 17 92 / 0.06);
 
     /* ---- movimiento, también como token ---- */
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -116,16 +132,17 @@
        interlínea y tracking: en vez de saltar en cada breakpoint, interpolan.
        El tracking se CIERRA a medida que crece el viewport — eso es lo que
        hace que un h1 grande se lea compacto en vez de aireado. */
-    --h1-size: clamp(2.25rem, 1.40rem + 3.8vw, 3.75rem);
-    --h1-line: clamp(2.50rem, 1.80rem + 3.2vw, 3.90rem);
-    --h1-track: clamp(-0.045em, -0.02em - 0.08vw, -0.02em);
+    /* Escala del diseño de Celeste (site.css: .h1 .h2 .h3). */
+    --h1-size: clamp(2.5rem, 5.4vw, 4.375rem);
+    --h1-line: 1.04;
+    --h1-track: -0.035em;
 
-    --h2-size: clamp(1.75rem, 1.30rem + 2.0vw, 2.50rem);
-    --h2-line: clamp(2.10rem, 1.70rem + 1.8vw, 2.90rem);
-    --h2-track: -0.025em;
+    --h2-size: clamp(1.875rem, 3.8vw, 3rem);
+    --h2-line: 1.1;
+    --h2-track: -0.02em;
 
-    --h3-size: clamp(1.20rem, 1.05rem + 0.7vw, 1.50rem);
-    --h3-track: -0.015em;
+    --h3-size: 1.3125rem;
+    --h3-track: -0.01em;
 
     --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
 
@@ -140,8 +157,9 @@
     /* ---- contenedor y grilla ----
        90rem = 1440px, que es el ancho que el sitio ya usaba (repetido a mano
        en seis lugares). El gutter deja de saltar en cada breakpoint. */
-    --container: 90rem;
-    --gutter: clamp(1.25rem, 4vw, 3rem);
+    /* Contenedor del diseño de Celeste (.wrap): 1280px + 24px de margen. */
+    --container: 80rem;
+    --gutter: 1.5rem;
 
     /* Escala de espaciado cerrada. Coincide con los pasos de Tailwind que ya
        se usan (1 2 3 4 6 8 12 16 24 32), así que en el JSX se escriben como
@@ -175,6 +193,13 @@
     --shadow-card: 0 26px 50px -22px rgb(0 0 0 / 0.75);
     --particle: 212 0 255;
     --particle-alpha: 0.55;
+    --hero-band: rgb(4 0 18 / 0.5);
+    --lamp-off: var(--lamp-lilac);
+    --lamp-warm: var(--lamp-amber);
+    --lamp-on: var(--lamp-yellow);
+    --lamp-glow: 255 180 0;
+    --lamp-morph: var(--lamp-pink);
+    --band: rgb(33 17 92 / 0.55);
   }
 
   h1 {
@@ -191,6 +216,7 @@
 
   h3 {
     font-size: var(--h3-size);
+    line-height: 1.25;
     letter-spacing: var(--h3-track);
   }
 
@@ -436,6 +462,114 @@
     transform: scaleX(1);
   }
 
+  /* ---------------- Inicio (etapa C) ---------------- */
+
+  /* Banda de sección: un fondo que entra y sale en degradado, sin bordes. */
+  .band {
+    background: linear-gradient(180deg, transparent 0%, var(--band) 14%, var(--band) 86%, transparent 100%);
+  }
+
+  /* Haz del divisor: línea con una luz que la recorre (loop CSS). */
+  .beam {
+    position: relative;
+    width: min(1100px, 100%);
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, transparent, rgb(var(--accent) / 0.55) 20%, rgb(var(--accent) / 0.55) 80%, transparent);
+  }
+  .beam::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 180px;
+    height: 6px;
+    margin-top: -3px;
+    border-radius: 9999px;
+    background: radial-gradient(closest-side, rgb(var(--white)), rgb(var(--accent)) 45%, transparent);
+    filter: blur(1px);
+    box-shadow: 0 0 30px 6px rgb(var(--accent) / 0.6);
+    animation: beam-run 4.5s var(--ease-emphasis) infinite;
+  }
+  .beam-reverse::before {
+    animation-direction: reverse;
+    animation-delay: 1.2s;
+  }
+
+  /* Palabra que rota: una ventana de 1 línea y una pista que sube. */
+  .rotator {
+    display: inline-block;
+    height: 1.15em;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  .rotator-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: rotate-words 20s var(--ease-emphasis) infinite;
+  }
+  .rotator-track > span {
+    display: block;
+    height: 1.15em;
+    line-height: 1.15em;
+  }
+
+  /* Paneles de casos que se expanden al pasar el mouse. En celular son
+     filas fijas (el hover no existe). */
+  .peek-panel {
+    transition: flex-grow 700ms var(--ease-emphasis), box-shadow 500ms var(--ease-emphasis),
+                transform 500ms var(--ease-emphasis);
+  }
+  @media (min-width: 768px) {
+    .peek-panel {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+  @media (min-width: 768px) and (hover: hover) {
+    .peek-panel:hover,
+    .peek-panel:focus-visible {
+      flex-grow: 3.2;
+    }
+    .peek:hover .peek-panel:not(:hover) {
+      transform: scale(0.98);
+    }
+  }
+
+  /* Texto con el degradado de marca, más ancho que el texto para que
+     `animate-gradient-pan` lo pueda panear (título del hero, divisor). */
+  .text-gradient-pan {
+    background-image: linear-gradient(100deg, rgb(var(--accent-text)) 0%, rgb(var(--accent)) 30%,
+                      rgb(var(--accent-2)) 60%, rgb(var(--accent-text)) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* El movimiento lo pone la utilidad `animate-gradient-pan` en el JSX. */
+  }
+
+  /* CTA final: superficie oscura de marca con dos luces (magenta y azul).
+     Es oscura también en el tema claro: el texto de adentro va siempre claro. */
+  .cta-band {
+    background:
+      radial-gradient(620px 320px at 12% 0%, rgb(var(--magenta-500) / 0.42), transparent 62%),
+      radial-gradient(620px 340px at 92% 100%, rgb(var(--blue-500) / 0.38), transparent 62%),
+      linear-gradient(135deg, rgb(var(--void-700)) 0%, rgb(var(--void-900)) 100%);
+  }
+
+  /* ASCII del hero: apagada (lavanda) → tibia (ámbar) → encendida (amarilla)
+     → fundido → "/>" (magenta de marca). El amarillo es el de la luz de la
+     lamparita del diseño de Celeste: es parte de la ilustración, no un color
+     de interfaz. Tokens --lamp-* arriba. */
+  .ascii-off { color: rgb(var(--lamp-off)); }
+  .ascii-warm { color: rgb(var(--lamp-warm)); text-shadow: 0 0 8px rgb(var(--lamp-warm) / 0.7); }
+  .ascii-on { color: rgb(var(--lamp-on)); text-shadow: 0 0 8px rgb(var(--lamp-on) / 0.9), 0 0 24px rgb(var(--lamp-glow) / 0.55); }
+  .ascii-morph { color: rgb(var(--lamp-morph)); text-shadow: 0 0 10px rgb(var(--magenta-500) / 0.6); }
+  .ascii-code { color: rgb(var(--magenta-500)); text-shadow: 0 0 10px rgb(var(--magenta-500) / 0.9), 0 0 30px rgb(var(--magenta-500) / 0.5); }
+  .ascii-morph { color: rgb(var(--accent) / 0.8); text-shadow: 0 0 10px rgb(var(--accent) / 0.5); }
+  .ascii-code { color: rgb(var(--accent-text)); text-shadow: 0 0 10px rgb(var(--accent) / 0.85), 0 0 30px rgb(var(--accent) / 0.45); }
+
   /* Link de texto con subrayado que crece desde la izquierda. */
   .link-underline {
     background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
@@ -517,6 +651,27 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-content-muted dark:bg-accent/80;
   }
+}
+
+/* Keyframes que usan clases de CSS propias (.beam, .rotator-track). Las que
+   se usan como utilidad `animate-*` viven en tailwind.config.cjs. */
+@keyframes beam-run {
+  0% { left: -180px; opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* 8 palabras + la primera repetida al final, para que la vuelta no se vea. */
+@keyframes rotate-words {
+  0%, 10.5% { transform: translateY(0); }
+  12.5%, 23% { transform: translateY(-1.15em); }
+  25%, 35.5% { transform: translateY(-2.3em); }
+  37.5%, 48% { transform: translateY(-3.45em); }
+  50%, 60.5% { transform: translateY(-4.6em); }
+  62.5%, 73% { transform: translateY(-5.75em); }
+  75%, 85.5% { transform: translateY(-6.9em); }
+  87.5%, 98% { transform: translateY(-8.05em); }
+  100% { transform: translateY(-9.2em); }
 }
 
 /* "Reducir movimiento" del sistema: nada se anima y todo el contenido queda

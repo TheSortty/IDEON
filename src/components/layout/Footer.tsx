@@ -5,6 +5,7 @@ import { SOCIAL_PROFILES, type SocialId } from '../../constants/seo';
 import { CONTACT_EMAIL, WHATSAPP_MESSAGES, whatsappUrl } from '../../constants/contact';
 import { FOOTER_COPY, FOOTER_STUDIO, NAV_ITEMS, SERVICE_NAV } from '../../constants/navigation';
 import { resolveNav } from '../../routes';
+import AppLink from '../ui/AppLink';
 
 // Las URLs de las redes viven en constants/seo.ts porque el JSON-LD las
 // publica como `sameAs`. Acá solo se resuelve qué ícono le toca a cada una.
@@ -57,24 +58,30 @@ const Footer: React.FC = () => {
           <nav aria-label="Servicios" className="flex flex-col items-start gap-3">
             <p className={colTitle}>{FOOTER_COPY.servicesTitle}</p>
             {servicesOverview && (
-              <Link to={resolveNav(servicesOverview)} className={footLink}>
+              <AppLink to={resolveNav(servicesOverview) ?? '/'} className={footLink}>
                 {FOOTER_COPY.servicesOverview}
-              </Link>
+              </AppLink>
             )}
-            {SERVICE_NAV.map((service) => (
-              <Link key={service.label} to={resolveNav(service)} className={footLink}>
-                {service.label}
-              </Link>
-            ))}
+            {SERVICE_NAV.map((service) => {
+              const to = resolveNav(service);
+              return to === null ? null : (
+                <AppLink key={service.label} to={to} className={footLink}>
+                  {service.label}
+                </AppLink>
+              );
+            })}
           </nav>
 
           <nav aria-label="Estudio" className="flex flex-col items-start gap-3">
             <p className={colTitle}>{FOOTER_COPY.studioTitle}</p>
-            {FOOTER_STUDIO.map((item) => (
-              <Link key={item.label} to={resolveNav(item)} className={footLink}>
-                {item.label}
-              </Link>
-            ))}
+            {FOOTER_STUDIO.map((item) => {
+              const to = resolveNav(item);
+              return to === null ? null : (
+                <AppLink key={item.label} to={to} className={footLink}>
+                  {item.label}
+                </AppLink>
+              );
+            })}
           </nav>
 
           <div className="flex flex-col items-start gap-3">

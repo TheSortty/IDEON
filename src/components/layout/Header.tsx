@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router';
+import AppLink from '../ui/AppLink';
 import { AnimatePresence, motion } from 'framer-motion';
 import Button from '../ui/Button';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
@@ -111,10 +112,12 @@ const ServicesMenu: React.FC<{ active: boolean }> = ({ active }) => {
             <div className="grid gap-0.5 rounded-[22px] border border-line-strong bg-[var(--popover)] p-2.5 shadow-[0_30px_70px_-20px_rgb(0_0_0/0.6),0_0_40px_rgb(var(--accent)/0.12)]">
               {SERVICE_NAV.map((service) => {
                 const Icon = SERVICE_ICONS[service.icon];
+                const to = resolveNav(service);
+                if (to === null) return null;
                 return (
-                  <Link
+                  <AppLink
                     key={service.label}
-                    to={resolveNav(service)}
+                    to={to}
                     onClick={() => setOpen(false)}
                     className="group flex items-start gap-3.5 rounded-[14px] p-3.5 text-content no-underline transition-[background-color,transform] duration-medium ease-emphasis hover:translate-x-1 hover:bg-content/[0.07]"
                   >
@@ -125,18 +128,18 @@ const ServicesMenu: React.FC<{ active: boolean }> = ({ active }) => {
                       <strong className="block text-[15px]">{service.label}</strong>
                       <span className="text-[13px] text-content-muted">{service.description}</span>
                     </span>
-                  </Link>
+                  </AppLink>
                 );
               })}
               <div className="mt-1.5 flex items-center justify-between gap-3 rounded-[14px] border border-accent/25 bg-accent/[0.08] p-3.5">
                 <span className="text-sm text-content-muted">{SERVICES_MENU_COPY.helper}</span>
-                <Link
-                  to={resolveNav(NAV_ITEMS[1])}
+                <AppLink
+                  to={resolveNav(NAV_ITEMS[1]) ?? '/'}
                   onClick={() => setOpen(false)}
                   className="link-underline inline-flex items-center gap-1.5 text-sm font-bold text-accent-text no-underline hover:text-content"
                 >
                   {SERVICES_MENU_COPY.helperLink} <span aria-hidden="true">→</span>
-                </Link>
+                </AppLink>
               </div>
             </div>
           </motion.div>
@@ -162,20 +165,27 @@ const MobileMenu: React.FC<{ open: boolean; id: string; onNavigate: () => void }
           className="absolute inset-x-3 top-full z-[60] mt-2 flex max-h-[calc(100dvh-var(--nav-h)-1.5rem)] flex-col gap-0.5 overflow-y-auto rounded-[22px] border border-line-strong bg-[var(--popover)] p-3 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] xl:hidden"
           {...popMotion}
         >
-          {NAV_ITEMS.map((item) => (
-            <React.Fragment key={item.id}>
-              <Link to={resolveNav(item)} onClick={onNavigate} className={mobileLink}>
-                {item.id === 'servicios' ? SERVICES_MENU_COPY.mobileOverview : item.label}
-              </Link>
-              {item.id === 'servicios' &&
-                SERVICE_NAV.map((service) => (
-                  <Link key={service.label} to={resolveNav(service)} onClick={onNavigate} className={subLink}>
-                    {service.label}
-                  </Link>
-                ))}
-            </React.Fragment>
-          ))}
-          <Button to={resolveNav(COTIZAR)} onClick={onNavigate} className="mt-2 w-full">
+          {NAV_ITEMS.map((item) => {
+            const to = resolveNav(item);
+            if (to === null) return null;
+            return (
+              <React.Fragment key={item.id}>
+                <AppLink to={to} onClick={onNavigate} className={mobileLink}>
+                  {item.id === 'servicios' ? SERVICES_MENU_COPY.mobileOverview : item.label}
+                </AppLink>
+                {item.id === 'servicios' &&
+                  SERVICE_NAV.map((service) => {
+                    const serviceTo = resolveNav(service);
+                    return serviceTo === null ? null : (
+                      <AppLink key={service.label} to={serviceTo} onClick={onNavigate} className={subLink}>
+                        {service.label}
+                      </AppLink>
+                    );
+                  })}
+              </React.Fragment>
+            );
+          })}
+          <Button to={resolveNav(COTIZAR) ?? '/'} onClick={onNavigate} className="mt-2 w-full">
             {COTIZAR.label}
           </Button>
         </motion.nav>
@@ -216,24 +226,26 @@ const Header: React.FC = () => {
             aria-hidden="true"
             className="glass absolute inset-0 -z-10 rounded-full shadow-[0_8px_32px_-8px_rgb(0_0_0/0.35)]"
           />
-          {NAV_ITEMS.map((item) =>
-            item.id === 'servicios' ? (
+          {NAV_ITEMS.map((item) => {
+            const to = resolveNav(item);
+            if (to === null) return null;
+            return item.id === 'servicios' ? (
               <ServicesMenu key={item.id} active={isActive(item, pathname)} />
             ) : (
-              <Link
+              <AppLink
                 key={item.id}
-                to={resolveNav(item)}
+                to={to}
                 aria-current={isActive(item, pathname) ? 'page' : undefined}
                 className={cn(linkBase, isActive(item, pathname) && linkActive)}
               >
                 {item.label}
-              </Link>
-            ),
-          )}
+              </AppLink>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2.5">
-          <Button to={resolveNav(COTIZAR)} size="sm" className="hidden sm:inline-flex">
+          <Button to={resolveNav(COTIZAR) ?? '/'} size="sm" className="hidden sm:inline-flex">
             {COTIZAR.label}
           </Button>
           <ThemeSwitcher />
