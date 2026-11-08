@@ -17,7 +17,3 @@ export const WHATSAPP_MESSAGES = {
   hero: 'Hola IDEON, vengo de la web y quiero cotizar un proyecto:',
   floating: 'Hola IDEON, vengo de la web y tengo una consulta:',
 } as const;
-
-export const openWhatsApp = (message: string): void => {
-  window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
-};

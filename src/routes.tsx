@@ -11,6 +11,10 @@ import SistemasPage from './pages/Servicios/SistemasPage';
 import CasosPage from './pages/Casos/CasosPage';
 import CaseStudyPage from './pages/Casos/CaseStudyPage';
 import { CASE_STUDIES } from './constants/cases';
+import NosotrosPage from './pages/Nosotros/NosotrosPage';
+import PreguntasPage from './pages/Preguntas/PreguntasPage';
+import ContactoPage from './pages/Contacto/ContactoPage';
+import CotizarPage from './pages/Cotizar/CotizarPage';
 
 /**
  * Las rutas del sitio. Es la única fuente: la usan el <Routes> de App.tsx y el
@@ -34,6 +38,10 @@ export const SITE_ROUTES: readonly SiteRoute[] = [
   { path: '/servicios/sistemas-a-medida/', element: <SistemasPage /> },
   { path: '/casos/', element: <CasosPage /> },
   ...CASE_STUDIES.map((study) => ({ path: study.meta.path, element: <CaseStudyPage study={study} /> })),
+  { path: '/nosotros/', element: <NosotrosPage /> },
+  { path: '/preguntas/', element: <PreguntasPage /> },
+  { path: '/contacto/', element: <ContactoPage /> },
+  { path: '/cotizar/', element: <CotizarPage /> },
   { path: '/terminos-y-condiciones/', element: <TerminosPage /> },
   { path: '/politica-de-privacidad/', element: <PoliticaPrivacidadPage /> },
   { path: '/contacto-exitoso/', element: <ContactoExitosoPage /> },
