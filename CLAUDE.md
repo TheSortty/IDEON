@@ -137,6 +137,12 @@ magenta → azul y acentos secundarios), `whatsapp` (verde de la marca WhatsApp,
 solo para su botón) y `--lamp-*` (amarillos de la lamparita ASCII del hero: son
 de la ilustración, no se usan en la interfaz).
 
+**Única excepción a la paleta: los casos.** En el carrusel de `/casos/` y en los
+paneles de trabajos destacados del Inicio, cada proyecto se muestra con los colores
+de su cliente (clases `.t-home`, `.t-under`, `.t-corral`, `.t-am`, `.t-borea`,
+`.t-bb` de `src/index.css`, tal cual el diseño de Celeste), para darle protagonismo
+al proyecto. Esos colores no se usan en ningún otro lugar.
+
 Primitivas del rediseño: `Button` (variantes `primary`, `outline`, `ghost`,
 `light`; `to` para links internos), `SpotlightCard` (vidrio + luz que sigue al
 cursor + texturas), `Reveal` (aparición al scrollear; no usar en lo que se ve al

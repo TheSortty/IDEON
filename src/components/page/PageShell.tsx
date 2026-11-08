@@ -11,11 +11,12 @@ const FIRST_ORB: Record<OrbSide, string> = {
 
 /**
  * Envoltorio de las páginas internas: dos orbes de luz de fondo (magenta y
- * azul) detrás del contenido. `overflow-x-clip` evita el scroll horizontal
- * sin romper los elementos sticky (la barra "En esta página").
+ * azul) detrás del contenido. `overflow-clip` recorta los orbes en los dos
+ * ejes (que no generen scroll horizontal ni estiren una página corta) sin
+ * romper los elementos sticky (la barra "En esta página").
  */
 const PageShell: React.FC<{ orb?: OrbSide; children: React.ReactNode }> = ({ orb = 'right', children }) => (
-  <div className="relative isolate overflow-x-clip">
+  <div className="relative isolate overflow-clip">
     <span
       aria-hidden="true"
       className={cn(

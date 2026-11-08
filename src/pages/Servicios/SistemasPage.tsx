@@ -13,7 +13,7 @@ import QuoteButton from '../../components/page/QuoteButton';
 import DashMock from '../../components/illustrations/DashMock';
 import { useServicePageSeo } from '../../components/page/servicePageSeo';
 import { SERVICIOS_META, SISTEMAS, SISTEMAS_META } from '../../constants/services';
-import { CASES } from '../../constants/home';
+import { CASE_STUDIES } from '../../constants/cases';
 import { NAV_ITEMS } from '../../constants/navigation';
 import { whatsappUrl } from '../../constants/contact';
 import { resolveNav } from '../../routes';
@@ -22,8 +22,8 @@ const SistemasPage: React.FC = () => {
   useServicePageSeo(SISTEMAS_META, { parents: [SERVICIOS_META], service: { serviceType: 'Desarrollo de software a medida' }, faqs: SISTEMAS.faqs });
 
   // "Ver un caso real" → el caso de Home (etapa E); mientras tanto, su sitio.
-  const homeCase = CASES.featured[0];
-  const caseHref = resolveNav({ path: homeCase.path, fallback: homeCase.url }) ?? homeCase.url;
+  const homeCase = CASE_STUDIES[0];
+  const caseHref = resolveNav({ path: homeCase.meta.path, fallback: homeCase.url }) ?? homeCase.url;
   const casos = NAV_ITEMS.find((item) => item.id === 'casos');
   const casosHref = casos ? resolveNav(casos) : null;
 

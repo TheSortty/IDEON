@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
     // overflow-x-clip: los orbes se salen por los costados a propósito, pero
     // no tienen que generar scroll horizontal. `clip` (no `hidden`) no rompe
     // el sticky de la columna de ventajas.
-    <div className="relative isolate overflow-x-clip">
+    <div className="relative isolate overflow-clip">
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-[120px] -z-10 h-[600px] w-[600px] animate-orb rounded-full bg-accent opacity-[0.17] blur-[90px]"

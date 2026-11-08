@@ -8,6 +8,9 @@ import ServiciosPage from './pages/Servicios/ServiciosPage';
 import PaginasWebPage from './pages/Servicios/PaginasWebPage';
 import TiendasOnlinePage from './pages/Servicios/TiendasOnlinePage';
 import SistemasPage from './pages/Servicios/SistemasPage';
+import CasosPage from './pages/Casos/CasosPage';
+import CaseStudyPage from './pages/Casos/CaseStudyPage';
+import { CASE_STUDIES } from './constants/cases';
 
 /**
  * Las rutas del sitio. Es la única fuente: la usan el <Routes> de App.tsx y el
@@ -29,6 +32,8 @@ export const SITE_ROUTES: readonly SiteRoute[] = [
   { path: '/servicios/paginas-web/', element: <PaginasWebPage /> },
   { path: '/servicios/tiendas-online/', element: <TiendasOnlinePage /> },
   { path: '/servicios/sistemas-a-medida/', element: <SistemasPage /> },
+  { path: '/casos/', element: <CasosPage /> },
+  ...CASE_STUDIES.map((study) => ({ path: study.meta.path, element: <CaseStudyPage study={study} /> })),
   { path: '/terminos-y-condiciones/', element: <TerminosPage /> },
   { path: '/politica-de-privacidad/', element: <PoliticaPrivacidadPage /> },
   { path: '/contacto-exitoso/', element: <ContactoExitosoPage /> },

@@ -1,6 +1,8 @@
 // Copy del Inicio (rediseño de Celeste, etapa C). Si un cambio es solo de
 // texto, se hace acá y no en los componentes.
 
+import type { ClientTheme } from './cases';
+
 export const HOME_META = {
   title: 'IDEON | Desarrollo web y software a medida.',
   description:
@@ -86,58 +88,44 @@ export const SERVICES_PROMO = {
   whatsappMessage: 'Hola IDEON, vengo de la web y quiero conocer sus planes y servicios.',
 } as const;
 
+// Trabajos destacados: cada panel con los colores de su cliente (la única
+// excepción a la paleta de IDEON, como en el diseño de Celeste).
 export interface FeaturedCase {
   name: string;
   tagline: string;
-  /** Página del caso (etapa E). */
-  path: string;
-  /** Sitio real del cliente: destino mientras la página del caso no exista. */
-  url: string;
-  /** Portada en /public/casos/portadas (sin sufijo de tamaño). */
-  cover: string;
-  coverAlt: string;
-}
-
-export interface UpcomingCase {
-  name: string;
-  tagline: string;
+  theme: ClientTheme;
   monogram: string;
+  /** Página del caso (si tiene). */
+  path?: string;
+  /** Sitio real: destino mientras la página del caso no exista. */
+  url?: string;
+  /** Portada en /public/casos/portadas (sin sufijo de tamaño). Solo Home. */
+  cover?: string;
+  coverAlt?: string;
+  /** En desarrollo: muestra "Próximamente" y no es un link. */
+  upcoming?: boolean;
 }
 
 export const CASES = {
   title: 'Conocé nuestros trabajos destacados',
   cta: 'Ver proyectos',
   upcomingBadge: 'Próximamente',
-  featured: [
+  panels: [
     {
       name: 'Home',
       tagline: 'Campus de coaching · Sistema a medida',
+      theme: 't-home',
+      monogram: 'H',
       path: '/casos/home/',
       url: 'https://siendohome.com',
       cover: '/casos/portadas/home',
       coverAlt: 'Web institucional de Home, escuela de coaching',
     },
-    {
-      name: 'Under Club',
-      tagline: 'Club de eventos · Sistema a medida',
-      path: '/casos/under-club/',
-      url: 'https://underclub.com.ar',
-      cover: '/casos/portadas/under-club',
-      coverAlt: 'Sitio web de Under Club',
-    },
-    {
-      name: 'Corralcoop',
-      tagline: 'Cooperativa de agua · Portal de autogestión',
-      path: '/casos/corralcoop/',
-      url: 'https://corralcoop.com',
-      cover: '/casos/portadas/corralcoop',
-      coverAlt: 'Portal de autogestión de Corralcoop',
-    },
+    { name: 'Under Club', tagline: 'Club de eventos · Sistema a medida', theme: 't-under', monogram: 'U', path: '/casos/under-club/', url: 'https://underclub.com.ar' },
+    { name: 'Corralcoop', tagline: 'Cooperativa de agua · Portal de autogestión', theme: 't-corral', monogram: 'C', path: '/casos/corralcoop/', url: 'https://corralcoop.com' },
+    { name: 'AM Suministros', tagline: 'Ferretería industrial · En desarrollo', theme: 't-am', monogram: 'AM', upcoming: true },
+    { name: 'Borea', tagline: 'Tienda de carteras · En desarrollo', theme: 't-borea', monogram: 'B', upcoming: true },
   ] satisfies readonly FeaturedCase[],
-  upcoming: [
-    { name: 'AM Suministros', tagline: 'Ferretería industrial', monogram: 'AM' },
-    { name: 'Borea', tagline: 'Tienda de carteras', monogram: 'B' },
-  ] satisfies readonly UpcomingCase[],
 } as const;
 
 export const FINAL_CTA = {
