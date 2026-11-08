@@ -48,7 +48,7 @@ const ThemeSwitcher: React.FC = () => {
         }
       }}
       aria-label={isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
-      className="relative flex items-center justify-center h-12 w-12 rounded-full cursor-pointer hover:bg-gray-200/60 dark:hover:bg-brand-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f8f8] dark:focus-visible:ring-offset-brand-background transition-colors duration-300"
+      className="relative flex items-center justify-center h-12 w-12 rounded-full cursor-pointer hover:bg-content/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base transition-colors duration-300"
     >
       <motion.svg
         width="34"

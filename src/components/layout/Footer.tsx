@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { FacebookIcon, InstagramIcon, WhatsAppIcon, LinkedInIcon } from '../ui/SocialIcons';
 import { SOCIAL_PROFILES, type SocialId } from '../../constants/seo';
+import { CONTACT_EMAIL, WHATSAPP_MESSAGES, whatsappUrl } from '../../constants/contact';
+import { FOOTER_COPY, FOOTER_STUDIO, NAV_ITEMS, SERVICE_NAV } from '../../constants/navigation';
+import { resolveNav } from '../../routes';
 
 // Las URLs de las redes viven en constants/seo.ts porque el JSON-LD las
 // publica como `sameAs`. Acá solo se resuelve qué ícono le toca a cada una.
@@ -11,55 +15,27 @@ const SOCIAL_ICONS: Record<SocialId, React.FC<{ className?: string }>> = {
   linkedin: LinkedInIcon,
 };
 
-// FOOTER SECTION
+const footLink =
+  'inline-block text-[15px] text-content-muted no-underline transition-[color,transform] duration-long ease-emphasis hover:translate-x-1 hover:text-content';
+const colTitle = 'mb-1 text-[13px] font-bold uppercase tracking-[0.2em] text-content';
+
 const Footer: React.FC = () => {
+  const servicesOverview = NAV_ITEMS.find((item) => item.id === 'servicios');
+
   return (
-    <footer className="bg-gray-50 dark:bg-brand-background border-t border-line pt-16 pb-8 transition-colors duration-300 relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-          style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-        </div>
-
-        {/* Floating Shapes */}
-        <svg className="absolute top-10 right-10 w-20 h-20 text-accent/10 animate-spin-slow" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50 0 L100 50 L50 100 L0 50 Z" />
-        </svg>
-        <svg className="absolute bottom-20 left-10 w-16 h-16 text-blue-500/10 animate-bounce-slow" viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="50" />
-        </svg>
-      </div>
-
-      <div className="container-site relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left mb-12">
-          <div>
-            <h3 className="text-3xl font-extrabold text-content">
+    <footer className="themed-surface relative border-t border-line bg-surface-base">
+      <div className="container-site flex flex-col gap-12 pb-8 pt-[72px]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-4">
+            <Link
+              to="/"
+              aria-label="IDEON, ir al inicio"
+              className="self-start text-[32px] font-black tracking-[-0.02em] text-content no-underline"
+            >
               IDE<span className="text-accent">ON</span>
-            </h3>
-            <p className="mt-4 text-content-muted leading-relaxed">
-              Ideon está conformado por especialistas en desarrollo, atención al cliente y marketing digital, unidos para crear webs y sistemas a medida — claros, cuidados y sin dependencias.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Datos de contacto</h4>
-            <ul className="space-y-3 text-content-muted">
-              <li>Email: <a href="mailto:contacto@ideon.ar" className="text-accent hover:text-gray-900 dark:hover:text-white transition-colors">contacto@ideon.ar</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Legal</h4>
-            <ul className="space-y-3 text-content-muted">
-              <li><a href="/terminos-y-condiciones/" className="hover:text-accent transition-colors">Términos y condiciones</a></li>
-              <li><a href="/politica-de-privacidad/" className="hover:text-accent transition-colors">Política de privacidad</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold uppercase tracking-wider text-content mb-4">Seguinos</h4>
-            <div className="flex items-center justify-center md:justify-start gap-4">
+            </Link>
+            <p className="max-w-[300px] text-[15px] leading-relaxed text-content-muted">{FOOTER_COPY.tagline}</p>
+            <div className="flex gap-2.5">
               {SOCIAL_PROFILES.map(({ id, label, url }) => {
                 const Icon = SOCIAL_ICONS[id];
                 return (
@@ -69,20 +45,73 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${label} de IDEON`}
-                    className="text-content-muted hover:text-accent transition-colors"
+                    className="glass flex h-11 w-11 items-center justify-center rounded-full text-content transition-[transform,background-color,border-color,box-shadow] duration-long ease-emphasis hover:-translate-y-1 hover:-rotate-6 hover:border-accent/60 hover:bg-accent/20 hover:shadow-[0_0_22px_rgb(var(--accent)/0.4)]"
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon className="h-5 w-5" />
                   </a>
                 );
               })}
             </div>
           </div>
+
+          <nav aria-label="Servicios" className="flex flex-col items-start gap-3">
+            <p className={colTitle}>{FOOTER_COPY.servicesTitle}</p>
+            {servicesOverview && (
+              <Link to={resolveNav(servicesOverview)} className={footLink}>
+                {FOOTER_COPY.servicesOverview}
+              </Link>
+            )}
+            {SERVICE_NAV.map((service) => (
+              <Link key={service.label} to={resolveNav(service)} className={footLink}>
+                {service.label}
+              </Link>
+            ))}
+          </nav>
+
+          <nav aria-label="Estudio" className="flex flex-col items-start gap-3">
+            <p className={colTitle}>{FOOTER_COPY.studioTitle}</p>
+            {FOOTER_STUDIO.map((item) => (
+              <Link key={item.label} to={resolveNav(item)} className={footLink}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex flex-col items-start gap-3">
+            <p className={colTitle}>{FOOTER_COPY.contactTitle}</p>
+            <a href={`mailto:${CONTACT_EMAIL}`} className={footLink}>
+              {CONTACT_EMAIL}
+            </a>
+            <a
+              href={whatsappUrl(WHATSAPP_MESSAGES.floating)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={footLink}
+            >
+              {FOOTER_COPY.phoneDisplay}
+            </a>
+            <p className="text-[15px] leading-relaxed text-content-muted">
+              {FOOTER_COPY.location}
+              <br />
+              {FOOTER_COPY.hours}
+            </p>
+          </div>
         </div>
-        <div className="border-t border-line pt-8 text-center relative">
-          <p className="text-content-muted text-sm">
-            &copy; {new Date().getFullYear()} IDEON. Todos los derechos reservados.
-            <span className="text-transparent opacity-0 absolute pointer-events-none select-none -z-10 text-[1px]">© 2026 TERRANOVA ANGELO GABINO. Todos los derechos reservados.</span>
+
+        <div className="flex flex-wrap justify-between gap-4 border-t border-line pt-6">
+          <p className="text-sm text-content-muted">
+            {/* El año sale del reloj: si el HTML se generó el año anterior,
+                el navegador lo corrige sin quejarse de la hidratación. */}
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {FOOTER_COPY.copyright}
           </p>
+          <div className="flex flex-wrap gap-5">
+            <Link to="/terminos-y-condiciones/" className={footLink.replace('text-[15px]', 'text-sm')}>
+              {FOOTER_COPY.terms}
+            </Link>
+            <Link to="/politica-de-privacidad/" className={footLink.replace('text-[15px]', 'text-sm')}>
+              {FOOTER_COPY.privacy}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

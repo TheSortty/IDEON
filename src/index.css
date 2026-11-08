@@ -39,26 +39,39 @@
     --magenta-700: 122 0 147;   /* #7a0093 */
     --void-900: 12 2 45;        /* #0C022D */
     --void-700: 33 17 92;       /* #21115C */
-    --blue-500: 59 130 246;     /* #3B82F6 — ya se usaba en el gradiente del hero */
+    /* Azul: es el `accent-secondary` del IDEON Design System (no un color
+       suelto). Se usa solo como el otro extremo del degradado de marca
+       magenta → azul y en acentos secundarios, nunca como color de texto. */
+    --blue-500: 59 130 246;     /* #3B82F6 brand-accent-blue */
+    --blue-600: 37 99 235;      /* #2563EB brand-accent-blue-deep */
     --ivory: 248 248 248;       /* #F8F8F8 */
     --lilac: 169 161 209;       /* #A9A1D1 */
-    --ink-900: 17 17 17;        /* #111 — texto del tema claro, tal como estaba */
-    --ink-500: 75 85 99;        /* #4B5563 — el gray-600 que ya usaba el tema claro */
+    /* Tema claro: la misma paleta llevada a claro. El fondo es un blanco
+       apenas lavanda (no gris), el texto es el violeta de marca (#0C022D) y el
+       secundario es el lavanda oscurecido hasta pasar AA sobre ese fondo. */
+    --mist: 247 245 252;        /* #F7F5FC fondo claro */
+    --mist-deep: 236 231 250;   /* #ECE7FA extremo del gradiente del body */
+    --lilac-ink: 75 68 112;     /* #4B4470 texto secundario claro (8,9:1) */
     --white: 255 255 255;
+    --whatsapp: 37 211 102;     /* #25D366 — color de la marca WhatsApp: el botón tiene que reconocerse */
 
     /* ---- CAPA 2 — LOS ROLES ----
        Lo único que tocan los componentes. El tema es esta capa:
        cambiarlo es redefinirla, no tocar la paleta de arriba.
        Los valores de acá son los del tema CLARO, que es el default
        cuando todavía no corrió el ThemeProvider. */
-    --bg: var(--ivory);
-    --bg-deep: 240 240 240;     /* el otro extremo del gradiente radial del body */
+    --bg: var(--mist);
+    --bg-deep: var(--mist-deep); /* el otro extremo del gradiente radial del body */
     --surface: var(--white);
-    --text: var(--ink-900);
-    --text-muted: var(--ink-500);
+    --text: var(--void-900);
+    --text-muted: var(--lilac-ink);
     --accent: var(--magenta-500);
     --accent-hover: var(--magenta-600);
     --accent-ink: var(--white);
+    --accent-2: var(--blue-600);
+    /* Texto en color de acento (links, palabras destacadas). En claro el
+       magenta-500 sobre blanco da 4,0:1 y no pasa AA: se usa el 600. */
+    --accent-text: var(--magenta-600);
 
     /* El magenta-500 es el color de la marca y se queda donde no lleva texto
        encima: bordes, glows, iconos, texto de acento sobre fondo oscuro.
@@ -73,6 +86,18 @@
     --border: rgb(12 2 45 / 0.10);
     --border-strong: rgb(12 2 45 / 0.18);
     --focus: rgb(var(--accent));
+
+    /* Vidrio: tarjetas y paneles sobre el fondo de partículas. */
+    --glass: rgb(255 255 255 / 0.72);
+    --glass-strong: rgb(255 255 255 / 0.92);
+    --glass-border: rgb(12 2 45 / 0.09);
+    /* Barra del header y menús desplegables. */
+    --chrome: rgb(247 245 252 / 0.82);
+    --popover: rgb(255 255 255); /* opaco: con transparencia se lee el título de atrás */
+    --shadow-card: 0 26px 50px -24px rgb(12 2 45 / 0.28);
+    /* Partículas del fondo: canales RGB, el canvas les suma la opacidad. */
+    --particle: 161 0 194;
+    --particle-alpha: 0.35;
 
     /* ---- movimiento, también como token ---- */
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -126,7 +151,7 @@
     --s-6: 32px; --s-7: 48px;  --s-8: 64px; --s-9: 96px;  --s-10: 128px;
 
     /* alto real de la barra del nav (h-20), para los offsets de sticky */
-    --nav-h: 5rem;
+    --nav-h: 5.25rem;
   }
 
   /* El tema oscuro redefine SOLO la capa 2. */
@@ -136,9 +161,20 @@
     --surface: var(--void-700);
     --text: var(--ivory);
     --text-muted: var(--lilac);
+    --accent-2: var(--blue-500);
+    --accent-text: var(--magenta-500);
 
     --border: rgb(255 255 255 / 0.10);
     --border-strong: rgb(255 255 255 / 0.20);
+
+    --glass: rgb(255 255 255 / 0.05);
+    --glass-strong: rgb(255 255 255 / 0.10);
+    --glass-border: rgb(255 255 255 / 0.10);
+    --chrome: rgb(12 2 45 / 0.85);
+    --popover: rgb(18 8 56);
+    --shadow-card: 0 26px 50px -22px rgb(0 0 0 / 0.75);
+    --particle: 212 0 255;
+    --particle-alpha: 0.55;
   }
 
   h1 {
@@ -176,6 +212,11 @@
      en unas y py-20 sm:py-24 en otras. */
   section {
     padding-block: var(--space-section);
+  }
+
+  /* Las anclas (/#planes) quedan debajo del header fijo, no tapadas por él. */
+  [id] {
+    scroll-margin-top: var(--nav-h);
   }
 
   :focus-visible {
@@ -261,8 +302,148 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
+  /* Degradado de marca magenta → azul, solo con colores del sistema de
+     diseño. En claro usa los tonos profundos para que el texto pase AA. */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-blue-500;
+    background-image: linear-gradient(95deg, rgb(var(--accent-text)) 0%, rgb(var(--accent-2)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ================================================================
+     PRIMITIVAS DEL REDISEÑO (etapa B)
+     Lo que Tailwind no puede expresar con clases: pseudo-elementos y
+     custom properties que se actualizan desde JS. Las animaciones de
+     entrada van con framer-motion; acá solo hay transiciones de hover
+     (que corren en el compositor del navegador, sin JS).
+     ================================================================ */
+
+  /* Vidrio: superficie translúcida sobre el fondo de partículas. */
+  .glass {
+    background-color: var(--glass);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  /* Recurso C — luz que sigue al cursor. SpotlightCard.tsx escribe --mx/--my
+     en el pointermove de la propia tarjeta (sin listeners globales). La luz
+     va en un ::before con z-index -1 dentro de un contexto aislado: queda
+     sobre el fondo de la tarjeta pero DEBAJO del texto, sin lavarlo. En
+     pantallas táctiles (sin hover) se enciende sola, centrada, cuando la
+     tarjeta pasa por el medio de la pantalla (data-lit). */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+    transition: transform 650ms var(--ease-emphasis), border-color 400ms var(--ease-out),
+                box-shadow 650ms var(--ease-emphasis);
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%),
+                rgb(var(--accent) / 0.22), transparent 62%);
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out);
+  }
+  /* Borde con degradado de marca: una máscara deja ver solo el filo. */
+  .spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgb(var(--accent) / 0.85), rgb(var(--accent-2) / 0.65));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out);
+  }
+  @media (hover: hover) {
+    .spotlight:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card), 0 0 40px rgb(var(--accent) / 0.14);
+    }
+    .spotlight:hover::before,
+    .spotlight:hover::after {
+      opacity: 1;
+    }
+  }
+  @media (hover: none) {
+    .spotlight[data-lit='true']::before,
+    .spotlight[data-lit='true']::after {
+      opacity: 1;
+    }
+  }
+
+  /* Recurso D — texturas. Se apagan hacia los bordes con una máscara para
+     que no corten en seco contra el resto de la sección. */
+  .texture-dots {
+    background-image: radial-gradient(rgb(var(--text) / 0.10) 1px, transparent 1px);
+    background-size: 18px 18px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 75%);
+  }
+  .texture-grid {
+    background-image:
+      linear-gradient(rgb(var(--text) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--text) / 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 100% 0%, #000 0%, transparent 70%);
+  }
+  /* Número grande en contorno ("01") detrás del contenido de una tarjeta. */
+  .num-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgb(var(--accent) / 0.35);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  /* Botones: el brillo que cruza el botón al hacer hover (primario y claro)
+     y el relleno que entra desde la izquierda (contorno). */
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent 30%, rgb(var(--white) / 0.38) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 1100ms var(--ease-emphasis);
+  }
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+  .btn-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, rgb(var(--accent-solid)), rgb(var(--accent-2) / 0.85));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 650ms var(--ease-emphasis);
+  }
+  .btn-fill:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Link de texto con subrayado que crece desde la izquierda. */
+  .link-underline {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+    padding-bottom: 2px;
+    transition: background-size 600ms var(--ease-emphasis), color 300ms var(--ease-out);
+  }
+  .link-underline:hover {
+    background-size: 100% 2px;
   }
 
   /* Píldora de vidrio del nav de escritorio (look "liquid glass"): fondo
@@ -326,15 +507,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-200 dark:bg-brand-background;
+    @apply bg-surface-base;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-400 dark:bg-accent rounded-full border-2 border-gray-200 dark:border-brand-background;
+    @apply bg-content-muted/50 dark:bg-accent rounded-full border-2 border-surface-base;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500 dark:bg-accent/80;
+    @apply bg-content-muted dark:bg-accent/80;
   }
 }
 

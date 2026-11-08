@@ -32,6 +32,10 @@ module.exports = {
                 'accent-solid': 'rgb(var(--accent-solid) / <alpha-value>)',
                 'accent-solid-hover': 'rgb(var(--accent-solid-hover) / <alpha-value>)',
                 'accent-ink': 'rgb(var(--accent-ink) / <alpha-value>)',
+                // Etapa B del rediseño.
+                'accent-2': 'rgb(var(--accent-2) / <alpha-value>)',      // azul del sistema de diseño
+                'accent-text': 'rgb(var(--accent-text) / <alpha-value>)', // acento para TEXTO (pasa AA en los dos temas)
+                'whatsapp': 'rgb(var(--whatsapp) / <alpha-value>)',
             },
             borderColor: {
                 'line': 'var(--border)',
@@ -71,6 +75,13 @@ module.exports = {
                 // mismo recorrido (0% -> 100% -> 0%) para que el loop no tenga
                 // salto: un paneo en una sola direccion cortaria al reiniciar.
                 'gradient-pan': 'gradient-pan 6s ease-in-out infinite',
+                // Loops decorativos del rediseño. Van en CSS (no framer-motion)
+                // porque corren en el compositor sin JS: en celulares de gama
+                // media no compiten con el hilo principal. La regla global de
+                // prefers-reduced-motion de index.css los frena.
+                'orb': 'orb 18s ease-in-out infinite',
+                'orb-reverse': 'orb 24s ease-in-out infinite reverse',
+                'ping-soft': 'ping-soft 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite',
             },
             keyframes: {
                 'neon-glow': {
@@ -84,6 +95,14 @@ module.exports = {
                 'gradient-pan': {
                     '0%, 100%': { 'background-position': '0% 50%' },
                     '50%': { 'background-position': '100% 50%' },
+                },
+                'orb': {
+                    '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                    '50%': { transform: 'translate(50px, -40px) scale(1.1)' },
+                },
+                'ping-soft': {
+                    '0%': { transform: 'scale(1)', opacity: '0.8' },
+                    '80%, 100%': { transform: 'scale(1.6)', opacity: '0' },
                 }
             }
         },

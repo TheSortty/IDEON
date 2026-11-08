@@ -128,11 +128,28 @@ hexadecimales sueltos ni clases de color por defecto de Tailwind** (nada de
 | `brand-text-primary` | `#F8F8F8` | texto principal |
 | `brand-text-secondary` | `#A9A1D1` | texto secundario, lavanda apagado |
 
+En los componentes se usan los **roles** (cambian solos con el tema claro/oscuro,
+definidos en `src/index.css`): `surface-base`, `surface-raised`, `content`,
+`content-muted`, `accent`, `accent-solid`, `accent-text` (acento para texto: pasa
+AA en los dos temas), `accent-2` (el azul `#3B82F6`/`#2563EB`, que es el
+`accent-secondary` del IDEON Design System: solo para el degradado de marca
+magenta → azul y acentos secundarios) y `whatsapp` (verde de la marca WhatsApp,
+solo para su botón).
+
+Primitivas del rediseño: `Button` (variantes `primary`, `outline`, `ghost`,
+`light`; `to` para links internos), `SpotlightCard` (vidrio + luz que sigue al
+cursor + texturas), `Reveal` (aparición al scrollear; no usar en lo que se ve al
+cargar) y las clases `.glass`, `.texture-dots`, `.texture-grid`, `.num-outline`,
+`.text-gradient` de `src/index.css`.
+
 - **Tipografía**: `Inter` como sans por defecto. No introducir otras familias.
 - **Animaciones propias** ya disponibles como utilidades: `animate-neon-glow`
   (pulso de resplandor magenta), `animate-float` y `animate-float-delayed`
-  (flotación suave de 6s, la segunda desfasada 3s). Reutilizarlas antes de
-  escribir keyframes nuevos.
+  (flotación suave de 6s, la segunda desfasada 3s), `animate-gradient-pan`,
+  `animate-orb`/`animate-orb-reverse` y `animate-ping-soft`. Reutilizarlas antes
+  de escribir keyframes nuevos. Los **loops decorativos infinitos** van como
+  estas utilidades CSS (corren sin JS); las entradas e interacciones, con
+  framer-motion.
 
 La estética es neón sobre fondo oscuro. Cualquier componente nuevo tiene que
 sostener ese registro.
@@ -157,6 +174,8 @@ pintado; `ThemeContext` solo lee esa clase.
 - **PENDIENTE (después del rediseño) — Pixel de Meta + GA4:**
   `docs/pendiente-medicion-pixel-ga4.md`. No implementarlo todavía, pero todo
   cambio tiene que dejar el terreno listo (ver "Mientras tanto" en ese doc).
+- **PENDIENTE — Reseñas reales de Google:** `docs/pendiente-resenas-google.md`.
+  Hasta entonces la sección de reseñas no se muestra.
 
 ## TODO — completar
 
