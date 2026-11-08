@@ -1,16 +1,13 @@
 import React from 'react';
 import Button from '../../components/ui/Button';
+import QuoteButton from '../../components/page/QuoteButton';
 import Reveal from '../../components/ui/Reveal';
 import { FINAL_CTA } from '../../constants/home';
 import { whatsappUrl } from '../../constants/contact';
-import { COTIZAR } from '../../constants/navigation';
-import { isLivePath, resolveNav } from '../../routes';
 
 // Cierre del Inicio. La banda es oscura en los dos temas (superficie de
 // marca), por eso el texto va siempre en los tonos claros de la marca.
 const FinalCta: React.FC = () => {
-  const cotizarLive = isLivePath(COTIZAR.path);
-
   return (
     <section id="cotizar" className="pb-[120px] pt-8">
       <div className="container-site">
@@ -24,22 +21,19 @@ const FinalCta: React.FC = () => {
           </h2>
           <p className="relative max-w-[560px] text-lg leading-relaxed text-brand-text-primary/80">{FINAL_CTA.subtitle}</p>
           <div className="relative flex flex-wrap justify-center gap-3.5">
-            <Button to={resolveNav(COTIZAR) ?? '/'} variant="light" size="lg">
+            <QuoteButton variant="light" size="lg">
               {FINAL_CTA.primary}
+            </QuoteButton>
+            <Button
+              href={whatsappUrl(FINAL_CTA.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="ghost"
+              size="lg"
+              className="border-brand-text-primary/20 bg-brand-text-primary/5 text-brand-text-primary"
+            >
+              {FINAL_CTA.whatsapp}
             </Button>
-            {/* Mientras no exista el cotizador, el botón de arriba ya lleva a WhatsApp. */}
-            {cotizarLive && (
-              <Button
-                href={whatsappUrl(FINAL_CTA.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="ghost"
-                size="lg"
-                className="border-brand-text-primary/20 bg-brand-text-primary/5 text-brand-text-primary"
-              >
-                {FINAL_CTA.whatsapp}
-              </Button>
-            )}
           </div>
         </Reveal>
       </div>

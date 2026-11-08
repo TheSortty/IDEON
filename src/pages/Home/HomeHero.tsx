@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '../../components/ui/Button';
+import QuoteButton from '../../components/page/QuoteButton';
 import { HERO } from '../../constants/home';
-import { COTIZAR, NAV_ITEMS } from '../../constants/navigation';
+import { NAV_ITEMS } from '../../constants/navigation';
 import { resolveNav } from '../../routes';
 import AsciiLamp from './AsciiLamp';
 
@@ -25,9 +26,7 @@ const HomeHero: React.FC = () => {
             <span className="text-gradient-pan mt-[1.04em] block animate-gradient-pan">{HERO.titleHighlight}</span>
           </h1>
           <div className="flex animate-rise flex-wrap gap-3.5 [animation-delay:250ms]">
-            <Button to={resolveNav(COTIZAR) ?? '/'} size="lg">
-              {HERO.primaryCta}
-            </Button>
+            <QuoteButton size="lg">{HERO.primaryCta}</QuoteButton>
             {casosHref && (
               <Button to={casosHref} variant="outline" size="lg">
                 {HERO.secondaryCta}

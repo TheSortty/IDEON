@@ -9,9 +9,9 @@ de Meta Ads.
 
 ## Planes
 
-- [Starter](https://ideon.ar/#servicios): presencia web profesional para negocios que arrancan.
-- [Pro](https://ideon.ar/#servicios): proyectos con varias secciones o funcionalidades, con acompañamiento durante el desarrollo.
-- [Enterprise](https://ideon.ar/#servicios): sistemas, plataformas y proyectos con lógica propia de negocio. Cotización a medida.
+- [Starter](https://ideon.ar/servicios/): presencia web profesional para negocios que arrancan.
+- [Pro](https://ideon.ar/servicios/): proyectos con varias secciones o funcionalidades, con acompañamiento durante el desarrollo.
+- [Enterprise](https://ideon.ar/servicios/): sistemas, plataformas y proyectos con lógica propia de negocio. Cotización a medida.
 
 Todos los planes incluyen diseño, dominio, SSL y el primer año de hosting. El
 esquema de pagos se arma según el alcance y los tiempos de cada proyecto: lo
@@ -20,7 +20,11 @@ accesos.
 
 ## Páginas
 
-- [Inicio](https://ideon.ar/): servicios, casos, equipo, planes y preguntas frecuentes.
+- [Inicio](https://ideon.ar/): qué hacemos, cómo trabajamos, ventajas y trabajos destacados.
+- [Planes y servicios](https://ideon.ar/servicios/): planes Starter, Pro y Enterprise y cómo cotizamos.
+- [Páginas web](https://ideon.ar/servicios/paginas-web/): landings, webs institucionales y sitios con funcionalidades, con SEO y medición.
+- [Tiendas online](https://ideon.ar/servicios/tiendas-online/): catálogo, carrito, pagos y panel de stock, sin comisión por venta.
+- [Sistemas a medida](https://ideon.ar/servicios/sistemas-a-medida/): CRM/ERP, turnos, campus virtuales, oficina virtual y portales de clientes.
 - [Términos y condiciones](https://ideon.ar/terminos-y-condiciones/)
 - [Política de privacidad](https://ideon.ar/politica-de-privacidad/)
 

@@ -4,6 +4,10 @@ import HomePage from './pages/Home/HomePage';
 import TerminosPage from './pages/Legal/TerminosPage';
 import PoliticaPrivacidadPage from './pages/Legal/PoliticaPrivacidadPage';
 import ContactoExitosoPage from './pages/ContactoExitoso/ContactoExitosoPage';
+import ServiciosPage from './pages/Servicios/ServiciosPage';
+import PaginasWebPage from './pages/Servicios/PaginasWebPage';
+import TiendasOnlinePage from './pages/Servicios/TiendasOnlinePage';
+import SistemasPage from './pages/Servicios/SistemasPage';
 
 /**
  * Las rutas del sitio. Es la única fuente: la usan el <Routes> de App.tsx y el
@@ -21,6 +25,10 @@ export interface SiteRoute {
 
 export const SITE_ROUTES: readonly SiteRoute[] = [
   { path: '/', element: <HomePage /> },
+  { path: '/servicios/', element: <ServiciosPage /> },
+  { path: '/servicios/paginas-web/', element: <PaginasWebPage /> },
+  { path: '/servicios/tiendas-online/', element: <TiendasOnlinePage /> },
+  { path: '/servicios/sistemas-a-medida/', element: <SistemasPage /> },
   { path: '/terminos-y-condiciones/', element: <TerminosPage /> },
   { path: '/politica-de-privacidad/', element: <PoliticaPrivacidadPage /> },
   { path: '/contacto-exitoso/', element: <ContactoExitosoPage /> },
