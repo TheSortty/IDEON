@@ -67,12 +67,27 @@ export const NOSOTROS = {
     { icon: 'trendUp', title: 'Resultados', description: 'Una web vale por los clientes que trae, no por lo linda que es.' },
   ] satisfies IconCard[],
   historyTitle: 'Por qué existe IDEON',
-  // Texto de origen aprobado el 08/11/2026.
+  // Texto de origen (corrección del 09/11/2026). Cada párrafo es una lista
+  // de tramos: los que tienen `highlight` van en cursiva con el degradado.
   history: [
-    'Tras vivenciar el problema de muchas empresas, que usan software de una SaaS externa, con una mensualidad obligatoria para sostener la operativa interna, y sin la seguridad de hasta cuánto eso sería así, tuvimos una idea.',
-    'O más bien, un IDEON: crear una agencia en Mendoza, dedicada al desarrollo de software a medida, desde una landing page simple hasta un ERP completo y nativo.',
-    'Apasionados por solucionar problemas de operación, gestión, cobranza, interacción y posicionamiento a través de la tecnología.',
-  ],
+    [
+      {
+        text: 'Tras vivenciar el problema de muchas empresas, que usan programas por suscripción, con una mensualidad obligatoria para sostener la operativa interna, y sin la seguridad de hasta cuánto eso sería así, tuvimos una idea.',
+      },
+    ],
+    [
+      { text: 'O más bien, un ' },
+      { text: 'ideón', highlight: true },
+      {
+        text: ': crear una agencia dedicada al desarrollo de software a medida, desde una landing page simple hasta un ERP completo y nativo.',
+      },
+    ],
+    [
+      {
+        text: 'Apasionados por solucionar problemas de operación, gestiones, cobranza, interacción y posicionamiento a través de la tecnología.',
+      },
+    ],
+  ] satisfies { text: string; highlight?: boolean }[][],
   partnersTitle: 'Trabajamos con aliados para ir más lejos',
   partner: {
     name: 'SIRO',

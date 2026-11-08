@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, type PanInfo } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { animate, motion, useMotionValue, type PanInfo } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
 
 // Colores de marca (tailwind.config.cjs) como valores reales: framer-motion
@@ -14,6 +14,130 @@ const OFF_COLOR = '#A9A1D1'; // brand-text-secondary
 const CHAIN_BEAD_COUNT = 5;
 const CORD_TRAVEL = 14;
 const CORD_TOGGLE_THRESHOLD = 8;
+/** Radio (px) en el que la cadenita "busca" el cursor. */
+const MAGNET_RADIUS = 120;
+/** Inclinación máxima de la cadenita hacia el cursor (grados). */
+const MAGNET_MAX_ANGLE = 34;
+
+/**
+ * La cadenita del foco.
+ *
+ * - En desktop, cuando el cursor se acerca, deja de balancearse y se inclina
+ *   hacia él (y la cuenta final crece): es fácil de agarrar sin apuntar fino.
+ * - El área de toque de la cuenta final es de 44 × 44 px (mínimo recomendado
+ *   para dedos), aunque se vea chiquita.
+ * - Se puede tocar (da un tirón y cambia el tema) o arrastrar hacia abajo.
+ *   El foco sigue siendo el botón accesible (teclado y lectores de
+ *   pantalla); la cadenita es un atajo para el mouse y el dedo.
+ */
+const PullCord: React.FC<{ color: string; onPull: () => void }> = ({ color, onPull }) => {
+  const anchorRef = useRef<HTMLDivElement>(null);
+  const rotate = useMotionValue(0);
+  const pullY = useMotionValue(0);
+  const [near, setNear] = useState(false);
+
+  // Balanceo en reposo; se frena mientras la cadenita sigue al cursor.
+  useEffect(() => {
+    if (near) return;
+    const controls = animate(rotate, [rotate.get(), -9, 9, -9], {
+      duration: 2.6,
+      times: [0, 0.15, 0.6, 1],
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'loop',
+    });
+    return () => controls.stop();
+  }, [near, rotate]);
+
+  // Imán: solo con mouse (en pantallas táctiles no hay cursor que seguir).
+  useEffect(() => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let frame = 0;
+    let isNear = false;
+    const onMove = (e: PointerEvent) => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const anchor = anchorRef.current;
+        if (!anchor) return;
+        const r = anchor.getBoundingClientRect();
+        const ax = r.left + r.width / 2;
+        const ay = r.top;
+        const dx = e.clientX - ax;
+        const dy = e.clientY - ay;
+        // Distancia a la cuenta final (cuelga ~44 px debajo del anclaje).
+        const dist = Math.hypot(dx, dy - 44);
+        const nowNear = dist < MAGNET_RADIUS && dy > -24;
+        if (nowNear) {
+          const angle = (-Math.atan2(dx, Math.max(dy, 12)) * 180) / Math.PI;
+          const clamped = Math.max(-MAGNET_MAX_ANGLE, Math.min(MAGNET_MAX_ANGLE, angle));
+          animate(rotate, clamped, { type: 'spring', stiffness: 160, damping: 14 });
+        }
+        if (nowNear !== isNear) {
+          isNear = nowNear;
+          setNear(nowNear);
+        }
+      });
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('pointermove', onMove);
+    };
+  }, [rotate]);
+
+  const pull = () => {
+    animate(pullY, [0, CORD_TRAVEL, 0], { duration: 0.35, ease: 'easeOut' });
+    onPull();
+  };
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.y > CORD_TOGGLE_THRESHOLD) onPull();
+  };
+
+  return (
+    <motion.div
+      ref={anchorRef}
+      className="absolute left-1/2 top-full flex flex-col items-center gap-1"
+      // El centrado va como motion value (x): framer-motion escribe el
+      // `transform` completo y pisaría un -translate-x-1/2 de Tailwind.
+      style={{ x: '-50%', rotate, transformOrigin: 'top center' }}
+    >
+      {Array.from({ length: CHAIN_BEAD_COUNT }).map((_, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          className="h-1 w-1 rounded-full transition-colors duration-500"
+          style={{ backgroundColor: color }}
+        />
+      ))}
+      {/* Área de toque grande (44 × 44) con la cuenta visible en el centro. */}
+      <motion.div
+        aria-hidden="true"
+        drag="y"
+        dragConstraints={{ top: 0, bottom: CORD_TRAVEL }}
+        dragElastic={0.3}
+        dragMomentum={false}
+        dragSnapToOrigin
+        onDragEnd={handleDragEnd}
+        onTap={pull}
+        onClick={(e) => e.stopPropagation()}
+        style={{ y: pullY, touchAction: 'none' }}
+        className="-my-[18px] flex h-11 w-11 cursor-grab items-center justify-center active:cursor-grabbing"
+      >
+        <motion.span
+          className="block h-2 w-2 rounded-full transition-colors duration-500"
+          style={{ backgroundColor: color }}
+          animate={{ scale: near ? 1.6 : 1, boxShadow: near ? `0 0 12px ${color}` : `0 0 0px ${color}` }}
+          whileHover={{ scale: 1.8 }}
+          whileTap={{ scale: 1.5 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+};
 
 // Pull switch: el foco se enciende (vidrio con relleno + filamento + glow +
 // parpadeo) en modo claro y se apaga en modo oscuro. La cadenita se
@@ -31,10 +155,6 @@ const ThemeSwitcher: React.FC = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return <div className="h-12 w-12" aria-hidden="true" />;
   const color = isLight ? GLOW_COLOR : OFF_COLOR;
-
-  const handleCordDragEnd = (_: unknown, info: PanInfo) => {
-    if (info.offset.y > CORD_TOGGLE_THRESHOLD) toggleTheme();
-  };
 
   return (
     <div
@@ -105,45 +225,8 @@ const ThemeSwitcher: React.FC = () => {
 
       {/* Fuera del flujo a propósito: así la cadenita puede colgar por
           debajo del borde inferior de la barra del nav sin agrandar el
-          header ni desalinear el resto de los items. Se ancla al centro
-          horizontal de este contenedor (que es también el centro del SVG,
-          simétrico respecto a x=12), para que arranque justo donde
-          arranca el foco.
-          El centrado horizontal NO puede ir por una clase de Tailwind
-          (-translate-x-1/2): framer-motion toma control total de
-          `transform` en cuanto anima `rotate`, y en cada frame pisa
-          cualquier transform que venga de una clase CSS. Por eso el `x`
-          va como valor de framer-motion (style.x), para que lo componga
-          junto con el rotate en vez de perderlo. */}
-      <motion.div
-        className="absolute left-1/2 top-full flex flex-col items-center gap-1"
-        style={{ x: '-50%', transformOrigin: 'top center' }}
-        animate={{ rotate: [-9, 9, -9] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        {Array.from({ length: CHAIN_BEAD_COUNT }).map((_, i) => (
-          <div
-            key={i}
-            aria-hidden="true"
-            className="w-1 h-1 rounded-full transition-colors duration-500"
-            style={{ backgroundColor: color }}
-          />
-        ))}
-        <motion.div
-          aria-hidden="true"
-          drag="y"
-          dragConstraints={{ top: 0, bottom: CORD_TRAVEL }}
-          dragElastic={0.3}
-          dragMomentum={false}
-          dragSnapToOrigin
-          onDragEnd={handleCordDragEnd}
-          onClick={(e) => e.stopPropagation()}
-          whileHover={{ scale: 1.25 }}
-          whileDrag={{ scale: 1.5 }}
-          className="w-2 h-2 rounded-full cursor-grab active:cursor-grabbing transition-colors duration-500"
-          style={{ backgroundColor: color }}
-        />
-      </motion.div>
+          header ni desalinear el resto de los items. */}
+      <PullCord color={color} onPull={toggleTheme} />
     </div>
   );
 };
