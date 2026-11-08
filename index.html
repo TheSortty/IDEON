@@ -4,6 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Tema claro/oscuro ANTES del primer pintado. Las páginas llegan
+       pre-renderizadas, así que si esto esperara a React se vería un destello
+       del tema equivocado. Misma regla que antes: lo guardado en
+       localStorage, si no la preferencia del sistema, si no claro.
+       ThemeContext.tsx lee la clase que deja este script. -->
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') theme = stored;
+        else if (window.matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+      } catch (e) {}
+      document.documentElement.classList.add(theme);
+    })();
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>IDEON | Desarrollo web y software a medida.</title>
   <meta name="description" content="Diseñamos y desarrollamos páginas web, CRM, tiendas online y plataformas a medida para hacer crecer tu negocio. Conocé nuestros servicios." />

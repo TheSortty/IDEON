@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, type PanInfo } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -22,6 +22,14 @@ const CORD_TOGGLE_THRESHOLD = 8;
 const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const isLight = theme === 'light';
+
+  // El tema real solo se conoce en el navegador (lo fija el script del <head>
+  // de index.html). El HTML pre-renderizado no puede saberlo, así que el foco
+  // se dibuja recién después de montar: si se hidratara con el tema
+  // equivocado, quedaría con el aria-label y el brillo al revés.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="h-12 w-12" aria-hidden="true" />;
   const color = isLight ? GLOW_COLOR : OFF_COLOR;
 
   const handleCordDragEnd = (_: unknown, info: PanInfo) => {

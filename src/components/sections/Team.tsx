@@ -61,15 +61,17 @@ const Team: React.FC = () => {
   // Angelo (índice 1) arranca como tarjeta activa; Celeste queda a la
   // izquierda y Gonzalo a la derecha, navegables con los botones/dots/swipe.
   const [activeIndex, setActiveIndex] = useState(1);
-  const [cardWidth, setCardWidth] = useState(() =>
-    getCardWidth(typeof window !== 'undefined' ? window.innerWidth : CARD_WIDTH_LG)
-  );
+  // Arranca con el ancho de desktop en el servidor Y en el primer render del
+  // navegador, para que la hidratación coincida con el HTML pre-renderizado;
+  // el efecto de abajo lo corrige al ancho real apenas monta.
+  const [cardWidth, setCardWidth] = useState(CARD_WIDTH_LG);
 
   // Mantiene el ancho usado para el cálculo del carrusel sincronizado con el
   // breakpoint de Tailwind activo (la tarjeta cambia de ancho al cruzar
   // sm/lg mientras se redimensiona la ventana).
   useEffect(() => {
     const onResize = () => setCardWidth(getCardWidth(window.innerWidth));
+    onResize();
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);

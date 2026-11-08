@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MotionConfig } from 'framer-motion';
+import { useLocation, useRoutes } from 'react-router';
 import './index.css';
 
 // Providers
@@ -19,31 +20,42 @@ import ContactModal from './components/modals/ContactModal';
 import TallyModal from './components/modals/TallyModal';
 
 // Pages
-import HomePage from './pages/Home/HomePage';
-import TerminosPage from './pages/Legal/TerminosPage';
-import PoliticaPrivacidadPage from './pages/Legal/PoliticaPrivacidadPage';
-import ContactoExitosoPage from './pages/ContactoExitoso/ContactoExitosoPage';
+import { SITE_ROUTES } from './routes';
+import NotFoundPage from './pages/NotFound/NotFoundPage';
 
-// Sitio sin librería de routing: alcanza con mirar el pathname una vez al
-// cargar. wrangler.jsonc ya sirve cualquier ruta como single-page-application,
-// así que /terminos-y-condiciones/, /politica-de-privacidad/ y
-// /contacto-exitoso/ llegan acá.
-function getPage(pathname: string): React.ReactNode {
-  switch (pathname.replace(/\/+$/, '')) {
-    case '/terminos-y-condiciones':
-      return <TerminosPage />;
-    case '/politica-de-privacidad':
-      return <PoliticaPrivacidadPage />;
-    case '/contacto-exitoso':
-      return <ContactoExitosoPage />;
-    default:
-      return <HomePage />;
-  }
+// El router no es quien elige el HTML: cada ruta llega del servidor ya
+// pre-renderizada (ver scripts/prerender.mjs). App.tsx es el mismo árbol en el
+// build y en el navegador; el router de afuera (StaticRouter en
+// entry-server.tsx, BrowserRouter en main.tsx) le dice en qué ruta está.
+
+/** En la navegación interna, arranca cada página desde arriba (o en su #ancla). */
+function ScrollOnNavigate() {
+  const { pathname, hash } = useLocation();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    // En la carga inicial manda el navegador (respeta el scroll al recargar).
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (hash) {
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
+
+  return null;
+}
+
+const ROUTES = [...SITE_ROUTES, { path: '*', element: <NotFoundPage /> }];
+
+function SiteRoutes() {
+  return useRoutes(ROUTES);
 }
 
 function App() {
-  const page = getPage(window.location.pathname);
-
   return (
     // reducedMotion="user" respeta la preferencia del sistema en TODAS las
     // animaciones de framer-motion. Hace falta además de la regla CSS de
@@ -53,11 +65,12 @@ function App() {
     <MotionConfig reducedMotion="user">
     <ThemeProvider>
       <ModalProvider>
+        <ScrollOnNavigate />
         <ParticleBackground />
         <div className="bg-transparent text-content antialiased relative z-10">
           <Header />
           <main>
-            {page}
+            <SiteRoutes />
           </main>
           <Footer />
           <ContactModal />

@@ -17,6 +17,10 @@ Landing page de IDEON. Repositorio: `TheSortty/IDEON`. Rama de trabajo: `main`.
   (config en `tailwind.config.cjs` y `postcss.config.cjs`)
 - **framer-motion 12** para animaciones
 - **clsx** + **tailwind-merge** para componer clases condicionales
+- **React Router 7** (`react-router`) para las rutas
+- **MPA pre-renderizada**: al final de `vite build`, `scripts/prerender.mjs` genera
+  un HTML estático por ruta (contenido + `<head>` propio) y React lo hidrata en el
+  navegador
 - **Cloudflare Workers** con static assets, vía `@cloudflare/vite-plugin` y `wrangler 4`
 
 ## Comandos
@@ -24,7 +28,7 @@ Landing page de IDEON. Repositorio: `TheSortty/IDEON`. Rama de trabajo: `main`.
 ```bash
 npm ci              # instalar dependencias (usar ci, no install)
 npm run dev         # servidor de desarrollo de Vite
-npm run build       # vite build
+npm run build       # vite build + pre-render de cada ruta a dist/<ruta>/index.html
 npm run preview     # build + wrangler dev (emula Workers localmente)
 npm run deploy      # build + wrangler deploy  ← NO EJECUTAR (ver Reglas)
 ```
@@ -37,9 +41,13 @@ No hay script de lint ni de tests.
 /
 ├── index.html              # entrada de Vite (raíz, no en public/)
 ├── public/                 # assets estáticos servidos tal cual
+├── scripts/prerender.mjs   # genera el HTML de cada ruta (lo llama vite.config.ts)
 ├── src/
-│   ├── main.tsx            # punto de montaje de React
+│   ├── main.tsx            # punto de montaje de React (hidrata el HTML pre-renderizado)
+│   ├── entry-server.tsx    # render a string, solo para el pre-render del build
+│   ├── routes.tsx          # LISTA DE RUTAS: única fuente para el router y el pre-render
 │   ├── App.tsx             # componente raíz
+│   ├── seo/                # HeadContext: el <head> de cada página en el pre-render
 │   ├── index.css           # directivas de Tailwind y estilos globales
 │   ├── components/         # componentes reutilizables
 │   ├── constants/          # TEXTOS Y CONTENIDO del sitio
@@ -88,10 +96,18 @@ Si alguna falla, arreglarlo antes de pushear.
 
 ## Cosas raras conocidas (no tocar sin consultar)
 
-- `wrangler.jsonc` tiene `"not_found_handling": "single-page-application"`, pero el
-  refactor de hace 6 meses ("prepara proyecto para Cloudflare Pages y MPA") apuntaba
-  a multipágina, y existe `src/pages/Home`. La migración quedó a medio camino.
-  **Es una decisión pendiente del equipo, no un bug para resolver por tu cuenta.**
+- **El sitio es MPA pre-renderizada** (decidido el 08/11/2026, reemplaza la
+  "migración a medio camino" SPA/MPA). `wrangler.jsonc` usa
+  `"not_found_handling": "404-page"`: una ruta inexistente devuelve `dist/404.html`
+  con status 404. **Una página nueva se agrega en `src/routes.tsx`** (y en
+  `public/sitemap.xml` si es indexable); si no está ahí, da 404 en producción.
+- **Todo componente tiene que poder renderizarse en Node** (pre-render): nada de
+  `window`/`document`/`localStorage` durante el render, solo en efectos o handlers.
+  Y el primer render del navegador tiene que coincidir con el del build
+  (hidratación): lo que dependa del navegador (tema, ancho de pantalla) se ajusta
+  en un efecto después de montar. Título, description, canonical y robots van con
+  `useDocumentMeta`; el JSON-LD de la página con `useJsonLd`. Los dos llegan al
+  HTML estático solos.
 - Existe una rama `cloudflare/workers-autoconfig` generada automáticamente por el bot
   de Cloudflare. Está abandonada y atrasada respecto de `main`. Ignorala.
 
@@ -123,14 +139,14 @@ sostener ese registro.
 
 ## Nota sobre el tema claro/oscuro
 
-`tailwind.config.cjs` tiene `darkMode: 'class'` configurado, pero **la paleta de
-marca es únicamente oscura**: no hay variantes claras definidas para ninguno de los
-tokens. El README viejo describe un switcher de tema claro/oscuro con persistencia
-en `localStorage`, pero eso corresponde a la versión anterior del proyecto.
+`tailwind.config.cjs` tiene `darkMode: 'class'`. Los roles de color (`surface-base`,
+`content`, `accent`, …) apuntan a custom properties de `src/index.css` que cambian
+con el tema, así que en general no hace falta escribir variantes `dark:`.
 
-Antes de agregar variantes `dark:` a un componente, verificar en `src/index.css` y
-en los componentes existentes si el switcher sigue vivo. **Si no está claro,
-preguntar** en lugar de asumir.
+El switcher claro/oscuro **sigue vivo y se mantiene** (decisión 08/11/2026): el
+tema claro se arma con la paleta del sistema de diseño llevada a claro. El tema
+inicial lo aplica un script inline en el `<head>` de `index.html`, antes del primer
+pintado; `ThemeContext` solo lee esa clase.
 
 ---
 

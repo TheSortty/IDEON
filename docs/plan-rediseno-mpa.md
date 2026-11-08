@@ -39,7 +39,7 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
 
 ## Etapas
 
-- [ ] **A — Base MPA.** React Router + pre-render de cada ruta a HTML estático,
+- [x] **A — Base MPA.** React Router + pre-render de cada ruta a HTML estático,
       meta/canonical/JSON-LD por ruta en el HTML servido, 404 real. Sin cambio
       visual: las páginas actuales siguen igual.
 - [ ] **B — Sistema visual.** Tokens nuevos (claro y oscuro), Header con menú de
