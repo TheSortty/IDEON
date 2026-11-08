@@ -55,8 +55,9 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
       tarjetas de "qué incluye" que se encienden de a una.
 - [x] **E — Casos** (`/casos`, `/casos/home`, `/casos/under-club`,
       `/casos/corralcoop`). Carrusel con filtro (incluye BB Tatoo como
-      "Próximo lanzamiento"). Sin colores de cada cliente: superficies de
-      IDEON y capturas reales. Corralcoop sin "alta de servicio", con el
+      "Próximo lanzamiento"). Con los colores de cada cliente (única
+      excepción a la paleta, decisión del 08/11), también en los paneles del
+      Inicio. Corralcoop sin "alta de servicio", con el
       puente a la atención por WhatsApp (decisión 9).
 - [ ] **F — Nosotros, Preguntas, Contacto, Cotizar.** Sitemap final.
 

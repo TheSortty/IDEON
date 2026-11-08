@@ -153,6 +153,13 @@ export const CASOS_META: PageMeta = {
 
 export type ProjectCategory = 'sistemas' | 'web';
 
+/**
+ * Tema de color de cada cliente (clases de src/index.css). Es la única
+ * excepción a la paleta de IDEON: en los casos, el protagonista es el
+ * proyecto y se muestra con los colores de su marca.
+ */
+export type ClientTheme = 't-home' | 't-under' | 't-corral' | 't-am' | 't-borea' | 't-bb';
+
 export interface Project {
   id: string;
   short: string;
@@ -164,6 +171,7 @@ export interface Project {
   /** Capturas: la primera grande, el resto chicas. Sin capturas = en desarrollo. */
   shots: CaseImage[];
   monogram: string;
+  theme: ClientTheme;
 }
 
 export const CASOS = {
@@ -193,6 +201,7 @@ export const CASOS = {
         img('home', 'admin', 'Panel de administración de Home'),
       ],
       monogram: 'H',
+      theme: 't-home',
     },
     {
       id: 'under',
@@ -204,6 +213,7 @@ export const CASOS = {
       casePath: '/casos/under-club/',
       shots: [img('under-club', 'web', 'Under Club: página de inicio'), img('under-club', 'cultura', 'Under Club: sección de cultura')],
       monogram: 'U',
+      theme: 't-under',
     },
     {
       id: 'corral',
@@ -215,10 +225,11 @@ export const CASOS = {
       casePath: '/casos/corralcoop/',
       shots: [img('corralcoop', 'inicio', 'Corralcoop: página de inicio'), img('corralcoop', 'accesos', 'Corralcoop: accesos rápidos')],
       monogram: 'C',
+      theme: 't-corral',
     },
-    { id: 'am', short: 'AM Suministros', name: 'AM Suministros', categories: ['web'], description: 'Página web para ferretería industrial. En desarrollo.', shots: [], monogram: 'AM' },
-    { id: 'borea', short: 'Borea', name: 'Borea', categories: ['web'], description: 'Página web para tienda de carteras. En desarrollo.', shots: [], monogram: 'B' },
-    { id: 'bb', short: 'BB Tatoo', name: 'BB Tatoo', categories: ['web'], description: 'Página web para casa de tatuajes. En desarrollo.', shots: [], monogram: 'BB' },
+    { id: 'am', short: 'AM Suministros', name: 'AM Suministros', categories: ['web'], description: 'Página web para ferretería industrial. En desarrollo.', shots: [], monogram: 'AM', theme: 't-am' },
+    { id: 'borea', short: 'Borea', name: 'Borea', categories: ['web'], description: 'Página web para tienda de carteras. En desarrollo.', shots: [], monogram: 'B', theme: 't-borea' },
+    { id: 'bb', short: 'BB Tatoo', name: 'BB Tatoo', categories: ['web'], description: 'Página web para casa de tatuajes. En desarrollo.', shots: [], monogram: 'BB', theme: 't-bb' },
   ] satisfies Project[],
   nextTitle: 'Tu proyecto puede ser el próximo',
   nextText: 'Contanos qué tenés en mente y te mostramos cómo lo resolveríamos.',

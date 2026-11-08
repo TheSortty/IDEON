@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useMemo, useState } from 'react';
-import Button from '../../components/ui/Button';
+import AppLink from '../../components/ui/AppLink';
 import CaseImg from '../../components/ui/CaseImg';
 import Icon from '../../components/ui/Icon';
 import { CASOS, CASE_COPY, type ProjectCategory } from '../../constants/cases';
@@ -61,7 +61,7 @@ const ProjectsCarousel: React.FC = () => {
 
       <div
         className={cn(
-          'relative grid overflow-hidden rounded-[32px] border border-line bg-surface-raised/60 shadow-[0_40px_90px_-30px_rgb(0_0_0/0.6)]',
+          'relative grid overflow-hidden rounded-[32px] border border-brand-text-primary/10 shadow-[0_40px_90px_-30px_rgb(0_0_0/0.6)]',
           paused && 'is-paused',
         )}
         aria-roledescription="carrusel"
@@ -83,29 +83,31 @@ const ProjectsCarousel: React.FC = () => {
               aria-label={`${String(i + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}: ${project.name}`}
               aria-hidden={!isOn}
               className={cn(
-                'tw-slide relative grid min-h-[560px] grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-center gap-10 overflow-hidden p-[clamp(28px,4vw,56px)]',
+                'tw-slide case-themed relative grid min-h-[560px] grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-center gap-10 overflow-hidden p-[clamp(28px,4vw,56px)]',
+                // Colores del cliente: la única excepción a la paleta de IDEON.
+                project.theme,
                 isOn && 'is-on',
               )}
             >
-              <span aria-hidden="true" className="pointer-events-none absolute -right-[140px] -top-40 h-[520px] w-[520px] animate-orb rounded-full bg-accent opacity-[0.22] blur-[90px]" />
+              <span aria-hidden="true" className="case-glow pointer-events-none absolute -right-[140px] -top-40 h-[520px] w-[520px] animate-orb rounded-full opacity-[0.28] blur-[90px]" />
               <div className="relative flex flex-col gap-[18px]">
-                <h3 className="text-[clamp(2rem,4vw,3.25rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-content">{project.name}</h3>
-                <p className="max-w-[520px] text-lg leading-relaxed text-content-muted">{project.description}</p>
+                <h3 className="text-[clamp(2rem,4vw,3.25rem)] font-extrabold leading-[1.05] tracking-[-0.03em]">{project.name}</h3>
+                <p className="case-muted max-w-[520px] text-lg leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-3">
                   {hasCase && project.casePath && (
-                    <Button to={project.casePath} tabIndex={isOn ? 0 : -1}>
+                    <AppLink to={project.casePath} tabIndex={isOn ? 0 : -1} className="case-btn">
                       {CASOS.caseCta}
-                    </Button>
+                    </AppLink>
                   )}
-                  <Button
+                  <a
                     href={whatsappUrl(CASE_COPY.whatsappMessage(project.short))}
                     target="_blank"
                     rel="noopener noreferrer"
-                    variant="ghost"
                     tabIndex={isOn ? 0 : -1}
+                    className="case-btn case-btn-ghost"
                   >
                     {CASOS.similarCta}
-                  </Button>
+                  </a>
                 </div>
               </div>
 
@@ -126,21 +128,21 @@ const ProjectsCarousel: React.FC = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="case-blur flex min-h-[400px] flex-col items-center justify-center gap-3.5 rounded-3xl border border-dashed border-line-strong bg-surface-base/60">
-                      <span className="text-gradient text-[clamp(72px,9vw,120px)] font-black leading-none tracking-[-0.05em]">
+                    <div className="case-blur case-surface flex min-h-[400px] flex-col items-center justify-center gap-3.5 rounded-3xl border border-dashed shadow-[0_24px_50px_-28px_rgb(0_0_0/0.5)]">
+                      <span className="case-accent text-[clamp(72px,9vw,120px)] font-black leading-none tracking-[-0.05em]">
                         {project.monogram}
                       </span>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-2.5 rounded-full border border-line-strong bg-[var(--popover)] px-5 py-3 text-[15px] font-extrabold tracking-[0.02em] text-content shadow-[0_16px_40px_-14px_rgb(0_0_0/0.5)]">
-                        <span className="h-2 w-2 animate-dot-pulse rounded-full bg-accent shadow-[0_0_10px_rgb(var(--accent))]" />
+                      <span className="inline-flex items-center gap-2.5 rounded-full border border-brand-text-primary/20 bg-brand-background/80 px-5 py-3 text-[15px] font-extrabold tracking-[0.02em] text-brand-text-primary shadow-[0_16px_40px_-14px_rgb(0_0_0/0.7)] backdrop-blur-md">
+                        <span className="h-2 w-2 animate-dot-pulse rounded-full bg-[rgb(var(--lamp-yellow))] shadow-[0_0_10px_rgb(var(--lamp-yellow))]" />
                         {CASOS.upcoming}
                       </span>
                     </div>
                   </>
                 )}
               </div>
-              {isOn && <span key={`${filter}-${index}`} aria-hidden="true" className="case-progress absolute bottom-0 left-0 z-[3] h-1 w-full bg-gradient-to-r from-accent to-accent-2" />}
+              {isOn && <span key={`${filter}-${index}`} aria-hidden="true" className="case-progress absolute bottom-0 left-0 z-[3] h-1 w-full bg-[var(--c-accent)]" />}
             </article>
           );
         })}
