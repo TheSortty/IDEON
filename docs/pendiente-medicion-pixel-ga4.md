@@ -91,10 +91,20 @@ de Meta → va como secreto de Wrangler, **nunca** en el repo.
 
 ---
 
-## Mientras tanto (para no complicar la medición después)
+## Dónde enganchar cada evento (estado al terminar el rediseño)
 
-- Todo CTA de WhatsApp sale de un solo helper (`src/constants/contact.ts`), para
-  poder instrumentarlo en un único lugar con su `origen`.
-- El formulario de `/contacto` y el cotizador exponen un único punto de "envío
-  OK" donde después se engancha el evento.
-- No sumar scripts de terceros sueltos en componentes.
+- **Envío OK de formularios** → `submitLead()` en `src/lib/web3forms.ts` (único
+  punto). Después del envío se navega a `/contacto-exitoso/` (noindex, fuera del
+  sitemap): sirve también como conversión por URL.
+- **Cotizador completo** → paso 5 de `src/pages/Cotizar/CotizarPage.tsx` (está
+  marcado con un comentario). Parámetro sugerido: `plan_recomendado`.
+- **Clics a WhatsApp** → todos los links salen de `whatsappUrl()` en
+  `src/constants/contact.ts`; el mensaje precargado dice desde dónde se escribe
+  (sirve como `origen`).
+- **Clics en "Cotizar"** → `QuoteButton` (`src/components/page/QuoteButton.tsx`),
+  con el plan si viene de uno.
+- **Navegación interna sin recarga** (React Router): disparar `page_view` en cada
+  cambio de ruta (trigger "History Change" en GTM o un listener de
+  `useLocation`).
+
+Regla: no sumar scripts de terceros sueltos en componentes.

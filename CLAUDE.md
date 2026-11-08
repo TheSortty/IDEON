@@ -52,7 +52,8 @@ No hay script de lint ni de tests.
 │   ├── components/         # componentes reutilizables
 │   ├── constants/          # TEXTOS Y CONTENIDO del sitio
 │   ├── contexts/           # contextos de React (estado global)
-│   └── pages/Home/         # componentes propios de la home
+│   ├── lib/                # utilidades (cn, envío a Web3Forms)
+│   └── pages/              # una carpeta por página (Home, Servicios, Casos, ...)
 ├── tailwind.config.cjs
 ├── postcss.config.cjs
 ├── vite.config.ts
@@ -176,8 +177,8 @@ pintado; `ThemeContext` solo lee esa clase.
 
 ## Trabajo en curso y pendiente
 
-- **Rediseño + migración a MPA, en curso por etapas:** `docs/plan-rediseno-mpa.md`
-  (decisiones tomadas, etapas y checklist de SEO).
+- **Rediseño + migración a MPA: terminado** (etapas A–F, 08/11/2026). Decisiones y
+  checklist de SEO en `docs/plan-rediseno-mpa.md`.
 - **PENDIENTE (después del rediseño) — Pixel de Meta + GA4:**
   `docs/pendiente-medicion-pixel-ga4.md`. No implementarlo todavía, pero todo
   cambio tiene que dejar el terreno listo (ver "Mientras tanto" en ese doc).
@@ -186,9 +187,10 @@ pintado; `ThemeContext` solo lee esa clase.
 
 ## TODO — completar
 
-- [ ] **Integraciones externas**: qué servicios están conectados (formularios,
-      analytics) y dónde viven sus claves o endpoints. El README viejo menciona
-      Web3Forms y Tally.so — confirmar si siguen en uso tras el refactor.
+- [x] **Integraciones externas**: **Web3Forms** recibe el formulario de
+      `/contacto/` (`src/lib/web3forms.ts`; la access key es pública por diseño).
+      **Tally.so ya no se usa** (se eliminó con el rediseño, 08/11/2026). Analytics:
+      pendiente (`docs/pendiente-medicion-pixel-ga4.md`).
 - [ ] **Tono de la copy**: cómo le habla IDEON a su cliente. Útil para cualquier
       cambio de texto en `src/constants/`.
 - [ ] **Origen del proyecto**: definir si Google AI Studio sigue sincronizando con

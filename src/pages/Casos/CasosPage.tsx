@@ -8,7 +8,7 @@ import { CASOS, CASOS_META } from '../../constants/cases';
 import ProjectsCarousel from './ProjectsCarousel';
 
 const CasosPage: React.FC = () => {
-  useServicePageSeo(CASOS_META);
+  useServicePageSeo(CASOS_META, { pageType: 'CollectionPage' });
 
   return (
     <PageShell orb="right">

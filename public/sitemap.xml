@@ -60,6 +60,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ideon.ar/cotizar/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ideon.ar/nosotros/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ideon.ar/preguntas/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ideon.ar/contacto/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ideon.ar/terminos-y-condiciones/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>yearly</changefreq>

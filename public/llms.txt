@@ -29,6 +29,10 @@ accesos.
 - [Caso Home](https://ideon.ar/casos/home/): web y campus virtual para una escuela de coaching.
 - [Caso Under Club](https://ideon.ar/casos/under-club/): sistema de eventos y comisiones para un club.
 - [Caso Corralcoop](https://ideon.ar/casos/corralcoop/): portal de autogestión de una cooperativa de agua.
+- [Cotizador](https://ideon.ar/cotizar/): cuatro preguntas y una recomendación de plan; la cotización es sin cargo.
+- [Nosotros](https://ideon.ar/nosotros/): el equipo (Angelo Terranova, Gonzalo Burgia, Celeste Codaro), valores, historia y convenio con SIRO.
+- [Preguntas frecuentes](https://ideon.ar/preguntas/): precios, propiedad del código y del dominio, mantenimiento, plazos y publicidad.
+- [Contacto](https://ideon.ar/contacto/): WhatsApp, email y formulario.
 - [Términos y condiciones](https://ideon.ar/terminos-y-condiciones/)
 - [Política de privacidad](https://ideon.ar/politica-de-privacidad/)
 

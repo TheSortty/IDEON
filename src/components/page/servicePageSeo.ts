@@ -10,6 +10,8 @@ interface SeoOptions {
   service?: { serviceType: string };
   /** Preguntas visibles en la página → FAQPage. */
   faqs?: readonly Faq[];
+  /** Tipo de página de Schema.org (por defecto, WebPage). */
+  pageType?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
 }
 
 /**
@@ -17,7 +19,7 @@ interface SeoOptions {
  * WebPage (+ FAQPage si tiene preguntas), BreadcrumbList y Service. Todo sale
  * en el HTML pre-renderizado.
  */
-export function useServicePageSeo(meta: PageMeta, { parents = [], service, faqs }: SeoOptions = {}): void {
+export function useServicePageSeo(meta: PageMeta, { parents = [], service, faqs, pageType = 'WebPage' }: SeoOptions = {}): void {
   useDocumentMeta(meta.title, meta.description, { canonicalPath: meta.path });
 
   const url = absoluteUrl(meta.path);
@@ -25,7 +27,7 @@ export function useServicePageSeo(meta: PageMeta, { parents = [], service, faqs 
 
   const graph: object[] = [
     {
-      '@type': faqs && faqs.length > 0 ? ['WebPage', 'FAQPage'] : 'WebPage',
+      '@type': faqs && faqs.length > 0 ? [pageType, 'FAQPage'] : pageType,
       '@id': `${url}#webpage`,
       url,
       name: meta.title,

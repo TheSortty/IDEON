@@ -5,7 +5,6 @@ import './index.css';
 
 // Providers
 import { ThemeProvider } from './contexts/ThemeContext';
-import { ModalProvider } from './contexts/ModalContext';
 
 // Layout
 import Header from './components/layout/Header';
@@ -16,9 +15,6 @@ import ScrollChrome from './components/layout/ScrollChrome';
 // UI
 import ParticleBackground from './components/ui/ParticleBackground';
 
-// Modals
-import ContactModal from './components/modals/ContactModal';
-import TallyModal from './components/modals/TallyModal';
 
 // Pages
 import { SITE_ROUTES } from './routes';
@@ -64,8 +60,7 @@ function App() {
     // Framer sigue animando la opacidad, así que nada queda en opacity: 0, y
     // los transforms se aplican de una en vez de interpolarse.
     <MotionConfig reducedMotion="user">
-    <ThemeProvider>
-      <ModalProvider>
+      <ThemeProvider>
         <ScrollOnNavigate />
         <ParticleBackground />
         <div className="bg-transparent text-content antialiased relative z-10">
@@ -74,13 +69,10 @@ function App() {
             <SiteRoutes />
           </main>
           <Footer />
-          <ContactModal />
-          <TallyModal />
           <ScrollChrome />
           <FloatingWhatsAppButton />
         </div>
-      </ModalProvider>
-    </ThemeProvider>
+      </ThemeProvider>
     </MotionConfig>
   );
 }

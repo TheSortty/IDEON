@@ -59,7 +59,14 @@ carrusel de proyectos). Los diseños están a 1440 px: el responsive (375 / 768 
       excepción a la paleta, decisión del 08/11), también en los paneles del
       Inicio. Corralcoop sin "alta de servicio", con el
       puente a la atención por WhatsApp (decisión 9).
-- [ ] **F — Nosotros, Preguntas, Contacto, Cotizar.** Sitemap final.
+- [x] **F — Nosotros, Preguntas, Contacto, Cotizar.** Formulario de
+      `/contacto/` conectado a Web3Forms (`src/lib/web3forms.ts`) → redirige a
+      `/contacto-exitoso/`. "Cotizar" lleva siempre a `/cotizar/`; el resultado
+      se manda por WhatsApp o pasa precargado al formulario. Se eliminan el
+      modal de contacto, el de Tally y las secciones viejas. Sitemap con las 15
+      URLs indexables.
+
+**Rediseño completo (08/11/2026).** Próximo paso: medición (Pixel + GA4).
 
 ## SEO: lo que no se puede perder
 

@@ -26,7 +26,7 @@ type ButtonAsAnchor = BaseProps &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> & { href: string; to?: undefined };
 
 type ButtonAsLink = BaseProps &
-  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'href'> & { to: string; href?: undefined };
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'href'> & { to: string; href?: undefined; state?: unknown };
 
 type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsLink;
 
