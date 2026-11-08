@@ -134,6 +134,14 @@ preguntar** en lugar de asumir.
 
 ---
 
+## Trabajo en curso y pendiente
+
+- **Rediseño + migración a MPA, en curso por etapas:** `docs/plan-rediseno-mpa.md`
+  (decisiones tomadas, etapas y checklist de SEO).
+- **PENDIENTE (después del rediseño) — Pixel de Meta + GA4:**
+  `docs/pendiente-medicion-pixel-ga4.md`. No implementarlo todavía, pero todo
+  cambio tiene que dejar el terreno listo (ver "Mientras tanto" en ese doc).
+
 ## TODO — completar
 
 - [ ] **Integraciones externas**: qué servicios están conectados (formularios,
