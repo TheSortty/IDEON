@@ -1,11 +1,20 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { WhatsAppIcon } from '../ui/SocialIcons';
 import { whatsappUrl, WHATSAPP_MESSAGES } from '../../constants/contact';
+
+// Páginas que ya tienen su propio botón de WhatsApp y donde el flotante
+// taparía los botones principales en celular ("Siguiente" del cotizador,
+// "Enviar consulta" del formulario).
+const HIDDEN_ON = ['/cotizar/', '/contacto/'];
 
 // El verde es el de la marca WhatsApp (token `whatsapp`): el botón tiene que
 // reconocerse de un vistazo. El anillo que late es CSS (animate-ping-soft):
 // corre sin JS y lo frena la regla de "reducir movimiento".
 const FloatingWhatsAppButton: React.FC = () => {
+  const { pathname } = useLocation();
+  if (HIDDEN_ON.includes(pathname)) return null;
+
   return (
     <a
       href={whatsappUrl(WHATSAPP_MESSAGES.floating)}
