@@ -68,13 +68,16 @@ const ContactoPage: React.FC = () => {
   return (
     <PageShell orb="left">
       <section className="!pb-[120px] !pt-[72px]">
-        <div className="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-start gap-12">
+        <nav aria-label="Ruta" className="container-site mb-[26px] animate-rise text-sm text-content-muted">
+          <Link to="/" className="text-content-muted no-underline transition-colors hover:text-content">Inicio</Link>
+          <span aria-hidden="true"> / </span>
+          <span aria-current="page" className="text-content">{CONTACTO_META.name}</span>
+        </nav>
+        {/* Las dos columnas arrancan a la misma altura (las migas quedan
+            afuera) y se estiran juntas: el formulario termina a la par del
+            panel izquierdo, con el mensaje ocupando el espacio que sobra. */}
+        <div className="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-stretch gap-12">
           <div className="flex flex-col gap-[26px]">
-            <nav aria-label="Ruta" className="animate-rise text-sm text-content-muted">
-              <Link to="/" className="text-content-muted no-underline transition-colors hover:text-content">Inicio</Link>
-              <span aria-hidden="true"> / </span>
-              <span aria-current="page" className="text-content">{CONTACTO_META.name}</span>
-            </nav>
             <h1 className="animate-rise text-[clamp(2.5rem,5vw,3.875rem)] font-extrabold text-content [animation-delay:150ms]">
               {CONTACTO.title[0]}
               <span className="text-gradient-pan animate-gradient-pan">{CONTACTO.title[1]}</span>
@@ -136,7 +139,7 @@ const ContactoPage: React.FC = () => {
           <form
             onSubmit={handleSubmit}
             aria-labelledby="form-titulo"
-            className="glass flex animate-rise flex-col gap-5 rounded-[28px] p-[clamp(28px,4vw,44px)] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.5)] [animation-delay:350ms]"
+            className="glass flex h-full animate-rise flex-col gap-5 rounded-[28px] p-[clamp(28px,4vw,44px)] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.5)] [animation-delay:350ms]"
           >
             <div>
               <h2 id="form-titulo" className="mb-1.5 text-[26px] font-extrabold text-content">{CONTACTO.formTitle}</h2>
@@ -170,9 +173,9 @@ const ContactoPage: React.FC = () => {
                 ))}
               </select>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-1 flex-col gap-2">
               <label htmlFor="c-msg" className={labelClass}>{CONTACTO.fields.message.label}</label>
-              <textarea id="c-msg" rows={5} className={`${fieldClass} resize-y py-3.5 leading-normal`} placeholder={CONTACTO.fields.message.placeholder} value={form.message} onChange={update('message')} />
+              <textarea id="c-msg" rows={5} className={`${fieldClass} min-h-[140px] flex-1 resize-y py-3.5 leading-normal`} placeholder={CONTACTO.fields.message.placeholder} value={form.message} onChange={update('message')} />
             </div>
             {status === 'error' && (
               <p role="alert" className="rounded-xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-content">
