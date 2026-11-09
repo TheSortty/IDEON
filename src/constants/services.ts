@@ -129,7 +129,7 @@ export const SERVICIOS = {
     { title: 'Recibís tu propuesta', description: 'Alcance, plazos y precio, por escrito.' },
   ] satisfies Step[],
   ctaTitle: '¿No sabés qué tipo de proyecto necesitás?',
-  ctaText: 'El cotizador te guía en cuatro pasos y te recomienda por dónde empezar.',
+  ctaText: 'El cotizador te guía en cinco pasos y te recomienda por dónde empezar.',
   // Mientras no exista /cotizar/, el botón abre el formulario de contacto.
   ctaButton: 'Usar el cotizador',
   ctaButtonFallback: 'Pedir asesoramiento',
