@@ -41,7 +41,7 @@ const linkBase =
   'inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 text-[15px] font-semibold no-underline ' +
   'text-content-muted transition-[color,background-color,box-shadow] duration-medium hover:bg-content/[0.08] hover:text-content';
 const linkActive =
-  'bg-surface-raised text-content shadow-[inset_0_0_0_1px_rgb(var(--accent)/0.6),0_0_18px_rgb(var(--accent)/0.25)] hover:bg-surface-raised';
+  'bg-surface-raised text-content shadow-[inset_0_0_0_1px_rgb(var(--accent)/0.6)] hover:bg-surface-raised';
 
 const Logo: React.FC<{ className?: string }> = ({ className }) => (
   <Link

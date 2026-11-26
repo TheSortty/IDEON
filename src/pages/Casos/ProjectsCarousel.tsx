@@ -13,7 +13,7 @@ const AUTOPLAY_MS = 7000;
 
 const pillBase =
   'inline-flex min-h-[44px] items-center rounded-full border px-4 text-sm font-semibold transition-[color,background-color,border-color,box-shadow] duration-long';
-const pillOn = 'page-nav-link is-on border-accent/60 text-content shadow-[0_0_24px_rgb(var(--accent)/0.25)]';
+const pillOn = 'page-nav-link is-on border-accent/60 text-content';
 const pillOff = 'border-line-strong bg-surface-base/50 text-content-muted hover:border-accent/45 hover:text-content';
 
 /**
@@ -173,7 +173,7 @@ const ProjectsCarousel: React.FC = () => {
               type="button"
               aria-label={arrow.label}
               onClick={() => setIndex(arrow.to)}
-              className="glass flex h-[52px] w-[52px] items-center justify-center rounded-full text-content transition-[transform,background-color,border-color,box-shadow] duration-medium hover:scale-[1.08] hover:border-accent hover:bg-accent/20 hover:shadow-[0_0_24px_rgb(var(--accent)/0.4)] active:scale-95"
+              className="glass flex h-[52px] w-[52px] items-center justify-center rounded-full text-content transition-[transform,background-color,border-color,box-shadow] duration-medium hover:scale-[1.08] hover:border-accent hover:bg-accent/20 active:scale-95"
             >
               <Icon name="arrowUpRight" size={20} className={arrow.flip ? '-rotate-[135deg]' : 'rotate-45'} />
             </button>

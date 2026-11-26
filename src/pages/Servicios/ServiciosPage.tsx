@@ -25,7 +25,7 @@ const PlanCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       )}
     >
       {featured && (
-        <span className="absolute -top-[15px] left-9 z-10 rounded-full bg-accent-solid px-4 py-1 text-[13px] font-bold text-accent-ink shadow-[0_0_20px_rgb(var(--accent)/0.5)]">
+        <span className="absolute -top-[15px] left-9 z-10 rounded-full bg-accent-solid px-4 py-1 text-[13px] font-bold text-accent-ink">
           {SERVICIOS.featuredBadge}
         </span>
       )}

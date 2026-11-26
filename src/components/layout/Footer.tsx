@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${label} de IDEON`}
-                    className="glass flex h-11 w-11 items-center justify-center rounded-full text-content transition-[transform,background-color,border-color,box-shadow] duration-long ease-emphasis hover:-translate-y-1 hover:-rotate-6 hover:border-accent/60 hover:bg-accent/20 hover:shadow-[0_0_22px_rgb(var(--accent)/0.4)]"
+                    className="glass flex h-11 w-11 items-center justify-center rounded-full text-content transition-[transform,background-color,border-color,box-shadow] duration-long ease-emphasis hover:-translate-y-1 hover:-rotate-6 hover:border-accent/60 hover:bg-accent/20"
                   >
                     <Icon className="h-5 w-5" />
                   </a>

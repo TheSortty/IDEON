@@ -49,7 +49,7 @@ const PreguntasPage: React.FC = () => {
                 className={cn(
                   pill,
                   topic === tab.id
-                    ? 'border-accent bg-surface-raised text-content shadow-[0_0_26px_rgb(var(--accent)/0.3)]'
+                    ? 'border-accent bg-surface-raised text-content'
                     : 'border-line-strong bg-surface-base/50 text-content-muted hover:border-accent/70 hover:text-content',
                 )}
               >

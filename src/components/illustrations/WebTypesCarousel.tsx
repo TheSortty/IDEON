@@ -191,7 +191,7 @@ const WebTypesCarousel: React.FC<{ types: readonly WebType[] }> = ({ types }) =>
               className={cn(
                 'inline-flex min-h-[46px] items-center rounded-full border px-[18px] text-[15px] font-semibold transition-[color,background-color,border-color,box-shadow] duration-long',
                 i === index
-                  ? 'page-nav-link is-on border-accent/60 text-content shadow-[0_0_24px_rgb(var(--accent)/0.25)]'
+                  ? 'page-nav-link is-on border-accent/60 text-content'
                   : 'border-line-strong bg-surface-base/50 text-content-muted hover:border-accent/45 hover:text-content',
               )}
             >

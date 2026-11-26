@@ -34,7 +34,7 @@ const ScrollChrome: React.FC = () => {
             type="button"
             aria-label="Volver arriba"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="glass fixed bottom-[100px] right-[31px] z-50 flex h-12 w-12 items-center justify-center rounded-full text-content shadow-[0_12px_30px_-10px_rgb(0_0_0/0.5)] transition-[background-color,border-color,box-shadow] duration-medium hover:border-accent hover:bg-accent-solid hover:text-accent-ink hover:shadow-[0_0_30px_rgb(var(--accent)/0.6)]"
+            className="glass fixed bottom-[100px] right-[31px] z-50 flex h-12 w-12 items-center justify-center rounded-full text-content transition-[background-color,border-color,box-shadow] duration-medium hover:border-accent hover:bg-accent-solid hover:text-accent-ink"
             initial={{ opacity: 0, y: 12, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.9 }}

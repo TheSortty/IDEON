@@ -73,7 +73,7 @@ const Option: React.FC<OptionProps> = ({ option, selected, multi, compact, recom
       'opt relative flex w-full items-start gap-3 rounded-2xl border-2 text-left transition-[border-color,color,background-color,transform] duration-medium hover:-translate-y-0.5 hover:border-accent/70 active:scale-[0.97]',
       compact ? 'min-h-[56px] px-4 py-3' : option.desc ? 'min-h-[84px] px-5 py-4' : 'min-h-14 items-center px-5 py-3',
       selected
-        ? 'border-accent bg-surface-raised shadow-[0_0_26px_rgb(var(--accent)/0.3)]'
+        ? 'border-accent bg-surface-raised'
         : recommended
           ? 'border-accent/45 bg-accent/[0.07]'
           : 'border-line-strong bg-surface-base/50',

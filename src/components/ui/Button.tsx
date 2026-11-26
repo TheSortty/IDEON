@@ -47,17 +47,15 @@ const variants: Record<Variant, string> = {
   // Degradado de la propia paleta en paneo continuo + brillo que cruza al hover.
   primary:
     'btn-shine bg-accent-gradient animate-gradient-pan text-accent-ink ' +
-    'shadow-[0_0_28px_rgb(var(--accent)/0.35),inset_0_1px_0_rgb(255_255_255/0.18)] ' +
-    'hover:shadow-[0_0_46px_rgb(var(--accent)/0.6),0_14px_30px_-10px_rgb(var(--accent)/0.5)]',
+    'shadow-[inset_0_1px_0_rgb(255_255_255/0.18)]',
   outline:
     'btn-fill border-[1.5px] border-content/30 bg-content/[0.04] text-content ' +
-    'hover:border-accent hover:text-accent-ink hover:shadow-[0_0_32px_rgb(var(--accent)/0.4)]',
+    'hover:border-accent hover:text-accent-ink',
   ghost:
     'glass text-content hover:border-accent/60 hover:bg-accent/10',
   // Para usar sobre superficies de color (la tarjeta promo, el CTA final).
   light:
-    'btn-shine bg-accent-ink text-brand-surface shadow-[0_10px_30px_-10px_rgb(0_0_0/0.5)] ' +
-    'hover:shadow-[0_18px_40px_-12px_rgb(0_0_0/0.6),0_0_34px_rgb(255_255_255/0.35)]',
+    'btn-shine bg-accent-ink text-brand-surface',
   secondary: '',
   gradient: '',
 };
