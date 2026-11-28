@@ -33,10 +33,10 @@ const ContactoExitosoPage: React.FC = () => {
         <div className="container-site">
           <SpotlightCard
             role="status"
-            className="plan-featured mx-auto max-w-[640px] overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 px-7 py-[clamp(36px,5vw,64px)] shadow-[0_0_50px_rgb(var(--accent)/0.3)]"
+            className="plan-featured mx-auto max-w-[640px] overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 px-7 py-[clamp(36px,5vw,64px)]"
           >
             <div className="flex animate-rise flex-col items-center gap-[18px] text-center">
-              <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-accent/20 text-accent shadow-[0_0_40px_rgb(var(--accent)/0.5)]">
+              <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full bg-accent/20 text-accent">
                 <Icon name="check" size={34} strokeWidth={2.5} />
               </span>
               <h1 className="text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold text-content">{COPY.title}</h1>

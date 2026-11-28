@@ -19,6 +19,25 @@ export const HERO = {
   secondaryCta: 'Ver proyectos',
 } as const;
 
+// Franja de 4 datos al pie del inicio. Son hechos que ya están en el sitio
+// (año de fundación en /nosotros/, los 4 pasos del proceso, la propiedad
+// total de los diferenciadores); la cantidad de proyectos publicados sale de
+// CASES (los que no están "Próximamente").
+export const HERO_STATS_LABELS = {
+  founded: { value: '2025', label: 'Estudio fundado en Mendoza' },
+  projects: { label: 'Proyectos publicados' },
+  steps: { label: 'Pasos de la idea al lanzamiento' },
+  ownership: { value: '100%', label: 'Dominio y accesos a tu nombre' },
+} as const;
+
+// Etiquetas numeradas de los encabezados de sección ("01 · Proceso").
+export const SECTION_LABELS = {
+  process: '01 · Proceso',
+  advantages: '02 · Diferenciales',
+  services: '03 · Servicios',
+  cases: '04 · Casos',
+} as const;
+
 // Divisor: la palabra que rota. La lista completa va en el aria-label (los
 // lectores de pantalla no ven la animación).
 export const ROTATOR = {

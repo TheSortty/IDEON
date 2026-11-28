@@ -98,7 +98,7 @@ const InstitutionalIll: React.FC = () => (
           </div>
           <div className="tw-page delay-6s absolute inset-0 flex flex-col gap-3">
             <div className="relative h-[130px] rounded-xl bg-accent-2/[0.12] bg-[linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] bg-[length:22px_22px]">
-              <i className="tw-pin absolute left-[48%] top-[38%] block h-4 w-4 rounded-[50%_50%_50%_0] bg-brand-primary shadow-[0_0_16px_rgb(var(--magenta-500))]" />
+              <i className="tw-pin absolute left-[48%] top-[38%] block h-4 w-4 rounded-[50%_50%_50%_0] bg-brand-primary" />
             </div>
             <span className="tw-in" />
           </div>

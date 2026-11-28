@@ -21,7 +21,7 @@ const FloatingWhatsAppButton: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex h-[62px] w-[62px] items-center justify-center rounded-full bg-whatsapp transition-[transform,box-shadow] duration-long ease-emphasis hover:-rotate-[8deg] hover:scale-110"
+      className="fixed bottom-[calc(24px+env(safe-area-inset-bottom,0px))] right-[calc(24px+env(safe-area-inset-right,0px))] z-50 flex h-[62px] w-[62px] items-center justify-center rounded-full bg-whatsapp transition-[transform,box-shadow] duration-long ease-emphasis hover:-rotate-[8deg] hover:scale-110"
     >
       <span aria-hidden="true" className="absolute inset-0 animate-ping-soft rounded-full border-2 border-whatsapp" />
       <WhatsAppIcon className="relative h-8 w-8 text-accent-ink" />

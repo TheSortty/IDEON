@@ -123,7 +123,7 @@ const ContactoPage: React.FC = () => {
               ))}
             </ul>
 
-            <SpotlightCard className="plan-featured animate-rise overflow-visible rounded-[20px] border-2 border-transparent bg-surface-raised/70 p-7 shadow-[0_0_50px_rgb(var(--accent)/0.3)] [animation-delay:550ms]">
+            <SpotlightCard className="plan-featured animate-rise overflow-visible rounded-[20px] border-2 border-transparent bg-surface-raised/70 p-7 [animation-delay:550ms]">
               <h2 className="text-xl font-extrabold text-content">{CONTACTO.nextTitle}</h2>
               <ol className="m-0 mt-3.5 flex list-none flex-col gap-3 p-0 text-[15px] leading-normal text-content-muted">
                 {CONTACTO.nextSteps.map((step, i) => (

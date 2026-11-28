@@ -22,7 +22,6 @@ export const PREGUNTAS = {
       id: 'cot',
       label: 'Cotización',
       faqs: [
-        { question: '¿Por qué no publican precios?', answer: 'Porque cada proyecto es distinto y no queremos que pagues por cosas que no necesitás. Escuchamos primero y te pasamos un precio cerrado según tu proyecto.' },
         { question: '¿Cotizar tiene costo?', answer: 'No. La cotización es sin cargo y sin compromiso.' },
         { question: '¿El precio puede cambiar durante el proyecto?', answer: 'No, si el alcance se mantiene. Si querés sumar algo nuevo, lo cotizamos aparte antes de hacerlo.' },
       ],

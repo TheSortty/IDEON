@@ -13,7 +13,7 @@ import { cn } from '../../lib/cn';
 const ALL_FAQS = PREGUNTAS.topics.flatMap((topic) => topic.faqs);
 
 const pill =
-  'opt inline-flex min-h-[46px] items-center rounded-full border-2 px-5 text-[15px] font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-medium hover:-translate-y-0.5';
+  'opt inline-flex min-h-[46px] items-center rounded-full border-2 px-5 text-[15px] font-semibold transition-[color,background-color,border-color,transform] duration-medium hover:-translate-y-0.5';
 
 const PreguntasPage: React.FC = () => {
   // Todas las preguntas van al JSON-LD; el filtro solo cambia qué se ve.

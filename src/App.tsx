@@ -52,6 +52,20 @@ function SiteRoutes() {
   return useRoutes(ROUTES);
 }
 
+/**
+ * El header es fijo (se esconde al bajar y vuelve al subir), así que el
+ * <main> reserva su alto. En el Inicio no: el hero ocupa la pantalla
+ * completa y el header queda transparente encima.
+ */
+function Main({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  return (
+    <main id="contenido" tabIndex={-1} className={pathname === '/' ? 'outline-none' : 'pt-[var(--header-h)] outline-none'}>
+      {children}
+    </main>
+  );
+}
+
 function App() {
   return (
     // reducedMotion="user" respeta la preferencia del sistema en TODAS las
@@ -64,10 +78,13 @@ function App() {
         <ScrollOnNavigate />
         <ParticleBackground />
         <div className="bg-transparent text-content antialiased relative z-10">
+          <a href="#contenido" className="skip-link no-underline">
+            Saltar al contenido
+          </a>
           <Header />
-          <main>
+          <Main>
             <SiteRoutes />
-          </main>
+          </Main>
           <Footer />
           <ScrollChrome />
           <FloatingWhatsAppButton />

@@ -61,7 +61,7 @@ const CaseStudyPage: React.FC<{ study: CaseStudy }> = ({ study }) => {
               <h2 className="text-[28px] font-extrabold leading-tight text-content">{study.problemTitle}</h2>
               <p className="mt-3.5 text-base leading-relaxed text-content-muted">{study.problem}</p>
             </SpotlightCard>
-            <SpotlightCard className="plan-featured overflow-visible rounded-3xl border-2 border-transparent bg-surface-raised/70 p-9 shadow-[0_0_50px_rgb(var(--accent)/0.3)]">
+            <SpotlightCard className="plan-featured overflow-visible rounded-3xl border-2 border-transparent bg-surface-raised/70 p-9">
               <h2 className="text-[28px] font-extrabold leading-tight text-content">{study.solutionTitle}</h2>
               <ul className="check-list m-0 mt-3.5 flex list-none flex-col gap-3 p-0 text-base text-content">
                 {study.solution.map((item) => (
@@ -99,7 +99,7 @@ const CaseStudyPage: React.FC<{ study: CaseStudy }> = ({ study }) => {
 
       <section className="!pb-[120px] !pt-6">
         <Reveal className="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] gap-5">
-          <SpotlightCard className="plan-featured overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 p-[clamp(32px,4vw,48px)] shadow-[0_0_50px_rgb(var(--accent)/0.3)]">
+          <SpotlightCard className="plan-featured overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 p-[clamp(32px,4vw,48px)]">
             <div className="flex flex-col justify-center gap-[18px]">
               <h2 className="text-[clamp(1.5rem,2.8vw,2.125rem)] font-extrabold text-content">{CASE_COPY.similarTitle}</h2>
               <QuoteButton size="lg" className="self-start">{CASE_COPY.similarCta}</QuoteButton>

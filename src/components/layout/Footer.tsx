@@ -121,6 +121,12 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* "IDEON" gigante calado al final. Decorativo: el nombre ya está en el
+          logo de arriba. 11vw entra siempre en el ancho (no desborda). */}
+      <div className="container-site overflow-hidden pb-[calc(16px+env(safe-area-inset-bottom,0px))]" aria-hidden="true">
+        <span className="footer-word">IDEON</span>
+      </div>
     </footer>
   );
 };

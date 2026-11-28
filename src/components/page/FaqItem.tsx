@@ -7,7 +7,7 @@ const FaqItem: React.FC<{ faq: Faq; open?: boolean; hidden?: boolean }> = ({ faq
   <details
     open={open}
     hidden={hidden}
-    className="faq-item group glass rounded-2xl transition-[border-color,background-color,box-shadow,transform] duration-long ease-emphasis hover:-translate-y-0.5 hover:border-line-strong open:border-accent/50 open:bg-accent/[0.08] open:shadow-[0_0_40px_rgb(var(--accent)/0.16)]"
+    className="faq-item group glass rounded-2xl transition-transform duration-long ease-emphasis hover:-translate-y-0.5 hover:border-line-strong open:border-accent/50 open:bg-accent/[0.08]"
   >
     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-[26px] py-[22px] text-lg font-bold text-content">
       {faq.question}

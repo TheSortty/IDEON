@@ -135,7 +135,7 @@ const ProjectsCarousel: React.FC = () => {
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="inline-flex items-center gap-2.5 rounded-full border border-brand-text-primary/20 bg-brand-background/80 px-5 py-3 text-[15px] font-extrabold tracking-[0.02em] text-brand-text-primary shadow-[0_16px_40px_-14px_rgb(0_0_0/0.7)] backdrop-blur-md">
-                        <span className="h-2 w-2 animate-dot-pulse rounded-full bg-[rgb(var(--lamp-yellow))] shadow-[0_0_10px_rgb(var(--lamp-yellow))]" />
+                        <span className="h-2 w-2 animate-dot-pulse rounded-full bg-[rgb(var(--lamp-yellow))]" />
                         {CASOS.upcoming}
                       </span>
                     </div>

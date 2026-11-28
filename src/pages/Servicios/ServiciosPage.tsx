@@ -21,7 +21,7 @@ const PlanCard: React.FC<{ plan: Plan }> = ({ plan }) => {
     <SpotlightCard
       className={cn(
         'flex flex-col overflow-visible rounded-3xl p-9',
-        featured && 'plan-featured border-2 border-transparent bg-surface-raised/70 shadow-[0_0_50px_rgb(var(--accent)/0.3)]',
+        featured && 'plan-featured border-2 border-transparent bg-surface-raised/70',
       )}
     >
       {featured && (

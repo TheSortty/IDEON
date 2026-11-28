@@ -25,7 +25,7 @@ const ScrollChrome: React.FC = () => {
     <>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-accent to-accent-2 shadow-[0_0_12px_rgb(var(--accent)/0.7)]"
+        className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-accent to-accent-2"
         style={{ scaleX: scrollYProgress }}
       />
       <AnimatePresence>
@@ -34,7 +34,7 @@ const ScrollChrome: React.FC = () => {
             type="button"
             aria-label="Volver arriba"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="glass fixed bottom-[100px] right-[31px] z-50 flex h-12 w-12 items-center justify-center rounded-full text-content transition-[background-color,border-color,box-shadow] duration-medium hover:border-accent hover:bg-accent-solid hover:text-accent-ink"
+            className="glass fixed bottom-[calc(100px+env(safe-area-inset-bottom,0px))] right-[calc(31px+env(safe-area-inset-right,0px))] z-50 flex h-12 w-12 items-center justify-center rounded-full text-content transition-[background-color,border-color,box-shadow] duration-medium hover:border-accent hover:bg-accent-solid hover:text-accent-ink"
             initial={{ opacity: 0, y: 12, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.9 }}

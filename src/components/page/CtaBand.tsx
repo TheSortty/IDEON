@@ -17,7 +17,7 @@ interface CtaBandProps {
 const CtaBand: React.FC<CtaBandProps> = ({ title, text, children, id, className = 'pb-10 pt-6' }) => (
   <section id={id} className={className}>
     <div className="container-site">
-      <Reveal className="cta-band relative flex flex-col items-center gap-[22px] overflow-hidden rounded-[32px] border border-brand-text-primary/15 px-6 py-[clamp(44px,6vw,84px)] text-center shadow-[0_0_60px_rgb(var(--accent)/0.2)]">
+      <Reveal className="cta-band relative flex flex-col items-center gap-[22px] overflow-hidden rounded-[32px] border border-brand-text-primary/15 px-6 py-[clamp(44px,6vw,84px)] text-center">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -top-[140px] left-1/2 -ml-[230px] h-[460px] w-[460px] animate-orb rounded-full bg-brand-primary opacity-[0.22] blur-[90px]"

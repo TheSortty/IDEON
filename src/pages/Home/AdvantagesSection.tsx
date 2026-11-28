@@ -1,11 +1,11 @@
 import React from 'react';
 import Reveal from '../../components/ui/Reveal';
-import SpotlightCard from '../../components/ui/SpotlightCard';
-import { ADVANTAGES, type AdvantageIcon } from '../../constants/home';
+import GlowCard from '../../components/ui/GlowCard';
+import { ADVANTAGES, SECTION_LABELS, type AdvantageIcon } from '../../constants/home';
 
 const iconProps = {
-  width: 22,
-  height: 22,
+  width: 24,
+  height: 24,
   viewBox: '0 0 24 24',
   fill: 'none',
   stroke: 'currentColor',
@@ -42,42 +42,48 @@ const ICONS: Record<AdvantageIcon, React.ReactNode> = {
   ),
 };
 
-// Recursos C + D (decisión 4): luz que sigue al cursor, borde con degradado y
-// textura de fondo alternada. Sin números de fondo (pedido del 08/11).
-const TEXTURES = ['dots', 'grid'] as const;
-
+/**
+ * Diferenciales: 4 tarjetas a todo el ancho del contenedor, sobre una franja
+ * oscura de borde a borde. La franja es oscura en los dos temas (superficie
+ * de marca), así que el texto va en los claros de la marca. Al pasar el mouse
+ * cada tarjeta se eleva 6 px, el borde pasa a magenta sólido y aparece el
+ * brillo interno que sigue al cursor.
+ */
 const AdvantagesSection: React.FC = () => {
   const [before, first, middle, second, after] = ADVANTAGES.title;
 
   return (
-    <section>
-      <div className="container-site grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-start gap-14">
-        <Reveal className="pinned-intro">
-          <h2 className="font-extrabold text-content">
-            {before}
-            <span className="text-gradient">{first}</span>
-            {middle}
-            <span className="text-gradient">{second}</span>
-            {after}
-          </h2>
-        </Reveal>
-        <Reveal>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-4">
-            {ADVANTAGES.items.map((item, i) => (
-              <SpotlightCard
-                key={item.title}
-                texture={TEXTURES[i % 2]}
-                className="p-7"
-              >
-                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[14px] border border-accent/35 bg-accent/15 text-accent">
-                  {ICONS[item.icon]}
-                </span>
-                <h3 className="mt-3 text-[19px] font-bold text-content">{item.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-content-muted">{item.description}</p>
-              </SpotlightCard>
-            ))}
+    <section className="bg-brand-background text-brand-text-primary">
+      <div className="container-site">
+        <Reveal className="section-head">
+          <div>
+            <p className="eyebrow !text-brand-primary">{SECTION_LABELS.advantages}</p>
+            <h2 className="title-section text-brand-text-primary">
+              {before}
+              <span className="text-gradient">{first}</span>
+              {middle}
+              <span className="text-gradient">{second}</span>
+              {after}
+            </h2>
           </div>
         </Reveal>
+        <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4">
+          {ADVANTAGES.items.map((item, i) => (
+            <li key={item.title} className="flex">
+              <Reveal index={i} className="flex w-full">
+                <GlowCard className="flex w-full flex-col gap-4 rounded-[24px] border border-brand-text-primary/10 bg-brand-surface/60 p-[clamp(24px,2.4vw,36px)] min-[1100px]:min-h-[320px]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-brand-primary/40 bg-brand-primary/15 text-brand-primary">
+                    {ICONS[item.icon]}
+                  </span>
+                  <h3 className="mt-auto pt-6 text-[clamp(21px,1.6vw,26px)] font-extrabold leading-tight text-brand-text-primary">
+                    {item.title}
+                  </h3>
+                  <p className="text-base leading-relaxed text-brand-text-secondary">{item.description}</p>
+                </GlowCard>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

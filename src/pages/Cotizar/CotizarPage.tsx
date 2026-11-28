@@ -234,7 +234,7 @@ const CotizarPage: React.FC = () => {
                     key={n}
                     className={cn(
                       'h-1.5 flex-1 rounded-full transition-colors duration-long',
-                      n <= step ? 'bg-gradient-to-r from-accent to-accent-2 shadow-[0_0_10px_rgb(var(--accent)/0.6)]' : 'bg-content/15',
+                      n <= step ? 'bg-gradient-to-r from-accent to-accent-2' : 'bg-content/15',
                     )}
                   />
                 ))}
@@ -352,7 +352,7 @@ const CotizarPage: React.FC = () => {
                     // Único punto de "cotizador completo": acá va el evento
                     // `cotizador_complete` cuando se instale la medición.
                     <div className="flex flex-col gap-6">
-                      <div className="plan-featured flex flex-col gap-3.5 rounded-3xl border-2 border-transparent bg-surface-raised/70 p-[clamp(24px,4vw,40px)] shadow-[0_0_50px_rgb(var(--accent)/0.3)]">
+                      <div className="plan-featured flex flex-col gap-3.5 rounded-3xl border-2 border-transparent bg-surface-raised/70 p-[clamp(24px,4vw,40px)]">
                         <p className="text-sm font-bold text-accent-text">{COTIZADOR.recommendLabel}</p>
                         <p className="text-gradient-pan animate-gradient-pan text-[clamp(2.25rem,5vw,3.5rem)] font-black leading-none">{result.plan}</p>
                         <p className="text-[17px] leading-relaxed text-content-muted">{result.description}</p>

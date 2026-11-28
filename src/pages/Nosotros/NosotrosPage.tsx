@@ -97,7 +97,7 @@ const NosotrosPage: React.FC = () => {
       <section id="historia">
         <div className="container-site">
           <Reveal>
-            <SpotlightCard className="plan-featured overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 p-[clamp(28px,4vw,56px)] shadow-[0_0_50px_rgb(var(--accent)/0.3)]">
+            <SpotlightCard className="plan-featured overflow-visible rounded-[28px] border-2 border-transparent bg-surface-raised/70 p-[clamp(28px,4vw,56px)]">
               <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] gap-10">
                 <h2 className="text-[clamp(1.625rem,3vw,2.375rem)] font-extrabold text-content">{NOSOTROS.historyTitle}</h2>
                 <div className="flex flex-col gap-4">

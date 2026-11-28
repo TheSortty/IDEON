@@ -7,7 +7,7 @@ import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, absoluteUrl } from '../../consta
 
 // Secciones
 import HomeHero from './HomeHero';
-import WordsDivider from './WordsDivider';
+import ServicesMarquee from './ServicesMarquee';
 import ProcessSection from './ProcessSection';
 import AdvantagesSection from './AdvantagesSection';
 import ServicesPromo from './ServicesPromo';
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
         className="pointer-events-none absolute -left-[220px] top-[1600px] -z-10 h-[560px] w-[560px] animate-orb-reverse rounded-full bg-accent-2 opacity-[0.13] blur-[90px]"
       />
       <HomeHero />
-      <WordsDivider />
+      <ServicesMarquee />
       <ProcessSection />
       <AdvantagesSection />
       <ServicesPromo />

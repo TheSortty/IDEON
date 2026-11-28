@@ -5,6 +5,11 @@ import type { Variants, Transition } from 'framer-motion';
 // custom property, así que el valor se repite acá y en ningún otro lado.
 export const EASE_EMPHASIS = [0.16, 1, 0.3, 1] as const;
 export const DUR_LONG = 0.6;
+/** Aparición al bajar (rediseño de ancho): 0.9 s, 28 px. */
+export const DUR_REVEAL = 0.9;
+export const REVEAL_Y = 28;
+/** Escalonado entre elementos hermanos (--d × 80 ms). */
+export const REVEAL_STAGGER = 0.08;
 
 // Reveal escalonado por sección. El contenedor no anima nada propio: solo
 // coordina el delay entre sus hijos, para que las cards entren una detrás de
@@ -17,11 +22,11 @@ export const revealContainer: Variants = {
 };
 
 export const revealItem: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: REVEAL_Y },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: DUR_LONG, ease: EASE_EMPHASIS },
+    transition: { duration: DUR_REVEAL, ease: EASE_EMPHASIS },
   },
 };
 

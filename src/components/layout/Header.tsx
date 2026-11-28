@@ -48,8 +48,8 @@ const Logo: React.FC<{ className?: string }> = ({ className }) => (
     to="/"
     aria-label="IDEON, ir al inicio"
     className={cn(
-      'font-black tracking-[-0.02em] text-content no-underline transition-[letter-spacing,text-shadow] duration-long ease-emphasis',
-      'hover:tracking-[0.01em] hover:[text-shadow:0_0_24px_rgb(var(--accent)/0.6)]',
+      'font-black tracking-[-0.02em] text-content no-underline transition-[letter-spacing] duration-long ease-emphasis',
+      'hover:tracking-[0.01em]',
       className,
     )}
   >
@@ -109,7 +109,7 @@ const ServicesMenu: React.FC<{ active: boolean }> = ({ active }) => {
             // como motion value (x) para que no lo pise una clase de Tailwind.
             style={{ x: '-50%', transformOrigin: 'top center' }}
           >
-            <div className="grid gap-0.5 rounded-[22px] border border-line-strong bg-[var(--popover)] p-2.5 shadow-[0_30px_70px_-20px_rgb(0_0_0/0.6),0_0_40px_rgb(var(--accent)/0.12)]">
+            <div className="grid gap-0.5 rounded-[22px] border border-line-strong bg-[var(--popover)] p-2.5 shadow-[0_30px_70px_-20px_rgb(0_0_0/0.6)]">
               {SERVICE_NAV.map((service) => {
                 const Icon = SERVICE_ICONS[service.icon];
                 const to = resolveNav(service);
@@ -121,7 +121,7 @@ const ServicesMenu: React.FC<{ active: boolean }> = ({ active }) => {
                     onClick={() => setOpen(false)}
                     className="group flex items-start gap-3.5 rounded-[14px] p-3.5 text-content no-underline transition-[background-color,transform] duration-medium ease-emphasis hover:translate-x-1 hover:bg-content/[0.07]"
                   >
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-accent/35 bg-accent/15 text-accent transition-[background-color,box-shadow] duration-medium group-hover:bg-accent/30 group-hover:shadow-[0_0_20px_rgb(var(--accent)/0.4)]">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-accent/35 bg-accent/15 text-accent transition-[background-color] duration-medium group-hover:bg-accent/30">
                       <Icon className="h-5 w-5" />
                     </span>
                     <span>
@@ -199,6 +199,35 @@ const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const mobileId = useId();
 
+  // Transparente arriba de todo; sólido con desenfoque al bajar. Se esconde
+  // al bajar y vuelve al subir. Un solo listener pasivo, leído en un
+  // requestAnimationFrame, y estado que cambia solo al cruzar un umbral.
+  const [atTop, setAtTop] = useState(true);
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = Math.max(window.scrollY, 0);
+      setAtTop(y < 8);
+      const delta = y - lastY;
+      if (Math.abs(delta) > 6) {
+        setHidden(delta > 0 && y > 160);
+        lastY = y;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   useEffect(() => setMobileOpen(false), [pathname]);
   useEffect(() => {
     if (!mobileOpen) return;
@@ -208,14 +237,20 @@ const Header: React.FC = () => {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header
+      className="site-header fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)]"
+      data-top={atTop && !mobileOpen ? 'true' : 'false'}
+      data-hidden={hidden && !mobileOpen ? 'true' : 'false'}
+      // Con el foco adentro (teclado), el header no se esconde.
+      onFocusCapture={() => setHidden(false)}
+    >
       {/* El vidrio del header va en una capa propia y no en el <header>, para
           que los menús desplegables no queden anidados dentro de un
           backdrop-filter (los filtros anidados se dibujan distinto según el
           navegador). */}
       <div
         aria-hidden="true"
-        className="themed-surface absolute inset-0 -z-10 border-b border-line bg-[var(--chrome)] backdrop-blur-xl"
+        className="site-header-bg absolute inset-0 -z-10 border-b border-line bg-[var(--chrome)] backdrop-blur-xl"
       />
       <div className="container-site relative flex h-[var(--nav-h)] items-center justify-between gap-5">
         <Logo className="text-[28px]" />

@@ -20,7 +20,7 @@ const HALO_CLASS: Record<AsciiMode, string> = {
 };
 
 const PRE_BASE =
-  'relative m-0 whitespace-pre font-mono text-[clamp(7.5px,0.8vw,11px)] font-bold leading-none tracking-[0.02em] transition-[color,text-shadow] duration-500';
+  'ascii-size relative m-0 whitespace-pre font-mono font-bold leading-none tracking-[0.02em] transition-[color,text-shadow] duration-500';
 const HALO_BASE =
   'absolute h-[300px] w-[300px] animate-halo-breathe rounded-full blur-[70px] transition-[opacity,background-color] duration-[900ms]';
 
@@ -91,7 +91,7 @@ const AsciiLamp: React.FC = () => {
   const first = ASCII_FRAMES[0];
 
   return (
-    <div aria-hidden="true" className="relative mx-auto flex w-[min(100%,460px)] items-center justify-center">
+    <div aria-hidden="true" className="relative mx-auto flex w-full max-w-full items-center justify-center">
       <span ref={haloRef} className={cn(HALO_BASE, HALO_CLASS[first.mode])} />
       <pre ref={preRef} className={cn(PRE_BASE, TEXT_CLASS[first.mode])}>
         {first.text}
