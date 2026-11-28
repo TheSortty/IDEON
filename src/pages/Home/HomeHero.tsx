@@ -38,6 +38,9 @@ const HomeHero: React.FC = () => {
               <span className="text-gradient-pan animate-gradient-pan">{HERO.titleHighlight}</span>
             </span>
           </h1>
+          <p className="measure animate-rise text-[clamp(17px,1.35vw,22px)] leading-relaxed text-content-muted [animation-delay:350ms]">
+            {HERO.lead}
+          </p>
           <div className="flex animate-rise flex-wrap gap-3.5 [animation-delay:450ms]">
             <QuoteButton size="lg">{HERO.primaryCta}</QuoteButton>
             {casosHref && (

@@ -104,7 +104,9 @@
     /* Barra del header y menús desplegables. */
     --chrome: rgb(247 245 252 / 0.82);
     --popover: rgb(255 255 255); /* opaco: con transparencia se lee el título de atrás */
-    --shadow-card: 0 26px 50px -24px rgb(12 2 45 / 0.28);
+    /* Sin sombra difusa en claro: sobre el fondo lavanda se leía como un
+       halo violeta alrededor de las tarjetas (en oscuro no se nota). */
+    --shadow-card: none;
     /* Partículas del fondo: canales RGB, el canvas les suma la opacidad. */
     --particle: 161 0 194;
     --particle-alpha: 0.35;
@@ -380,8 +382,7 @@
   .spotlight {
     position: relative;
     isolation: isolate;
-    transition: transform 650ms var(--ease-emphasis), border-color 400ms var(--ease-out),
-                box-shadow 650ms var(--ease-emphasis);
+    transition: transform 650ms var(--ease-emphasis), border-color 400ms var(--ease-out);
   }
   .spotlight::before {
     content: '';
@@ -411,9 +412,10 @@
     transition: opacity 500ms var(--ease-out);
   }
   @media (hover: hover) {
+    /* Sin sombra al elevarse: en el tema claro se veía como un sombreado
+       difuso por fuera de la tarjeta. La luz queda solo adentro. */
     .spotlight:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-card);
     }
     .spotlight:hover::before,
     .spotlight:hover::after {
@@ -650,7 +652,7 @@
     transform: translateY(-4px) scale(1.03);
     border-color: rgb(var(--accent) / 0.7);
     background-color: rgb(var(--accent) / 0.14);
-    box-shadow: var(--shadow-card), inset 0 0 0 1px rgb(var(--accent) / 0.4);
+    box-shadow: inset 0 0 0 1px rgb(var(--accent) / 0.4);
   }
   .feat-card[data-active='true'] .feat-ico {
     transform: scale(1.12) rotate(-6deg);

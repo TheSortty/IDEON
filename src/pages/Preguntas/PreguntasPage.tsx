@@ -62,14 +62,10 @@ const PreguntasPage: React.FC = () => {
 
       <section className="!pb-6 !pt-4">
         <div className="mx-auto flex max-w-[880px] flex-col gap-3 px-6">
-          {PREGUNTAS.topics.map((t, ti) =>
-            t.faqs.map((faq, fi) => (
-              <FaqItem
-                key={faq.question}
-                faq={faq}
-                open={ti === 0 && fi === 0}
-                hidden={topic !== 'todas' && topic !== t.id}
-              />
+          {/* Todas cerradas al entrar: cada persona abre la que le interesa. */}
+          {PREGUNTAS.topics.map((t) =>
+            t.faqs.map((faq) => (
+              <FaqItem key={faq.question} faq={faq} hidden={topic !== 'todas' && topic !== t.id} />
             )),
           )}
         </div>

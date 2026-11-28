@@ -15,6 +15,9 @@ export const HERO = {
   // el degradado.
   titleLines: ['Impulsá tu negocio', 'con tecnología a medida'],
   titleHighlight: 'Tu idea, nuestro desarrollo.',
+  // Qué hace IDEON, en una línea. Sale de la descripción del sitio y del
+  // tagline del pie (textos ya aprobados), unidos.
+  lead: 'Diseñamos y desarrollamos páginas web, tiendas online, CRM y sistemas a medida para hacer crecer tu negocio. Desde tu primera web hasta tu sistema.',
   primaryCta: 'Cotizá tu proyecto',
   secondaryCta: 'Ver proyectos',
 } as const;
