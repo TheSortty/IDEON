@@ -1,38 +1,18 @@
 import React from 'react';
-import { cn } from '../../lib/cn';
 
 type OrbSide = 'left' | 'right' | 'center';
 
-const FIRST_ORB: Record<OrbSide, string> = {
-  right: '-right-40 top-[120px] h-[560px] w-[560px]',
-  left: '-left-[180px] top-[140px] h-[560px] w-[560px]',
-  center: 'left-1/2 top-[260px] -ml-[350px] h-[700px] w-[700px] opacity-[0.12]',
-};
-
 /**
- * Envoltorio de las páginas internas: dos orbes de luz de fondo (magenta y
- * azul) detrás del contenido. `overflow-clip` recorta los orbes en los dos
- * ejes (que no generen scroll horizontal ni estiren una página corta) sin
- * romper los elementos sticky (la barra "En esta página").
+ * Envoltorio de las páginas internas. Antes dibujaba dos orbes de luz
+ * (magenta y azul, con blur) detrás del contenido: se sacaron porque se veían
+ * como un glow alrededor de tarjetas y preguntas (decisión del 28/11/2026,
+ * sin glow exterior). `orb` queda para no tocar cada página, pero ya no
+ * dibuja nada. `overflow-clip` sigue evitando el scroll horizontal sin romper
+ * los elementos sticky (la barra "En esta página").
  */
-const PageShell: React.FC<{ orb?: OrbSide; children: React.ReactNode }> = ({ orb = 'right', children }) => (
-  <div className="relative isolate overflow-clip">
-    <span
-      aria-hidden="true"
-      className={cn(
-        'pointer-events-none absolute -z-10 animate-orb rounded-full bg-accent opacity-[0.16] blur-[90px]',
-        FIRST_ORB[orb],
-      )}
-    />
-    <span
-      aria-hidden="true"
-      className={cn(
-        'pointer-events-none absolute top-[1700px] -z-10 h-[520px] w-[520px] animate-orb-reverse rounded-full bg-accent-2 opacity-[0.12] blur-[90px]',
-        orb === 'left' ? '-right-[220px]' : '-left-[220px]',
-      )}
-    />
-    {children}
-  </div>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const PageShell: React.FC<{ orb?: OrbSide; children: React.ReactNode }> = ({ children }) => (
+  <div className="relative isolate overflow-clip">{children}</div>
 );
 
 export default PageShell;

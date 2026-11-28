@@ -37,18 +37,10 @@ const HomePage: React.FC = () => {
   useJsonLd(homeJsonLd, 'ld-home');
 
   return (
-    // overflow-x-clip: los orbes se salen por los costados a propósito, pero
-    // no tienen que generar scroll horizontal. `clip` (no `hidden`) no rompe
-    // el sticky de la columna de ventajas.
+    // overflow-clip: nada genera scroll horizontal. `clip` (no `hidden`) no
+    // rompe el sticky de las tarjetas del proceso. Los orbes de luz de fondo
+    // se sacaron (se veían como glow alrededor del contenido).
     <div className="relative isolate overflow-clip">
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 top-[120px] -z-10 h-[600px] w-[600px] animate-orb rounded-full bg-accent opacity-[0.17] blur-[90px]"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-[220px] top-[1600px] -z-10 h-[560px] w-[560px] animate-orb-reverse rounded-full bg-accent-2 opacity-[0.13] blur-[90px]"
-      />
       <HomeHero />
       <ServicesMarquee />
       <ProcessSection />
