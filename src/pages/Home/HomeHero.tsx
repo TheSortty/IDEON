@@ -26,7 +26,7 @@ const HomeHero: React.FC = () => {
     // El header es fijo y queda transparente encima del inicio: el <main> del
     // Inicio no reserva su alto (ver App.tsx), lo hace este padding.
     <section className="relative flex min-h-[100svh] flex-col border-b border-line bg-[var(--hero-band)] !pb-0 pt-[calc(var(--header-h)+clamp(32px,6vh,72px))]">
-      <div className="container-site grid w-full flex-1 grid-cols-1 items-center gap-10 pb-[clamp(40px,7vh,88px)] min-[1000px]:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)] min-[1000px]:gap-12">
+      <div className="container-site grid w-full flex-1 grid-cols-1 items-center gap-10 pb-[clamp(40px,7vh,88px)] min-[1000px]:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)] min-[1000px]:gap-12">
         <div className="flex flex-col gap-[clamp(28px,4vh,44px)]">
           <h1 className="title-hero text-content">
             {lines.map((line, i) => (

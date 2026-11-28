@@ -74,6 +74,9 @@ export type AdvantageIcon = 'propiedad' | 'cotizacion' | 'permanencia' | 'pauta'
 export const ADVANTAGES = {
   // "Nos caracteriza la [claridad] y [transparencia]."
   title: ['Nos caracteriza la ', 'claridad', ' y ', 'transparencia', '.'],
+  // Texto de apoyo del encabezado: es el mismo de "Lo que no negociamos" en
+  // /nosotros/ (ya aprobado).
+  support: 'Elegimos trabajar de la forma en que nos gustaría que nos trabajen como clientes.',
   items: [
     {
       icon: 'propiedad',

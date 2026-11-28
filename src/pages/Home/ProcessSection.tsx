@@ -41,22 +41,20 @@ const ProcessSection: React.FC = () => {
           )}
         </Reveal>
 
-        <ol className="m-0 flex list-none flex-col gap-4 p-0 md:gap-[12vh]">
+        <ol className="m-0 flex list-none flex-col gap-4 p-0 md:gap-6">
           {PROCESS.steps.map((step, i) => (
             <li key={step.title} className="stack-card" style={{ '--i': i } as React.CSSProperties}>
               <Reveal
                 index={i}
-                className="grid gap-6 rounded-[28px] border border-line bg-surface-raised p-[clamp(24px,3.4vw,56px)] shadow-[var(--shadow-card)] md:min-h-[300px] md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] md:items-end"
+                className="grid items-center gap-x-[clamp(24px,4vw,72px)] gap-y-4 rounded-[28px] border border-line bg-surface-raised p-[clamp(24px,3.4vw,56px)] shadow-[var(--shadow-card)] md:min-h-[240px] md:grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)]"
               >
-                <span className="text-gradient block text-[clamp(64px,9vw,160px)] font-black leading-[0.85] tracking-[-0.04em]">
+                <span className="text-gradient block text-[clamp(56px,6vw,112px)] font-black leading-[0.85] tracking-[-0.04em]">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-[clamp(24px,2.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.02em] text-content">
-                    {step.title}
-                  </h3>
-                  <p className="measure text-[clamp(16px,1.15vw,19px)] leading-relaxed text-content-muted">{step.description}</p>
-                </div>
+                <h3 className="text-[clamp(26px,3vw,52px)] font-black leading-[1] tracking-[-0.03em] text-content">
+                  {step.title}
+                </h3>
+                <p className="measure text-[clamp(16px,1.2vw,20px)] leading-relaxed text-content-muted">{step.description}</p>
               </Reveal>
             </li>
           ))}

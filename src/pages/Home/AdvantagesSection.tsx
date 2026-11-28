@@ -66,6 +66,7 @@ const AdvantagesSection: React.FC = () => {
               {after}
             </h2>
           </div>
+          <p className="measure text-[clamp(17px,1.35vw,22px)] leading-relaxed text-brand-text-secondary">{ADVANTAGES.support}</p>
         </Reveal>
         <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 min-[640px]:grid-cols-2 min-[1100px]:grid-cols-4">
           {ADVANTAGES.items.map((item, i) => (
